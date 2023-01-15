@@ -11,8 +11,8 @@
  **Unit Tests Whitebox** (online: start Sprint 2, campus: start Sprint 3)
   > Your Whitebox testing policy 
 
-**Code Review** (online: due start Sprint 2, campus: start Sprint 3)
-  > Your Code Review policy   
+**Code Review** (online: due start Sprint 2, campus: start Sprint 2)
+  > Your Code Review policy for on campus it is ok to have a less formal process in Sprint 2, should be updated in Sprint 3 though
 
   > Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
 
@@ -21,5 +21,5 @@
 **Static Analysis**  (online: start Sprint 3, campus: start Sprint 3)
   > Your Static Analysis policy   
 
-**Continuous Integration**  (start Sprint 3)
+**Continuous Integration**  (start Sprint 3, campus: start Sprint 3)
   > Your Continuous Integration policy
