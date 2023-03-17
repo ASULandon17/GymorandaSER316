@@ -87,6 +87,11 @@ Answer as a team!
 
 > Your Answer
 
+**Starting in Sprint 2**
+Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
+
+> Your Answer
+
 **Did you work at a consistent rate of speed, or velocity? (Meaning did you work during the whole Sprint or did you start working when the deadline approached.)**
 
 > Your Answer
