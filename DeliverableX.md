@@ -42,7 +42,7 @@ I would also advise you to already fill out the Contributions section (End of sp
 ### Meeting minutes of your Daily Scrums (3 per week, should not take longer than 10 minutes):
 > Add as many rows as needed and fill out the table. (Burndown starts with Sprint 2, and Continuous Integration starts with Sprint 3, not needed before that). 
 
-| Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough) | GitHub Actions info (does the master pass) | Additional Info  |
+| Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
 |---|---|---|---|--|--|
 |   |   |   |   |  |  |
 |   |   |   |   |  |  |
@@ -87,11 +87,6 @@ Answer as a team!
 
 > Your Answer
 
-**Starting in Sprint 2**
-Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
-
-> Your Answer
-
 **Did you work at a consistent rate of speed, or velocity? (Meaning did you work during the whole Sprint or did you start working when the deadline approached.)**
 
 > Your Answer
@@ -112,6 +107,11 @@ Include a screenshot of your Burndown chart here and analyse in detail for me wh
 
 > Your Answer
 
+**Starting in Sprint 2**
+Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
+
+> Your Answer
+
 ### Contributions:
 
 > In this section I want you to point me to your main contributions (each of you individually) for the current Sprint. Some of the below you will only need starting in later Sprints, I marked when they become important. 
@@ -129,36 +129,36 @@ Copy the section for each team member and then everyone adds their individual co
   Example: 
   [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
 
-  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) - important in each Sprint:
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
     - link1
     - link2
 
-  **GitHub links to your Pull Requests (up to 3 links) -- fill out starting Sprint 1:
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
     - link1
     - link2
 
-   **GitHub links to your Unit Tests (up to 3 links) -- fill out starting Sprint 3 (everyone should write 4 good Unit Tests each Sprint):
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
     - link1
     - link2
 
   
-  **GitHub links to your Code Reviews (up to 3 links) -- fill out starting Sprint 3:
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
     - link1
     - link2
 
-  **How did you contribute to Static Analysis -- fill out starting Sprint 4:
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
     - link1
     - link2
  
   
 
-## Below is just for you as a little reminder on what needs to be done
-### Checklist for you to see if you are done with the current Sprint
+## Below is just for you as a little reminder on what needs to be done during the transition
+### Checklist for you to see if you are done with the current Sprint, you do not have to check things off
 - [ ] Form above is complete
 - [ ] Your newest software is on the master branch on GitHub, it is tested and compiles/runs
 - [ ] This document is in your master branch on GitHub

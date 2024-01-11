@@ -1,4 +1,4 @@
-For each of you individually copy the checklist and check them of if it is done. This will be graded.
+This is just a little checklist for the start, you can but do not have to use it!
 
 <MyName>
   

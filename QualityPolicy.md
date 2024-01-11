@@ -3,16 +3,16 @@
 > Check in Project: Module Concepts document on Canvas in the Project module for more details 
 
 **GitHub Workflow** (start Sprint 1)
-  > Your Workflow
+  > Describe your Workflow
 
 **Unit Tests Blackbox** (start Sprint 2)
-  > Your Blackbox testing policy 
+  > Describe your Blackbox testing policy 
 
  **Unit Tests Whitebox** (online: start Sprint 2, campus: start Sprint 3)
-  > Your Whitebox testing policy 
+  > Describe your Whitebox testing policy 
 
-**Code Review** (online: due start Sprint 2, campus: start Sprint 2)
-  > Your Code Review policy for on campus it is ok to have a less formal process in Sprint 2, should be updated in Sprint 3 though
+**Code Review** (online: start Sprint 2, campus: start Sprint 2)
+  > Describe your Code Review policy for on campus it is ok to have a less formal process in Sprint 2, should be updated in Sprint 3 though
 
   > Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
 
