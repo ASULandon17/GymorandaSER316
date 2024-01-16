@@ -17,7 +17,7 @@
  >> -> If a branch hasn't been made for US#1, I will make one, otherwise I will checkout the US#1 branch. <br />
  >> -> I do my work and once I am done with my task I get ready to commit. First, I need to check to make sure no updates have been made to dev or US#1 while I was working.  If they have been I will fetch those changes and merge them into US#1. <br />
  >> -> I then commit my work to US#1 with a commit message styled as such "US-#1 -- Task-#1   Updated QualityPolicy.md to show git workflow" <br />
- >> -> I then push my commit to US#1 so that it is in the remote repo on GitHub. <br />
+ >> -> I then push my commit to US#1 so that it is in the remote repo on GitHub and post in the kaffeeklatsch_git channel so that team members are tracking a push was made. This doubles as an accountability tool to monitor progress.<br />
  >> -> If I worked on the final task for US#1, I will then make a PR from US#1 into dev.(If everything is done correctly, this should be a fast forward)
   
 
