@@ -1,4 +1,9 @@
 /.gradle
 /bin
 /build
-.idea/
+<<<<<<< HEAD
+/.DS_Store
+/.idea/
+=======
+
+>>>>>>> dev
