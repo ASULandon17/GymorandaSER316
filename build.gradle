@@ -32,8 +32,8 @@ apply plugin: 'checkstyle'
 tasks.withType(Checkstyle) {
   
   reports {
-    html.enabled = true
-    xml.enabled = false
+    //html.enabled = true
+    //xml.enabled = false
   }
   // include '**/*.java'
   include '**/ui/App.java'
