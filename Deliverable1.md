@@ -14,24 +14,24 @@
 ### Sprint Planning (For Sprint 1-3)
 Document your Sprint Planning here. Also check the kickoff document for more details on what needs to be done. This is just the documentation. 
 
-**Sprint Goal:** Your Sprint goal
+**Sprint Goal:** Fully understand the functionality of memoranda, remove existing bugs in the software, and set conditions to convert the code into the gym scheduling software.
 
-**How many User Stories did you add to the Product Backlog:**  Number
+**How many User Stories did you add to the Product Backlog:**  3
 
-**How many User Stories did you add to this Sprint:** 
+**How many User Stories did you add to this Sprint:** 11
 > Answer the questions below about your Sprint Planning?
 
 **Why did you add these US, why do you think you can get them done in the next Sprint?**
 
-> Your Answer
+> We added the required US per the project docs and then 2 of the 3 US we added ourselves. Out of our custom US, we chose 2 that we thought would give us an understanding of the UI (without requiring a ton of coding) and would set the groundwork for features we want to add in Sprint 2.
 
 **Why do you think these fit well with your Sprint goal? (details)**
 
-> Your Answer
+> They line up perfectly with our spring goal of achieving a better understanding of the UI and setting ourselves up to implement more advanced features in the follow-on sprints.
 
 **Do you have a rough idea what you need to do? (if the answer is no then please let me know on Slack)**
 
-> Your Answer
+> Yes!
 
 
 
