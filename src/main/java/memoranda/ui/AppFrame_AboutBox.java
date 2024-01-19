@@ -31,25 +31,9 @@ public class AppFrame_AboutBox extends JDialog implements ActionListener {
   String product = "Version "+App.VERSION_INFO + " (Build " + App.BUILD_INFO + ")";
   String copyright = "Copyright (c) 2003, 2004 Memoranda team";
   String url = App.WEBSITE_URL;
-  String developersHead = Local.getString("Developers") + ":";
-  String[] developers = {
-              "Alex Alishevskikh (alexeya@users.sourceforge.net)",
-              "Patrick Bielen (bielen@stafa.nl)",
-              "Ryan Ho (rawsushi@users.sourceforge.net)",
-              "Ivan Ribas (ivanrise@users.sourceforge.net)",
-              "Jyrki Velhonoja (velhonoja@kapsi.fi>)",
-  			  "Jeremy Whitlock (jwhitlock@starprecision.com)"              
-  };
-  String othersHead = Local.getString("Other contributors") + ":";
+
   String[] others = {
-              "Thomas Chuffart (informatique@pierrelouiscarlier.fr)",
-              "Willy Dobe (wdobe@gmx.de)",
-              "Yunjie Liu (liu-610@163.com)",
-              "Kenneth J. Pouncey (kjpou@pt.lu)",
-              "Michael Radtke (mradtke@abigale.de)",
-              "Carel-J Rischmuller (carel-j.rischmuller@epiuse.com)",
-              "Milena Vitali-Charewicz (milo22370@yahoo.com)",
-              "Toru Watanabe (t-wata@cablenet.ne.jp)"                            
+                          
  };
     
   JLayeredPane layeredPane;
@@ -65,29 +49,17 @@ public class AppFrame_AboutBox extends JDialog implements ActionListener {
     catch(Exception e) {
       e.printStackTrace();
     }
-    setSize(400, 500);
+    setSize(400, 300);
   }
   //Component initialization
   private void jbInit() throws Exception  {    
-    String text = "<html>";
-    text += "<b>"+product+"</b><br><br>";
-    text += copyright + "<br>" + url + "<br><br>";
-    text += "<b>" + developersHead + "</b><br>";    
-    for (int i = 0; i < developers.length; i++)
-        text += developers[i]+"<br>";    
-    text += "<br><b>" + othersHead + "</b><br>";    
-    for (int i = 0; i < others.length; i++)
-        text += others[i]+"<br>"; 
     
-    text += "</html>";
     
-    image = new ImageIcon(AppFrame_AboutBox.class.getResource("/ui/memoranda.png"));
-    this.setTitle(Local.getString("About Memoranda"));
+    image = new ImageIcon(AppFrame_AboutBox.class.getResource("/ui/Gymoranda.png"));
+    this.setTitle(Local.getString("About Gymoranda"));
     setResizable(false);
     // Initialize Objects
-    lblText.setFont(new java.awt.Font("Dialog", 0, 11));
-    lblText.setText(text);
-    lblText.setBounds(10, 55, 300, 400);
+    
 
     
     button1.setText(Local.getString("Ok"));
@@ -97,7 +69,7 @@ public class AppFrame_AboutBox extends JDialog implements ActionListener {
     button1.setBackground(new Color(69, 125, 186));
     button1.setForeground(Color.white);
     layeredPane = getLayeredPane();
-    //layeredPane.setPreferredSize(new Dimension(300, 300));
+    layeredPane.setPreferredSize(new Dimension(400, 300));
     imgLabel = new JLabel(image);
     imgLabel.setBounds(0, 0, image.getIconWidth(), image.getIconHeight());
     layeredPane.add(imgLabel, new Integer(1));
