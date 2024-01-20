@@ -20,6 +20,7 @@ import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.Objects;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -106,7 +107,7 @@ public class HTMLEditor extends JPanel {
 	public Action boldAction =
 		new HTMLEditorAction(
 			Local.getString("Bold"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/bold.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/bold.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			boldActionB_actionPerformed(e);
 		}
@@ -115,7 +116,7 @@ public class HTMLEditor extends JPanel {
 	public Action italicAction =
 		new HTMLEditorAction(
 			Local.getString("Italic"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/italic.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/italic.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			italicActionB_actionPerformed(e);
 		}
@@ -124,7 +125,7 @@ public class HTMLEditor extends JPanel {
 	public Action underAction =
 		new HTMLEditorAction(
 			Local.getString("Underline"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/underline.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/underline.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			underActionB_actionPerformed(e);
 		}
@@ -134,7 +135,7 @@ public class HTMLEditor extends JPanel {
 		new HTMLEditorAction(
 			Local.getString("Unordered list"),
 			new ImageIcon(
-				cl.getResource("/htmleditor/icons/listunordered.png"))) {
+					Objects.requireNonNull(cl.getResource("/htmleditor/icons/listunordered.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			ulActionB_actionPerformed(e);
 		}
@@ -143,7 +144,7 @@ public class HTMLEditor extends JPanel {
 	public Action olAction =
 		new HTMLEditorAction(
 			Local.getString("Ordered list"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/listordered.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/listordered.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			olActionB_actionPerformed(e);
 		}
@@ -152,7 +153,7 @@ public class HTMLEditor extends JPanel {
 	public Action lAlignAction =
 		new HTMLEditorAction(
 			Local.getString("Align left"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/alignleft.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/alignleft.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			lAlignActionB_actionPerformed(e);
 		}
@@ -161,7 +162,7 @@ public class HTMLEditor extends JPanel {
 	public Action cAlignAction =
 		new HTMLEditorAction(
 			Local.getString("Align center"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/aligncenter.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/aligncenter.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			cAlignActionB_actionPerformed(e);
 		}
@@ -170,7 +171,7 @@ public class HTMLEditor extends JPanel {
 	public Action rAlignAction =
 		new HTMLEditorAction(
 			Local.getString("Align right"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/alignright.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/alignright.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			rAlignActionB_actionPerformed(e);
 		}
@@ -183,7 +184,7 @@ public class HTMLEditor extends JPanel {
 	public Action imageAction =
 		new HTMLEditorAction(
 			Local.getString("Insert image"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/image.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/image.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			imageActionB_actionPerformed(e);
 		}
@@ -192,7 +193,7 @@ public class HTMLEditor extends JPanel {
 	public Action tableAction =
 		new HTMLEditorAction(
 			Local.getString("Insert table"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/table.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/table.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			tableActionB_actionPerformed(e);
 		}
@@ -201,7 +202,7 @@ public class HTMLEditor extends JPanel {
 	public Action linkAction =
 		new HTMLEditorAction(
 			Local.getString("Insert hyperlink"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/link.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/link.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			linkActionB_actionPerformed(e);
 		}
@@ -210,7 +211,7 @@ public class HTMLEditor extends JPanel {
 	public Action propsAction =
 		new HTMLEditorAction(
 			Local.getString("Object properties"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/properties.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/properties.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			propsActionB_actionPerformed(e);
 		}
@@ -226,7 +227,7 @@ public class HTMLEditor extends JPanel {
 	public Action insertHRAction =
 		new HTMLEditorAction(
 			Local.getString("Insert horizontal rule"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/hr.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/hr.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			/*
 			 * String elName =
@@ -287,7 +288,7 @@ public class HTMLEditor extends JPanel {
 	public Action insCharAction =
 		new HTMLEditorAction(
 			Local.getString("Insert character"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/char.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/char.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			if (!charTableShow) {
 				addCharTablePanel();
@@ -305,7 +306,7 @@ public class HTMLEditor extends JPanel {
 	public Action findAction =
 		new HTMLEditorAction(
 			Local.getString("Find & Replace"),
-			new ImageIcon(cl.getResource("/htmleditor/icons/find.png"))) {
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/find.png")))) {
 		public void actionPerformed(ActionEvent e) {
 			doFind();
 		}
@@ -356,7 +357,7 @@ public class HTMLEditor extends JPanel {
 		 * null); } catch (Exception e) { e.printStackTrace();
 		 */
 		Element el = document.getParagraphElement(editor.getSelectionStart());
-		if (el.getName().toUpperCase().equals("P-IMPLIED"))
+		if (el.getName().equalsIgnoreCase("P-IMPLIED"))
 			el = el.getParentElement();
 		String elName = el.getName();
 		StringWriter sw = new StringWriter();
@@ -541,32 +542,46 @@ public class HTMLEditor extends JPanel {
 		}
 	}
 
+	/**
+	 * Method to initialize JButtons to the correct settings.
+	 * Created to improve readability due to large amount of uses.
+	 * @param button Button to be initialized
+	 */
+	private void actionButtonInitializer(JButton button) {
+		button.setMaximumSize(new Dimension(22, 22));
+		button.setMinimumSize(new Dimension(22, 22));
+		button.setPreferredSize(new Dimension(22, 22));
+		button.setBorderPainted(false);
+		button.setFocusable(false);
+		button.setText("");
+	}
+
 	void jbInit() throws Exception {
 
 		cutAction.putValue(
 			Action.SMALL_ICON,
-			new ImageIcon(cl.getResource("/htmleditor/icons/cut.png")));
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/cut.png"))));
 		cutAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK));
 		cutAction.putValue(Action.NAME, Local.getString("Cut"));
 		cutAction.putValue(Action.SHORT_DESCRIPTION, Local.getString("Cut"));
 
 		copyAction.putValue(
 			Action.SMALL_ICON,
-			new ImageIcon(cl.getResource("/htmleditor/icons/copy.png")));
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/copy.png"))));
 		copyAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK));
 		copyAction.putValue(Action.NAME, Local.getString("Copy"));
 		copyAction.putValue(Action.SHORT_DESCRIPTION, Local.getString("Copy"));
 
 		pasteAction.putValue(
 			Action.SMALL_ICON,
-			new ImageIcon(cl.getResource("/htmleditor/icons/paste.png")));
+			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/paste.png"))));
 		pasteAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK));
 		pasteAction.putValue(Action.NAME, Local.getString("Paste"));
 		pasteAction.putValue(
 			Action.SHORT_DESCRIPTION,
@@ -576,7 +591,7 @@ public class HTMLEditor extends JPanel {
 			Action.ACCELERATOR_KEY,
 			KeyStroke.getKeyStroke(
 				KeyEvent.VK_V,
-				KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK));
+				KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK));
 		stylePasteAction.putValue(
 			Action.NAME,
 			Local.getString("Paste special"));
@@ -586,20 +601,20 @@ public class HTMLEditor extends JPanel {
 
 		selectAllAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
 
 		boldAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK));
 		italicAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_DOWN_MASK));
 		underAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_DOWN_MASK));
 		breakAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.SHIFT_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.SHIFT_DOWN_MASK));
 		breakAction.putValue(Action.NAME, Local.getString("Insert Break"));
 		breakAction.putValue(
 			Action.SHORT_DESCRIPTION,
@@ -607,7 +622,7 @@ public class HTMLEditor extends JPanel {
 
 		findAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
 
 		document = (HTMLDocument) editorKit.createDefaultDocument();
 
@@ -651,127 +666,52 @@ public class HTMLEditor extends JPanel {
 
 		boldActionB.setAction(boldAction);
 		boldActionB.setBorder(border1);
-		boldActionB.setMaximumSize(new Dimension(22, 22));
-		boldActionB.setMinimumSize(new Dimension(22, 22));
-		boldActionB.setPreferredSize(new Dimension(22, 22));
-		boldActionB.setBorderPainted(false);
-		boldActionB.setFocusable(false);
-		boldActionB.setText("");
+		actionButtonInitializer(boldActionB);
 
 		italicActionB.setAction(italicAction);
 		italicActionB.setBorder(border1);
-		italicActionB.setMaximumSize(new Dimension(22, 22));
-		italicActionB.setMinimumSize(new Dimension(22, 22));
-		italicActionB.setPreferredSize(new Dimension(22, 22));
-		italicActionB.setBorderPainted(false);
-		italicActionB.setFocusable(false);
-		italicActionB.setText("");
+		actionButtonInitializer(italicActionB);
 
 		underActionB.setAction(underAction);
 		underActionB.setBorder(border1);
-		underActionB.setMaximumSize(new Dimension(22, 22));
-		underActionB.setMinimumSize(new Dimension(22, 22));
-		underActionB.setPreferredSize(new Dimension(22, 22));
-		underActionB.setBorderPainted(false);
-		underActionB.setFocusable(false);
-		underActionB.setText("");
+		actionButtonInitializer(underActionB);
 
 		lAlignActionB.setAction(lAlignAction);
-		lAlignActionB.setMaximumSize(new Dimension(22, 22));
-		lAlignActionB.setMinimumSize(new Dimension(22, 22));
-		lAlignActionB.setPreferredSize(new Dimension(22, 22));
-		lAlignActionB.setBorderPainted(false);
-		lAlignActionB.setFocusable(false);
-		lAlignActionB.setText("");
+		actionButtonInitializer(lAlignActionB);
 
 		rAlignActionB.setAction(rAlignAction);
-		rAlignActionB.setFocusable(false);
-		rAlignActionB.setPreferredSize(new Dimension(22, 22));
-		rAlignActionB.setBorderPainted(false);
-		rAlignActionB.setMinimumSize(new Dimension(22, 22));
-		rAlignActionB.setMaximumSize(new Dimension(22, 22));
-		rAlignActionB.setText("");
+		actionButtonInitializer(rAlignActionB);
 
 		cAlignActionB.setAction(cAlignAction);
-		cAlignActionB.setMaximumSize(new Dimension(22, 22));
-		cAlignActionB.setMinimumSize(new Dimension(22, 22));
-		cAlignActionB.setPreferredSize(new Dimension(22, 22));
-		cAlignActionB.setBorderPainted(false);
-		cAlignActionB.setFocusable(false);
-		cAlignActionB.setText("");
+		actionButtonInitializer(cAlignActionB);
 
 		ulActionB.setAction(ulAction);
-		ulActionB.setMaximumSize(new Dimension(22, 22));
-		ulActionB.setMinimumSize(new Dimension(22, 22));
-		ulActionB.setPreferredSize(new Dimension(22, 22));
-		ulActionB.setBorderPainted(false);
-		ulActionB.setFocusable(false);
-		ulActionB.setText("");
+		actionButtonInitializer(ulActionB);
 
 		olActionB.setAction(olAction);
-		olActionB.setMaximumSize(new Dimension(22, 22));
-		olActionB.setMinimumSize(new Dimension(22, 22));
-		olActionB.setPreferredSize(new Dimension(22, 22));
-		olActionB.setBorderPainted(false);
-		olActionB.setFocusable(false);
-		olActionB.setText("");
+		actionButtonInitializer(olActionB);
 
 		linkActionB.setAction(linkAction);
-		linkActionB.setMaximumSize(new Dimension(22, 22));
-		linkActionB.setMinimumSize(new Dimension(22, 22));
-		linkActionB.setPreferredSize(new Dimension(22, 22));
-		linkActionB.setBorderPainted(false);
-		linkActionB.setFocusable(false);
-		linkActionB.setText("");
+		actionButtonInitializer(linkActionB);
 
 		propsActionB.setAction(propsAction);
-		propsActionB.setFocusable(false);
-		propsActionB.setPreferredSize(new Dimension(22, 22));
-		propsActionB.setBorderPainted(false);
-		propsActionB.setMinimumSize(new Dimension(22, 22));
-		propsActionB.setMaximumSize(new Dimension(22, 22));
-		propsActionB.setText("");
+		actionButtonInitializer(propsActionB);
 
 		imageActionB.setAction(imageAction);
-		imageActionB.setMaximumSize(new Dimension(22, 22));
-		imageActionB.setMinimumSize(new Dimension(22, 22));
-		imageActionB.setPreferredSize(new Dimension(22, 22));
-		imageActionB.setBorderPainted(false);
-		imageActionB.setFocusable(false);
-		imageActionB.setText("");
+		actionButtonInitializer(imageActionB);
 
 		tableActionB.setAction(tableAction);
-		tableActionB.setFocusable(false);
-		tableActionB.setPreferredSize(new Dimension(22, 22));
-		tableActionB.setBorderPainted(false);
-		tableActionB.setMinimumSize(new Dimension(22, 22));
-		tableActionB.setMaximumSize(new Dimension(22, 22));
-		tableActionB.setText("");
+		actionButtonInitializer(tableActionB);
 
 		brActionB.setAction(breakAction);
-		brActionB.setFocusable(false);
-		brActionB.setBorderPainted(false);
-		brActionB.setPreferredSize(new Dimension(22, 22));
-		brActionB.setMinimumSize(new Dimension(22, 22));
-		brActionB.setMaximumSize(new Dimension(22, 22));
-		brActionB.setText("");
+		actionButtonInitializer(brActionB);
 
 		hrActionB.setAction(insertHRAction);
-		hrActionB.setMaximumSize(new Dimension(22, 22));
-		hrActionB.setMinimumSize(new Dimension(22, 22));
-		hrActionB.setPreferredSize(new Dimension(22, 22));
-		hrActionB.setBorderPainted(false);
-		hrActionB.setFocusable(false);
-		hrActionB.setText("");
+		actionButtonInitializer(hrActionB);
 
 		insCharActionB.setAction(insCharAction);
 		insCharActionB.setBorder(border1);
-		insCharActionB.setMaximumSize(new Dimension(22, 22));
-		insCharActionB.setMinimumSize(new Dimension(22, 22));
-		insCharActionB.setPreferredSize(new Dimension(22, 22));
-		insCharActionB.setBorderPainted(false);
-		insCharActionB.setFocusable(false);
-		insCharActionB.setText("");
+		actionButtonInitializer(insCharActionB);
 
 		blockCB.setBackground(new Color(230, 230, 230));
 		blockCB.setMaximumRowCount(12);
@@ -871,29 +811,29 @@ public class HTMLEditor extends JPanel {
 		 */
 
 		editor.getKeymap().removeKeyStrokeBinding(
-			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK));
 		editor.getKeymap().removeKeyStrokeBinding(
-			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK));
 		editor.getKeymap().removeKeyStrokeBinding(
-			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK));
 
 		editor.getKeymap().addActionForKeyStroke(
-			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK),
+			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK),
 			copyAction);
 		editor.getKeymap().addActionForKeyStroke(
-			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK),
+			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK),
 			pasteAction);
 		editor.getKeymap().addActionForKeyStroke(
 			KeyStroke.getKeyStroke(
 				KeyEvent.VK_V,
-				KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK),
+				KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK),
 			stylePasteAction);
 		editor.getKeymap().addActionForKeyStroke(
-			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK),
+			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK),
 			cutAction);
 
 		editor.getKeymap().addActionForKeyStroke(
-			KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_MASK),
+			KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK),
 			findAction);
 		/*
 		 * editor.getKeymap().addActionForKeyStroke(
@@ -1030,10 +970,10 @@ public class HTMLEditor extends JPanel {
 			setEnabled(false);
 			putValue(
 				Action.SMALL_ICON,
-				new ImageIcon(cl.getResource("/htmleditor/icons/undo16.png")));
+				new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/undo16.png"))));
 			putValue(
 				Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -1066,12 +1006,12 @@ public class HTMLEditor extends JPanel {
 			setEnabled(false);
 			putValue(
 				Action.SMALL_ICON,
-				new ImageIcon(cl.getResource("/htmleditor/icons/redo16.png")));
+				new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/redo16.png"))));
 			putValue(
 				Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(
 					KeyEvent.VK_Z,
-					KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK));
+					KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -1205,8 +1145,9 @@ public class HTMLEditor extends JPanel {
 					.getCharacterElement(editor.getCaretPosition())
 					.getAttributes();
 
-		if (charattrs
-			.containsAttribute(StyleConstants.Bold, new Boolean(true))) {
+        assert charattrs != null;
+        if (charattrs
+			.containsAttribute(StyleConstants.Bold, true)) {
 			boldActionB.setBorder(border2);
 			bold = true;
 		} else if (bold) {
@@ -1215,7 +1156,7 @@ public class HTMLEditor extends JPanel {
 		}
 		boldActionB.setBorderPainted(bold);
 		if (charattrs
-			.containsAttribute(StyleConstants.Italic, new Boolean(true))) {
+			.containsAttribute(StyleConstants.Italic, true)) {
 			italicActionB.setBorder(border2);
 			italic = true;
 		} else if (italic) {
@@ -1224,7 +1165,7 @@ public class HTMLEditor extends JPanel {
 		}
 		italicActionB.setBorderPainted(italic);
 		if (charattrs
-			.containsAttribute(StyleConstants.Underline, new Boolean(true))) {
+			.containsAttribute(StyleConstants.Underline, true)) {
 			underActionB.setBorder(border2);
 			under = true;
 		} else if (under) {
@@ -1304,12 +1245,12 @@ public class HTMLEditor extends JPanel {
 	}
 
 	public void ulActionB_actionPerformed(ActionEvent e) {
-		String parentname =
+		String parentName =
 			document
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName();
-		HTML.Tag parentTag = HTML.getTag(parentname);
+		HTML.Tag parentTag = HTML.getTag(parentName);
 		HTMLEditorKit.InsertHTMLTextAction ulAction =
 			new HTMLEditorKit.InsertHTMLTextAction(
 				"insertUL",
@@ -1336,12 +1277,12 @@ public class HTMLEditor extends JPanel {
 	}
 
 	public void olActionB_actionPerformed(ActionEvent e) {
-		String parentname =
+		String parentName =
 			document
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName();
-		HTML.Tag parentTag = HTML.getTag(parentname);
+		HTML.Tag parentTag = HTML.getTag(parentName);
 		HTMLEditorKit.InsertHTMLTextAction olAction =
 			new HTMLEditorKit.InsertHTMLTextAction(
 				"insertOL",
@@ -1373,11 +1314,11 @@ public class HTMLEditor extends JPanel {
 			Element elem =
 				document.getParagraphElement(editor.getCaretPosition());
 			String elName = elem.getName().toUpperCase();
-			String parentname = elem.getParentElement().getName();
-			HTML.Tag parentTag = HTML.getTag(parentname);
-			if (parentname.toUpperCase().equals("P-IMPLIED"))
+			String parentName = elem.getParentElement().getName();
+			HTML.Tag parentTag = HTML.getTag(parentName);
+			if (parentName.equalsIgnoreCase("P-IMPLIED"))
 				parentTag = HTML.Tag.IMPLIED;
-			if (parentname.toLowerCase().equals("li")) {
+			if (parentName.equalsIgnoreCase("li")) {
 				// HTML.Tag listTag =
 				// HTML.getTag(elem.getParentElement().getParentElement().getName());
 				if (elem.getEndOffset() - elem.getStartOffset() > 1) {
@@ -1409,7 +1350,7 @@ public class HTMLEditor extends JPanel {
 					HTML.Tag listParentTag =
 						HTML.getTag(listParentElement.getName());
 					String listParentTagName = listParentTag.toString();
-					if (listParentTagName.toLowerCase().equals("li")) {
+					if (listParentTagName.equalsIgnoreCase("li")) {
 						Element listAncEl =
 							listParentElement.getParentElement();
 						try {
@@ -1494,7 +1435,7 @@ public class HTMLEditor extends JPanel {
 		BreakAction() {
 			super(
 				Local.getString("Insert break"),
-				new ImageIcon(cl.getResource("/htmleditor/icons/break.png")));
+				new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/break.png"))));
 		}
 		public void actionPerformed(ActionEvent e) {
 			String elName =
@@ -1507,7 +1448,7 @@ public class HTMLEditor extends JPanel {
 			 * editor.replaceSelection("\r"); return;
 			 */
 			HTML.Tag tag = HTML.getTag(elName);
-			if (elName.toUpperCase().equals("P-IMPLIED"))
+			if (elName.equalsIgnoreCase("P-IMPLIED"))
 				tag = HTML.Tag.IMPLIED;
 
 			HTMLEditorKit.InsertHTMLTextAction hta =
@@ -1528,7 +1469,7 @@ public class HTMLEditor extends JPanel {
 			super(Local.getString("Insert table row"));
 			this.putValue(
 				Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.CTRL_DOWN_MASK));
 		}
 		public void actionPerformed(ActionEvent e) {
 			String trTag = "<tr>";
@@ -1538,7 +1479,7 @@ public class HTMLEditor extends JPanel {
 					.getParentElement()
 					.getParentElement();
 			for (int i = 0; i < tr.getElementCount(); i++)
-				if (tr.getElement(i).getName().toUpperCase().equals("TD"))
+				if (tr.getElement(i).getName().equalsIgnoreCase("TD"))
 					trTag += "<td><p></p></td>";
 			trTag += "</tr>";
 
@@ -1563,8 +1504,7 @@ public class HTMLEditor extends JPanel {
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName()
-				.toUpperCase()
-				.equals("TD");
+				.equalsIgnoreCase("TD");
 		}
 
 		public void update() {
@@ -1579,7 +1519,7 @@ public class HTMLEditor extends JPanel {
 				Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(
 					KeyEvent.VK_ENTER,
-					KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK));
+					KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK));
 		}
 		public void actionPerformed(ActionEvent e) {
 			String tdTag = "<td><p></p></td>";
@@ -1601,8 +1541,7 @@ public class HTMLEditor extends JPanel {
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName()
-				.toUpperCase()
-				.equals("TD");
+				.equalsIgnoreCase("TD");
 		}
 
 		public void update() {
@@ -1678,12 +1617,12 @@ public class HTMLEditor extends JPanel {
 		dlg.setVisible(true);
 
 		if (!dlg.CANCELLED) {
-			String parentname =
+			String parentName =
 				document
 					.getParagraphElement(editor.getCaretPosition())
 					.getParentElement()
 					.getName();
-			//HTML.Tag parentTag = HTML.getTag(parentname);
+			//HTML.Tag parentTag = HTML.getTag(parentName);
 			String urlString = dlg.fileField.getText();
 			String path = urlString;
 			if (imagesDir != null) {
@@ -1742,7 +1681,7 @@ public class HTMLEditor extends JPanel {
 						+ "\" ";
 				imgTag += ">";
 
-				if (dlg.urlField.getText().length() > 0) {
+				if (!dlg.urlField.getText().isEmpty()) {
 					imgTag =
 						"<a href=\""
 							+ dlg.urlField.getText()
@@ -1791,10 +1730,10 @@ public class HTMLEditor extends JPanel {
 			return;
 		String tableTag = "<table ";
 		String w = dlg.widthField.getText().trim();
-		if (w.length() > 0)
+		if (!w.isEmpty())
 			tableTag += " width=\"" + w + "\" ";
 		String h = dlg.heightField.getText().trim();
-		if (h.length() > 0)
+		if (!h.isEmpty())
 			tableTag += " height=\"" + h + "\" ";
 		String cp = dlg.cellpadding.getValue().toString();
 		try {
@@ -1821,18 +1760,18 @@ public class HTMLEditor extends JPanel {
 			tableTag += " align=\"" + dlg.alignCB.getSelectedItem() + "\" ";
 		if (dlg.vAlignCB.getSelectedIndex() > 0)
 			tableTag += " valign=\"" + dlg.vAlignCB.getSelectedItem() + "\" ";
-		if (dlg.bgcolorField.getText().length() > 0)
+		if (!dlg.bgcolorField.getText().isEmpty())
 			tableTag += " bgcolor=\"" + dlg.bgcolorField.getText() + "\" ";
 		tableTag += ">";
 		int cols = 1;
 		int rows = 1;
 		try {
-			cols = ((Integer) dlg.columns.getValue()).intValue();
+			cols = (Integer) dlg.columns.getValue();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		try {
-			rows = ((Integer) dlg.rows.getValue()).intValue();
+			rows = (Integer) dlg.rows.getValue();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -1888,11 +1827,11 @@ public class HTMLEditor extends JPanel {
 		if (dlg.CANCELLED)
 			return;
 		String aTag = "<a";
-		if (dlg.txtURL.getText().length() > 0)
+		if (!dlg.txtURL.getText().isEmpty())
 			aTag += " href=\"" + dlg.txtURL.getText() + "\"";
-		if (dlg.txtName.getText().length() > 0)
+		if (!dlg.txtName.getText().isEmpty())
 			aTag += " name=\"" + dlg.txtName.getText() + "\"";
-		if (dlg.txtTitle.getText().length() > 0)
+		if (!dlg.txtTitle.getText().isEmpty())
 			aTag += " title=\"" + dlg.txtTitle.getText() + "\"";
 		if (dlg.chkNewWin.isSelected())
 			aTag += " target=\"_blank\"";
@@ -1934,7 +1873,7 @@ public class HTMLEditor extends JPanel {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		dlg.chkNewWin.setSelected(target.toUpperCase().equals("_BLANK"));
+		dlg.chkNewWin.setSelected(target.equalsIgnoreCase("_BLANK"));
 		dlg.header.setText(Local.getString("Hyperlink properties"));
 		dlg.setTitle(Local.getString("Hyperlink properties"));
 		dlg.setVisible(true);
@@ -1959,11 +1898,11 @@ public class HTMLEditor extends JPanel {
 		 * "a"); attrs.addAttribute(HTML.Tag.A, p);
 		 */
 		String aTag = "<a";
-		if (dlg.txtURL.getText().length() > 0)
+		if (!dlg.txtURL.getText().isEmpty())
 			aTag += " href=\"" + dlg.txtURL.getText() + "\"";
-		if (dlg.txtName.getText().length() > 0)
+		if (!dlg.txtName.getText().isEmpty())
 			aTag += " name=\"" + dlg.txtName.getText() + "\"";
-		if (dlg.txtTitle.getText().length() > 0)
+		if (!dlg.txtTitle.getText().isEmpty())
 			aTag += " title=\"" + dlg.txtTitle.getText() + "\"";
 		if (dlg.chkNewWin.isSelected())
 			aTag += " target=\"_blank\"";
@@ -2045,7 +1984,7 @@ public class HTMLEditor extends JPanel {
 		if (dlg.alignCB.getSelectedIndex() > 0)
 			imgTag += " align=\"" + dlg.alignCB.getSelectedItem() + "\" ";
 		imgTag += ">";
-		if (dlg.urlField.getText().length() > 0) {
+		if (!dlg.urlField.getText().isEmpty()) {
 			imgTag =
 				"<a href=\"" + dlg.urlField.getText() + "\">" + imgTag + "</a>";
 			if (editor.getCaretPosition() == document.getLength())
@@ -2078,11 +2017,11 @@ public class HTMLEditor extends JPanel {
 		if (dlg.CANCELLED)
 			return;
 		SimpleAttributeSet attrs = new SimpleAttributeSet(el.getAttributes());
-		if (dlg.idField.getText().length() > 0)
+		if (!dlg.idField.getText().isEmpty())
 			attrs.addAttribute(HTML.Attribute.ID, dlg.idField.getText());
-		if (dlg.classField.getText().length() > 0)
+		if (!dlg.classField.getText().isEmpty())
 			attrs.addAttribute(HTML.Attribute.CLASS, dlg.classField.getText());
-		if (dlg.styleField.getText().length() > 0)
+		if (!dlg.styleField.getText().isEmpty())
 			attrs.addAttribute(HTML.Attribute.STYLE, dlg.styleField.getText());
 		document.setParagraphAttributes(el.getStartOffset(), 0, attrs, true);
 	}
@@ -2113,8 +2052,7 @@ public class HTMLEditor extends JPanel {
 		if (tda.isDefined(HTML.Attribute.COLSPAN))
 			try {
 				Integer i =
-					new Integer(
-						tda.getAttribute(HTML.Attribute.COLSPAN).toString());
+                        Integer.valueOf(tda.getAttribute(HTML.Attribute.COLSPAN).toString());
 				dlg.tdColspan.setValue(i);
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2122,8 +2060,7 @@ public class HTMLEditor extends JPanel {
 		if (tda.isDefined(HTML.Attribute.ROWSPAN))
 			try {
 				Integer i =
-					new Integer(
-						tda.getAttribute(HTML.Attribute.ROWSPAN).toString());
+                        Integer.valueOf(tda.getAttribute(HTML.Attribute.ROWSPAN).toString());
 				dlg.tdRowspan.setValue(i);
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2187,8 +2124,7 @@ public class HTMLEditor extends JPanel {
 		if (ta.isDefined(HTML.Attribute.CELLPADDING))
 			try {
 				Integer i =
-					new Integer(
-						ta.getAttribute(HTML.Attribute.CELLPADDING).toString());
+                        Integer.valueOf(ta.getAttribute(HTML.Attribute.CELLPADDING).toString());
 				dlg.cellpadding.setValue(i);
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2196,8 +2132,7 @@ public class HTMLEditor extends JPanel {
 		if (ta.isDefined(HTML.Attribute.CELLSPACING))
 			try {
 				Integer i =
-					new Integer(
-						ta.getAttribute(HTML.Attribute.CELLSPACING).toString());
+                        Integer.valueOf(ta.getAttribute(HTML.Attribute.CELLSPACING).toString());
 				dlg.cellspacing.setValue(i);
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2205,8 +2140,7 @@ public class HTMLEditor extends JPanel {
 		if (ta.isDefined(HTML.Attribute.BORDER))
 			try {
 				Integer i =
-					new Integer(
-						ta.getAttribute(HTML.Attribute.BORDER).toString());
+                        Integer.valueOf(ta.getAttribute(HTML.Attribute.BORDER).toString());
 				dlg.border.setValue(i);
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2221,13 +2155,13 @@ public class HTMLEditor extends JPanel {
 		/** ******** SET ATTRIBUTES ********* */
 		// TD***
 		String tdTag = "<td";
-		if (dlg.tdBgcolorField.getText().length() > 0)
+		if (!dlg.tdBgcolorField.getText().isEmpty())
 			tdTag += " bgcolor=\"" + dlg.tdBgcolorField.getText() + "\"";
 
-		if (dlg.tdWidthField.getText().length() > 0)
+		if (!dlg.tdWidthField.getText().isEmpty())
 			tdTag += " width=\"" + dlg.tdWidthField.getText() + "\"";
 
-		if (dlg.tdHeightField.getText().length() > 0)
+		if (!dlg.tdHeightField.getText().isEmpty())
 			tdTag += " height=\"" + dlg.tdHeightField.getText() + "\"";
 
 		if (!dlg.tdColspan.getValue().toString().equals("0"))
@@ -2236,12 +2170,12 @@ public class HTMLEditor extends JPanel {
 		if (!dlg.tdRowspan.getValue().toString().equals("0"))
 			tdTag += " rowspan=\"" + dlg.tdRowspan.getValue().toString() + "\"";
 
-		if (dlg.tdAlignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.tdAlignCB.getSelectedItem()).toString().isEmpty())
 			tdTag += " align=\""
 				+ dlg.tdAlignCB.getSelectedItem().toString()
 				+ "\"";
 
-		if (dlg.tdValignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.tdValignCB.getSelectedItem()).toString().isEmpty())
 			tdTag += " valign=\""
 				+ dlg.tdValignCB.getSelectedItem().toString()
 				+ "\"";
@@ -2253,15 +2187,15 @@ public class HTMLEditor extends JPanel {
 
 		//TR***
 		String trTag = "<tr";
-		if (dlg.trBgcolorField.getText().length() > 0)
+		if (!dlg.trBgcolorField.getText().isEmpty())
 			trTag += " bgcolor=\"" + dlg.trBgcolorField.getText() + "\"";
 
-		if (dlg.trAlignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.trAlignCB.getSelectedItem()).toString().isEmpty())
 			trTag += " align=\""
 				+ dlg.trAlignCB.getSelectedItem().toString()
 				+ "\"";
 
-		if (dlg.trValignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.trValignCB.getSelectedItem()).toString().isEmpty())
 			trTag += " valign=\""
 				+ dlg.trValignCB.getSelectedItem().toString()
 				+ "\"";
@@ -2270,13 +2204,13 @@ public class HTMLEditor extends JPanel {
 
 		//TABLE ***
 		String tTag = "<table";
-		if (dlg.bgcolorField.getText().length() > 0)
+		if (!dlg.bgcolorField.getText().isEmpty())
 			tTag += " bgcolor=\"" + dlg.bgcolorField.getText() + "\"";
 
-		if (dlg.widthField.getText().length() > 0)
+		if (!dlg.widthField.getText().isEmpty())
 			tTag += " width=\"" + dlg.widthField.getText() + "\"";
 
-		if (dlg.heightField.getText().length() > 0)
+		if (!dlg.heightField.getText().isEmpty())
 			tTag += " height=\"" + dlg.heightField.getText() + "\"";
 
 		tTag += " cellpadding=\""
@@ -2289,12 +2223,12 @@ public class HTMLEditor extends JPanel {
 
 		tTag += " border=\"" + dlg.border.getValue().toString() + "\"";
 
-		if (dlg.alignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.alignCB.getSelectedItem()).toString().isEmpty())
 			tTag += " align=\""
 				+ dlg.alignCB.getSelectedItem().toString()
 				+ "\"";
 
-		if (dlg.vAlignCB.getSelectedItem().toString().length() > 0)
+		if (!Objects.requireNonNull(dlg.vAlignCB.getSelectedItem()).toString().isEmpty())
 			tTag += " valign=\""
 				+ dlg.vAlignCB.getSelectedItem().toString()
 				+ "\"";
@@ -2411,10 +2345,11 @@ public class HTMLEditor extends JPanel {
 		}
 
 		Element el = document.getParagraphElement(editor.getCaretPosition());
-		if (el.getName().toUpperCase().equals("P-IMPLIED")) {
+		if (el.getName().equalsIgnoreCase("P-IMPLIED")) {
 			Element pEl = el.getParentElement();
 			String pElName = pEl.getName();
-			String newName = tag.toString();
+            assert tag != null;
+            String newName = tag.toString();
 			StringWriter sw = new StringWriter();
 			String copy;
 			try {
@@ -2527,22 +2462,22 @@ public class HTMLEditor extends JPanel {
 			if (k.toString().equals("a")) {
 				String[] param = attrs.getAttribute(k).toString().split(" ");
 				String href = "", target = "", title = "", name = "";
-				for (int i = 0; i < param.length; i++)
-					if (param[i].startsWith("href="))
-						href = param[i].split("=")[1];
-					else if (param[i].startsWith("title="))
-						title = param[i].split("=")[1];
-					else if (param[i].startsWith("target="))
-						target = param[i].split("=")[1];
-					else if (param[i].startsWith("name="))
-						name = param[i].split("=")[1];
+                for (String s : param)
+                    if (s.startsWith("href="))
+                        href = s.split("=")[1];
+                    else if (s.startsWith("title="))
+                        title = s.split("=")[1];
+                    else if (s.startsWith("target="))
+                        target = s.split("=")[1];
+                    else if (s.startsWith("name="))
+                        name = s.split("=")[1];
 				setLinkProperties(el, href, target, title, name);
 				return;
 			}
 			System.out.println(k + " = '" + attrs.getAttribute(k) + "'");
 		}
 
-		if (pEl.getParentElement().getName().toUpperCase().equals("TD")) {
+		if (pEl.getParentElement().getName().equalsIgnoreCase("TD")) {
 			setTableProperties(pEl.getParentElement());
 			return;
 		}
@@ -2625,9 +2560,9 @@ public class HTMLEditor extends JPanel {
 			attrs += "size=\"" + dlg.fontSizeCB.getSelectedItem() + "\"";
 		if (dlg.fontFamilyCB.getSelectedIndex() > 0)
 			attrs += "face=\"" + dlg.fontFamilyCB.getSelectedItem() + "\"";
-		if (dlg.colorField.getText().length() > 0)
+		if (!dlg.colorField.getText().isEmpty())
 			attrs += "color=\"" + dlg.colorField.getText() + "\"";
-		if (attrs.length() > 0)
+		if (!attrs.isEmpty())
 			return " " + attrs;
 		else
 			return null;

@@ -89,7 +89,7 @@ public class EventsPanel extends JPanel {
         newEventB.setEnabled(true);
         newEventB.setMaximumSize(new Dimension(24, 24));
         newEventB.setMinimumSize(new Dimension(24, 24));
-        newEventB.setToolTipText(Local.getString("New event"));
+        newEventB.setToolTipText(Local.getString("New class"));
         newEventB.setRequestFocusEnabled(false);
         newEventB.setPreferredSize(new Dimension(24, 24));
         newEventB.setFocusable(false);
@@ -132,7 +132,7 @@ public class EventsPanel extends JPanel {
             new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/event_remove.png")));
 
         this.setLayout(borderLayout1);
-        scrollPane.getViewport().setBackground(Color.red);
+        scrollPane.getViewport().setBackground(Color.white);
         eventsTable.setMaximumSize(new Dimension(32767, 32767));
         eventsTable.setRowHeight(24);
         eventPPMenu.setFont(new java.awt.Font("Dialog", 1, 10));
@@ -243,7 +243,7 @@ public class EventsPanel extends JPanel {
             if (rep == EventsManager.REPEAT_DAILY) {
                 dlg.dailyRepeatRB.setSelected(true);
                 dlg.dailyRepeatRB_actionPerformed(null);
-                dlg.daySpin.setValue(new Integer(ev.getPeriod()));
+                dlg.daySpin.setValue(ev.getPeriod());
             }
             else if (rep == EventsManager.REPEAT_WEEKLY) {
                 dlg.weeklyRepeatRB.setSelected(true);
@@ -258,12 +258,12 @@ public class EventsPanel extends JPanel {
             else if (rep == EventsManager.REPEAT_MONTHLY) {
                 dlg.monthlyRepeatRB.setSelected(true);
                 dlg.monthlyRepeatRB_actionPerformed(null);
-                dlg.dayOfMonthSpin.setValue(new Integer(ev.getPeriod()));
+                dlg.dayOfMonthSpin.setValue(ev.getPeriod());
             }
 	    else if (rep == EventsManager.REPEAT_YEARLY) {
 		dlg.yearlyRepeatRB.setSelected(true);
 		dlg.yearlyRepeatRB_actionPerformed(null);
-		dlg.dayOfMonthSpin.setValue(new Integer(ev.getPeriod()));
+		dlg.dayOfMonthSpin.setValue(ev.getPeriod());
 	    }
         if (ev.getEndDate() != null) {
            dlg.endDate.getModel().setValue(ev.getEndDate().getDate());
