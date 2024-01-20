@@ -124,7 +124,7 @@ public class Finder extends Thread {
                     editor.toolsPanel.addTab(Local.getString("Find"), cdlg);
                     showCdlg = true;
                 }                
-                this.suspend();
+                this.checkAccess();
 
                 if (cdlg.cancel) {
                     editor.toolsPanel.remove(cdlg);
