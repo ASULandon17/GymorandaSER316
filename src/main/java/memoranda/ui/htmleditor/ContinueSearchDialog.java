@@ -80,12 +80,14 @@ public class ContinueSearchDialog extends JPanel {
 
   void cancelB_actionPerformed(ActionEvent e) {
     cont = true;
-    cancel = true;    
-    thread.resume();
+    cancel = true;
+    // Needs testing
+    thread.notify();
   }
 
   void continueB_actionPerformed(ActionEvent e) {
-     cont = true;     
-     thread.resume();
+     cont = true;
+     // Needs testing
+     thread.notify();
   }
 }
