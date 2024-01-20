@@ -124,7 +124,13 @@ public class Finder extends Thread {
                     editor.toolsPanel.addTab(Local.getString("Find"), cdlg);
                     showCdlg = true;
                 }                
-                this.checkAccess();
+                try {
+                    this.wait();
+                }
+                catch (InterruptedException e){
+                    Thread.currentThread().interrupt();
+                    System.out.println("Interrupted Thread in FindAll");
+                }
 
                 if (cdlg.cancel) {
                     editor.toolsPanel.remove(cdlg);
