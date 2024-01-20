@@ -103,6 +103,7 @@ public class AppFrame extends JFrame {
         }
     };
 
+    // Minimize Action Method Located
     public Action minimizeAction = new AbstractAction("Close the window") {
         public void actionPerformed(ActionEvent e) {
             doMinimize();
@@ -664,6 +665,8 @@ public class AppFrame extends JFrame {
         System.exit(0);
     }
 
+
+    // Function to actually minimize the window
     public void doMinimize() {
         exitNotify();
         App.closeWindow();
@@ -680,6 +683,7 @@ public class AppFrame extends JFrame {
          dlg.setVisible(true);
     }
 
+    // Function to process WindowEvents, i.e. minimize
     protected void processWindowEvent(WindowEvent e) {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
             if (Configuration.get("ON_CLOSE").equals("exit"))
