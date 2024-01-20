@@ -542,6 +542,20 @@ public class HTMLEditor extends JPanel {
 		}
 	}
 
+	/**
+	 * Method to initialize JButtons to the correct settings.
+	 * Created to improve readability due to large amount of uses.
+	 * @param button Button to be initialized
+	 */
+	private void actionButtonInitializer(JButton button) {
+		button.setMaximumSize(new Dimension(22, 22));
+		button.setMinimumSize(new Dimension(22, 22));
+		button.setPreferredSize(new Dimension(22, 22));
+		button.setBorderPainted(false);
+		button.setFocusable(false);
+		button.setText("");
+	}
+
 	void jbInit() throws Exception {
 
 		cutAction.putValue(
@@ -549,7 +563,7 @@ public class HTMLEditor extends JPanel {
 			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/cut.png"))));
 		cutAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK));
 		cutAction.putValue(Action.NAME, Local.getString("Cut"));
 		cutAction.putValue(Action.SHORT_DESCRIPTION, Local.getString("Cut"));
 
@@ -558,7 +572,7 @@ public class HTMLEditor extends JPanel {
 			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/copy.png"))));
 		copyAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK));
 		copyAction.putValue(Action.NAME, Local.getString("Copy"));
 		copyAction.putValue(Action.SHORT_DESCRIPTION, Local.getString("Copy"));
 
@@ -567,7 +581,7 @@ public class HTMLEditor extends JPanel {
 			new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/paste.png"))));
 		pasteAction.putValue(
 			Action.ACCELERATOR_KEY,
-			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK));
+			KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_DOWN_MASK));
 		pasteAction.putValue(Action.NAME, Local.getString("Paste"));
 		pasteAction.putValue(
 			Action.SHORT_DESCRIPTION,
@@ -652,127 +666,52 @@ public class HTMLEditor extends JPanel {
 
 		boldActionB.setAction(boldAction);
 		boldActionB.setBorder(border1);
-		boldActionB.setMaximumSize(new Dimension(22, 22));
-		boldActionB.setMinimumSize(new Dimension(22, 22));
-		boldActionB.setPreferredSize(new Dimension(22, 22));
-		boldActionB.setBorderPainted(false);
-		boldActionB.setFocusable(false);
-		boldActionB.setText("");
+		actionButtonInitializer(boldActionB);
 
 		italicActionB.setAction(italicAction);
 		italicActionB.setBorder(border1);
-		italicActionB.setMaximumSize(new Dimension(22, 22));
-		italicActionB.setMinimumSize(new Dimension(22, 22));
-		italicActionB.setPreferredSize(new Dimension(22, 22));
-		italicActionB.setBorderPainted(false);
-		italicActionB.setFocusable(false);
-		italicActionB.setText("");
+		actionButtonInitializer(italicActionB);
 
 		underActionB.setAction(underAction);
 		underActionB.setBorder(border1);
-		underActionB.setMaximumSize(new Dimension(22, 22));
-		underActionB.setMinimumSize(new Dimension(22, 22));
-		underActionB.setPreferredSize(new Dimension(22, 22));
-		underActionB.setBorderPainted(false);
-		underActionB.setFocusable(false);
-		underActionB.setText("");
+		actionButtonInitializer(underActionB);
 
 		lAlignActionB.setAction(lAlignAction);
-		lAlignActionB.setMaximumSize(new Dimension(22, 22));
-		lAlignActionB.setMinimumSize(new Dimension(22, 22));
-		lAlignActionB.setPreferredSize(new Dimension(22, 22));
-		lAlignActionB.setBorderPainted(false);
-		lAlignActionB.setFocusable(false);
-		lAlignActionB.setText("");
+		actionButtonInitializer(lAlignActionB);
 
 		rAlignActionB.setAction(rAlignAction);
-		rAlignActionB.setFocusable(false);
-		rAlignActionB.setPreferredSize(new Dimension(22, 22));
-		rAlignActionB.setBorderPainted(false);
-		rAlignActionB.setMinimumSize(new Dimension(22, 22));
-		rAlignActionB.setMaximumSize(new Dimension(22, 22));
-		rAlignActionB.setText("");
+		actionButtonInitializer(rAlignActionB);
 
 		cAlignActionB.setAction(cAlignAction);
-		cAlignActionB.setMaximumSize(new Dimension(22, 22));
-		cAlignActionB.setMinimumSize(new Dimension(22, 22));
-		cAlignActionB.setPreferredSize(new Dimension(22, 22));
-		cAlignActionB.setBorderPainted(false);
-		cAlignActionB.setFocusable(false);
-		cAlignActionB.setText("");
+		actionButtonInitializer(cAlignActionB);
 
 		ulActionB.setAction(ulAction);
-		ulActionB.setMaximumSize(new Dimension(22, 22));
-		ulActionB.setMinimumSize(new Dimension(22, 22));
-		ulActionB.setPreferredSize(new Dimension(22, 22));
-		ulActionB.setBorderPainted(false);
-		ulActionB.setFocusable(false);
-		ulActionB.setText("");
+		actionButtonInitializer(ulActionB);
 
 		olActionB.setAction(olAction);
-		olActionB.setMaximumSize(new Dimension(22, 22));
-		olActionB.setMinimumSize(new Dimension(22, 22));
-		olActionB.setPreferredSize(new Dimension(22, 22));
-		olActionB.setBorderPainted(false);
-		olActionB.setFocusable(false);
-		olActionB.setText("");
+		actionButtonInitializer(olActionB);
 
 		linkActionB.setAction(linkAction);
-		linkActionB.setMaximumSize(new Dimension(22, 22));
-		linkActionB.setMinimumSize(new Dimension(22, 22));
-		linkActionB.setPreferredSize(new Dimension(22, 22));
-		linkActionB.setBorderPainted(false);
-		linkActionB.setFocusable(false);
-		linkActionB.setText("");
+		actionButtonInitializer(linkActionB);
 
 		propsActionB.setAction(propsAction);
-		propsActionB.setFocusable(false);
-		propsActionB.setPreferredSize(new Dimension(22, 22));
-		propsActionB.setBorderPainted(false);
-		propsActionB.setMinimumSize(new Dimension(22, 22));
-		propsActionB.setMaximumSize(new Dimension(22, 22));
-		propsActionB.setText("");
+		actionButtonInitializer(propsActionB);
 
 		imageActionB.setAction(imageAction);
-		imageActionB.setMaximumSize(new Dimension(22, 22));
-		imageActionB.setMinimumSize(new Dimension(22, 22));
-		imageActionB.setPreferredSize(new Dimension(22, 22));
-		imageActionB.setBorderPainted(false);
-		imageActionB.setFocusable(false);
-		imageActionB.setText("");
+		actionButtonInitializer(imageActionB);
 
 		tableActionB.setAction(tableAction);
-		tableActionB.setFocusable(false);
-		tableActionB.setPreferredSize(new Dimension(22, 22));
-		tableActionB.setBorderPainted(false);
-		tableActionB.setMinimumSize(new Dimension(22, 22));
-		tableActionB.setMaximumSize(new Dimension(22, 22));
-		tableActionB.setText("");
+		actionButtonInitializer(tableActionB);
 
 		brActionB.setAction(breakAction);
-		brActionB.setFocusable(false);
-		brActionB.setBorderPainted(false);
-		brActionB.setPreferredSize(new Dimension(22, 22));
-		brActionB.setMinimumSize(new Dimension(22, 22));
-		brActionB.setMaximumSize(new Dimension(22, 22));
-		brActionB.setText("");
+		actionButtonInitializer(brActionB);
 
 		hrActionB.setAction(insertHRAction);
-		hrActionB.setMaximumSize(new Dimension(22, 22));
-		hrActionB.setMinimumSize(new Dimension(22, 22));
-		hrActionB.setPreferredSize(new Dimension(22, 22));
-		hrActionB.setBorderPainted(false);
-		hrActionB.setFocusable(false);
-		hrActionB.setText("");
+		actionButtonInitializer(hrActionB);
 
 		insCharActionB.setAction(insCharAction);
 		insCharActionB.setBorder(border1);
-		insCharActionB.setMaximumSize(new Dimension(22, 22));
-		insCharActionB.setMinimumSize(new Dimension(22, 22));
-		insCharActionB.setPreferredSize(new Dimension(22, 22));
-		insCharActionB.setBorderPainted(false);
-		insCharActionB.setFocusable(false);
-		insCharActionB.setText("");
+		actionButtonInitializer(insCharActionB);
 
 		blockCB.setBackground(new Color(230, 230, 230));
 		blockCB.setMaximumRowCount(12);
@@ -1034,7 +973,7 @@ public class HTMLEditor extends JPanel {
 				new ImageIcon(Objects.requireNonNull(cl.getResource("/htmleditor/icons/undo16.png"))));
 			putValue(
 				Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -1072,7 +1011,7 @@ public class HTMLEditor extends JPanel {
 				Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(
 					KeyEvent.VK_Z,
-					KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK));
+					KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -1306,12 +1245,12 @@ public class HTMLEditor extends JPanel {
 	}
 
 	public void ulActionB_actionPerformed(ActionEvent e) {
-		String parentname =
+		String parentName =
 			document
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName();
-		HTML.Tag parentTag = HTML.getTag(parentname);
+		HTML.Tag parentTag = HTML.getTag(parentName);
 		HTMLEditorKit.InsertHTMLTextAction ulAction =
 			new HTMLEditorKit.InsertHTMLTextAction(
 				"insertUL",
@@ -1338,12 +1277,12 @@ public class HTMLEditor extends JPanel {
 	}
 
 	public void olActionB_actionPerformed(ActionEvent e) {
-		String parentname =
+		String parentName =
 			document
 				.getParagraphElement(editor.getCaretPosition())
 				.getParentElement()
 				.getName();
-		HTML.Tag parentTag = HTML.getTag(parentname);
+		HTML.Tag parentTag = HTML.getTag(parentName);
 		HTMLEditorKit.InsertHTMLTextAction olAction =
 			new HTMLEditorKit.InsertHTMLTextAction(
 				"insertOL",
@@ -1375,11 +1314,11 @@ public class HTMLEditor extends JPanel {
 			Element elem =
 				document.getParagraphElement(editor.getCaretPosition());
 			String elName = elem.getName().toUpperCase();
-			String parentname = elem.getParentElement().getName();
-			HTML.Tag parentTag = HTML.getTag(parentname);
-			if (parentname.equalsIgnoreCase("P-IMPLIED"))
+			String parentName = elem.getParentElement().getName();
+			HTML.Tag parentTag = HTML.getTag(parentName);
+			if (parentName.equalsIgnoreCase("P-IMPLIED"))
 				parentTag = HTML.Tag.IMPLIED;
-			if (parentname.equalsIgnoreCase("li")) {
+			if (parentName.equalsIgnoreCase("li")) {
 				// HTML.Tag listTag =
 				// HTML.getTag(elem.getParentElement().getParentElement().getName());
 				if (elem.getEndOffset() - elem.getStartOffset() > 1) {
@@ -1678,12 +1617,12 @@ public class HTMLEditor extends JPanel {
 		dlg.setVisible(true);
 
 		if (!dlg.CANCELLED) {
-			String parentname =
+			String parentName =
 				document
 					.getParagraphElement(editor.getCaretPosition())
 					.getParentElement()
 					.getName();
-			//HTML.Tag parentTag = HTML.getTag(parentname);
+			//HTML.Tag parentTag = HTML.getTag(parentName);
 			String urlString = dlg.fileField.getText();
 			String path = urlString;
 			if (imagesDir != null) {
@@ -2231,12 +2170,12 @@ public class HTMLEditor extends JPanel {
 		if (!dlg.tdRowspan.getValue().toString().equals("0"))
 			tdTag += " rowspan=\"" + dlg.tdRowspan.getValue().toString() + "\"";
 
-		if (!dlg.tdAlignCB.getSelectedItem().toString().isEmpty())
+		if (!Objects.requireNonNull(dlg.tdAlignCB.getSelectedItem()).toString().isEmpty())
 			tdTag += " align=\""
 				+ dlg.tdAlignCB.getSelectedItem().toString()
 				+ "\"";
 
-		if (!dlg.tdValignCB.getSelectedItem().toString().isEmpty())
+		if (!Objects.requireNonNull(dlg.tdValignCB.getSelectedItem()).toString().isEmpty())
 			tdTag += " valign=\""
 				+ dlg.tdValignCB.getSelectedItem().toString()
 				+ "\"";
