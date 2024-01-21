@@ -78,7 +78,7 @@ public class WorkPanel extends JPanel {
 		agendaB.setContentAreaFilled(false);
 		agendaB.setFocusPainted(false);
 		agendaB.setHorizontalTextPosition(SwingConstants.CENTER);
-		agendaB.setText(Local.getString("Agenda"));
+		agendaB.setText(Local.getString("Home"));
 		agendaB.setVerticalAlignment(SwingConstants.TOP);
 		agendaB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		agendaB.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class WorkPanel extends JPanel {
 			}
 		});
 		tasksB.setVerticalAlignment(SwingConstants.TOP);
-		tasksB.setText(Local.getString("Tasks"));
+		tasksB.setText(Local.getString("Trainers"));
 		tasksB.setHorizontalTextPosition(SwingConstants.CENTER);
 		tasksB.setFocusPainted(false);
 		tasksB.setBorderPainted(false);
@@ -156,7 +156,7 @@ public class WorkPanel extends JPanel {
 		notesB.setContentAreaFilled(false);
 		notesB.setFocusPainted(false);
 		notesB.setHorizontalTextPosition(SwingConstants.CENTER);
-		notesB.setText(Local.getString("Notes"));
+		notesB.setText(Local.getString("Rooms"));
 		notesB.setVerticalAlignment(SwingConstants.TOP);
 		notesB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		notesB.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +186,7 @@ public class WorkPanel extends JPanel {
 		});
 		filesB.setFont(new java.awt.Font("Dialog", 1, 10));
 		filesB.setVerticalAlignment(SwingConstants.TOP);
-		filesB.setText(Local.getString("Resources"));
+		filesB.setText(Local.getString("Personal"));
 		filesB.setHorizontalTextPosition(SwingConstants.CENTER);
 		filesB.setFocusPainted(false);
 		filesB.setBorderPainted(false);
