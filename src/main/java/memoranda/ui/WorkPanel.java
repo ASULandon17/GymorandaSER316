@@ -89,7 +89,7 @@ public class WorkPanel extends JPanel {
 		agendaB.setIcon(
 			new ImageIcon(
 				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/agenda.png")));
+					"/ui/icons/home.png")));
 		agendaB.setOpaque(false);
 		agendaB.setMargin(new Insets(0, 0, 0, 0));
 		agendaB.setSelected(true);
@@ -115,7 +115,7 @@ public class WorkPanel extends JPanel {
 		eventsB.setIcon(
 			new ImageIcon(
 				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/events.png")));
+					"/ui/icons/classes.png")));
 		eventsB.setOpaque(false);
 		eventsB.setMargin(new Insets(0, 0, 0, 0));
 		//eventsB.setSelected(true);
@@ -126,7 +126,7 @@ public class WorkPanel extends JPanel {
 		tasksB.setIcon(
 			new ImageIcon(
 				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/tasks.png")));
+					"/ui/icons/trainers.png")));
 		tasksB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		tasksB.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,7 +167,7 @@ public class WorkPanel extends JPanel {
 		notesB.setIcon(
 			new ImageIcon(
 				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/notes.png")));
+					"/ui/icons/rooms.png")));
 		notesB.setMargin(new Insets(0, 0, 0, 0));
 		notesB.setSelected(true);
 		this.setPreferredSize(new Dimension(1073, 300));
@@ -177,7 +177,7 @@ public class WorkPanel extends JPanel {
 		filesB.setIcon(
 			new ImageIcon(
 				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/files.png")));
+					"/ui/icons/personal.png")));
 		filesB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		filesB.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
