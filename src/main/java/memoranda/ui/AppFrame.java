@@ -262,7 +262,10 @@ public class AppFrame extends JFrame {
         contentPane = (JPanel) this.getContentPane();
         contentPane.setLayout(borderLayout1);
         //this.setSize(new Dimension(800, 500));
-        this.setTitle("Gymoranda - " + CurrentProject.get().getTitle());
+        //this.setTitle("Gymoranda - " + CurrentProject.get().getTitle());
+
+        //this will later use a function like User.get().getAccountType();
+        this.setTitle("Gymoranda - " + "Member");
         //Added a space to App.VERSION_INFO to make it look some nicer
         statusBar.setText(" Version:" + App.VERSION_INFO + " (Build "
                 + App.BUILD_INFO + " )");
