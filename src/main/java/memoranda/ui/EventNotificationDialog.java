@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -128,8 +131,11 @@ public class EventNotificationDialog extends JFrame {
 						"/ui/beep.wav");
 			}
 		try {
-			AudioClip clip = Applet.newAudioClip(url);
-			clip.play();
+            // Research how to fix and remove this line
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(String.valueOf(url)).getAbsoluteFile());
+			Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
 		} catch (Exception ex) {
 			new ExceptionDialog(ex, "Error loading audioclip from "+url, "Check the location and type of audioclip file.");
 		}

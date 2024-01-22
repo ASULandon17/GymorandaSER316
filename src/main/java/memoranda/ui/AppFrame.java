@@ -263,7 +263,10 @@ public class AppFrame extends JFrame {
         contentPane = (JPanel) this.getContentPane();
         contentPane.setLayout(borderLayout1);
         //this.setSize(new Dimension(800, 500));
-        this.setTitle("Gymoranda - " + CurrentProject.get().getTitle());
+        //this.setTitle("Gymoranda - " + CurrentProject.get().getTitle());
+
+        //this will later use a function like User.get().getAccountType();
+        this.setTitle("Gymoranda - " + "Member");
         //Added a space to App.VERSION_INFO to make it look some nicer
         statusBar.setText(" Version:" + App.VERSION_INFO + " (Build "
                 + App.BUILD_INFO + " )");
@@ -599,8 +602,8 @@ public class AppFrame extends JFrame {
         Object fwo = Context.get("FRAME_WIDTH");
         Object fho = Context.get("FRAME_HEIGHT");
         if ((fwo != null) && (fho != null)) {
-            int w = new Integer((String) fwo).intValue();
-            int h = new Integer((String) fho).intValue();
+            int w = Integer.parseInt((String) fwo);
+            int h = Integer.parseInt((String) fho);
             this.setSize(w, h);
         }
         else
@@ -609,8 +612,8 @@ public class AppFrame extends JFrame {
         Object xo = Context.get("FRAME_XPOS");
         Object yo = Context.get("FRAME_YPOS");
         if ((xo != null) && (yo != null)) {
-            int x = new Integer((String) xo).intValue();
-            int y = new Integer((String) yo).intValue();
+            int x = Integer.parseInt((String) xo);
+            int y = Integer.parseInt((String) yo);
             this.setLocation(x, y);
         }
 
@@ -657,10 +660,10 @@ public class AppFrame extends JFrame {
                         if(dlg.CANCELLED) return;
         }
 
-        Context.put("FRAME_WIDTH", new Integer(this.getWidth()));
-        Context.put("FRAME_HEIGHT", new Integer(this.getHeight()));
-        Context.put("FRAME_XPOS", new Integer(this.getLocation().x));
-        Context.put("FRAME_YPOS", new Integer(this.getLocation().y));
+        Context.put("FRAME_WIDTH", this.getWidth());
+        Context.put("FRAME_HEIGHT", this.getHeight());
+        Context.put("FRAME_XPOS", this.getLocation().x);
+        Context.put("FRAME_YPOS", this.getLocation().y);
         exitNotify();
         System.exit(0);
     }
@@ -916,8 +919,8 @@ public class AppFrame extends JFrame {
                         Context.put(
                                 "LAST_SELECTED_EXPORT_FILE",
                                 chooser.getSelectedFile().getPath());
-                        Context.put("EXPORT_SPLIT_NOTES", new Boolean(dlg.splitChB.isSelected()).toString());
-                        Context.put("EXPORT_TITLES_AS_HEADERS", new Boolean(dlg.titlesAsHeadersChB.isSelected()).toString());
+                        Context.put("EXPORT_SPLIT_NOTES", Boolean.toString(dlg.splitChB.isSelected()));
+                        Context.put("EXPORT_TITLES_AS_HEADERS", Boolean.toString(dlg.titlesAsHeadersChB.isSelected()));
                 
                 int ei = dlg.encCB.getSelectedIndex();
                 enc = null;
