@@ -672,6 +672,11 @@ public class AppFrame extends JFrame {
     // Function to actually minimize the window
     public void doMinimize() {
         exitNotify();
+        App.minimizeWindow();
+    }
+
+    public void doClose() {
+        exitNotify();
         App.closeWindow();
     }
 
@@ -692,7 +697,7 @@ public class AppFrame extends JFrame {
             if (Configuration.get("ON_CLOSE").equals("exit"))
                 doExit();
             else
-                doMinimize();
+                doClose();
         }
         else if ((e.getID() == WindowEvent.WINDOW_ICONIFIED)) {
             super.processWindowEvent(new WindowEvent(this,
