@@ -5,10 +5,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.Calendar;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 import main.java.memoranda.EventsScheduler;
 import main.java.memoranda.util.Configuration;
@@ -136,6 +133,13 @@ public class App {
 		frame.toFront();
 		frame.requestFocus();
 
+	}
+
+	public static void minimizeWindow() {
+		if (frame == null)
+			return;
+		//frame.setVisible(false);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	public static void closeWindow() {
