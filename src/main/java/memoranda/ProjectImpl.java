@@ -45,7 +45,7 @@ public class ProjectImpl implements Project {
     }
 
     /**
-     * @see main.java.memoranda.Project#setStartDate(net.sf.memoranda.util.CalendarDate)
+     * @see main.java.memoranda.Project#setStartDate
      */
     public void setStartDate(CalendarDate date) {
         if (date != null)
@@ -62,7 +62,7 @@ public class ProjectImpl implements Project {
     }
 
     /**
-     * @see main.java.memoranda.Project#setEndDate(net.sf.memoranda.util.CalendarDate)
+     * @see main.java.memoranda.Project#setEndDate
      */
     public void setEndDate(CalendarDate date) {
         if (date != null)
