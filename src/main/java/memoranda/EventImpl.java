@@ -11,6 +11,7 @@ package main.java.memoranda;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
 
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.util.Local;
@@ -37,14 +38,14 @@ public class EventImpl implements Event, Comparable {
      * @see main.java.memoranda.Event#getHour()
      */
     public int getHour() {
-        return Integer.parseInt(_elem.getAttribute("hour").getValue());
+        return LocalDateTime.now().getHour();
     }
 
     /**
      * @see main.java.memoranda.Event#getMinute()
      */
     public int getMinute() {
-        return Integer.parseInt(_elem.getAttribute("min").getValue());
+        return LocalDateTime.now().getMinute();
     }
     
     public String getTimeString() {
@@ -133,7 +134,7 @@ public class EventImpl implements Event, Comparable {
     }
 	
 	/**
-     * @see main.java.memoranda.Event#getWorkinDays()
+     * @see main.java.memoranda.Event#getWorkingDays()
      */
 	public boolean getWorkingDays() {
         Attribute a = _elem.getAttribute("workingDays");

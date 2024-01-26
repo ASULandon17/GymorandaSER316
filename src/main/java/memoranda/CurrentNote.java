@@ -26,13 +26,15 @@ public class CurrentNote {
         noteListeners.add(nl);
     }
 
+    // This method is never used. Is it important? Can we delete it?
     public static Collection getChangeListeners() {
         return noteListeners;
     }
 
     private static void noteChanged(Note note, boolean toSaveCurrentNote) {
-        for (int i = 0; i < noteListeners.size(); i++) {
-            ((NoteListener)noteListeners.get(i)).noteChange(note,toSaveCurrentNote);
-		}
+        // Changed to enhanced for from regular for loop to improve readability
+        for (Object noteListener : noteListeners) {
+            ((NoteListener) noteListener).noteChange(note, toSaveCurrentNote);
+        }
     }
 }

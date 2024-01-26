@@ -34,16 +34,19 @@ public class EventsScheduler {
         Vector events = (Vector)EventsManager.getActiveEvents();
         _timers = new Vector();
         /*DEBUG*/System.out.println("----------");
-        for (int i = 0; i < events.size(); i++) {
-            Event ev = (Event)events.get(i);
+        // Changed to enhanced for from for loop for readability
+        for (Object event : events) {
+            Event ev = (Event) event;
             Date evTime = ev.getTime();
-        /*DEBUG*/System.out.println((Calendar.getInstance()).getTime());
-          //  if (evTime.after(new Date())) {
-	      if (evTime.after((Calendar.getInstance()).getTime())) {	
+            /*DEBUG*/
+            System.out.println((Calendar.getInstance()).getTime());
+            //  if (evTime.after(new Date())) {
+            if (evTime.after((Calendar.getInstance()).getTime())) {
                 EventTimer t = new EventTimer(ev);
-                t.schedule(new NotifyTask(t), ev.getTime());                
+                t.schedule(new NotifyTask(t), ev.getTime());
                 _timers.add(t);
-                /*DEBUG*/System.out.println(ev.getTimeString());
+                /*DEBUG*/
+                System.out.println(ev.getTimeString());
             }
         }
         /*DEBUG*/System.out.println("----------");
@@ -58,16 +61,17 @@ public class EventsScheduler {
     }
 
     public static void cancelAll() {
-        for (int i = 0; i < _timers.size(); i++) {
-            EventTimer t = (EventTimer)_timers.get(i);
+        // Changed to enhanced for from for loop for readability
+        for (Object timer : _timers) {
+            EventTimer t = (EventTimer) timer;
             t.cancel();
         }
     }
     
     public static Vector getScheduledEvents() {
         Vector v = new Vector();
-        for (int i = 0; i < _timers.size(); i++) 
-            v.add(((EventTimer)_timers.get(i)).getEvent());
+        // Changed to enhanced for from for loop for readability
+        for (Object timer : _timers) v.add(((EventTimer) timer).getEvent());
         return v;
     }
     
@@ -92,13 +96,13 @@ public class EventsScheduler {
     }
         
     private static void notifyListeners(Event ev) {
-        for (int i = 0; i < _listeners.size(); i++)
-            ((EventNotificationListener)_listeners.get(i)).eventIsOccured(ev);
+        // Changed to enhanced for from for loop for readability
+        for (Object listener : _listeners) ((EventNotificationListener) listener).eventIsOccured(ev);
     }
 
     private static void notifyChanged() {
-        for (int i = 0; i < _listeners.size(); i++)
-            ((EventNotificationListener)_listeners.get(i)).eventsChanged();
+        // Changed to enhanced for from for loop for readability
+        for (Object listener : _listeners) ((EventNotificationListener) listener).eventsChanged();
     }
 
     private static Date getMidnight() {

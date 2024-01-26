@@ -76,17 +76,16 @@ public class CurrentProject {
     public static ResourcesList getResourcesList() {
             return _resources;
     }
-
     public static void set(Project project) {
         if (project.getID().equals(_project.getID())) return;
-        TaskList newtasklist = CurrentStorage.get().openTaskList(project);
-        NoteList newnotelist = CurrentStorage.get().openNoteList(project);
-        ResourcesList newresources = CurrentStorage.get().openResourcesList(project);
-        notifyListenersBefore(project, newnotelist, newtasklist, newresources);
+        TaskList newTaskList = CurrentStorage.get().openTaskList(project);
+        NoteList newNoteList = CurrentStorage.get().openNoteList(project);
+        ResourcesList newResources = CurrentStorage.get().openResourcesList(project);
+        notifyListenersBefore(project, newNoteList, newTaskList, newResources);
         _project = project;
-        _tasklist = newtasklist;
-        _notelist = newnotelist;
-        _resources = newresources;
+        _tasklist = newTaskList;
+        _notelist = newNoteList;
+        _resources = newResources;
         notifyListenersAfter();
         Context.put("LAST_OPENED_PROJECT_ID", project.getID());
     }
@@ -95,20 +94,23 @@ public class CurrentProject {
         projectListeners.add(pl);
     }
 
+    // Method is not being used. Is this necessary to keep?
     public static Collection getChangeListeners() {
         return projectListeners;
     }
 
     private static void notifyListenersBefore(Project project, NoteList nl, TaskList tl, ResourcesList rl) {
-        for (int i = 0; i < projectListeners.size(); i++) {
-            ((ProjectListener)projectListeners.get(i)).projectChange(project, nl, tl, rl);
+        // Replaced standard for loop with enhanced for loop for better readability
+        for (Object projectListener : projectListeners) {
+            ((ProjectListener) projectListener).projectChange(project, nl, tl, rl);
             /*DEBUGSystem.out.println(projectListeners.get(i));*/
         }
     }
     
     private static void notifyListenersAfter() {
-        for (int i = 0; i < projectListeners.size(); i++) {
-            ((ProjectListener)projectListeners.get(i)).projectWasChanged();            
+        // Replaced standard for loop with enhanced for loop for better readability
+        for (Object projectListener : projectListeners) {
+            ((ProjectListener) projectListener).projectWasChanged();
         }
     }
 
@@ -120,11 +122,6 @@ public class CurrentProject {
         storage.storeResourcesList(_resources, _project);
         storage.storeProjectManager();
     }
-    
-    public static void free() {
-        _project = null;
-        _tasklist = null;
-        _notelist = null;
-        _resources = null;
-    }
+
+    // Removed free() method. Java has garbage bin, method was both unused and unnecessary.
 }

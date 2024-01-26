@@ -133,7 +133,7 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**s
-     * @see main.java.memoranda.Task#getStatus()
+     * @see main.java.memoranda.Task#getStatus
      */
     public int getStatus(CalendarDate date) {
         CalendarDate start = getStartDate();
@@ -202,7 +202,7 @@ public class TaskImpl implements Task, Comparable {
     }
     
     /**
-     * @see main.java.memoranda.Task#setText()
+     * @see main.java.memoranda.Task#setText
      */
     public void setText(String s) {
         _element.getFirstChildElement("text").removeChildren();
@@ -225,8 +225,11 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**
+     * Removed from Task interface. Is not used anywhere else. We need to look into if this should be removed.
+
+    /**
      * @see main.java.memoranda.Task#getDependsFrom()
-     */
+     *
     public Collection getDependsFrom() {
         Vector v = new Vector();
         Elements deps = _element.getChildElements("dependsFrom");
@@ -240,7 +243,7 @@ public class TaskImpl implements Task, Comparable {
     }
     /**
      * @see main.java.memoranda.Task#addDependsFrom(main.java.memoranda.Task)
-     */
+     *
     public void addDependsFrom(Task task) {
         Element dep = new Element("dependsFrom");
         dep.addAttribute(new Attribute("idRef", task.getID()));
@@ -248,7 +251,7 @@ public class TaskImpl implements Task, Comparable {
     }
     /**
      * @see main.java.memoranda.Task#removeDependsFrom(main.java.memoranda.Task)
-     */
+     *
     public void removeDependsFrom(Task task) {
         Elements deps = _element.getChildElements("dependsFrom");
         for (int i = 0; i < deps.size(); i++) {
@@ -259,6 +262,8 @@ public class TaskImpl implements Task, Comparable {
             }
         }
     }
+    */
+
     /**
      * @see main.java.memoranda.Task#getProgress()
      */
@@ -302,7 +307,7 @@ public class TaskImpl implements Task, Comparable {
 	 * progress. 
 	 * 
 	 * rate = (100-progress) / (numOfDays+1) * (priority+1)
-	 * @param CalendarDate
+	 * @param d CalendarDate
 	 * @return long
 	 */
 

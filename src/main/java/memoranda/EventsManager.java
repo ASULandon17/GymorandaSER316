@@ -7,18 +7,11 @@
  */
 package main.java.memoranda;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Vector;
+import java.util.*;
 
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Util;
-
-import java.util.Map;
-import java.util.Collections;
 
 import nu.xom.Attribute;
 //import nu.xom.Comment;
@@ -91,10 +84,8 @@ public class EventsManager {
 		Day d = getDay(date);
 		if (d == null)
 			return false;
-		if (d.getElement().getChildElements("event").size() > 0)
-			return true;
-		return false;
-	}
+        return d.getElement().getChildElements("event").size() > 0;
+    }
 
 	public static Collection getEventsForDate(CalendarDate date) {
 		Vector v = new Vector();
@@ -105,13 +96,14 @@ public class EventsManager {
 				v.add(new EventImpl(els.get(i)));
 		}
 		Collection r = getRepeatableEventsForDate(date);
-		if (r.size() > 0)
+		if (!r.isEmpty())
 			v.addAll(r);
 		//EventsVectorSorter.sort(v);
 		Collections.sort(v);
 		return v;
 	}
 
+	// Return value is not used. Do we think this is intentional or is it a potential bug?
 	public static Event createEvent(
 		CalendarDate date,
 		int hh,
@@ -129,6 +121,7 @@ public class EventsManager {
 		return new EventImpl(el);
 	}
 
+	// Return value is not used. Do we think this is intentional or is it a potential bug?
 	public static Event createRepeatableEvent(
 		int type,
 		CalendarDate startDate,
@@ -240,10 +233,11 @@ public class EventsManager {
 		return null;
 	}
 
+	// This method is not used anywhere in the code.
 	public static void removeEvent(CalendarDate date, int hh, int mm) {
 		Day d = getDay(date);
 		if (d == null)
-			d.getElement().removeChild(getEvent(date, hh, mm).getContent());
+			d.getElement().removeChild(Objects.requireNonNull(getEvent(date, hh, mm)).getContent());
 	}
 
 	public static void removeEvent(Event ev) {
