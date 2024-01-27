@@ -54,7 +54,18 @@
   -> The code follows the Coding Standards
   -> There are no leftover stubs or test routines in the code
 
-  > todo: Include a checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+  > Checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+  -> Comments are comprehensibile and support maintainability
+  -> Comments are not numerous are too wordy
+  -> Types have been generalized where possible
+  -> Parameterized types have been used appropriately
+  -> Exceptions have been used appropriately
+  -> Repetitive code has been factored out
+  -> Methods have all been defined appropriately
+  -> Command classes have been designed to undertake one task only
+  -> Unit tests are present and correct
+  -> Common errors have been checked for
+  -> Potential threading issues have been eliminated where possible
 
 
 
