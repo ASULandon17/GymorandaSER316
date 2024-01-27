@@ -29,11 +29,23 @@
   > Describe your Whitebox testing policy 
 
 **Code Review** (online: start Sprint 2, campus: start Sprint 2)
-  > Describe your Code Review policy for on campus it is ok to have a less formal process in Sprint 2, should be updated in Sprint 3 though
+  > No code or documentation changes should be merged into dev or master without a review.
+  Each pull request for a merge into master or dev must be looked at by at least two other team members.
+  During a review, each member will fill out the review checklist detailed below.
+  After the reviews are complete and any deficiencies are corrected ,to include ensuring the merge is a fast forward, the pull request can be merged into dev or master.
+  The git master for the current sprint should be the one to execute the merge into the dev or master branches. The git master does not have to be one of the reviewers for the pull request.
+  
+  
 
-  > Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
+  > todo: Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
 
-  > Include a checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+  > todo: Include a checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+
+
+
+
+
+
 
 **Static Analysis**  (online: start Sprint 3, campus: start Sprint 3)
   > Your Static Analysis policy   
