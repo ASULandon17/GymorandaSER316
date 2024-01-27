@@ -161,7 +161,10 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team member Landon Messmore :
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
-
+    On Sprint 1 our team was still learning the Scrum process and getting our feet wet. I had a hard time working consistently because we were able to finish our tasks and User Stories so quickly. 
+    Within the first couple days ~3/4 of the tasks were already completed and the remaining ones were accounted for. 
+    I believe I did put enough work into the project this Sprint, I was able to finish the User Stories that I took on and be available to help for the remaining ones that were left. 
+    Next Sprint we will have a lot more on our plate so it will be easier to work and make commits consistently.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
@@ -171,13 +174,14 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+    - [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e584f9002e7c033594ea532f5ea4f33890db4f67) - Change Sidebar names to reflect Gymoranda instead of Memoranda
+    - [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9182f5b5a98d625ea73bb36c95c1d36c78f37199) - Add Code_Locations.txt which is used to track where in the codebase certain sections are
+    - [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e881bae5e8172209594c9e61336cee3d28ab09ac) - Change Sidebar images to reflect Gymoranda instead of Memoranda
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+    - [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/13) - PR for changing UI to match the Gymoranda program instead of Memoranda program
+    - [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/15) - PR for changing sidebar images to match Gymoranda
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
