@@ -835,7 +835,6 @@ public class AppFrame extends JFrame {
 
     public void showPreferences() {
         PreferencesDialog dlg = new PreferencesDialog(this);
-        // issues are caused when pack is called
         dlg.pack();
         dlg.setLocationRelativeTo(this);
         dlg.setVisible(true);
