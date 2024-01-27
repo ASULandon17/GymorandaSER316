@@ -41,7 +41,18 @@
   
   
 
-  > todo: Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
+  > Checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch:
+  -> My code compiles
+  -> My code has been tested and includes unit tests
+  -> My code includes javadoc where appropriate
+  -> My cody is tidy/formatted in a way that is readable
+  -> I have considered proper use of exceptions
+  -> I have made appropriate use of logging
+  -> I have eliminated unused imports
+  -> I have elimated IDE warnings
+  -> I have considered possible Null Pointer exceptions
+  -> The code follows the Coding Standards
+  -> There are no leftover stubs or test routines in the code
 
   > todo: Include a checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
 
