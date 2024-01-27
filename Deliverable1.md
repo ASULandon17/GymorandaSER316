@@ -131,13 +131,16 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+    - [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b2f49626e4b6e63a7615540f1dcde915099f3de7) - Changed splash page to use new Gymoranda logo.
+    - [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/6ca4ac82c918cbbfe63d242fb338974388771cb8) - Changed name to Gymoranda in multiple places as well as change to the new logo in the AboutBox.
+    - [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/24703fa705baedb57ac398db6179b98a64a352ca) - Add the Gymoranda logo.
+    - [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c597a1e15b0a27310cfbce167256f58c15c922af) - Fixed window minimize and restore functionality.
+    - [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b417db751f64916ad1b72a7897c7289e3d61fa32) - Added a placeholder for MemberType within the AppFrame
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+    - [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/14) - PR for the placeholder for MemberType.
+    - [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/6) - PR for adding and changing the logos to use Gymoranda
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
