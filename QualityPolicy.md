@@ -43,51 +43,51 @@
 
   > Checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch:
   
-  -> My code compiles
+  >>-> My code compiles
   
-  -> My code has been tested and includes unit tests
+  >>-> My code has been tested and includes unit tests
   
-  -> My code includes javadoc where appropriate
+  >>-> My code includes javadoc where appropriate
   
-  -> My cody is tidy/formatted in a way that is readable
+  >>-> My cody is tidy/formatted in a way that is readable
   
-  -> I have considered proper use of exceptions
+  >>-> I have considered proper use of exceptions
   
-  -> I have made appropriate use of logging
+  >>-> I have made appropriate use of logging
   
-  -> I have eliminated unused imports
+  >>-> I have eliminated unused imports
   
-  -> I have elimated IDE warnings
+  >>-> I have elimated IDE warnings
   
-  -> I have considered possible Null Pointer exceptions
+  >>-> I have considered possible Null Pointer exceptions
   
-  -> The code follows the Coding Standards
+  >>-> The code follows the Coding Standards
   
-  -> There are no leftover stubs or test routines in the code
+  >>-> There are no leftover stubs or test routines in the code
 
   > Checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
   
-  -> Comments are comprehensibile and support maintainability
+  >>-> Comments are comprehensibile and support maintainability
   
-  -> Comments are not numerous are too wordy
+  >>-> Comments are not numerous are too wordy
   
-  -> Types have been generalized where possible
+  >>-> Types have been generalized where possible
   
-  -> Parameterized types have been used appropriately
+  >>-> Parameterized types have been used appropriately
   
-  -> Exceptions have been used appropriately
+  >>-> Exceptions have been used appropriately
   
-  -> Repetitive code has been factored out
+  >>-> Repetitive code has been factored out
   
-  -> Methods have all been defined appropriately
+  >>-> Methods have all been defined appropriately
   
-  -> Command classes have been designed to undertake one task only
+  >>-> Command classes have been designed to undertake one task only
   
-  -> Unit tests are present and correct
+  >>-> Unit tests are present and correct
   
-  -> Common errors have been checked for
+  >>-> Common errors have been checked for
   
-  -> Potential threading issues have been eliminated where possible
+  >>-> Potential threading issues have been eliminated where possible
   
 
 
