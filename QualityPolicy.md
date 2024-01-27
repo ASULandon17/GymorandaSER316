@@ -30,10 +30,10 @@
 
 **Code Review** (online: start Sprint 2, campus: start Sprint 2)
   > No code or documentation changes should be merged into dev or master without a review.
-  Each pull request for a merge into master or dev must be looked at by at least two other team members.
-  During a review, each member will fill out the review checklist detailed below.
-  After the reviews are complete and any deficiencies are corrected ,to include ensuring the merge is a fast forward, the pull request can be merged into dev or master.
-  The git master for the current sprint should be the one to execute the merge into the dev or master branches. The git master does not have to be one of the reviewers for the pull request.
+  > Each pull request for a merge into master or dev must be looked at by at least two other team members.
+  > During a review, each member will fill out the review checklist detailed below.
+  > After the reviews are complete and any deficiencies are corrected ,to include ensuring the merge is a fast forward, the pull request can be merged into dev or master.
+  > The git master for the current sprint should be the one to execute the merge into the dev or master branches. The git master does not have to be one of the reviewers for the pull request.
   
   
 
