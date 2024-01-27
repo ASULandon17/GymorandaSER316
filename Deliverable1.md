@@ -44,9 +44,9 @@ I would also advise you to already fill out the Contributions section (End of sp
 
 | Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
 |---|---|---|---|--|--|
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
+|  19 JAN 2024  |  All members attended |  Reviewed sprint 1 goals and each member stated the tasks they're going to start with. |  N/A - Beginning of sprint |  |  |
+|  22 JAN 2024 | All members attended  |  Quick disucssion of everyone's progress on their tasks and what they'll be working on next. | Ahead  |  |  |
+|  24 JAN 2024 |  All members attended |  Update on individual progress and short discussion on getting over a barrier that was blocking progress on one of the US. Group collaboration led to quickly identifying the problem and implementing a permanent fix and the US was complete within the hour. | Ahead  |  |  |
 
 
 ## 3: After the Sprint
