@@ -161,6 +161,7 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team member Landon Messmore :
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+    
     On Sprint 1 our team was still learning the Scrum process and getting our feet wet. I had a hard time working consistently because we were able to finish our tasks and User Stories so quickly. 
     Within the first couple days ~3/4 of the tasks were already completed and the remaining ones were accounted for. 
     I believe I did put enough work into the project this Sprint, I was able to finish the User Stories that I took on and be available to help for the remaining ones that were left. 
