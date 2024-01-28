@@ -374,8 +374,13 @@ member during the next sprints.
 - [ ] User Stories that were not completed, were left in the Sprint and a copy created to move to the next Sprint
 - [ ] Your Quality Policies are accurate and up to date
 - [ ] **Individual** Survey was submitted **individually** (create checkboxes below -- see Canvas to get link)
-  - [ ] Team member 1
-  - [ ] Team member 2
+  - [ ] Cameron
+  - [ ] Jack
+  - [ ] Dylan
+  - [ ] Landon
+  - [ ] Natel
+  - [ ] Jacob
+  
 
 #### For the next Sprint
   - [ ] The original of this file was copied for the next Sprint (needed for all but last Sprint where you do not need to copy it anymore)
