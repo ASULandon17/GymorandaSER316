@@ -288,7 +288,9 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
   
-	I do think I worked consistenly and put work into the project. I believe next sprint I was attempt to put more effort into more US's as I feel I was lacking in that area this sprint and I have now learned to use git and the taiga board a bit better. I completed all the tasks I gave myself, and attempted to help the others in my groups in anyway I could.
+	I do think I worked consistenly and put work into the project. I believe next sprint I was attempt to put more effort into more US's as I feel
+ 	I was lacking in that area this sprint and I have now learned to use git and the taiga board a bit better. I completed all the tasks I gave myself,
+  	and attempted to help the others in my groups in anyway I could.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
