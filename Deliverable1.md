@@ -1,5 +1,5 @@
 # Deliverable Information
-   > Please include your answers below in a good format so it is easy for me to see. For answers to questions please use these Blockquotes. Make sure you also check the kickoff document for more details. Also make sure this thing is well formatted and the links are links in here. 
+   > Please include your answers below in a good format, so it is easy for me to see. For answers to questions please use these Blockquotes. Make sure you also check the kickoff document for more details. Also make sure this thing is well formatted and the links are links in here. 
 
 ## 1: Basic Information (needed before you start with your Sprint -- Sprint Planning)
 
@@ -42,12 +42,12 @@ I would also advise you to already fill out the Contributions section (End of sp
 ### Meeting minutes of your Daily Scrums (3 per week, should not take longer than 10 minutes):
 > Add as many rows as needed and fill out the table. (Burndown starts with Sprint 2, and Continuous Integration starts with Sprint 3, not needed before that). 
 
-| Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
-|---|---|---|---|--|--|
-|  19 JAN 2024  |  All members attended |  Reviewed sprint 1 goals and each member stated the tasks they're going to start with. |  N/A - Beginning of sprint |  |  |
-|  22 JAN 2024 | All members attended  |  Quick disucssion of everyone's progress on their tasks and what they'll be working on next. | Ahead  |  |  |
-|  24 JAN 2024 |  All members attended |  Update on individual progress and short discussion on getting over a barrier that was blocking progress on one of the US. Group collaboration led to quickly identifying the problem and implementing a permanent fix and the US was complete within the hour. | Ahead  |  |  |
-|  26 JAN 2024 |  All members attended |  Update on individual progress and quick discussion to identify any final problems that needed to be fixed prior to the end of the Sprint. | On track | | |
+| Date        | Who did NOT attend   | Meeting notes (very brief)                                                                                                                                                                                                                                     | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info |
+|-------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------|-----------------|
+| 19 JAN 2024 | All members attended | Reviewed sprint 1 goals and each member stated the tasks they're going to start with.                                                                                                                                                                          | N/A - Beginning of sprint                                    |                                                      |                 |
+| 22 JAN 2024 | All members attended | Quick discussion of everyone's progress on their tasks and what they'll be working on next.                                                                                                                                                                    | Ahead                                                        |                                                      |                 |
+| 24 JAN 2024 | All members attended | Update on individual progress and short discussion on getting over a barrier that was blocking progress on one of the US. Group collaboration led to quickly identifying the problem and implementing a permanent fix and the US was complete within the hour. | Ahead                                                        |                                                      |                 |
+| 26 JAN 2024 | All members attended | Update on individual progress and quick discussion to identify any final problems that needed to be fixed prior to the end of the Sprint.                                                                                                                      | On track                                                     |                                                      |                 |
 
 
 ## 3: After the Sprint
@@ -330,12 +330,10 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-	
-
- Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
-
-  Example: 
-  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+During this sprint, I took on more work on the project management side of the house as scrum master and less on the individual user stories compared to my teammates, 
+but I think the level of effort was consistent. Everyone got off to a fantastic start while I had to be away for a few days due to work. then I was able to come in 
+and help clean up the remaining tasks and wrap up the sprint! Additionally, I feel like I learned a lot about Git and Taiga that will make me a more effective team
+member during the next sprints.
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
