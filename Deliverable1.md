@@ -287,24 +287,22 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team member Natel Whitaker :
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
-
+I do think I worked consistenly and put work into the project. I believe next sprint I was attempt to put more effort into more US's as I feel I was lacking in that area this sprint and I have now learned to use git and the taiga board a bit better. I completed all the tasks I gave myself, and attempted to help the others in my groups in anyway I could.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
   Example: 
-  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+  [Commit 1] (https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
-
-    - link1
-    - link2
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/9) - Repurposing Events Icon and page to become Classes US-#31
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/10) - Setting up the placeholder page for classes US-#32
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
-
-    - link1
-    - link2
-
+     [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - Merge US#18 into Dev
+     [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/16) - Merge US-#10 int Dev
+    
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
     - link1
