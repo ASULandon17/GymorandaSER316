@@ -7,18 +7,11 @@
  */
 package main.java.memoranda;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Vector;
+import java.util.*;
 
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Util;
-
-import java.util.Map;
-import java.util.Collections;
 
 import nu.xom.Attribute;
 //import nu.xom.Comment;
@@ -91,10 +84,8 @@ public class EventsManager {
 		Day d = getDay(date);
 		if (d == null)
 			return false;
-		if (d.getElement().getChildElements("event").size() > 0)
-			return true;
-		return false;
-	}
+        return d.getElement().getChildElements("event").size() > 0;
+    }
 
 	public static Collection getEventsForDate(CalendarDate date) {
 		Vector v = new Vector();
@@ -105,13 +96,14 @@ public class EventsManager {
 				v.add(new EventImpl(els.get(i)));
 		}
 		Collection r = getRepeatableEventsForDate(date);
-		if (r.size() > 0)
+		if (!r.isEmpty())
 			v.addAll(r);
 		//EventsVectorSorter.sort(v);
 		Collections.sort(v);
 		return v;
 	}
 
+	// Return value is not used. Do we think this is intentional or is it a potential bug?
 	public static Event createEvent(
 		CalendarDate date,
 		int hh,
@@ -129,6 +121,7 @@ public class EventsManager {
 		return new EventImpl(el);
 	}
 
+	// Return value is not used. Do we think this is intentional or is it a potential bug?
 	public static Event createRepeatableEvent(
 		int type,
 		CalendarDate startDate,
@@ -231,19 +224,20 @@ public class EventsManager {
 		Elements els = d.getElement().getChildElements("event");
 		for (int i = 0; i < els.size(); i++) {
 			Element el = els.get(i);
-			if ((new Integer(el.getAttribute("hour").getValue()).intValue()
+			if ((Integer.parseInt(el.getAttribute("hour").getValue())
 				== hh)
-				&& (new Integer(el.getAttribute("min").getValue()).intValue()
+				&& (Integer.parseInt(el.getAttribute("min").getValue())
 					== mm))
 				return new EventImpl(el);
 		}
 		return null;
 	}
 
+	// This method is not used anywhere in the code.
 	public static void removeEvent(CalendarDate date, int hh, int mm) {
 		Day d = getDay(date);
 		if (d == null)
-			d.getElement().removeChild(getEvent(date, hh, mm).getContent());
+			d.getElement().removeChild(Objects.requireNonNull(getEvent(date, hh, mm)).getContent());
 	}
 
 	public static void removeEvent(Event ev) {
@@ -266,14 +260,14 @@ public class EventsManager {
 
 	private static Year createYear(int y) {
 		Element el = new Element("year");
-		el.addAttribute(new Attribute("year", new Integer(y).toString()));
+		el.addAttribute(new Attribute("year", Integer.toString(y)));
 		_root.appendChild(el);
 		return new Year(el);
 	}
 
 	private static Year getYear(int y) {
 		Elements yrs = _root.getChildElements("year");
-		String yy = new Integer(y).toString();
+		String yy = Integer.toString(y);
 		for (int i = 0; i < yrs.size(); i++)
 			if (yrs.get(i).getAttribute("year").getValue().equals(yy))
 				return new Year(yrs.get(i));
@@ -299,13 +293,12 @@ public class EventsManager {
 		}
 
 		public int getValue() {
-			return new Integer(yearElement.getAttribute("year").getValue())
-				.intValue();
+			return Integer.parseInt(yearElement.getAttribute("year").getValue());
 		}
 
 		public Month getMonth(int m) {
 			Elements ms = yearElement.getChildElements("month");
-			String mm = new Integer(m).toString();
+			String mm = Integer.toString(m);
 			for (int i = 0; i < ms.size(); i++)
 				if (ms.get(i).getAttribute("month").getValue().equals(mm))
 					return new Month(ms.get(i));
@@ -315,7 +308,7 @@ public class EventsManager {
 
 		private Month createMonth(int m) {
 			Element el = new Element("month");
-			el.addAttribute(new Attribute("month", new Integer(m).toString()));
+			el.addAttribute(new Attribute("month", Integer.toString(m)));
 			yearElement.appendChild(el);
 			return new Month(el);
 		}
@@ -342,15 +335,14 @@ public class EventsManager {
 		}
 
 		public int getValue() {
-			return new Integer(mElement.getAttribute("month").getValue())
-				.intValue();
+			return Integer.parseInt(mElement.getAttribute("month").getValue());
 		}
 
 		public Day getDay(int d) {
 			if (mElement == null)
 				return null;
 			Elements ds = mElement.getChildElements("day");
-			String dd = new Integer(d).toString();
+			String dd = Integer.toString(d);
 			for (int i = 0; i < ds.size(); i++)
 				if (ds.get(i).getAttribute("day").getValue().equals(dd))
 					return new Day(ds.get(i));
@@ -360,18 +352,17 @@ public class EventsManager {
 
 		private Day createDay(int d) {
 			Element el = new Element("day");
-			el.addAttribute(new Attribute("day", new Integer(d).toString()));
+			el.addAttribute(new Attribute("day", Integer.toString(d)));
 			el.addAttribute(
 				new Attribute(
 					"date",
 					new CalendarDate(
 						d,
 						getValue(),
-						new Integer(
+							Integer.parseInt(
 							((Element) mElement.getParent())
 								.getAttribute("year")
-								.getValue())
-							.intValue())
+								.getValue()))
 						.toString()));
 
 			mElement.appendChild(el);
@@ -402,7 +393,7 @@ public class EventsManager {
 		}
 
 		public int getValue() {
-			return new Integer(dEl.getAttribute("day").getValue()).intValue();
+			return Integer.parseInt(dEl.getAttribute("day").getValue());
 		}
 
 		/*

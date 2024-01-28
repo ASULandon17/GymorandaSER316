@@ -1,0 +1,21 @@
+Sidebar UI:
+src\main\java\memoranda\ui\WorkPanel.java
+
+Agenda/Home UI:
+src\main\java\memoranda\ui\AgendaPanel.java
+
+Events/Classes UI:
+src\main\java\memoranda\ui\EventsPanel.java
+src\main\java\memoranda\ui\EventsTable.java
+
+Tasks/Rooms UI:
+src\main\java\memoranda\ui\TaskPanel.java
+src\main\java\memoranda\ui\TaskTable.java
+
+Notes/Trainers UI:
+src\main\java\memoranda\ui\NotesControlPanel.java (side search portion)
+src\main\java\memoranda\ui\EditorPanel.java (Main section where notes are written)
+
+
+Resources/Personal UI:
+src\main\java\memoranda\ui\ResourcesPanel.java

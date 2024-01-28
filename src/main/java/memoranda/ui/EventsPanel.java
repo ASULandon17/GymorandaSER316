@@ -61,78 +61,63 @@ public class EventsPanel extends JPanel {
             new ExceptionDialog(ex);
         }
     }
+
+    void jbInitHelper(JButton button) {
+        button.setFocusable(false);
+        button.setBorderPainted(false);
+        button.setRequestFocusEnabled(false);
+        button.setPreferredSize(new Dimension(24, 24));
+        button.setMinimumSize(new Dimension(24, 24));
+        button.setMaximumSize(new Dimension(24, 24));
+    }
+
     void jbInit() throws Exception {
         eventsToolBar.setFloatable(false);
 
         historyBackB.setAction(History.historyBackAction);
-        historyBackB.setFocusable(false);
-        historyBackB.setBorderPainted(false);
         historyBackB.setToolTipText(Local.getString("History back"));
-        historyBackB.setRequestFocusEnabled(false);
-        historyBackB.setPreferredSize(new Dimension(24, 24));
-        historyBackB.setMinimumSize(new Dimension(24, 24));
-        historyBackB.setMaximumSize(new Dimension(24, 24));
+        jbInitHelper(historyBackB);
         historyBackB.setText("");
 
         historyForwardB.setAction(History.historyForwardAction);
-        historyForwardB.setBorderPainted(false);
-        historyForwardB.setFocusable(false);
-        historyForwardB.setPreferredSize(new Dimension(24, 24));
-        historyForwardB.setRequestFocusEnabled(false);
         historyForwardB.setToolTipText(Local.getString("History forward"));
-        historyForwardB.setMinimumSize(new Dimension(24, 24));
-        historyForwardB.setMaximumSize(new Dimension(24, 24));
+        jbInitHelper(historyForwardB);
         historyForwardB.setText("");
 
         newEventB.setIcon(
             new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/event_new.png")));
         newEventB.setEnabled(true);
-        newEventB.setMaximumSize(new Dimension(24, 24));
-        newEventB.setMinimumSize(new Dimension(24, 24));
-        newEventB.setToolTipText(Local.getString("New event"));
-        newEventB.setRequestFocusEnabled(false);
-        newEventB.setPreferredSize(new Dimension(24, 24));
-        newEventB.setFocusable(false);
+        jbInitHelper(newEventB);
+        newEventB.setToolTipText(Local.getString("New class"));
         newEventB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newEventB_actionPerformed(e);
             }
         });
-        newEventB.setBorderPainted(false);
 
-        editEventB.setBorderPainted(false);
-        editEventB.setFocusable(false);
+        jbInitHelper(editEventB);
         editEventB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 editEventB_actionPerformed(e);
             }
         });
-        editEventB.setPreferredSize(new Dimension(24, 24));
-        editEventB.setRequestFocusEnabled(false);
         editEventB.setToolTipText(Local.getString("Edit event"));
-        editEventB.setMinimumSize(new Dimension(24, 24));
-        editEventB.setMaximumSize(new Dimension(24, 24));
         editEventB.setEnabled(true);
         editEventB.setIcon(
             new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/event_edit.png")));
 
-        removeEventB.setBorderPainted(false);
-        removeEventB.setFocusable(false);
+        jbInitHelper(removeEventB);
         removeEventB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 removeEventB_actionPerformed(e);
             }
         });
-        removeEventB.setPreferredSize(new Dimension(24, 24));
-        removeEventB.setRequestFocusEnabled(false);
         removeEventB.setToolTipText(Local.getString("Remove event"));
-        removeEventB.setMinimumSize(new Dimension(24, 24));
-        removeEventB.setMaximumSize(new Dimension(24, 24));
         removeEventB.setIcon(
             new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/event_remove.png")));
 
         this.setLayout(borderLayout1);
-        scrollPane.getViewport().setBackground(Color.red);
+        scrollPane.getViewport().setBackground(Color.white);
         eventsTable.setMaximumSize(new Dimension(32767, 32767));
         eventsTable.setRowHeight(24);
         eventPPMenu.setFont(new java.awt.Font("Dialog", 1, 10));
@@ -243,7 +228,7 @@ public class EventsPanel extends JPanel {
             if (rep == EventsManager.REPEAT_DAILY) {
                 dlg.dailyRepeatRB.setSelected(true);
                 dlg.dailyRepeatRB_actionPerformed(null);
-                dlg.daySpin.setValue(new Integer(ev.getPeriod()));
+                dlg.daySpin.setValue(ev.getPeriod());
             }
             else if (rep == EventsManager.REPEAT_WEEKLY) {
                 dlg.weeklyRepeatRB.setSelected(true);
@@ -258,12 +243,12 @@ public class EventsPanel extends JPanel {
             else if (rep == EventsManager.REPEAT_MONTHLY) {
                 dlg.monthlyRepeatRB.setSelected(true);
                 dlg.monthlyRepeatRB_actionPerformed(null);
-                dlg.dayOfMonthSpin.setValue(new Integer(ev.getPeriod()));
+                dlg.dayOfMonthSpin.setValue(ev.getPeriod());
             }
 	    else if (rep == EventsManager.REPEAT_YEARLY) {
 		dlg.yearlyRepeatRB.setSelected(true);
 		dlg.yearlyRepeatRB_actionPerformed(null);
-		dlg.dayOfMonthSpin.setValue(new Integer(ev.getPeriod()));
+		dlg.dayOfMonthSpin.setValue(ev.getPeriod());
 	    }
         if (ev.getEndDate() != null) {
            dlg.endDate.getModel().setValue(ev.getEndDate().getDate());

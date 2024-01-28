@@ -5,10 +5,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.Calendar;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 import main.java.memoranda.EventsScheduler;
 import main.java.memoranda.util.Configuration;
@@ -138,10 +135,18 @@ public class App {
 
 	}
 
+	public static void minimizeWindow() {
+		if (frame == null)
+			return;
+		//frame.setVisible(false);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+
 	public static void closeWindow() {
 		if (frame == null)
 			return;
 		frame.dispose();
+		System.exit(0);
 	}
 
 	/**
@@ -150,7 +155,7 @@ public class App {
 	private void showSplash() {
 		splash = new JFrame();
 		ImageIcon spl =
-			new ImageIcon(App.class.getResource("/ui/splash.png"));
+			new ImageIcon(App.class.getResource("/ui/Gymoranda.png"));
 		JLabel l = new JLabel();
 		l.setSize(400, 300);
 		l.setIcon(spl);
