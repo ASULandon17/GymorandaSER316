@@ -301,11 +301,13 @@ Copy the section for each team member and then everyone adds their individual co
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
   
 [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/9) - Repurposing Events Icon and page to become Classes US-#31
+
 [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/10) - Setting up the placeholder page for classes US-#32
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
   
 [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - Merge US#18 into Dev
+
 [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/16) - Merge US-#10 int Dev
     
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
