@@ -47,6 +47,7 @@ I would also advise you to already fill out the Contributions section (End of sp
 |  19 JAN 2024  |  All members attended |  Reviewed sprint 1 goals and each member stated the tasks they're going to start with. |  N/A - Beginning of sprint |  |  |
 |  22 JAN 2024 | All members attended  |  Quick disucssion of everyone's progress on their tasks and what they'll be working on next. | Ahead  |  |  |
 |  24 JAN 2024 |  All members attended |  Update on individual progress and short discussion on getting over a barrier that was blocking progress on one of the US. Group collaboration led to quickly identifying the problem and implementing a permanent fix and the US was complete within the hour. | Ahead  |  |  |
+|  26 JAN 2024 |  All members attended |  Update on individual progress and quick discussion to identify any final problems that needed to be fixed prior to the end of the Sprint. | On track | | |
 
 
 ## 3: After the Sprint
@@ -131,16 +132,16 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b2f49626e4b6e63a7615540f1dcde915099f3de7) - Changed splash page to use new Gymoranda logo.
-    - [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/6ca4ac82c918cbbfe63d242fb338974388771cb8) - Changed name to Gymoranda in multiple places as well as change to the new logo in the AboutBox.
-    - [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/24703fa705baedb57ac398db6179b98a64a352ca) - Add the Gymoranda logo.
-    - [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c597a1e15b0a27310cfbce167256f58c15c922af) - Fixed window minimize and restore functionality.
-    - [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b417db751f64916ad1b72a7897c7289e3d61fa32) - Added a placeholder for MemberType within the AppFrame
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b2f49626e4b6e63a7615540f1dcde915099f3de7) - Changed splash page to use new Gymoranda logo.    
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/6ca4ac82c918cbbfe63d242fb338974388771cb8) - Changed name to Gymoranda in multiple places as well as change to the new logo in the AboutBox.    
+  [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/24703fa705baedb57ac398db6179b98a64a352ca) - Add the Gymoranda logo.     
+  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c597a1e15b0a27310cfbce167256f58c15c922af) - Fixed window minimize and restore functionality.   
+  [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/b417db751f64916ad1b72a7897c7289e3d61fa32) - Added a placeholder for MemberType within the AppFrame    
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/14) - PR for the placeholder for MemberType.
-    - [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/6) - PR for adding and changing the logos to use Gymoranda
+  [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/14) - PR for the placeholder for MemberType.    
+  [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/6) - PR for adding and changing the logos to use Gymoranda   
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
@@ -175,14 +176,14 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e584f9002e7c033594ea532f5ea4f33890db4f67) - Change Sidebar names to reflect Gymoranda instead of Memoranda
-    - [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9182f5b5a98d625ea73bb36c95c1d36c78f37199) - Add Code_Locations.txt which is used to track where in the codebase certain sections are
-    - [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e881bae5e8172209594c9e61336cee3d28ab09ac) - Change Sidebar images to reflect Gymoranda instead of Memoranda
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e584f9002e7c033594ea532f5ea4f33890db4f67) - Change Sidebar names to reflect Gymoranda instead of Memoranda   
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9182f5b5a98d625ea73bb36c95c1d36c78f37199) - Add Code_Locations.txt which is used to track where in the codebase certain sections are   
+  [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e881bae5e8172209594c9e61336cee3d28ab09ac) - Change Sidebar images to reflect Gymoranda instead of Memoranda    
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/13) - PR for changing UI to match the Gymoranda program instead of Memoranda program
-    - [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/15) - PR for changing sidebar images to match Gymoranda
+  [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/13) - PR for changing UI to match the Gymoranda program instead of Memoranda program   
+  [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/15) - PR for changing sidebar images to match Gymoranda    
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
@@ -203,8 +204,13 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team member Cameron Thieme :
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
-
-
+	
+	I think that I did work consistently and put in enough work into the project. I was able to complete all the tasks I 
+ 	assigned to myself and I was always checking the Slack board to keep up to date with all the information as it came 
+  	in. Due to this, I was able to help my teammates when they were stuck. When we started running out of tasks to do and 
+   	the rest were all assigned to other teammates, after making sure they received any help necessary I started reading 
+    through the code and rewriting it to make it easier to work with for the next sprint. I believe due to the mixture of 
+	these reasons, I did work consistently and put in enough work.
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
@@ -213,13 +219,16 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/1215a45a4a21c410a53b8c772b35fd7c952630ee) - Remove deprecated code causing compiler errors   
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/401632dc49a788509d2e18a2bbfd34c612a57316) - Remove deprecated code and replace repeating code with a method   
+  [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0c623a4b076ba42af9e69140953fb48e9ef6aae8) - Start fix for minimize function by separating the close function from it   
+  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/dc2ffa87cb08c64f30f7a6f4489e796554c433bc) - Refactor CurrentProject.java to make it more readable    
+  [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/31f72b27e932adbf8395bc3cc3e1b88168d51e43) - Refactor EventsScheduler.java to make it more readable   
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+  [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - PR to merge US#18, removing error message on build, into Dev    
+  [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/16) - PR to merge US#10, fixing minimize functionality, into Dev    
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
@@ -325,17 +334,17 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    [Commit 1] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/db2c28e5629e8b5f2f3bf634ae172a4301bdc52d) - Added Deliverable1 to the repo and updated the team's answers to the planning phase questions.
-    [Commit 2] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/3ff3f5a30003aa91f555057a5cc16e97f5630839) - Fixed bug that was preventing preferences from opening.
-	[Commit 3] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/d4f7305b4a55aae14555a58b38387e7cae7a4faf) - Removed "Look and Feel" from the preferences menu and prepared code to be reused in the next sprint as an option for implementing a new feature.
-	[Commit 4] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0a5c246a19e7985b050231207ef908b84fa5062b) - Updated standup meeting minutes on Deliverable1
-	[Commit 5] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/4eac2cfc7ef08b036aabeb5a0ab76293b54c96e5) - Added code review policy, developer checklist, and reviewer checklist. 
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/db2c28e5629e8b5f2f3bf634ae172a4301bdc52d) - Added Deliverable1 to the repo and updated the team's answers to the planning phase questions.    
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/3ff3f5a30003aa91f555057a5cc16e97f5630839) - Fixed bug that was preventing preferences from opening.    
+  [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/d4f7305b4a55aae14555a58b38387e7cae7a4faf) - Removed "Look and Feel" from the preferences menu and prepared code to be reused in the next sprint as an option for implementing a new feature.   
+  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0a5c246a19e7985b050231207ef908b84fa5062b) - Updated standup meeting minutes on Deliverable1    
+  [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/4eac2cfc7ef08b036aabeb5a0ab76293b54c96e5) - Added code review policy, developer checklist, and reviewer checklist.    
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    [Pull Request 1] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/5) - Updated deliverable 1 to include the team's planning information.
-    [Pull Request 2] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/18) - Completed US#12
-	[Pull Request 3] () - TODO: after PR for merging final docs
+  [Pull Request 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/5) - Updated deliverable 1 to include the team's planning information.   
+  [Pull Request 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/18) - Completed US#12   
+  [Pull Request 3]() - TODO: after PR for merging final docs   
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
