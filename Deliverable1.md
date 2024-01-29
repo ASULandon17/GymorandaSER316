@@ -62,15 +62,15 @@ Answer as a team!
 
 **What do you think is the value you created this Sprint?**
 
-> Your Answer
+> We were able to understand the functionality of the current Memoranda software and get it to a stable and bug free state.  We also began to setup some basic functionality for switching to the “Gymoranda” program along with multiple UI improvements.
 
 **Do you think you worked enough and that you did what was expected of you?**
 
-> Your Answer
+> We overestimated how long it would take to complete the majority of our user stories. Our burn down chart shows that we were able to accomplish most of the User Stories early in the sprint and then did not have much left. However, we completed all of the tasks that were expected of us.
 
 **Would you say you met the customers’ expectations? Why, why not?**
 
-> Your Answer
+> Yes, we exceeded the customer’s expectations as we finished all of our US’s on time and even made some changes outside the user stories that will accelerate our progress during the next sprint.
 
 
 ### Sprint Retrospective
@@ -79,40 +79,40 @@ Answer as a team!
 
 **Did you meet your sprint goal?**
 
-> Your Answer
+> Yes, as a team we gained a solid understanding of Memoranda’s design and removed existing bugs to make the software more stable and maintainable in order to set conditions for implementing our overhaul into “Gymoranda '' during Sprint 2.
 
 **Did you complete all stories on your Spring Backlog?**
 
-> Your Answer
+> Yes
 
 **If not, what went wrong?**
 
-> Your Answer
+> N/A
 
 **Did you work at a consistent rate of speed, or velocity? (Meaning did you work during the whole Sprint or did you start working when the deadline approached.)**
 
-> Your Answer
+> Due to the overestimations we made as described above in the sprint review and team members having various other commitments outside of this class/project, our team’s progress was not perfectly consistent.
 
 **Did you deliver business value?**
 
-> Your Answer
+> Cameron refactored much of the existing code to clean it up and make it more readable which will help us immensely throughout the rest of the project.
 
 **Did you follow the Scrum process (e.g. move Tasks correctly?, keep the Taiga board up to date? work consistently?)**
 
-> Your Answer
+> Yes, we followed the scrum process and tasks were both assigned and updated on the Taiga board appropriately.
 
 **Are there things the team thinks it can do better in the next Sprint? (not needed for last Sprint)**
 
-> Your Answer
+> Now that we have a better understanding of what we can accomplish during a two-week period, we’ll be able to make more accurate estimates for the next Sprint. This should lead to a more consistent workload/progress on the burndown chart.
 
 **How do you feel at this point? Get a pulse on the optimism of the team.**
 
-> Your Answer
+> Overall the team is happy with its performance and is ready to start rolling on development for the Sprint 2!
 
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
 
-> Your Answer
+> 
 
 ### Contributions:
 
