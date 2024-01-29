@@ -304,6 +304,9 @@ Copy the section for each team member and then everyone adds their individual co
 
 [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/10) - Setting up the placeholder page for classes US-#32
 
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/19) - Adding UML diagram
+
+
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
   
 [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - Merge US#18 into Dev
