@@ -48,6 +48,7 @@ I would also advise you to already fill out the Contributions section (End of sp
 | 22 JAN 2024 | All members attended | Quick discussion of everyone's progress on their tasks and what they'll be working on next.                                                                                                                                                                    | Ahead                                                        |                                                      |                 |
 | 24 JAN 2024 | All members attended | Update on individual progress and short discussion on getting over a barrier that was blocking progress on one of the US. Group collaboration led to quickly identifying the problem and implementing a permanent fix and the US was complete within the hour. | Ahead                                                        |                                                      |                 |
 | 26 JAN 2024 | All members attended | Update on individual progress and quick discussion to identify any final problems that needed to be fixed prior to the end of the Sprint.                                                                                                                      | On track                                                     |                                                      |                 |
+| 29 JAN 2024 | All members attended | Celebrate the end of Sprint 1, review admin/cleanup requirements for transition to sprint 2, begin sprint 2 planning.                                                                                                                                          | Sprint 1 complete!                                           |                                                      |                 |
 
 
 ## 3: After the Sprint
@@ -143,21 +144,7 @@ Copy the section for each team member and then everyone adds their individual co
   [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/14) - PR for the placeholder for MemberType.    
   [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/6) - PR for adding and changing the logos to use Gymoranda   
 
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
  
 #### Team member Landon Messmore :
 
@@ -185,21 +172,7 @@ Copy the section for each team member and then everyone adds their individual co
   [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/13) - PR for changing UI to match the Gymoranda program instead of Memoranda program   
   [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/15) - PR for changing sidebar images to match Gymoranda    
 
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 	
 #### Team member Cameron Thieme :
 
@@ -230,21 +203,7 @@ Copy the section for each team member and then everyone adds their individual co
   [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - PR to merge US#18, removing error message on build, into Dev    
   [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/16) - PR to merge US#10, fixing minimize functionality, into Dev    
 
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 	
 #### Team member Dylan White :
 
@@ -267,21 +226,6 @@ Copy the section for each team member and then everyone adds their individual co
     - link1
     - link2
 
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
-
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 	
 	
 #### Team member Natel Whitaker :
@@ -312,22 +256,7 @@ Copy the section for each team member and then everyone adds their individual co
 [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/8) - Merge US#18 into Dev
 
 [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/16) - Merge US-#10 int Dev
-    
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 
 #### Team member Jacob Smith :
 
@@ -352,21 +281,6 @@ member during the next sprints.
   [Pull Request 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/18) - Completed US#12   
   [Pull Request 3]() - TODO: after PR for merging final docs   
 
-   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
-
-    - link1
-    - link2
-
-  
-  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
-
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 
 ## Below is just for you as a little reminder on what needs to be done during the transition
 ### Checklist for you to see if you are done with the current Sprint, you do not have to check things off
