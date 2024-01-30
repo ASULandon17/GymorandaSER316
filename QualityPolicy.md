@@ -29,11 +29,72 @@
   > Describe your Whitebox testing policy 
 
 **Code Review** (online: start Sprint 2, campus: start Sprint 2)
-  > Describe your Code Review policy for on campus it is ok to have a less formal process in Sprint 2, should be updated in Sprint 3 though
+  > No code or documentation changes should be merged into dev or master without a review.
+  
+  > Each pull request for a merge into master or dev must be looked at by at least two other team members.
+  
+  > During a review, each member will fill out the review checklist detailed below.
+  
+  > After the reviews are complete and any deficiencies are corrected ,to include ensuring the merge is a fast forward, the pull request can be merged into dev or master.
+  
+  > The git master for the current sprint should be the one to execute the merge into the dev or master branches. The git master does not have to be one of the reviewers for the pull request.
+  
+  
 
-  > Include a checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch. 
+  > Checklist/questions list which every developer will need to fill out/answe when creating a Pull Request to the Dev branch:
+  
+  >>-> My code compiles
+  
+  >>-> My code has been tested and includes unit tests
+  
+  >>-> My code includes javadoc where appropriate
+  
+  >>-> My cody is tidy/formatted in a way that is readable
+  
+  >>-> I have considered proper use of exceptions
+  
+  >>-> I have made appropriate use of logging
+  
+  >>-> I have eliminated unused imports
+  
+  >>-> I have elimated IDE warnings
+  
+  >>-> I have considered possible Null Pointer exceptions
+  
+  >>-> The code follows the Coding Standards
+  
+  >>-> There are no leftover stubs or test routines in the code
 
-  > Include a checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+  > Checklist/question list which every reviewer will need to fill out/anser when conducting a review, this checklist (and the answers of course) need to be put into the Pull Request review.
+  
+  >>-> Comments are comprehensibile and support maintainability
+  
+  >>-> Comments are not numerous are too wordy
+  
+  >>-> Types have been generalized where possible
+  
+  >>-> Parameterized types have been used appropriately
+  
+  >>-> Exceptions have been used appropriately
+  
+  >>-> Repetitive code has been factored out
+  
+  >>-> Methods have all been defined appropriately
+  
+  >>-> Command classes have been designed to undertake one task only
+  
+  >>-> Unit tests are present and correct
+  
+  >>-> Common errors have been checked for
+  
+  >>-> Potential threading issues have been eliminated where possible
+  
+
+
+
+
+
+
 
 **Static Analysis**  (online: start Sprint 3, campus: start Sprint 3)
   > Your Static Analysis policy   
