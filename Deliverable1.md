@@ -54,9 +54,8 @@ I would also advise you to already fill out the Contributions section (End of sp
 ## 3: After the Sprint
 
 ### Sprint Review
-Answer as a team!
 
-**Screen Cast link**: https://youtu.be/TdBxDNfi4zk
+**Screen Cast Link**: https://youtu.be/TdBxDNfi4zk
 
 > Answer the following questions as a team. 
 
@@ -281,14 +280,14 @@ member during the next sprints.
   [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/db2c28e5629e8b5f2f3bf634ae172a4301bdc52d) - Added Deliverable1 to the repo and updated the team's answers to the planning phase questions.    
   [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/3ff3f5a30003aa91f555057a5cc16e97f5630839) - Fixed bug that was preventing preferences from opening.    
   [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/d4f7305b4a55aae14555a58b38387e7cae7a4faf) - Removed "Look and Feel" from the preferences menu and prepared code to be reused in the next sprint as an option for implementing a new feature.   
-  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0a5c246a19e7985b050231207ef908b84fa5062b) - Updated standup meeting minutes on Deliverable1    
+  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0a5c246a19e7985b050231207ef908b84fa5062b) - Updated standup meeting minutes on Deliverable1.   
   [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/4eac2cfc7ef08b036aabeb5a0ab76293b54c96e5) - Added code review policy, developer checklist, and reviewer checklist.    
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
   [Pull Request 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/5) - Updated deliverable 1 to include the team's planning information.   
-  [Pull Request 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/18) - Completed US#12   
-  [Pull Request 3]() - TODO: after PR for merging final docs   
+  [Pull Request 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/18) - Completed US#12.
+  [Pull Request 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/21) - Facilitated the completion of team deliverables. 
 
 
 ## Below is just for you as a little reminder on what needs to be done during the transition
