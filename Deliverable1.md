@@ -210,6 +210,10 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
+    
+    I think I worked consistently and put enough work into the project despite moving across the country. Towards the end of the sprint when there were no more user stories to work on I had
+    less communication because I didn't have any tasks to do any everyone seemed to be on track. Perhaps I could have done more checkups on the status of things but over all I'd say I put
+    satisfactory work in on an individual level.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
@@ -219,13 +223,17 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/71e75c0a1c92d1bc483bd8819a09ec4c8fd2cca4) - Made it so clicking X would correctly terminate Memoranda
+
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/7f03264f65eea110253cc301f6a6b52f34abded8) - Translated import/export popups to English
+
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/451f32f25cef6f2a2a11893563f8c7239d22380a) - Translated button texts to English
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/11) - Merge US#11 into Dev
+
+[PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/12) - Merge US#1 into Dev
 
 	
 	
