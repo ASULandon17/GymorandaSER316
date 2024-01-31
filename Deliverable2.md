@@ -7,31 +7,31 @@
 
 **Sprint Number:** 2
 
-**Scrum Master**: Name
+**Scrum Master**: Cameron Thieme
 
-**Git Master**: Name
+**Git Master**: Landon Messmore
 
 ### Sprint Planning (For Sprint 1-3)
 Document your Sprint Planning here. Also check the kickoff document for more details on what needs to be done. This is just the documentation. 
 
-**Sprint Goal:** Your Sprint goal
+**Sprint Goal:** Design and implement the core features of Gymoranda while continuing to refine the existing code base.
 
-**How many User Stories did you add to the Product Backlog:**  Number
+**How many User Stories did you add to the Product Backlog:**  10
 
-**How many User Stories did you add to this Sprint:** 
+**How many User Stories did you add to this Sprint:** 10
 > Answer the questions below about your Sprint Planning?
 
 **Why did you add these US, why do you think you can get them done in the next Sprint?**
 
-> Your Answer
+> We selected user stories that would get us started on building out the new core features for gymoranda. Each team member will essentially be able to work on one core feature which we estimate to be an appropriate workload for the sprint cycle.
 
 **Why do you think these fit well with your Sprint goal? (details)**
 
-> Your Answer
+> Our goal for this sprint is for the software to start looking and functioning less like memoranda and more like our gym scheduler. Working on this set of US directly supports that goal.
 
 **Do you have a rough idea what you need to do? (if the answer is no then please let me know on Slack)**
 
-> Your Answer
+> Yes
 
 
 
