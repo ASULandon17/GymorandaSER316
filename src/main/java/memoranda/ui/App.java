@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import main.java.memoranda.EventsScheduler;
 import main.java.memoranda.util.Configuration;
+import main.java.memoranda.User;
 
 /**
  * 
@@ -92,7 +93,8 @@ public class App {
 		}
 
 		EventsScheduler.init();
-		frame = new AppFrame();
+		
+		
 		//if (fullmode) {
 		//	init();
 		//}
@@ -100,6 +102,8 @@ public class App {
 			splash.dispose();
 
 		showLogin();
+		
+		
 	}
 
 	void init() {
@@ -120,6 +124,7 @@ public class App {
 		 */
 		/* Used to maximize the screen if the JVM Version if 1.4 or higher */
 		/* --------------------------------------------------------------- */
+		frame = new AppFrame();
 		double JVMVer =
 			Double
 				.valueOf(System.getProperty("java.version").substring(0, 3))
@@ -235,15 +240,34 @@ public class App {
 	
 		// Login and Signup actions
 		loginButton.addActionListener(e -> {
-			// Perform login operation
-			init(); // For simplicity, directly calling init(); Implement actual login logic here
-			login.dispose();
+			String username = loginUsername.getText();
+			String password = new String(loginPassword.getPassword());
+
+			boolean didLogin = User.login(username, password);
+			if(didLogin){
+				init(); // For simplicity, directly calling init(); Implement actual login logic here
+				login.dispose();
+			} else {
+				JOptionPane.showMessageDialog(login, "Error logging in");
+			}
+			
+
 		});
 	
 		signupButton.addActionListener(e -> {
 			// Implement actual signup logic here
-			init();
-			login.dispose();
+			String username = signupUsername.getText();
+			String password = new String(signupPassword.getPassword());
+			String userTypeSelected = userType.getSelectedItem().toString();
+
+			boolean didSignUp = User.signUp(username, password, userTypeSelected);
+			if(didSignUp){
+				init();
+				login.dispose();
+			} else {
+				JOptionPane.showMessageDialog(login, "Signup failed. User may already exist.");
+			}
+			
 		});
 	
 		login.setLayout(new BorderLayout());
