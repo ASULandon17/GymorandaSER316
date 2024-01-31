@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.Calendar;
+import java.awt.*;
+import java.awt.event.*;
+
 
 import javax.swing.*;
 
@@ -26,6 +29,7 @@ public class App {
 	public static final String WEBSITE_URL = "http://memoranda.sourceforge.net";
 
 	private JFrame splash = null;
+	private JFrame login = null;
 
 	/*========================================================================*/ 
 	/* Note: Please DO NOT edit the version/build info manually!
@@ -89,11 +93,13 @@ public class App {
 
 		EventsScheduler.init();
 		frame = new AppFrame();
-		if (fullmode) {
-			init();
-		}
+		//if (fullmode) {
+		//	init();
+		//}
 		if (!Configuration.get("SHOW_SPLASH").equals("no"))
 			splash.dispose();
+
+		showLogin();
 	}
 
 	void init() {
@@ -167,5 +173,27 @@ public class App {
 			(screenSize.height - 300) / 2);
 		splash.setUndecorated(true);
 		splash.setVisible(true);
+	}
+
+	private void showLogin(){
+		login = new JFrame("Login");
+        login.setLayout(new FlowLayout()); // Simple layout, adjust as needed
+        login.setSize(400, 300);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        login.setLocation((screenSize.width - 400) / 2, (screenSize.height - 300) / 2);
+
+        JButton loginButton = new JButton("Login");
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                init(); // Initialize and show the main frame upon login
+                login.dispose(); // Dispose of the login window once done
+            }
+        });
+
+        login.add(loginButton);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.setVisible(true);
+
 	}
 }
