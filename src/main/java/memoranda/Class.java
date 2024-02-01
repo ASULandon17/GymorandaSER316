@@ -1,19 +1,22 @@
 package memoranda;
 import main.java.memoranda.User;
+import org.json.*;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
 public class Class {
 
-   private String className;
-    private User trainerName;
+    private String className;
+    private JSONObject trainer;
     private int classLengthInHours;
 
-    int studentsRegistered;
     int maxStudentsAllowed;
 
-    ArrayList<User> students = new ArrayList<>(); // stores the list of students registered for the course
+    public ArrayList<JSONObject> students = new ArrayList<>(); // stores the list of students registered for the course
 
     /**
      * Calculate how many slots remain on the class roster
@@ -24,16 +27,45 @@ public class Class {
         return maxStudentsAllowed - students.size();
     }
 
+    public void setClassLengthInHours(int hours) {
+        this.classLengthInHours = hours;
+    }
+    public void changeClassName(String className) {
+        this.className = className;
+    }
     /**
      * Adds student to class roster if not full
-     * @param student user attending the class
+     * @param studentUserName user attending the class
      */
-    public void addStudentToClass(User student) {
-        if (students.size() < maxStudentsAllowed) {
-            students.add(student);
-        } else {
-            throw new IllegalArgumentException("Class is full!");
+    public void addStudentToClass(String studentUserName) {
+
+        try {
+
+            File file = new File("users.json");
+
+            if (!file.exists()) {
+                throw new Exception("JSON file does not exist");
+            }
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(studentUserName)) {
+                    this.students.add(user);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
+
+
+
+
+
+
     }
 
     /**
@@ -49,7 +81,7 @@ public class Class {
      * @param newInstructor
      */
     public void changeInstructor(User newInstructor) {
-        this.trainerName = newInstructor;
+       // this.trainerName = newInstructor;
     }
 
     /**
@@ -59,9 +91,8 @@ public class Class {
      * @param classLengthInHours total length of the class (in hours)
      * @param maxStudentsAllowed max number of students allowed
      */
-    public Class(String className, User instructor, int classLengthInHours, int maxStudentsAllowed) {
+    public Class(String className, int classLengthInHours, int maxStudentsAllowed) {
         this.className = className;
-        this.trainerName = instructor;
         this.classLengthInHours = classLengthInHours;
         this.maxStudentsAllowed = maxStudentsAllowed;
     }
@@ -71,7 +102,7 @@ public class Class {
      */
     public Class() {
         this.className = "New Class";
-        this.trainerName = null;
+        //this.trainerName = null;
         this.classLengthInHours = 1;
     }
 }
