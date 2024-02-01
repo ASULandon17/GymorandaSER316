@@ -4,11 +4,15 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.Calendar;
+import java.awt.*;
+import java.awt.event.*;
 
+import javax.swing.border.Border;
 import javax.swing.*;
 
 import main.java.memoranda.EventsScheduler;
 import main.java.memoranda.util.Configuration;
+import main.java.memoranda.User;
 
 /**
  * 
@@ -26,6 +30,7 @@ public class App {
 	public static final String WEBSITE_URL = "http://memoranda.sourceforge.net";
 
 	private JFrame splash = null;
+	private JFrame login = null;
 
 	/*========================================================================*/ 
 	/* Note: Please DO NOT edit the version/build info manually!
@@ -88,12 +93,17 @@ public class App {
 		}
 
 		EventsScheduler.init();
-		frame = new AppFrame();
-		if (fullmode) {
-			init();
-		}
+		
+		
+		//if (fullmode) {
+		//	init();
+		//}
 		if (!Configuration.get("SHOW_SPLASH").equals("no"))
 			splash.dispose();
+
+		showLogin();
+		
+		
 	}
 
 	void init() {
@@ -114,6 +124,7 @@ public class App {
 		 */
 		/* Used to maximize the screen if the JVM Version if 1.4 or higher */
 		/* --------------------------------------------------------------- */
+		frame = new AppFrame();
 		double JVMVer =
 			Double
 				.valueOf(System.getProperty("java.version").substring(0, 3))
@@ -167,5 +178,103 @@ public class App {
 			(screenSize.height - 300) / 2);
 		splash.setUndecorated(true);
 		splash.setVisible(true);
+	}
+
+	private void showLogin(){
+		login = new JFrame("Login");
+        login.setLayout(new FlowLayout()); // Simple layout, adjust as needed
+        login.setSize(400, 300);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        login.setLocation((screenSize.width - 400) / 2, (screenSize.height - 300) / 2);
+
+
+		Border padding = BorderFactory.createEmptyBorder(10, 30, 10, 30);
+
+		JPanel togglePanel = new JPanel(new FlowLayout());
+		JToggleButton loginToggle = new JToggleButton("Login", true);
+		JToggleButton signupToggle = new JToggleButton("Signup", false);
+		ButtonGroup toggleGroup = new ButtonGroup();
+		toggleGroup.add(loginToggle);
+		toggleGroup.add(signupToggle);
+		togglePanel.add(loginToggle);
+		togglePanel.add(signupToggle);
+	
+		// CardLayout for switching between login and signup
+		CardLayout cardLayout = new CardLayout();
+		JPanel cardPanel = new JPanel(cardLayout);
+	
+		// Login panel
+		JPanel loginPanel = new JPanel(new GridLayout(0, 1));
+		loginPanel.setBorder(padding);
+		JTextField loginUsername = new JTextField();
+		JPasswordField loginPassword = new JPasswordField();
+		JButton loginButton = new JButton("Login");
+		loginPanel.add(new JLabel("Username:"));
+		loginPanel.add(loginUsername);
+		loginPanel.add(new JLabel("Password:"));
+		loginPanel.add(loginPassword);
+		loginPanel.add(loginButton);
+	
+		// Signup panel
+		JPanel signupPanel = new JPanel(new GridLayout(0, 1));
+		signupPanel.setBorder(padding);
+		JTextField signupUsername = new JTextField();
+		JPasswordField signupPassword = new JPasswordField();
+		JComboBox<String> userType = new JComboBox<>(new String[]{"Member", "Trainer", "Owner"});
+    	JButton signupButton = new JButton("Signup");
+    	signupPanel.add(new JLabel("Username:"));
+    	signupPanel.add(signupUsername);
+    	signupPanel.add(new JLabel("Password:"));
+    	signupPanel.add(signupPassword);
+    	signupPanel.add(new JLabel("User Type:"));
+    	signupPanel.add(userType);
+    	signupPanel.add(signupButton);
+	
+		// Add panels to CardLayout
+		cardPanel.add(loginPanel, "Login");
+		cardPanel.add(signupPanel, "Signup");
+	
+		// Toggle action listeners
+		loginToggle.addActionListener(e -> cardLayout.show(cardPanel, "Login"));
+		signupToggle.addActionListener(e -> cardLayout.show(cardPanel, "Signup"));
+	
+		// Login and Signup actions
+		loginButton.addActionListener(e -> {
+			String username = loginUsername.getText();
+			String password = new String(loginPassword.getPassword());
+
+			boolean didLogin = User.login(username, password);
+			if(didLogin){
+				init(); // For simplicity, directly calling init(); Implement actual login logic here
+				login.dispose();
+			} else {
+				JOptionPane.showMessageDialog(login, "Error logging in");
+			}
+			
+
+		});
+	
+		signupButton.addActionListener(e -> {
+			// Implement actual signup logic here
+			String username = signupUsername.getText();
+			String password = new String(signupPassword.getPassword());
+			String userTypeSelected = userType.getSelectedItem().toString();
+
+			boolean didSignUp = User.signUp(username, password, userTypeSelected);
+			if(didSignUp){
+				init();
+				login.dispose();
+			} else {
+				JOptionPane.showMessageDialog(login, "Signup failed. User may already exist.");
+			}
+			
+		});
+	
+		login.setLayout(new BorderLayout());
+		login.add(togglePanel, BorderLayout.NORTH);
+		login.add(cardPanel, BorderLayout.CENTER);
+		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		login.setVisible(true);
+
 	}
 }
