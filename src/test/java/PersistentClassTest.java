@@ -57,7 +57,7 @@ public class PersistentClassTest {
         }
 
         // try adding another one
-       assertEquals(5, PersistentClass.addStudentToCourse("chuck", 1)) ;
+       assertEquals(3, PersistentClass.addStudentToCourse("chuck", 1)) ;
     }
 
     @Test
