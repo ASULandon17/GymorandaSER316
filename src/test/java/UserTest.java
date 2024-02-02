@@ -10,16 +10,14 @@ public class UserTest {
     // Generic variables for testing
     String name = "Unknown";
     String password = "password";
-    BeltValue beltRank = BeltValue.WHITE;
     UserType userType = UserType.MEMBER;
-    BeltValue trainingRank = BeltValue.NO_BELT;
 
     /**
      * Test Case to check if Member promoting to Trainer executes properly
      */
     @Test
     public void memberToTrainerTest() {
-        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        User.signUp(name, password, userType);
         assertEquals("Return value expected to be 0. Error upgrading from Member", 0, User.becomeTrainer());
     }
 
@@ -29,7 +27,7 @@ public class UserTest {
     @Test
     public void trainerToTrainerTest() {
         userType = UserType.TRAINER;
-        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        User.signUp(name, password, userType);
         assertEquals("Return value expected to be -1. Error upgrading from Trainer", -1, User.becomeTrainer());
     }
 
@@ -39,7 +37,7 @@ public class UserTest {
     @Test
     public void ownerToTrainerTest() {
         userType = UserType.OWNER;
-        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        User.signUp(name, password, userType);
         assertEquals("Return value expected to be 1. Error upgrading from Owner", 1, User.becomeTrainer());
     }
 
@@ -48,7 +46,7 @@ public class UserTest {
      */
     @Test
     public void increaseBeltRankTest() {
-        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        User.signUp(name, password, userType);
         User.increaseBeltRank();
         assertEquals("User has the wrong belt rank after increasing one stage from WHITE", BeltValue.YELLOW, User.getBeltRank());
     }
@@ -58,10 +56,12 @@ public class UserTest {
      */
     @Test
     public void increaseBeltRankMaxTest() {
-        beltRank = BeltValue.BLACK3;
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        user.increaseBeltRank();
-        assertEquals("User has the wrong belt rank after increasing one stage from BLACK3", BeltValue.BLACK3, user.getBeltRank());
+        User.signUp(name, password, userType);
+        while(User.getBeltRank() != BeltValue.BLACK3) {
+            User.increaseBeltRank();
+        }
+        User.increaseBeltRank();
+        assertEquals("User has the wrong belt rank after increasing one stage from BLACK3", BeltValue.BLACK3, User.getBeltRank());
     }
 
     /**
@@ -69,9 +69,9 @@ public class UserTest {
      */
     @Test
     public void increaseTrainingRankTest() {
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        user.increaseTrainingRank();
-        assertEquals("User has the wrong training rank after increasing one stage from NO_BELT", BeltValue.WHITE, user.getTrainingRank());
+        User.signUp(name, password, userType);
+        User.increaseTrainingRank();
+        assertEquals("User has the wrong training rank after increasing one stage from NO_BELT", BeltValue.WHITE, User.getTrainingRank());
     }
 
     /**
@@ -79,9 +79,11 @@ public class UserTest {
      */
     @Test
     public void increaseTrainingRankMaxTest() {
-        trainingRank = BeltValue.BLACK3;
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        user.increaseTrainingRank();
-        assertEquals("User has the wrong training rank after increasing one stage from BLACK3", BeltValue.BLACK3, user.getTrainingRank());
+        User.signUp(name, password, userType);
+        while(User.getTrainingRank() != BeltValue.BLACK3) {
+            User.increaseTrainingRank();
+        }
+        User.increaseTrainingRank();
+        assertEquals("User has the wrong training rank after increasing one stage from BLACK3", BeltValue.BLACK3, User.getTrainingRank());
     }
 }
