@@ -19,7 +19,7 @@ public class PersistentClassTest extends JSONTest {
 
     @Test
     public void testAddNewClassWithoutTrainer () {
-        //assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
+
         assertTrue(PersistentClass.addNewClass("swim class", 2, 10, 2));
 
 
