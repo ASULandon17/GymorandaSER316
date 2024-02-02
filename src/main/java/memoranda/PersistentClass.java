@@ -82,8 +82,8 @@ public class PersistentClass {
      * AND they aren't already registered.
      * @param studentUserName username of student registering
      * @param classID classID for the course they want to register for
-     * @return 0 - Instructor added; 1 - instructor is already assigned; 2 - IO or JSON exception thrown;
-     * 3 - JSON file not found, 4 - student already registered for course
+     * @return 0 - student added successfully, 1 - JSON file not found, 2 - IO or JSON Exception thrown,
+     * 3 - class is full, 4 - student is already registered for course
      */
     public static int addStudentToCourse(String studentUserName, int classID) {
 
@@ -96,7 +96,7 @@ public class PersistentClass {
             File file = new File("classes.json");
 
             if (!file.exists()) {
-                return 3; // JSON file not found
+                return 1; // JSON file not found
             }
 
             String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
@@ -127,7 +127,7 @@ public class PersistentClass {
                                 try (FileWriter writer = new FileWriter("classes.json")) {
                                     writer.write(classes.toString());
                                 }
-                                
+
                                 return 0;
 
                                 // check to see if student is already registered for the course
@@ -153,10 +153,6 @@ public class PersistentClass {
                             }
                         }
                     }
-
-
-
-
                 }
             }
 
@@ -164,7 +160,7 @@ public class PersistentClass {
             return 2;
         }
 
-        return 0;
+        return 3;
     }
 
     /**

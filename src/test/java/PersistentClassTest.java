@@ -24,4 +24,25 @@ public class PersistentClassTest {
         PersistentClass.addStudentToCourse("test", 1);
         PersistentClass.addStudentToCourse("test2", 1);
     }
+
+    @Test
+    public void testAddStudentsToMaxCapacity () {
+        // add ten students
+
+        for (int i = 0; i < 10; i++) {
+            PersistentClass.addStudentToCourse("test" + i, 1);
+        }
+    }
+
+    @Test
+    public void testAddStudentsAfterMaxCapacity () {
+        // add ten students
+
+        for (int i = 0; i < 10; i++) {
+            PersistentClass.addStudentToCourse("test" + i, 1);
+        }
+
+        // try adding another one
+       assertEquals(5, PersistentClass.addStudentToCourse("chuck", 1)) ;
+    }
 }
