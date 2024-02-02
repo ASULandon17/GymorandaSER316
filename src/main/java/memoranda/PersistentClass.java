@@ -16,10 +16,16 @@ public class PersistentClass {
     private static int _maxClassSize;
     private static int _classID;
 
-    private static JSONObject _instructor;
+    private static String _UserName;
 
 
-    public static boolean addInstructorToCourse(String instructorUserName, int classID) {
+    /**
+     * This method adds an instructor to a specific class
+     * @param instructorUserName username of instructor
+     * @param classID classID
+     * @return 0 - Instructor added; 1 - instructor is already assigned; 2 - IO or JSON exception thrown; 3 - JSON file not found
+     */
+    public static int addInstructorToCourse(String instructorUserName, int classID) {
 
         // pull in the classes array, check if it has an instructor
 
@@ -27,7 +33,7 @@ public class PersistentClass {
             File file = new File("classes.json");
 
             if (!file.exists()) {
-                return false; // JSON file not found
+                return 3; // JSON file not found
             }
 
             String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
@@ -35,30 +41,92 @@ public class PersistentClass {
 
             for (int i = 0; i < classes.length(); i++) {
                JSONObject classs = classes.getJSONObject(i);
+               // If a class doesn't have an instructor, update instructor field
                 if (classs.getString("instructorName").equals("TBD") && classs.getInt("classID") == classID) {
 
                     classs.remove("instructorName");
                     classs.put("instructorName", instructorUserName);
 
+                } else if (classs.getString("instructorName").equals(instructorUserName) && classs.getInt("classID") == classID) {
+
+                    return 1; // This instructor is already assigned
+                }
+
 
                     // write updates to file
-
-                    try (FileWriter writer = new FileWriter("classes.json")) {
-                        writer.write(classes.toString());
-                    }
-
-
+                try (FileWriter writer = new FileWriter("classes.json")) {
+                    writer.write(classes.toString());
                 }
+
 
             }
 
         } catch (IOException | JSONException e) {
-            return false;
+            return 2;
         }
 
-        return true;
+        return 0;
     }
 
+
+    public static int addStudentToCourse(String studentUserName, int classID) {
+
+        // pull in the classes array
+
+        try {
+            File file = new File("classes.json");
+
+            if (!file.exists()) {
+                return 3; // JSON file not found
+            }
+
+            String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
+            JSONArray classes = new JSONArray(classContent);
+
+
+            for (int i = 0; i < classes.length(); i++) {
+                JSONObject classs = classes.getJSONObject(i);
+                int maxRoster = classs.getInt("maxClassSize");
+
+                if(classs.getInt("classID") == classID) { // if we're on the right class, pull the roster
+
+                    JSONArray students = classs.getJSONArray("roster");
+
+                    if (students.length() < maxRoster ) {
+                        for (int j = 0; j <= students.length(); j++) {
+                            if(!students.getString(j).equals(studentUserName) || students.getString(j) == null) {
+                                JSONObject addStudent = new JSONObject();
+                                addStudent.put("studentUserName", studentUserName);
+                                students.put(j, addStudent);
+
+                            }
+                        }
+                    }
+
+                }
+
+
+                // todo: check and see if student is already registered, check if max number of students are already registered, then add student
+                // todo: probably making this too complicated - look at JSON examples again for dealing with json within json
+                // should be like getJSONOBJECT within the JSON array
+
+
+
+
+                // write updates to file
+                try (FileWriter writer = new FileWriter("classes.json")) {
+                    writer.write(classes.toString());
+                }
+
+
+            }
+
+        } catch (IOException | JSONException e) {
+            return 2;
+        }
+
+        return 0;
+    }
 
 
     public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
@@ -74,6 +142,9 @@ public class PersistentClass {
         classObject.put("maxClassSize", _maxClassSize);
         classObject.put("classID", _classID);
         classObject.put("instructorName", "TBD");
+
+        JSONArray roster = new JSONArray(); // add JSON array of students registered for the course
+        classObject.put("roster", roster);
 
         try {
             File file = new File("classes.json");
