@@ -16,7 +16,7 @@ public class PersistentClass {
     private static int _maxClassSize;
     private static int _classID;
 
-    private static String _UserName;
+
 
 
     /**
@@ -71,6 +71,8 @@ public class PersistentClass {
 
     public static int addStudentToCourse(String studentUserName, int classID) {
 
+
+
         // pull in the classes array
 
         try {
@@ -81,44 +83,52 @@ public class PersistentClass {
             }
 
             String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
-            JSONArray classes = new JSONArray(classContent);
+            JSONArray classes = new JSONArray(classContent); // current list of classes
 
 
             for (int i = 0; i < classes.length(); i++) {
+
                 JSONObject classs = classes.getJSONObject(i);
+
                 int maxRoster = classs.getInt("maxClassSize");
 
-                if(classs.getInt("classID") == classID) { // if we're on the right class, pull the roster
+                if (classs.getInt("classID") == classID) { // if we're on the right class, pull the roster
 
                     JSONArray students = classs.getJSONArray("roster");
 
-                    if (students.length() < maxRoster ) {
+                    if (students.length() < maxRoster) {
+
                         for (int j = 0; j <= students.length(); j++) {
-                            if(!students.getString(j).equals(studentUserName) || students.getString(j) == null) {
-                                JSONObject addStudent = new JSONObject();
-                                addStudent.put("studentUserName", studentUserName);
-                                students.put(j, addStudent);
+
+                            // if array is empty, add the student
+                            if (students.isNull(j)) {
+
+                                // create JSON object for student
+                                JSONObject nullStudent = new JSONObject();
+                                nullStudent.put("students", studentUserName);
+                               // add to JSON array (aka student roster)
+                                students.put(nullStudent);
+                                j++;
+
+                            } else {
+
+                                JSONObject registeredStudent = students.getJSONObject(j);
+                                registeredStudent.put("students", studentUserName);
+                                students.put(registeredStudent);
+                                j++;
+
 
                             }
                         }
                     }
 
+                    // write updates to file
+                    try (FileWriter writer = new FileWriter("classes.json")) {
+                        writer.write(classes.toString());
+                    }
+
+
                 }
-
-
-                // todo: check and see if student is already registered, check if max number of students are already registered, then add student
-                // todo: probably making this too complicated - look at JSON examples again for dealing with json within json
-                // should be like getJSONOBJECT within the JSON array
-
-
-
-
-                // write updates to file
-                try (FileWriter writer = new FileWriter("classes.json")) {
-                    writer.write(classes.toString());
-                }
-
-
             }
 
         } catch (IOException | JSONException e) {
