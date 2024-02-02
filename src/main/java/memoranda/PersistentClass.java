@@ -15,11 +15,9 @@ public class PersistentClass {
     private static int _classLength;
     private static int _maxClassSize;
     private static int _classID;
-
     private static String _studentUserName;
     private static String _instructorUserName;
 
-    private static int _currentClassSize;
 
 
 
