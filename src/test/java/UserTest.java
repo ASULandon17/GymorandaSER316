@@ -6,7 +6,7 @@ import main.java.memoranda.User;
 import main.java.memoranda.BeltValue;
 import main.java.memoranda.UserType;
 
-public class UserTest {
+public class UserTest extends JSONTest{
     // Generic variables for testing
     String name = "Unknown";
     String password = "password";

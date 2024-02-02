@@ -4,32 +4,13 @@ import main.java.memoranda.UserType;
 
 import org.junit.*;
 
-import java.io.File;
-
 
 import static org.junit.Assert.*;
 
-public class PersistentClassTest {
+public class PersistentClassTest extends JSONTest {
 
 
-    private void deleteJSONFiles() {
-        try{
-            File doomedClasses = new File("classes.json");
-            File doomedUsers = new File("users.json");
 
-           if(doomedClasses.delete() && doomedUsers.delete()) {
-               System.out.println("JSON files deleted succesfully for testing");
-           } else{
-               System.out.println("JSON files were not deleted");
-           }
-
-
-        }catch (SecurityException | NullPointerException e) {
-            System.out.println("Program does not have access to delete this file");
-        }
-
-
-    }
     @Before
     public void setup() {
         deleteJSONFiles();
