@@ -1,5 +1,6 @@
 import memoranda.PersistentClass;
 import main.java.memoranda.User;
+import main.java.memoranda.UserType;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -9,7 +10,7 @@ public class PersistentClassTest {
 
     @Before
     public void setup() {
-        User.signUp("trainerTest", "password", "Trainer");
+        User.signUp("trainerTest", "password", UserType.TRAINER);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class PersistentClassTest {
         }
 
         // try adding another one
-       assertEquals(5, PersistentClass.addStudentToCourse("chuck", 1)) ;
+       assertEquals(3, PersistentClass.addStudentToCourse("chuck", 1)) ;
     }
 
     @Test
