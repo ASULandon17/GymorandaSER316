@@ -23,10 +23,10 @@
 
 
 **Unit Tests Blackbox** (start Sprint 2)
-  > Describe your Blackbox testing policy 
+  > For any methods that are more complex than basic getter/setter methods we will write Blackbox tests that achieve at a minimum 80% code coverage.
 
  **Unit Tests Whitebox** (online: start Sprint 2, campus: start Sprint 3)
-  > Describe your Whitebox testing policy 
+  > For any methods that are more complex than basic getter/setter methods we will write Whitebox tests that achieve full edge coverage. 
 
 **Code Review** (online: start Sprint 2, campus: start Sprint 2)
   > No code or documentation changes should be merged into dev or master without a review.
