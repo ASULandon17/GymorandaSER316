@@ -68,7 +68,14 @@ public class PersistentClass {
         return 0;
     }
 
-
+    /**
+     * addStudentToCourse() allows user to register for a course as long as the course isn't full
+     * AND they aren't already registered.
+     * @param studentUserName username of student registering
+     * @param classID classID for the course they want to register for
+     * @return 0 - Instructor added; 1 - instructor is already assigned; 2 - IO or JSON exception thrown;
+     * 3 - JSON file not found, 4 - student already registered for course
+     */
     public static int addStudentToCourse(String studentUserName, int classID) {
 
 
@@ -119,7 +126,7 @@ public class PersistentClass {
                                 j++;
 
                             }else {
-                                return 5; // Student already registered for course
+                                return 4; // Student already registered for course
                             }
                         }
                     }
