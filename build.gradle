@@ -19,6 +19,8 @@ dependencies {
   implementation 'net.sourceforge.nekohtml:nekohtml:1.9.+'
     implementation 'org.json:json:20171018'
     implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
 }
 
 ///////////////////////////////////////////////////////////////////////
