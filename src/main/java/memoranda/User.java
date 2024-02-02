@@ -1,4 +1,4 @@
-package memoranda;
+package main.java.memoranda;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;

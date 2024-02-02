@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import memoranda.User;
+import main.java.memoranda.User;
 import main.java.memoranda.BeltValue;
 import main.java.memoranda.UserType;
 
@@ -11,6 +11,7 @@ public class UserTest {
     String name = "Unknown";
     String password = "password";
     UserType userType = UserType.MEMBER;
+
 
     /**
      * Test Case to check if Member promoting to Trainer executes properly

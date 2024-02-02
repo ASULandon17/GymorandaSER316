@@ -1,5 +1,5 @@
 import memoranda.PersistentClass;
-import memoranda.User;
+import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 
 import org.junit.*;
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class PersistentClassTest {
 
 
-    public void deleteJSONFiles() {
+    private void deleteJSONFiles() {
         try{
             File doomedClasses = new File("classes.json");
             File doomedUsers = new File("users.json");
@@ -29,9 +29,6 @@ public class PersistentClassTest {
         }
 
 
-
-
-
     }
     @Before
     public void setup() {
@@ -41,8 +38,8 @@ public class PersistentClassTest {
 
     @Test
     public void testAddNewClassWithoutTrainer () {
-        assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
-
+        //assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
+        assertTrue(PersistentClass.addNewClass("swim class", 2, 10, 2));
 
 
     }
