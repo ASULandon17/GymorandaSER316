@@ -37,28 +37,41 @@ public class Class {
      * Adds student to class roster if not full
      * @param studentUserName user attending the class
      */
-    public void addStudentToClass(String studentUserName) {
+    public boolean addStudentToClass(String studentUserName) {
 
-        try {
+        if (this.students.size() < this.maxStudentsAllowed) {
 
-            File file = new File("users.json");
+            try {
 
-            if (!file.exists()) {
-                throw new Exception("JSON file does not exist");
-            }
+                File file = new File("users.json");
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
-            JSONArray usersArray = new JSONArray(content);
-
-            for (int i = 0; i < usersArray.length(); i++) {
-                JSONObject user = usersArray.getJSONObject(i);
-                if (user.getString("username").equals(studentUserName)) {
-                    this.students.add(user);
+                if (!file.exists()) {
+                    return false; //JSON file not found
                 }
+
+                String content = new String(Files.readAllBytes(Paths.get("users.json")));
+                JSONArray usersArray = new JSONArray(content);
+
+                for (int i = 0; i < usersArray.length(); i++) {
+                    JSONObject user = usersArray.getJSONObject(i);
+                    // If the user exists and isn't already signed up for the class, add to roster
+                    if (user.getString("username").equals(studentUserName) && !this.students.contains(user)) {
+                        this.students.add(user);
+                    } else {
+
+                        return false; // User already registered for class
+                    }
+                }
+                return true;
+
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }else {
+            return false;
         }
+
 
 
 
