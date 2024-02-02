@@ -19,6 +19,8 @@ public class PersistentClass {
     private static String _studentUserName;
     private static String _instructorUserName;
 
+    private static int _currentClassSize;
+
 
 
 
@@ -118,32 +120,49 @@ public class PersistentClass {
                             // if array is empty, add the student
                             if (students.isNull(j)) {
 
+                                students.put(_studentUserName);
+
                                 // create JSON object for student
-                                JSONObject nullStudent = new JSONObject();
-                                nullStudent.put("students", _studentUserName);
+                             //   JSONObject nullStudent = new JSONObject();
+                            //    nullStudent.put(_studentUserName, _studentUserName);
 
                                // add to JSON array (aka student roster)
-                                students.put(nullStudent);
-                                j++;
+                            //    students.put(nullStudent);
+                               // _currentClassSize++;
+
+                                // write updates to file
+                                try (FileWriter writer = new FileWriter("classes.json")) {
+                                    writer.write(classes.toString());
+                                }
+                                return 0;
 
                                 // check to see if student is already registered for the course
-                            } else if (!students.getJSONObject(j).getString("students").equals(_studentUserName)){
+                            } else if (!students.getString(j).equals(_studentUserName)){
 
-                                JSONObject registeredStudent = students.getJSONObject(j);
-                                registeredStudent.put("students", _studentUserName);
-                                students.put(registeredStudent);
-                                j++;
+                               // JSONObject registeredStudent = students.getJSONObject(j);
+                               // registeredStudent.put(_studentUserName, _studentUserName);
+                                students.put(_studentUserName);
+                               // _currentClassSize++;
 
-                            }else {
+                                // write updates to file
+                                try (FileWriter writer = new FileWriter("classes.json")) {
+                                    writer.write(classes.toString());
+                                }
+                                return 0;
+
+                            }else if (students.getJSONObject(j).getString(_studentUserName).equals(_studentUserName)){
+
                                 return 4; // Student already registered for course
+
+                            }
+
+                            else {
+                                j++;
                             }
                         }
                     }
 
-                    // write updates to file
-                    try (FileWriter writer = new FileWriter("classes.json")) {
-                        writer.write(classes.toString());
-                    }
+
 
 
                 }
@@ -156,7 +175,14 @@ public class PersistentClass {
         return 0;
     }
 
-
+    /**
+     * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classID unique class ID (int)
+     * @return true or false pending success
+     */
     public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
         _className = className;
         _classLength = classLength;
@@ -170,6 +196,38 @@ public class PersistentClass {
         classObject.put("classID", _classID);
         classObject.put("instructorName", "TBD");
 
+        return addNewClass(classObject);
+
+    }
+
+    /**
+     * This method allows the owner to add a new class if they do know the instructor that will be teaching
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classID unique class ID (int)
+     * @param instructorUserName name of instructor teaching the course
+     * @return true or false pending success
+     */
+    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID, String instructorUserName) {
+        _className = className;
+        _classLength = classLength;
+        _maxClassSize = maxClassSize;
+        _classID = classID;
+        _instructorUserName = instructorUserName;
+
+        JSONObject classObject = new JSONObject();
+        classObject.put("className", _className);
+        classObject.put("classLength", _classLength);
+        classObject.put("maxClassSize", _maxClassSize);
+        classObject.put("classID", _classID);
+        classObject.put("instructorName", _instructorUserName);
+
+        return addNewClass(classObject);
+
+    }
+
+    private static boolean addNewClass (JSONObject classObject) {
         JSONArray roster = new JSONArray(); // add JSON array of students registered for the course
         classObject.put("roster", roster);
 
@@ -206,6 +264,5 @@ public class PersistentClass {
         }
 
         return true;
-
     }
 }

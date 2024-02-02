@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 public class PersistentClassTest {
 
     @Test
-    public void testAddNewClass() {
+    public void testAddNewClassWithoutTrainer() {
         assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
         assertTrue(PersistentClass.addNewClass("swim class", 3, 10, 2));
 
@@ -22,5 +22,6 @@ public class PersistentClassTest {
     @Test
     public void testAddStudentToClass() {
         PersistentClass.addStudentToCourse("test", 1);
+        PersistentClass.addStudentToCourse("test2", 1);
     }
 }
