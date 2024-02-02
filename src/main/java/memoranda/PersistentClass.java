@@ -122,32 +122,24 @@ public class PersistentClass {
 
                                 students.put(_studentUserName);
 
-                                // create JSON object for student
-                             //   JSONObject nullStudent = new JSONObject();
-                            //    nullStudent.put(_studentUserName, _studentUserName);
 
-                               // add to JSON array (aka student roster)
-                            //    students.put(nullStudent);
-                               // _currentClassSize++;
-
-                                // write updates to file
+                                // write update to file
                                 try (FileWriter writer = new FileWriter("classes.json")) {
                                     writer.write(classes.toString());
                                 }
+                                
                                 return 0;
 
                                 // check to see if student is already registered for the course
                             } else if (!students.getString(j).equals(_studentUserName)){
 
-                               // JSONObject registeredStudent = students.getJSONObject(j);
-                               // registeredStudent.put(_studentUserName, _studentUserName);
                                 students.put(_studentUserName);
-                               // _currentClassSize++;
 
-                                // write updates to file
+                                // write update to file
                                 try (FileWriter writer = new FileWriter("classes.json")) {
                                     writer.write(classes.toString());
                                 }
+
                                 return 0;
 
                             }else if (students.getJSONObject(j).getString(_studentUserName).equals(_studentUserName)){
@@ -157,7 +149,7 @@ public class PersistentClass {
                             }
 
                             else {
-                                j++;
+                                j++; // go onto next class entry
                             }
                         }
                     }
