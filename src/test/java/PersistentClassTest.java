@@ -1,11 +1,19 @@
 import memoranda.PersistentClass;
+import main.java.memoranda.User;
+
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class PersistentClassTest {
 
+
+    @Before
+    public void setup() {
+        User.signUp("trainerTest", "password", "Trainer");
+    }
+
     @Test
-    public void testAddNewClassWithoutTrainer() {
+    public void testAddNewClassWithoutTrainer () {
         assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
         assertTrue(PersistentClass.addNewClass("swim class", 3, 10, 2));
 
@@ -17,6 +25,12 @@ public class PersistentClassTest {
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 1));
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 2));
 
+    }
+
+    @Test
+    public void testAddNewClassWithTrainer () {
+
+        assertTrue(PersistentClass.addNewClass("HIIT Class", 3, 12, 3, "trainerTest"));
     }
 
     @Test
