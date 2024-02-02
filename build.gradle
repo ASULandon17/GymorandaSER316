@@ -15,10 +15,12 @@ repositories {
 }
 
 dependencies {
+    implementation "junit:junit:4.12"
   implementation 'com.io7m.xom:xom:1.2.+'
   implementation 'net.sourceforge.nekohtml:nekohtml:1.9.+'
     implementation 'org.json:json:20171018'
     implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation project(path: ':')
 }
 
 ///////////////////////////////////////////////////////////////////////

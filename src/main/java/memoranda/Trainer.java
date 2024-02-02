@@ -1,5 +1,7 @@
 package main.java.memoranda;
 
+import main.java.memoranda.BeltValue;
+
 /**
  * Trainer class to construct a trainer object
  * Trainer's have a name, beltRank and a trainingRank
