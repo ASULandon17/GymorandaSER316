@@ -106,19 +106,40 @@ public class User {
     public static UserType getUserType(){
         return _userType;
     }
-    public BeltValue getBeltRank() {
+    public static BeltValue getBeltRank() {
         return _beltRank;
     }
 
-    public BeltValue getTrainingRank() {
+    public static BeltValue getTrainingRank() {
         return _trainingRank;
     }
 
     /**
      * Increase User's belt rank by one stage
      */
-    public void increaseBeltRank() {
+    public static void increaseBeltRank() {
         _beltRank = _beltRank.increaseBelt();
+        try {
+            File file = new File("users.json");
+
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("beltRank", _beltRank.toString());
+                    break;
+                }
+            }
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -129,13 +150,35 @@ public class User {
      * Returns 2 if the User's userType is none of the 3 options (error)
      * @return int
      */
-    public int becomeTrainer() {
+    public static int becomeTrainer() {
         int changedUserType = 2;
 
         if(_userType == UserType.MEMBER) {
             changedUserType = 0;
-            _userType = _userType.becomeTrainer();
+            _userType = UserType.TRAINER;
             increaseTrainingRank();
+            try {
+                File file = new File("users.json");
+                String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
+                JSONArray usersArray = new JSONArray(content);
+
+                for (int i = 0; i < usersArray.length(); i++) {
+                    JSONObject user = usersArray.getJSONObject(i);
+                    if (user.getString("username").equals(_username)) {
+                        // Update the user type in the JSON object
+                        user.put("userType", _userType.toString());
+                        break;
+                    }
+                }
+
+                // Write the updated JSON array back to the file
+                try (FileWriter fileWriter = new FileWriter(file)) {
+                    fileWriter.write(usersArray.toString());
+                }
+
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
         }
         else if(_userType == UserType.TRAINER) {
             changedUserType = -1;
@@ -153,7 +196,28 @@ public class User {
     /**
      * Increase User's training rank by one stage
      */
-    public void increaseTrainingRank() {
+    public static void increaseTrainingRank() {
         _trainingRank = _trainingRank.increaseBelt();
+        try {
+            File file = new File("users.json");
+            String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("trainingRank", _trainingRank.toString());
+                    break;
+                }
+            }
+
+            // Write the updated JSON array back to the file
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

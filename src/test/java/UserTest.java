@@ -19,8 +19,8 @@ public class UserTest {
      */
     @Test
     public void memberToTrainerTest() {
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        assertEquals("Return value expected to be 0. Error upgrading from Member", 0, user.becomeTrainer());
+        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        assertEquals("Return value expected to be 0. Error upgrading from Member", 0, User.becomeTrainer());
     }
 
     /**
@@ -29,8 +29,8 @@ public class UserTest {
     @Test
     public void trainerToTrainerTest() {
         userType = UserType.TRAINER;
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        assertEquals("Return value expected to be -1. Error upgrading from Trainer", -1, user.becomeTrainer());
+        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        assertEquals("Return value expected to be -1. Error upgrading from Trainer", -1, User.becomeTrainer());
     }
 
     /**
@@ -39,8 +39,8 @@ public class UserTest {
     @Test
     public void ownerToTrainerTest() {
         userType = UserType.OWNER;
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        assertEquals("Return value expected to be 1. Error upgrading from Owner", 1, user.becomeTrainer());
+        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        assertEquals("Return value expected to be 1. Error upgrading from Owner", 1, User.becomeTrainer());
     }
 
     /**
@@ -48,9 +48,9 @@ public class UserTest {
      */
     @Test
     public void increaseBeltRankTest() {
-        User user = new User(name, password, beltRank, userType, trainingRank);
-        user.increaseBeltRank();
-        assertEquals("User has the wrong belt rank after increasing one stage from WHITE", BeltValue.YELLOW, user.getBeltRank());
+        User.signUp(name, password, UserType.valueOf(userType.toString()));
+        User.increaseBeltRank();
+        assertEquals("User has the wrong belt rank after increasing one stage from WHITE", BeltValue.YELLOW, User.getBeltRank());
     }
 
     /**
