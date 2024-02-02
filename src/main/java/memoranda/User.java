@@ -20,14 +20,6 @@ public class User {
     private static UserType _userType;
     private static BeltValue _trainingRank = BeltValue.NO_BELT;
 
-    public User(String name, String password, BeltValue beltRank, UserType userType, BeltValue trainingRank) {
-        _username = name;
-        _password = password;
-        _beltRank = beltRank;
-        _userType = userType;
-        _trainingRank = trainingRank;
-    }
-
     public static boolean signUp(String newUser, String newPassword, UserType userType){
         _username = newUser;
         _password = newPassword;
