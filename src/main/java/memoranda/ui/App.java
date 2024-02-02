@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import javax.swing.*;
 
 import main.java.memoranda.EventsScheduler;
+import main.java.memoranda.UserType;
 import main.java.memoranda.util.Configuration;
 import main.java.memoranda.User;
 
@@ -220,7 +221,7 @@ public class App {
 		signupPanel.setBorder(padding);
 		JTextField signupUsername = new JTextField();
 		JPasswordField signupPassword = new JPasswordField();
-		JComboBox<String> userType = new JComboBox<>(new String[]{"Member", "Trainer", "Owner"});
+		JComboBox<String> userType = new JComboBox<>(new String[]{String.valueOf(UserType.MEMBER), String.valueOf(UserType.TRAINER), String.valueOf(UserType.OWNER)});
     	JButton signupButton = new JButton("Signup");
     	signupPanel.add(new JLabel("Username:"));
     	signupPanel.add(signupUsername);
@@ -258,7 +259,7 @@ public class App {
 			// Implement actual signup logic here
 			String username = signupUsername.getText();
 			String password = new String(signupPassword.getPassword());
-			String userTypeSelected = userType.getSelectedItem().toString();
+			UserType userTypeSelected = UserType.valueOf((String) userType.getSelectedItem());
 
 			boolean didSignUp = User.signUp(username, password, userTypeSelected);
 			if(didSignUp){

@@ -4,7 +4,7 @@ package main.java.memoranda;
  * Enum class for the belt ranks
  */
 public enum BeltValue {
-    WHITE, YELLOW, ORANGE, PURPLE, BLUE, BLUE_STRIPE, GREEN, GREEN_STRIPE,
+    NO_BELT, WHITE, YELLOW, ORANGE, PURPLE, BLUE, BLUE_STRIPE, GREEN, GREEN_STRIPE,
     BROWN1, BROWN2, BROWN3, BLACK1, BLACK2, BLACK3;
 
     /**
@@ -14,6 +14,8 @@ public enum BeltValue {
      */
     public BeltValue increaseBelt() {
         switch(this) {
+            case NO_BELT:
+                return WHITE;
             case WHITE:
                 return YELLOW;
             case YELLOW:
