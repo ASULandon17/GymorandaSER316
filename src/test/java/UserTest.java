@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.java.memoranda.User;
+import memoranda.User;
 import main.java.memoranda.BeltValue;
 import main.java.memoranda.UserType;
 
