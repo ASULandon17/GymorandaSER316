@@ -16,6 +16,49 @@ public class PersistentClass {
     private static int _maxClassSize;
     private static int _classID;
 
+    private static JSONObject _instructor;
+
+
+    public static boolean addInstructorToCourse(String instructorUserName, int classID) {
+
+        // pull in the classes array, check if it has an instructor
+
+        try {
+            File file = new File("classes.json");
+
+            if (!file.exists()) {
+                return false; // JSON file not found
+            }
+
+            String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
+            JSONArray classes = new JSONArray(classContent);
+
+            for (int i = 0; i < classes.length(); i++) {
+               JSONObject classs = classes.getJSONObject(i);
+                if (classs.getString("instructorName").equals("TBD") && classs.getInt("classID") == classID) {
+
+                    classs.remove("instructorName");
+                    classs.put("instructorName", instructorUserName);
+
+
+                    // write updates to file
+
+                    try (FileWriter writer = new FileWriter("classes.json")) {
+                        writer.write(classes.toString());
+                    }
+
+
+                }
+
+            }
+
+        } catch (IOException | JSONException e) {
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
@@ -30,6 +73,7 @@ public class PersistentClass {
         classObject.put("classLength", _classLength);
         classObject.put("maxClassSize", _maxClassSize);
         classObject.put("classID", _classID);
+        classObject.put("instructorName", "TBD");
 
         try {
             File file = new File("classes.json");
