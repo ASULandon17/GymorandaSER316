@@ -45,4 +45,10 @@ public class PersistentClassTest {
         // try adding another one
        assertEquals(5, PersistentClass.addStudentToCourse("chuck", 1)) ;
     }
+
+    @Test
+    public void testGetClassSize () {
+        assertEquals(10, PersistentClass.getClassSize(1));
+        assertEquals(0, PersistentClass.getClassSize(2));
+    }
 }

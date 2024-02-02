@@ -251,4 +251,52 @@ public class PersistentClass {
 
         return true;
     }
+
+    /**
+     * This method returns the total amount of students currently signed up for the course.
+     * @param classID unique ID of the course
+     * @return number of students registered (0 if empty) OR 99 if there is an error.
+     */
+    public static int getClassSize (int classID) {
+        _classID = classID;
+
+        try {
+            File file = new File("classes.json");
+            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
+
+            if (!file.exists()){
+                return 99;
+            }
+            else if (file.exists()) {
+                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
+                classesArray = new JSONArray(content);
+            }
+            else{
+
+                classesArray = new JSONArray();
+            }
+
+            for (int i = 0; i < classesArray.length(); i++) {
+
+                JSONObject iterator = classesArray.getJSONObject(i);
+
+                System.out.println(iterator);
+
+                if(iterator.getInt("classID") == _classID) {
+                    JSONArray roster = iterator.getJSONArray("roster");
+                    return roster.length();
+
+                }
+
+            }
+
+            } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return 99;
+        }
+
+        return 0;
+    }
 }
