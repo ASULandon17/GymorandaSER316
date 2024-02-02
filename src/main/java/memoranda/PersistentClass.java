@@ -16,6 +16,9 @@ public class PersistentClass {
     private static int _maxClassSize;
     private static int _classID;
 
+    private static String _studentUserName;
+    private static String _instructorUserName;
+
 
 
 
@@ -27,6 +30,8 @@ public class PersistentClass {
      */
     public static int addInstructorToCourse(String instructorUserName, int classID) {
 
+        _instructorUserName = instructorUserName;
+        _classID = classID;
         // pull in the classes array, check if it has an instructor
 
         try {
@@ -40,14 +45,16 @@ public class PersistentClass {
             JSONArray classes = new JSONArray(classContent);
 
             for (int i = 0; i < classes.length(); i++) {
-               JSONObject classs = classes.getJSONObject(i);
-               // If a class doesn't have an instructor, update instructor field
-                if (classs.getString("instructorName").equals("TBD") && classs.getInt("classID") == classID) {
+
+                JSONObject classs = classes.getJSONObject(i);
+
+                // If a class doesn't have an instructor, update instructor field
+                if (classs.getString("instructorName").equals("TBD") && classs.getInt("classID") == _classID) {
 
                     classs.remove("instructorName");
-                    classs.put("instructorName", instructorUserName);
+                    classs.put("instructorName", _instructorUserName);
 
-                } else if (classs.getString("instructorName").equals(instructorUserName) && classs.getInt("classID") == classID) {
+                } else if (classs.getString("instructorName").equals(_instructorUserName) && classs.getInt("classID") == _classID) {
 
                     return 1; // This instructor is already assigned
                 }
@@ -78,7 +85,8 @@ public class PersistentClass {
      */
     public static int addStudentToCourse(String studentUserName, int classID) {
 
-
+        _studentUserName = studentUserName;
+        _classID = classID;
 
         // pull in the classes array
 
@@ -99,7 +107,7 @@ public class PersistentClass {
 
                 int maxRoster = classs.getInt("maxClassSize");
 
-                if (classs.getInt("classID") == classID) { // if we're on the right class, pull the roster
+                if (classs.getInt("classID") == _classID) { // if we're on the right class, pull the roster
 
                     JSONArray students = classs.getJSONArray("roster");
 
@@ -112,16 +120,17 @@ public class PersistentClass {
 
                                 // create JSON object for student
                                 JSONObject nullStudent = new JSONObject();
-                                nullStudent.put("students", studentUserName);
+                                nullStudent.put("students", _studentUserName);
+
                                // add to JSON array (aka student roster)
                                 students.put(nullStudent);
                                 j++;
 
                                 // check to see if student is already registered for the course
-                            } else if (!students.getJSONObject(j).getString("students").equals(studentUserName)){
+                            } else if (!students.getJSONObject(j).getString("students").equals(_studentUserName)){
 
                                 JSONObject registeredStudent = students.getJSONObject(j);
-                                registeredStudent.put("students", studentUserName);
+                                registeredStudent.put("students", _studentUserName);
                                 students.put(registeredStudent);
                                 j++;
 
@@ -150,7 +159,6 @@ public class PersistentClass {
 
     public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
         _className = className;
-       // _trainer = trainer;
         _classLength = classLength;
         _maxClassSize = maxClassSize;
         _classID = classID;
