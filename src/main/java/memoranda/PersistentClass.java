@@ -110,14 +110,16 @@ public class PersistentClass {
                                 students.put(nullStudent);
                                 j++;
 
-                            } else {
+                                // check to see if student is already registered for the course
+                            } else if (!students.getJSONObject(j).getString("students").equals(studentUserName)){
 
                                 JSONObject registeredStudent = students.getJSONObject(j);
                                 registeredStudent.put("students", studentUserName);
                                 students.put(registeredStudent);
                                 j++;
 
-
+                            }else {
+                                return 5; // Student already registered for course
                             }
                         }
                     }
