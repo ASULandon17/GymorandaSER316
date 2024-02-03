@@ -8,13 +8,19 @@ import java.nio.file.Paths;
 
 public class JSONTest {
 
+    /**
+     * This utility test method restores the local json files after testing is complete
+     * @param tempJSONArray json files as a JSONArray
+     */
     public void restoreJSONFiles (JSONArray tempJSONArray) {
 
-        try (FileWriter writer = new FileWriter("NEWclasses.json")) {
+        // Each json file is in the JSONArray as a JSONObject with a key corresponding to the file
+
+        try (FileWriter writer = new FileWriter("classes.json")) {
             writer.write(tempJSONArray.getJSONObject(0).getJSONArray("class").toString());
 
 
-            try (FileWriter anotherWriter = new FileWriter("NEWusers.json")) {
+            try (FileWriter anotherWriter = new FileWriter("users.json")) {
                 anotherWriter.write(tempJSONArray.getJSONObject(1).getJSONArray("user").toString());
             }
 
@@ -23,10 +29,7 @@ public class JSONTest {
             e.printStackTrace();
         }
 
-
-
-
-        System.out.println("Files restored!");
+        //System.out.println("Files restored!");
 
 
     }
@@ -62,7 +65,7 @@ public class JSONTest {
             jsonSecretStash.put(userKey);
 
             //System.out.println(jsonSecretStash);
-            System.out.println("Files deleted!");
+            //System.out.println("Files deleted!");
 
 
             // delete the json files
