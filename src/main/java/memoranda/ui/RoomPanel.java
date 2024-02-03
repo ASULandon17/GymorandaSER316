@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 
 public class RoomPanel extends JPanel {
 	BorderLayout borderLayout1 = new BorderLayout();
@@ -31,15 +32,18 @@ public class RoomPanel extends JPanel {
 	JLabel desertTextLabel = new JLabel("Desert Room");
 	JLabel jungleTextLabel = new JLabel("Jungle Room");
 	JLabel arcticTextLabel = new JLabel("Arctic Room");
-	JTable desertTable = new JTable();
-	JTable jungleTable = new JTable();
-	JTable arcticTable = new JTable();
 	Font textFont = new Font("Verdana", Font.PLAIN, 14);
 	ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
 	ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
 	ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
 	
 	String[] columnNames = {"Time", "Trainer", "Level", "Availability", "Sign Up"};
+	Object[][] data = {{"10:00", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+					   {"11:00", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+					   {"12:00", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	JTable desertTable = new JTable(data, columnNames);
+	JTable jungleTable = new JTable();
+	JTable arcticTable = new JTable();
 	
 	
 	DailyItemsPanel parentPanel = null;
@@ -73,9 +77,9 @@ public class RoomPanel extends JPanel {
 		desertImagePanel.add(desertImageLabel);
 		jungleImagePanel.add(jungleImageLabel);
 		arcticImagePanel.add(arcticImageLabel);
-		desertImagePanel.setBackground(Color.red);
-		jungleImagePanel.setBackground(Color.blue);
-		arcticImagePanel.setBackground(Color.cyan);
+		desertImagePanel.setBackground(new Color(210, 85, 91, 100));
+		jungleImagePanel.setBackground(new Color(42, 230, 138, 100));
+		arcticImagePanel.setBackground(new Color(20, 190, 255, 100));
 		desertImageLabel.setIcon(desertIcon);
 		jungleImageLabel.setIcon(jungleIcon);
 		arcticImageLabel.setIcon(arcticIcon);	
@@ -95,16 +99,18 @@ public class RoomPanel extends JPanel {
 		desertTextPanel.setLayout(new GridBagLayout());
 		jungleTextPanel.setLayout(new GridBagLayout());
 		arcticTextPanel.setLayout(new GridBagLayout());
+		desertTextPanel.setBackground(new Color(210, 85, 91, 100));
+		jungleTextPanel.setBackground(new Color(42, 230, 138, 100));
+		arcticTextPanel.setBackground(new Color(20, 190, 255, 100));
 		desertTextPanel.add(desertTextLabel);
 		jungleTextPanel.add(jungleTextLabel);
 		arcticTextPanel.add(arcticTextLabel);
 		desertTextLabel.setFont(textFont);
 		jungleTextLabel.setFont(textFont);
 		arcticTextLabel.setFont(textFont);
-		desertTablePanel.setBackground(Color.green);
-		jungleTablePanel.setBackground(Color.white);
-		arcticTablePanel.setBackground(Color.yellow);
 		
+		//Add table UI 
+		desertTablePanel.add(new JScrollPane(desertTable));
 		
 	}
 }
