@@ -23,10 +23,18 @@
 
 
 **Unit Tests Blackbox** (start Sprint 2)
-  > For any methods that are more complex than basic getter/setter methods we will write Blackbox tests that achieve at a minimum 80% code coverage.
+  > For any methods that are more complex than basic getter/setter methods we will write Blackbox tests that achieve at a minimum 80% code coverage. These tests should be written mainly for code we create, but if it is believed to be necessary for already existing code, then test cases should be written for those as well.
+
+> The test cases should be developed by the developer responsible for the new code prior to submitting a pull request. All reviewers should review the test cases and have the ability to add new test cases they believe to be necessary.
+
+> The test cases should be written with Boundary Value Analysis and Equivalence Partitioning in mind.
 
  **Unit Tests Whitebox** (online: start Sprint 2, campus: start Sprint 3)
-  > For any methods that are more complex than basic getter/setter methods we will write Whitebox tests that achieve full edge coverage. 
+  > For any methods that are more complex than basic getter/setter methods we will write Whitebox tests that achieve full edge coverage. These tests should be written mainly for code we create, but if it is believed to be necessary for already existing code, then test cases should be written for those as well.
+
+> The test cases should be developed by the developer responsible for the new code prior to submitting a pull request. All reviewers should review the test cases and have the ability to add new test cases they believe to be necessary.
+
+> The developer creating the test cases should create a Control Flow Graph to model the method being tested. Note, this model does not need to be provided or shared with the rest of the team. It is purely for the developer to make creating the test cases easier. 
 
 **Code Review** (online: start Sprint 2, campus: start Sprint 2)
   > No code or documentation changes should be merged into dev or master without a review.
