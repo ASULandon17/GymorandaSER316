@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * This class contains utility methods for unit testing with JSON files.
+ */
 public class JSONTest {
 
     /**

@@ -8,10 +8,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * This class provides the backend for interacting with Classes within Gymoranda.
+ */
 public class PersistentClass {
 
     private static String _className;
-    //private static String _trainer;
     private static int _classLength;
     private static int _maxClassSize;
     private static int _classID;

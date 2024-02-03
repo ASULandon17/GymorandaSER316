@@ -8,6 +8,9 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
+/**
+ * This class contains unit tests for PersistentClass.java
+ */
 public class PersistentClassTest extends JSONTest {
 
     JSONArray tempFiles = new JSONArray();
