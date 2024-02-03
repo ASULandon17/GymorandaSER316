@@ -6,3 +6,5 @@
 
 users.json
 *.json
+
+.project
