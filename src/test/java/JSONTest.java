@@ -1,4 +1,6 @@
 import org.json.*;
+import org.junit.After;
+import org.junit.Before;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,6 +12,18 @@ import java.nio.file.Paths;
  * This class contains utility methods for unit testing with JSON files.
  */
 public class JSONTest {
+
+    private JSONArray tempJSONArray;
+
+    @Before
+    public void setup() {
+        tempJSONArray = deleteJSONFiles();
+    }
+
+    @After
+    public void restoreFiles() {
+        restoreJSONFiles(tempJSONArray);
+    }
 
     /**
      * This utility test method restores the local json files after testing is complete
