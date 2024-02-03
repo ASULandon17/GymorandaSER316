@@ -18,7 +18,7 @@ public class RoomsTest {
     }
     @After
     public void tearDown() throws Exception{
-        //Files.deleteIfExists(Paths.get("Rooms.json"));
+        Rooms.clearRooms();
     }
 
     @Test
@@ -55,5 +55,37 @@ public class RoomsTest {
         assertEquals(1, rooms.size());
         Room room = rooms.get(0);
         assertFalse(room.getHasClass());
+    }
+
+    @Test
+    public void testAddRoomNoDuplicates() {
+        Rooms.addRoom("Library");
+        Rooms.addRoom("Library");
+        assertEquals("Only one room should be added", 1, Rooms.getRooms().size());
+    }
+
+    @Test
+    public void testAddClassToRoom() {
+        String roomName = "Lab1";
+        Rooms.addRoom( roomName);
+        Rooms.addClassToRoom(roomName, 102);
+        Room room = Rooms.getRoomByName(roomName);
+        assertNotNull("Room should exist", room);
+        assertTrue("Room should have a class", room.getHasClass());
+        assertEquals("Class ID should be updated to 102", 102, (int) room.getClassId());
+    }
+    @Test
+    public void testGetRoomByName() {
+        String roomName = "Auditorium";
+        Rooms.addRoom(roomName);
+        assertNotNull("Room should be found by name", Rooms.getRoomByName(roomName));
+    }
+
+    @Test
+    public void testRoomListIntegrity() {
+        Rooms.addRoom("Room101");
+        Rooms.addRoom(true, "Room102", 202);
+        List<Room> rooms = Rooms.getRooms();
+        assertEquals("There should be exactly 2 rooms added", 2, rooms.size());
     }
 }
