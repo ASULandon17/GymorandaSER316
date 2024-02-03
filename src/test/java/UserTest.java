@@ -1,4 +1,7 @@
+import org.json.*;
 import static org.junit.Assert.*;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,11 +9,12 @@ import main.java.memoranda.User;
 import main.java.memoranda.BeltValue;
 import main.java.memoranda.UserType;
 
-public class UserTest {
+public class UserTest extends JSONTest{
     // Generic variables for testing
     String name = "Unknown";
     String password = "password";
     UserType userType = UserType.MEMBER;
+
 
     /**
      * Test Case to check if Member promoting to Trainer executes properly
