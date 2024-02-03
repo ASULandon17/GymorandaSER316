@@ -2,6 +2,7 @@ import memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 
+import org.json.*;
 import org.junit.*;
 
 
@@ -9,11 +10,12 @@ import static org.junit.Assert.*;
 
 public class PersistentClassTest extends JSONTest {
 
+    JSONArray tempFiles = new JSONArray();
 
 
     @Before
     public void setup() {
-        deleteJSONFiles();
+        tempFiles = deleteJSONFiles();
         User.signUp("trainerTest", "password", UserType.TRAINER);
     }
 
@@ -69,5 +71,10 @@ public class PersistentClassTest extends JSONTest {
     public void testGetClassSize () {
         assertEquals(10, PersistentClass.getClassSize(1));
         assertEquals(0, PersistentClass.getClassSize(2));
+    }
+
+    @After
+    public void restoreFiles () {
+        restoreJSONFiles(tempFiles);
     }
 }
