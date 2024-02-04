@@ -13,7 +13,13 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
+import main.java.memoranda.date.CalendarDate;
+import main.java.memoranda.date.CurrentDate;
+import main.java.memoranda.date.DateListener;
+
 public class RoomPanel extends JPanel {
+	CalendarDate currentDate;
+	
 	BorderLayout borderLayout1 = new BorderLayout();
 	JPanel imagePanel = new JPanel();
 	JPanel tablePanel = new JPanel();
@@ -37,13 +43,20 @@ public class RoomPanel extends JPanel {
 	ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
 	ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
 	
-	String[] columnNames = {"Time", "Trainer", "Level", "Availability", "Sign Up"};
-	Object[][] data = {{"10:00", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
-					   {"11:00", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
-					   {"12:00", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
-	JTable desertTable = new JTable(data, columnNames);
-	JTable jungleTable = new JTable();
-	JTable arcticTable = new JTable();
+	String[] columnNames = {"Time", "Class Name", "Trainer", "Level", "Availability", "Sign Up"};
+	Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+					   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+					   		{"12:00", "Akido", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	//Object[][] desertData = getTableData(currentDate.get(), "Desert");
+	Object[][] jungleData = {{"10:00", "Kids Class", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+			   				{"11:00", "Kickboxing", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+			   				{"12:00", "Krav Maga", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	Object[][] arcticData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+			   				{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+			   				{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	JTable desertTable = new JTable(desertData, columnNames);
+	JTable jungleTable = new JTable(jungleData, columnNames);
+	JTable arcticTable = new JTable(arcticData, columnNames);
 	
 	
 	DailyItemsPanel parentPanel = null;
@@ -111,6 +124,13 @@ public class RoomPanel extends JPanel {
 		
 		//Add table UI 
 		desertTablePanel.add(new JScrollPane(desertTable));
-		
+		jungleTablePanel.add(new JScrollPane(jungleTable));
+		arcticTablePanel.add(new JScrollPane(arcticTable));
 	}
+	
+	/*
+	 * Object[][] getTableData(CalendarDate date, String roomName) {
+	 * 
+	 * }
+	 */
 }
