@@ -1,4 +1,4 @@
-package memoranda;
+package main.java.memoranda;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,10 +8,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * This class provides the backend for interacting with Classes within Gymoranda.
+ */
 public class PersistentClass {
 
     private static String _className;
-    //private static String _trainer;
     private static int _classLength;
     private static int _maxClassSize;
     private static int _classID;
@@ -298,5 +300,20 @@ public class PersistentClass {
         }
 
         return 0;
+    }
+
+    /**
+     * This method will determine how many spots are left for a given course
+     * @param classID specific course ID number
+     * @return number of spots remaining in the class
+     */
+    public static int getSpotsRemaining(int classID) {
+        _classID = classID;
+
+        return (get_maxClassSize() - getClassSize(_classID));
+    }
+
+    public static int get_maxClassSize () {
+        return _maxClassSize;
     }
 }

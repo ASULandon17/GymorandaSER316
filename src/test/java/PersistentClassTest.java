@@ -1,28 +1,30 @@
-import memoranda.PersistentClass;
+import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 
+import org.json.*;
 import org.junit.*;
+
+
 import static org.junit.Assert.*;
 
-public class PersistentClassTest {
-
-
-    @Before
-    public void setup() {
-        User.signUp("trainerTest", "password", UserType.TRAINER);
-    }
+/**
+ * This class contains unit tests for PersistentClass.java
+ */
+public class PersistentClassTest extends JSONTest {
 
     @Test
     public void testAddNewClassWithoutTrainer () {
-        assertTrue(PersistentClass.addNewClass("spin class", 2, 10, 1));
-        assertTrue(PersistentClass.addNewClass("swim class", 3, 10, 2));
+
+        assertTrue(PersistentClass.addNewClass("swim class", 2, 10, 2));
 
 
     }
 
     @Test
     public void testAddInstructorToClass() {
+        PersistentClass.addNewClass("spin class", 2, 10, 1);
+        PersistentClass.addNewClass("swim class", 2, 10, 2);
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 1));
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 2));
 
@@ -43,15 +45,19 @@ public class PersistentClassTest {
     @Test
     public void testAddStudentsToMaxCapacity () {
         // add ten students
+        PersistentClass.addNewClass("swim class", 2, 10, 1);
 
         for (int i = 0; i < 10; i++) {
             PersistentClass.addStudentToCourse("test" + i, 1);
         }
+
+        assertEquals("Class is wrong size", 10, PersistentClass.getClassSize(1));
     }
 
     @Test
     public void testAddStudentsAfterMaxCapacity () {
         // add ten students
+        PersistentClass.addNewClass("swim class", 2, 10, 1);
 
         for (int i = 0; i < 10; i++) {
             PersistentClass.addStudentToCourse("test" + i, 1);
@@ -63,7 +69,16 @@ public class PersistentClassTest {
 
     @Test
     public void testGetClassSize () {
+        PersistentClass.addNewClass("swim class", 2, 10, 1);
+
+        for (int i = 0; i < 10; i++) {
+            PersistentClass.addStudentToCourse("test" + i, 1);
+        }
+
+        PersistentClass.addNewClass("spin class", 2, 10, 1);
+
         assertEquals(10, PersistentClass.getClassSize(1));
         assertEquals(0, PersistentClass.getClassSize(2));
     }
+
 }
