@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import main.java.memoranda.Room;
 
 /**
  * Rooms class that stores a list of the current available rooms.

@@ -2,6 +2,9 @@ package main.java.memoranda;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Room class for individual rooms.

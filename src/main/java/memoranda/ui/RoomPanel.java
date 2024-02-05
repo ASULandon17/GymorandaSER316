@@ -16,8 +16,15 @@ import javax.swing.JScrollPane;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
 import main.java.memoranda.date.DateListener;
+import main.java.memoranda.ui.DailyItemsPanel;
+import main.java.memoranda.PersistentClass;
+import java.util.List;
+import main.java.memoranda.Rooms;
+import main.java.memoranda.Room;
 
 public class RoomPanel extends JPanel {
+	static final int ROWS = 12;
+	static final int COLUMNS = 6;
 	CalendarDate currentDate;
 	
 	BorderLayout borderLayout1 = new BorderLayout();
@@ -128,9 +135,74 @@ public class RoomPanel extends JPanel {
 		arcticTablePanel.add(new JScrollPane(arcticTable));
 	}
 	
-	/*
-	 * Object[][] getTableData(CalendarDate date, String roomName) {
-	 * 
-	 * }
+	/**
+	 * This method gathers the data in order to create a table of classes for the day for a room.
+	 * @param date
+	 * @param roomName
+	 * @return String[][] of data that fills out the table
 	 */
+	/**
+	  Object[][] getTableData(CalendarDate date, String roomName) {
+		  Room room = Rooms.getRoomByName(roomName);
+		  if(room.equals(null)) {
+			  System.out.println("Error: No Room by this name");  //create error catching when done w/method & debugging
+			  return null;
+		  }
+		  Object[][] tableData = new Object[ROWS][COLUMNS];
+		  List<Integer> classList = room.getClassIds();
+		  
+		  //parse through each Id in class list, check if it the same date as selected on the calendar, update it in the correct slot on table
+		  for(Integer id : classList) {
+			  PersistentClass class = Classes.getClassById(id);
+			  if(class.getDate() == date) {
+				  //send the class to helper function to fill out it's row in the table
+				  tableData = fillOutRow(tableData, class.getTime() - 8, class.getTime(), class.getClassName, class.getInstructor(), class.getLevel(), class.getSpotsRemaining());
+				  //if the class is over an hour, fill out all of the time slots it takes up
+				  if(class.getClassLength() > 1) {
+					  for(int i = 1; i < class.getClassLength(); i++) {
+						  tableData = fillOutRow(tableData, class.getTime() - 8 + i, class.getTime(), class.getClassName, class.getInstructor(), class.getLevel(), class.getSpotsRemaining());
+					  }
+				  }
+			  }
+			  // fill out empty spots in the schedule with "No class"
+			  for(int i = 0; i < ROWS; i++) {
+				  if(tableData[i][0].isEmpty()) {
+					  for(int j = 0; j < COLUMNS; j++) {
+						  tableData[i][j] = "No class";
+					  }
+				  }
+			  }
+		  }
+		  return tableData;
+	  }
+	  */
+	  
+	  /**
+	   * A method to fill out each row of a table for a room which corresponds to 1 hour of a class
+	   * @param table
+	   * @param row
+	   * @param time
+	   * @param className
+	   * @param instructor
+	   * @param level
+	   * @param spotsRemaining
+	   * @return table; the table with the row filled out
+	   */
+	  /**
+	  Object[][] fillOutRow(Object[][] table, int row, int time, String className, String instructor, int level, int spotsRemaining) {
+		  table[row][0] = Integer.toString(time);
+		  table[row][1] = className;
+		  table[row][2] = instructor;
+		  table[row][3] = Integer.toString(level);
+		  table[row][4] = Integer.toString(spotsRemaining);
+		  if(spotsRemaining != 0) {
+			  table[row][5] = createSignUpButton();
+		  } else {
+			  table[row][5] = "Class if full!";
+		  }
+		  return table;
+	  }
+	  */
+	  //createSignUpButton()
+	  
 }
