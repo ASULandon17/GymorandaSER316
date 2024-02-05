@@ -1,3 +1,5 @@
+package test.java;
+
 import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
