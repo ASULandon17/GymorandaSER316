@@ -22,7 +22,6 @@ public class PersistentClass {
     private static String _instructorUserName;
 
 
-
     /**
      * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
      * @param className name of the class
@@ -311,19 +310,7 @@ public class PersistentClass {
 
         return 3;
     }
+    
 
-    /**
-     * This method will determine how many spots are left for a given course
-     * @param classID specific course ID number
-     * @return number of spots remaining in the class
-     */
-    public static int getSpotsRemaining(int classID) {
-        _classID = classID;
 
-        return (get_maxClassSize() - getClassSize(_classID));
-    }
-
-    public static int get_maxClassSize () {
-        return _maxClassSize;
-    }
 }
