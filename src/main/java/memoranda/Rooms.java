@@ -106,8 +106,8 @@ public class Rooms {
             jsonObject.put("hasClass", room.getHasClass());
             jsonObject.put("roomName", room.getRoomName());
             // Only add classId if it is not null
-            if (!room.getClassId().isEmpty()) {
-                jsonObject.put("classId", new JSONArray(room.getClassId()));
+            if (!room.getClassIds().isEmpty()) {
+                jsonObject.put("classId", new JSONArray(room.getClassIds()));
             }
             jsonArray.put(jsonObject);
         }

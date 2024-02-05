@@ -10,7 +10,7 @@ public class Room {
 
     private boolean hasClass;
     private String roomName;
-    private List<Integer> classId;
+    private List<Integer> classIds;
 
     /**
      * Constructor to set a room up that has a class.
@@ -21,8 +21,8 @@ public class Room {
     public Room(boolean hasClass, String roomName, int classId) {
         this.hasClass = hasClass;
         this.roomName = roomName;
-        this.classId = new ArrayList<>();
-        this.classId.add(classId);
+        this.classIds = new ArrayList<>();
+        this.classIds.add(classId);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Room {
     public Room(String roomName){
         this.hasClass = false;
         this.roomName = roomName;
-        this.classId = new ArrayList<>();
+        this.classIds = new ArrayList<>();
     }
 
 
@@ -45,7 +45,7 @@ public class Room {
         this.hasClass = jsonObject.getBoolean("hasClass");
         //this.classId = jsonObject.has("classId") ? jsonObject.getInt("classId") : null;
         if(jsonObject.has("classId")) {
-        	this.classId = new ArrayList<>(Arrays.asList(jsonObject.getJSONArray("classId")));
+        	this.classIds = new ArrayList<>(Arrays.asList(jsonObject.getJSONArray("classId")));
         	
         }
     }
@@ -54,12 +54,12 @@ public class Room {
         this.roomName = roomName;
     }
 
-    public List<Integer> getClassId(){
-        return this.classId;
+    public List<Integer> getClassIds(){
+        return this.classIds;
     }
 
     public void addClassId(Integer classId){
-        this.classId.add(classId);
+        this.classIds.add(classId);
     }
 
     public boolean getHasClass() {
