@@ -23,6 +23,13 @@ public class PersistentClass {
 
 
     /**
+     * Ensures JVM doesn't make a default constructor for utility class
+     */
+    private PersistentClass() {
+        // No objects here!
+    }
+    
+    /**
      * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
      * @param className name of the class
      * @param classLength length of the class in hours
