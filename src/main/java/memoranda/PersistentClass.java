@@ -125,6 +125,7 @@ public class PersistentClass {
         return true;
     }
 
+    // todo: make a Classes class that uses below logic to pull in a specific class out of the json file to pass around
     /**
      * This method returns the total amount of students currently signed up for the course.
      * @param classID unique ID of the course
@@ -310,7 +311,7 @@ public class PersistentClass {
 
         return 3;
     }
-    
+
 
 
 }
