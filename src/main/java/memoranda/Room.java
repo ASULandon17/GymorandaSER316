@@ -48,8 +48,11 @@ public class Room {
         this.hasClass = jsonObject.getBoolean("hasClass");
         //this.classId = jsonObject.has("classId") ? jsonObject.getInt("classId") : null;
         if(jsonObject.has("classId")) {
-        	this.classIds = new ArrayList<>(Arrays.asList(jsonObject.getJSONArray("classId")));
-        	
+        	this.classIds = new ArrayList<>();
+        	JSONArray classIdList = jsonObject.getJSONArray("classId");
+        	for(int i = 0; i < classIdList.length(); i++) {
+        		this.classIds.add(classIdList.getInt(i));
+        	}
         }
     }
 
