@@ -33,22 +33,28 @@ public class RoomPanel extends JPanel {
 	JPanel desertImagePanel = new JPanel();
 	JPanel jungleImagePanel = new JPanel();
 	JPanel arcticImagePanel = new JPanel();
+	JPanel beachImagePanel = new JPanel();
 	JPanel desertTablePanel = new JPanel();
 	JPanel jungleTablePanel = new JPanel();
 	JPanel arcticTablePanel = new JPanel();
+	JPanel beachTablePanel = new JPanel();
 	JPanel desertTextPanel = new JPanel();
 	JPanel jungleTextPanel = new JPanel();
 	JPanel arcticTextPanel = new JPanel();
+	JPanel beachTextPanel = new JPanel();
 	JLabel desertImageLabel = new JLabel();
 	JLabel jungleImageLabel = new JLabel();
 	JLabel arcticImageLabel = new JLabel();
+	JLabel beachImageLabel = new JLabel();
 	JLabel desertTextLabel = new JLabel("Desert Room");
 	JLabel jungleTextLabel = new JLabel("Jungle Room");
 	JLabel arcticTextLabel = new JLabel("Arctic Room");
+	JLabel beachTextLabel = new JLabel("Beach Room");
 	Font textFont = new Font("Verdana", Font.PLAIN, 14);
 	ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
 	ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
 	ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
+	ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
 	
 	String[] columnNames = {"Time", "Class Name", "Trainer", "Level", "Availability", "Sign Up"};
 	Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
@@ -61,9 +67,13 @@ public class RoomPanel extends JPanel {
 	Object[][] arcticData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
 			   				{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
 			   				{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	Object[][] beachData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+							{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+							{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
 	JTable desertTable = new JTable(desertData, columnNames);
 	JTable jungleTable = new JTable(jungleData, columnNames);
 	JTable arcticTable = new JTable(arcticData, columnNames);
+	JTable beachTable = new JTable(arcticData, columnNames);
 	
 	
 	DailyItemsPanel parentPanel = null;
@@ -85,54 +95,67 @@ public class RoomPanel extends JPanel {
 		tablePanel.setLayout(new GridLayout());
 		this.add(imagePanel, BorderLayout.NORTH);
 		this.add(tablePanel, BorderLayout.CENTER);
-		imagePanel.setPreferredSize(new Dimension(300, 300));
+		imagePanel.setPreferredSize(new Dimension(250, 250));
 		
 		//divides image panel into 3 equal portions and adds the images
 		imagePanel.add(desertImagePanel);
 		imagePanel.add(jungleImagePanel);
 		imagePanel.add(arcticImagePanel);
+		imagePanel.add(beachImagePanel);
 		desertImagePanel.setLayout(new GridBagLayout());
 		jungleImagePanel.setLayout(new GridBagLayout());
 		arcticImagePanel.setLayout(new GridBagLayout());
+		beachImagePanel.setLayout(new GridBagLayout());
 		desertImagePanel.add(desertImageLabel);
 		jungleImagePanel.add(jungleImageLabel);
 		arcticImagePanel.add(arcticImageLabel);
+		beachImagePanel.add(beachImageLabel);
 		desertImagePanel.setBackground(new Color(210, 85, 91, 100));
 		jungleImagePanel.setBackground(new Color(42, 230, 138, 100));
 		arcticImagePanel.setBackground(new Color(20, 190, 255, 100));
+		beachImagePanel.setBackground(new Color(248, 240, 164, 100));
 		desertImageLabel.setIcon(desertIcon);
 		jungleImageLabel.setIcon(jungleIcon);
 		arcticImageLabel.setIcon(arcticIcon);	
+		beachImageLabel.setIcon(beachIcon);
 		
 		//divides table panel into 3 equal portions
 		tablePanel.add(desertTablePanel);
 		tablePanel.add(jungleTablePanel);
 		tablePanel.add(arcticTablePanel);
+		tablePanel.add(beachTablePanel);
 		desertTablePanel.setLayout(new BorderLayout());
 		jungleTablePanel.setLayout(new BorderLayout());
 		arcticTablePanel.setLayout(new BorderLayout());
+		beachTablePanel.setLayout(new BorderLayout());
 		
 		//Adds text portion at the top of table panel so Rooms can be named
 		desertTablePanel.add(desertTextPanel, BorderLayout.NORTH);
 		jungleTablePanel.add(jungleTextPanel, BorderLayout.NORTH);
 		arcticTablePanel.add(arcticTextPanel, BorderLayout.NORTH);
+		beachTablePanel.add(beachTextPanel, BorderLayout.NORTH);
 		desertTextPanel.setLayout(new GridBagLayout());
 		jungleTextPanel.setLayout(new GridBagLayout());
 		arcticTextPanel.setLayout(new GridBagLayout());
+		beachTextPanel.setLayout(new GridBagLayout());
 		desertTextPanel.setBackground(new Color(210, 85, 91, 100));
 		jungleTextPanel.setBackground(new Color(42, 230, 138, 100));
 		arcticTextPanel.setBackground(new Color(20, 190, 255, 100));
+		beachTextPanel.setBackground(new Color(248, 240, 164, 100));
 		desertTextPanel.add(desertTextLabel);
 		jungleTextPanel.add(jungleTextLabel);
 		arcticTextPanel.add(arcticTextLabel);
+		beachTextPanel.add(beachTextLabel);
 		desertTextLabel.setFont(textFont);
 		jungleTextLabel.setFont(textFont);
 		arcticTextLabel.setFont(textFont);
+		beachTextLabel.setFont(textFont);
 		
 		//Add table UI 
 		desertTablePanel.add(new JScrollPane(desertTable));
 		jungleTablePanel.add(new JScrollPane(jungleTable));
 		arcticTablePanel.add(new JScrollPane(arcticTable));
+		beachTablePanel.add(new JScrollPane(beachTable));
 	}
 	
 	/**
