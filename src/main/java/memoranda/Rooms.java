@@ -73,7 +73,7 @@ public class Rooms {
     public static void addClassToRoom(String roomName, int classId) {
         for (Room room : rooms) {
             if (room.getRoomName().equals(roomName)) {
-                room.setClassId(classId); // Set the classId for the room
+                room.addClassId(classId); // Set the classId for the room
                 room.setHasClass(true);
                 saveRoomsToFile(); // Save changes to the JSON file
                 break; // Exit the loop once the room is found and updated
@@ -106,8 +106,8 @@ public class Rooms {
             jsonObject.put("hasClass", room.getHasClass());
             jsonObject.put("roomName", room.getRoomName());
             // Only add classId if it is not null
-            if (room.getClassId() != null) {
-                jsonObject.put("classId", room.getClassId());
+            if (!room.getClassId().isEmpty()) {
+                jsonObject.put("classId", new JSONArray(room.getClassId()));
             }
             jsonArray.put(jsonObject);
         }
