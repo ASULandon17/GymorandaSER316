@@ -7,19 +7,71 @@ import org.json.JSONObject;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  * This class provides the backend for interacting with Classes within Gymoranda.
  */
 public class PersistentClass {
 
+    private static ArrayList<Course> courses = new ArrayList<>();
+
     private static String _className;
+    private static String _studentUserName;
+    private static String _instructorUserName;
     private static int _classLength;
     private static int _maxClassSize;
     private static int _classID;
-    private static boolean _classIsPublic;
-    private static String _studentUserName;
-    private static String _instructorUserName;
+    private static boolean _isPublic;
+
+    /**
+     * Loads the classes to the arraylist from the JSON file.
+     */
+    public static void loadClassesFromFile() {
+
+        try {
+
+            String content = new String(Files.readAllBytes(Paths.get("classes.json")));
+            JSONArray jsonArray = new JSONArray(content);
+            courses.clear(); // Clear existing rooms before loading
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                courses.add(new Course(jsonObject));
+            }
+
+        } catch (IOException e) {
+
+            System.out.println("No existing classes.json found. A new one will be created.");
+        }
+    }
+
+//todo: implement for Classes
+    /**
+     *
+     * Saves the Room list to the json file.
+     */
+    private static void saveRoomsToFile() {
+
+        JSONArray jsonArray = new JSONArray();
+        for (Room room : rooms) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("hasClass", room.getHasClass());
+            jsonObject.put("roomName", room.getRoomName());
+            // Only add classId if it is not null
+            if (room.getClassId() != null) {
+                jsonObject.put("classId", room.getClassId());
+            }
+            jsonArray.put(jsonObject);
+        }
+
+        try (FileWriter file = new FileWriter("Rooms.json")) {
+            file.write(jsonArray.toString(4)); // Pretty print
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     /**
@@ -28,7 +80,7 @@ public class PersistentClass {
     private PersistentClass() {
         // No objects here!
     }
-    
+
     /**
      * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
      * @param className name of the class
@@ -43,7 +95,7 @@ public class PersistentClass {
         _classLength = classLength;
         _maxClassSize = maxClassSize;
         _classID = classID;
-        _classIsPublic = classIsPublic;
+        _isPublic = classIsPublic;
 
         JSONObject classObject = new JSONObject();
         classObject.put("className", _className);
@@ -51,7 +103,7 @@ public class PersistentClass {
         classObject.put("maxClassSize", _maxClassSize);
         classObject.put("classID", _classID);
         classObject.put("instructorName", "TBD");
-        classObject.put("isPublic", _classIsPublic);
+        classObject.put("isPublic", _isPublic);
 
         return addNewClass(classObject);
 
@@ -74,7 +126,7 @@ public class PersistentClass {
         _maxClassSize = maxClassSize;
         _classID = classID;
         _instructorUserName = instructorUserName;
-        _classIsPublic = classIsPublic;
+        _isPublic = classIsPublic;
 
         JSONObject classObject = new JSONObject();
         classObject.put("className", _className);
@@ -82,7 +134,7 @@ public class PersistentClass {
         classObject.put("maxClassSize", _maxClassSize);
         classObject.put("classID", _classID);
         classObject.put("instructorName", _instructorUserName);
-        classObject.put("isPublic", _classIsPublic);
+        classObject.put("isPublic", _isPublic);
 
         return addNewClass(classObject);
 

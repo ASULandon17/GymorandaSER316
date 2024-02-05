@@ -15,6 +15,14 @@ import static org.junit.Assert.*;
  */
 public class PersistentClassTest extends JSONTest {
 
+
+    @Test
+    public void testLoadClassesFromFile() {
+        PersistentClass.addNewClass("spin class", 2, 10, 1, true);
+
+        PersistentClass.loadClassesFromFile();
+
+    }
     @Test
     public void testAddNewClassWithoutTrainer () {
 
