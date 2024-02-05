@@ -17,13 +17,162 @@ public class PersistentClass {
     private static int _classLength;
     private static int _maxClassSize;
     private static int _classID;
+    private static boolean _classIsPublic;
     private static String _studentUserName;
     private static String _instructorUserName;
 
 
 
+    /**
+     * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classID unique class ID (int)
+     * @return true or false pending success
+     */
+    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID, boolean classIsPublic) {
+
+        _className = className;
+        _classLength = classLength;
+        _maxClassSize = maxClassSize;
+        _classID = classID;
+        _classIsPublic = classIsPublic;
+
+        JSONObject classObject = new JSONObject();
+        classObject.put("className", _className);
+        classObject.put("classLength", _classLength);
+        classObject.put("maxClassSize", _maxClassSize);
+        classObject.put("classID", _classID);
+        classObject.put("instructorName", "TBD");
+        classObject.put("isPublic", _classIsPublic);
+
+        return addNewClass(classObject);
+
+    }
+
+    /**
+     * This method allows the owner to add a new class if they do know the instructor that will be teaching
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classID unique class ID (int)
+     * @param instructorUserName name of instructor teaching the course
+     * @return true or false pending success
+     */
+    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID,
+                                      boolean classIsPublic, String instructorUserName) {
+
+        _className = className;
+        _classLength = classLength;
+        _maxClassSize = maxClassSize;
+        _classID = classID;
+        _instructorUserName = instructorUserName;
+        _classIsPublic = classIsPublic;
+
+        JSONObject classObject = new JSONObject();
+        classObject.put("className", _className);
+        classObject.put("classLength", _classLength);
+        classObject.put("maxClassSize", _maxClassSize);
+        classObject.put("classID", _classID);
+        classObject.put("instructorName", _instructorUserName);
+        classObject.put("isPublic", _classIsPublic);
+
+        return addNewClass(classObject);
+
+    }
+
+    private static boolean addNewClass (JSONObject classObject) {
+        JSONArray roster = new JSONArray(); // add JSON array of students registered for the course
+        classObject.put("roster", roster);
+
+        try {
+
+            File file = new File("classes.json");
+            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
+
+            if (file.exists()) {
+
+                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
+                classesArray = new JSONArray(content);
+
+            } else {
+                classesArray = new JSONArray();
+            }
+
+            // Check to make sure the class doesn't already exist
+            for (int i = 0; i < classesArray.length(); i++) {
+
+                JSONObject classs = classesArray.getJSONObject(i);
+
+                if (classs.getInt("classID") == _classID) {
+                    return false; // classID already exists
+                }
+            }
+
+            classesArray.put(classObject);
+
+            // Write to classes JSON file
+            try (FileWriter writer = new FileWriter("classes.json")) {
+                writer.write(classesArray.toString());
+            }
 
 
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * This method returns the total amount of students currently signed up for the course.
+     * @param classID unique ID of the course
+     * @return number of students registered (0 if empty) OR 99 if there is an error.
+     */
+    public static int getClassSize (int classID) {
+        _classID = classID;
+
+        try {
+            File file = new File("classes.json");
+            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
+
+            if (!file.exists()){
+                return 99;
+            }
+            else if (file.exists()) {
+                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
+                classesArray = new JSONArray(content);
+            }
+            else{
+
+                classesArray = new JSONArray();
+            }
+
+            for (int i = 0; i < classesArray.length(); i++) {
+
+                JSONObject iterator = classesArray.getJSONObject(i);
+
+                System.out.println(iterator);
+
+                if(iterator.getInt("classID") == _classID) {
+                    JSONArray roster = iterator.getJSONArray("roster");
+                    return roster.length();
+
+                }
+
+            }
+
+            } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return 99;
+        }
+
+        return 0;
+    }
     /**
      * This method adds an instructor to a specific class
      * @param instructorUserName username of instructor
@@ -62,7 +211,7 @@ public class PersistentClass {
                 }
 
 
-                    // write updates to file
+                // write updates to file
                 try (FileWriter writer = new FileWriter("classes.json")) {
                     writer.write(classes.toString());
                 }
@@ -161,145 +310,6 @@ public class PersistentClass {
         }
 
         return 3;
-    }
-
-    /**
-     * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
-     * @param className name of the class
-     * @param classLength length of the class in hours
-     * @param maxClassSize max class size
-     * @param classID unique class ID (int)
-     * @return true or false pending success
-     */
-    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
-        _className = className;
-        _classLength = classLength;
-        _maxClassSize = maxClassSize;
-        _classID = classID;
-
-        JSONObject classObject = new JSONObject();
-        classObject.put("className", _className);
-        classObject.put("classLength", _classLength);
-        classObject.put("maxClassSize", _maxClassSize);
-        classObject.put("classID", _classID);
-        classObject.put("instructorName", "TBD");
-
-        return addNewClass(classObject);
-
-    }
-
-    /**
-     * This method allows the owner to add a new class if they do know the instructor that will be teaching
-     * @param className name of the class
-     * @param classLength length of the class in hours
-     * @param maxClassSize max class size
-     * @param classID unique class ID (int)
-     * @param instructorUserName name of instructor teaching the course
-     * @return true or false pending success
-     */
-    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID, String instructorUserName) {
-        _className = className;
-        _classLength = classLength;
-        _maxClassSize = maxClassSize;
-        _classID = classID;
-        _instructorUserName = instructorUserName;
-
-        JSONObject classObject = new JSONObject();
-        classObject.put("className", _className);
-        classObject.put("classLength", _classLength);
-        classObject.put("maxClassSize", _maxClassSize);
-        classObject.put("classID", _classID);
-        classObject.put("instructorName", _instructorUserName);
-
-        return addNewClass(classObject);
-
-    }
-
-    private static boolean addNewClass (JSONObject classObject) {
-        JSONArray roster = new JSONArray(); // add JSON array of students registered for the course
-        classObject.put("roster", roster);
-
-        try {
-            File file = new File("classes.json");
-            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
-
-            if (file.exists()) {
-                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
-                classesArray = new JSONArray(content);
-            } else {
-                classesArray = new JSONArray();
-            }
-
-            // Check to make sure the class doesn't already exist
-            for (int i = 0; i < classesArray.length(); i++) {
-                JSONObject classs = classesArray.getJSONObject(i);
-                if (classs.getInt("classID") == _classID) {
-                    return false; // classID already exists
-                }
-            }
-
-            classesArray.put(classObject);
-
-            // Write to classes JSON file
-            try (FileWriter writer = new FileWriter("classes.json")) {
-                writer.write(classesArray.toString());
-            }
-
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * This method returns the total amount of students currently signed up for the course.
-     * @param classID unique ID of the course
-     * @return number of students registered (0 if empty) OR 99 if there is an error.
-     */
-    public static int getClassSize (int classID) {
-        _classID = classID;
-
-        try {
-            File file = new File("classes.json");
-            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
-
-            if (!file.exists()){
-                return 99;
-            }
-            else if (file.exists()) {
-                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
-                classesArray = new JSONArray(content);
-            }
-            else{
-
-                classesArray = new JSONArray();
-            }
-
-            for (int i = 0; i < classesArray.length(); i++) {
-
-                JSONObject iterator = classesArray.getJSONObject(i);
-
-                System.out.println(iterator);
-
-                if(iterator.getInt("classID") == _classID) {
-                    JSONArray roster = iterator.getJSONArray("roster");
-                    return roster.length();
-
-                }
-
-            }
-
-            } catch (Exception e) {
-
-            e.printStackTrace();
-
-            return 99;
-        }
-
-        return 0;
     }
 
     /**

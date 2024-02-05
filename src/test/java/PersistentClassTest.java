@@ -18,15 +18,14 @@ public class PersistentClassTest extends JSONTest {
     @Test
     public void testAddNewClassWithoutTrainer () {
 
-        assertTrue(PersistentClass.addNewClass("swim class", 2, 10, 2));
-
+        assertTrue(PersistentClass.addNewClass("swim class", 2, 10, 2, true));
 
     }
 
     @Test
     public void testAddInstructorToClass() {
-        PersistentClass.addNewClass("spin class", 2, 10, 1);
-        PersistentClass.addNewClass("swim class", 2, 10, 2);
+        PersistentClass.addNewClass("spin class", 2, 10, 1, true);
+        PersistentClass.addNewClass("swim class", 2, 10, 2, true);
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 1));
         assertEquals(0, PersistentClass.addInstructorToCourse("test", 2));
 
@@ -35,7 +34,8 @@ public class PersistentClassTest extends JSONTest {
     @Test
     public void testAddNewClassWithTrainer () {
 
-        assertTrue(PersistentClass.addNewClass("HIIT Class", 3, 12, 3, "trainerTest"));
+        assertTrue(PersistentClass.addNewClass("HIIT Class", 3, 12, 3,
+                true,"trainerTest"));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PersistentClassTest extends JSONTest {
     @Test
     public void testAddStudentsToMaxCapacity () {
         // add ten students
-        PersistentClass.addNewClass("swim class", 2, 10, 1);
+        PersistentClass.addNewClass("swim class", 2, 10, 1, true);
 
         for (int i = 0; i < 10; i++) {
             PersistentClass.addStudentToCourse("test" + i, 1);
@@ -59,7 +59,7 @@ public class PersistentClassTest extends JSONTest {
     @Test
     public void testAddStudentsAfterMaxCapacity () {
         // add ten students
-        PersistentClass.addNewClass("swim class", 2, 10, 1);
+        PersistentClass.addNewClass("swim class", 2, 10, 1, true);
 
         for (int i = 0; i < 10; i++) {
             PersistentClass.addStudentToCourse("test" + i, 1);
@@ -71,13 +71,13 @@ public class PersistentClassTest extends JSONTest {
 
     @Test
     public void testGetClassSize () {
-        PersistentClass.addNewClass("swim class", 2, 10, 1);
+        PersistentClass.addNewClass("swim class", 2, 10, 1, true);
 
         for (int i = 0; i < 10; i++) {
             PersistentClass.addStudentToCourse("test" + i, 1);
         }
 
-        PersistentClass.addNewClass("spin class", 2, 10, 1);
+        PersistentClass.addNewClass("spin class", 2, 10, 1, true);
 
         assertEquals(10, PersistentClass.getClassSize(1));
         assertEquals(0, PersistentClass.getClassSize(2));
