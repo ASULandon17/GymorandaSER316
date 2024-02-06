@@ -16,6 +16,9 @@ public class PersistentClass {
     private static final ArrayList<Course> courses = new ArrayList<>();
 
 
+    static {
+        loadClassesFromFile();
+    }
     public static ArrayList<Course> getListOfCourses() {
         return courses;
     }

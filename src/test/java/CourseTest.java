@@ -13,18 +13,29 @@ import static org.junit.Assert.assertTrue;
 
 public class CourseTest {
 
+    @Before
+    public void setup() {
+        PersistentClass.clearCourses();
+    }
+
+    @After
+    public void teardown() {
+        PersistentClass.clearCourses();
+    }
+
 
     @Test
     public void testLoadingClassesFromFile() {
 
         // add two unique classes
         PersistentClass.addNewClass("whale sharks", 2, 10, 60, true);
-        PersistentClass.addNewClass("super Smash bros", 2, 10, 60, true);
+        PersistentClass.addNewClass("super Smash bros", 2, 10, 61, true);
         // new classes should save to json on creation
 
         PersistentClass.loadClassesFromFile();
 
 
+        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().getFirst().getClassID());
     }
 
     @Test
@@ -32,11 +43,11 @@ public class CourseTest {
 
         PersistentClass.addNewClass("super Smash bros", 2, 10, 60, true);
 
-        assertEquals(1, PersistentClass.getListOfCourses().size());
+        assertEquals("first class not added", 1, PersistentClass.getListOfCourses().size());
 
         PersistentClass.addNewClass("another course", 2, 10, 69, true);
 
-        assertEquals(2, PersistentClass.getListOfCourses().size());
+        assertEquals("second unique class not added",2, PersistentClass.getListOfCourses().size());
 
     }
 
@@ -48,7 +59,7 @@ public class CourseTest {
 
         PersistentClass.addNewClass("whale sharks", 2, 10, 60, true);
 
-        assertEquals(1, PersistentClass.getListOfCourses().size());
+        assertEquals("Duplicate class was added",1, PersistentClass.getListOfCourses().size());
 
     }
 
@@ -58,7 +69,8 @@ public class CourseTest {
 
         PersistentClass.addInstructorToCourse("steve", 60);
 
-        assertEquals("steve", PersistentClass.getCourseByID(60).getInstructorName());
+        assertEquals("Instructor not added to course","steve",
+                PersistentClass.getCourseByID(60).getInstructorName());
 
     }
 
@@ -70,7 +82,33 @@ public class CourseTest {
         // try adding different instructor to same course
         PersistentClass.addInstructorToCourse("craig", 60);
 
-        assertEquals("steve", PersistentClass.getCourseByID(60).getInstructorName());
+        assertEquals("Instructor was overwritten","steve",
+                PersistentClass.getCourseByID(60).getInstructorName());
+    }
+
+
+    @Test
+    public void testAddNewClassWithInstructor() {
+
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+
+
+        assertEquals("Instructor is incorrect","scuba lord",
+                PersistentClass.getCourseByID(99).getInstructorName());
+
+    }
+
+    @Test
+    public void testAddStudentToEmptyCourse() {
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+
+        PersistentClass.addStudentToCourse("bob", 99);
+
+        assertEquals("Student was not added to course", "bob",
+                PersistentClass.getCourseByID(99).getRoster().getJSONObject(0).getString("userName"));
+
     }
 
 
