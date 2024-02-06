@@ -306,8 +306,8 @@ public class AgendaGenerator {
 						+ "<b>User: </b>"
 						+ User.getUsername() + "<br>"
 						+ "<b>Belt Rank: </b>"
-						+ User.getBeltRank() + "<br>"
-						+ "<a href=\"memoranda:changebelt\"><b>Change Belt</b></a>";
+						+ User.getBeltRank() + "<br><br><br>"
+						+ "<a href=\"memoranda:changebelt\"><b><u>[Change Belt]</b></u></a>";
 		if(User.getUserType() == UserType.TRAINER)
 		{
 			s += "<b>Training Rank: </b>" + User.getTrainingRank();
