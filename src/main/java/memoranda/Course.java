@@ -16,7 +16,7 @@ public class Course {
     private int classID;
 
     private boolean isPublic;
-    private JSONArray roster;
+    private final JSONArray roster;
 
     /**
      * Create  course from a JSON object.
@@ -113,6 +113,7 @@ public class Course {
         }
     }
 
+    //todo: test remove student functionality
     /**
      * Provides functionality to remove student from a class roster.
      * @param userName username of student
