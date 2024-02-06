@@ -19,17 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
-import main.java.memoranda.CurrentProject;
-import main.java.memoranda.EventNotificationListener;
-import main.java.memoranda.EventsManager;
-import main.java.memoranda.EventsScheduler;
-import main.java.memoranda.History;
-import main.java.memoranda.NoteList;
-import main.java.memoranda.Project;
-import main.java.memoranda.ProjectListener;
-import main.java.memoranda.ProjectManager;
-import main.java.memoranda.ResourcesList;
-import main.java.memoranda.TaskList;
+import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
 import main.java.memoranda.date.DateListener;
@@ -207,7 +197,16 @@ public class AgendaPanel extends JPanel {
 						final JFrame parent = new JFrame();
 						String name = JOptionPane.showInputDialog(parent,Local.getString("Enter the name of the file to import"),null);
 						new ImportSticker(name).import_file();
+					} else if (d.startsWith("memoranda:changebelt")) {
+						final JFrame parent = new JFrame();
+						Object[] options = BeltValue.values();
+						Object selectionObject = JOptionPane.showInputDialog(parent, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+						if(selectionObject == null)
+							return;
+						String selectionString = selectionObject.toString();
+						System.out.println(selectionString);
 					}
+
 				}
 			}
 		});
