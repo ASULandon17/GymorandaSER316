@@ -52,13 +52,25 @@ public class CourseTest {
 
 
     @Test
-    public void testAddNewClassThatAlreadyExists() {
+    public void testAddNewClassWithoutInstructorThatAlreadyExists() {
 
         PersistentClass.addNewClass("whale sharks", 2, 10, 60, true);
 
         PersistentClass.addNewClass("whale sharks", 2, 10, 60, true);
 
         assertEquals("Duplicate class was added",1, PersistentClass.getListOfCourses().size());
+
+    }
+
+    @Test
+    public void testAddNewClassWithInstructorThatAlreadyExists() {
+
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "jeff");
+
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "craig");
+
+
+        assertEquals("Duplicate class was added and instructor was overwritten","jeff", PersistentClass.getCourseByID(60).getInstructorName());
 
     }
 
@@ -83,6 +95,16 @@ public class CourseTest {
 
         assertEquals("Instructor was overwritten","steve",
                 PersistentClass.getCourseByID(60).getInstructorName());
+    }
+
+
+    @Test
+    public void testAddInstructorToCourseThatDoesNotExist() {
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60,true);
+        // try adding an instructor to a course that doesn't exist yet
+        PersistentClass.addInstructorToCourse("craig", 62);
+        // make sure program doesn't break
+
     }
 
 
