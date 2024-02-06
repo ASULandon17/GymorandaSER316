@@ -205,8 +205,8 @@ public class AgendaPanel extends JPanel {
 						if(selectionObject == null)
 							return;
 						User.setBeltRank((BeltValue) selectionObject);
-						String selectionString = selectionObject.toString();
-						System.out.println(selectionString);
+						refresh(CurrentDate.get());
+						JOptionPane.showMessageDialog(null,Local.getString("Belt rank successfully change to: " + selectionObject));
 					}
 
 				}
