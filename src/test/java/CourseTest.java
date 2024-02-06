@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * This class facilities the testing of both Course.java and PersistentClass.java.
@@ -133,10 +134,41 @@ public class CourseTest {
     }
 
 
+    // add student to a course that's already registered
+    @Test
+    public void testAddStudentToCourseThatIsAlreadyRegistered() {
+       // add a class and 1 student
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        PersistentClass.addStudentToCourse("bob", 99);
 
+        // try to add that student again
+        PersistentClass.addStudentToCourse("bob", 99);
 
+        // check that roster size is still 1
+        assertEquals("Duplicate student was added to course", 1, PersistentClass.getListOfCourses().size());
 
+    }
 
+    @Test
+    public void testAddStudentToCourseThatDoesNotExist() {
+        // add a class
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        // add a student to a course that doesn't exist
+        PersistentClass.addStudentToCourse("bob", 22);
+
+        assertEquals("Student was added to existing course", 0, PersistentClass.getCourseByID(99).getCurrentClassSize());
+        assertNull("Course was created improperly", PersistentClass.getCourseByID(22));
+    }
+
+    @Test
+    public void testAddStudentToEmptyClassFile() {
+        // add a student to a course that doesn't exist
+        PersistentClass.addStudentToCourse("bob", 22);
+        // make sure course was not added
+        assertNull("Course that doesn't exisit was added to file", PersistentClass.getCourseByID(22));
+    }
 
 
 
