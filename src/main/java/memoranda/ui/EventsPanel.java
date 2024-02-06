@@ -119,6 +119,8 @@ public class EventsPanel extends JPanel {
         newClass.setToolTipText("Add a new class");
         newClass.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
+                NewclassPopup popup = new NewclassPopup();
+                popup.setVisible(true);
 
             }
         });
