@@ -1,29 +1,26 @@
 package main.java.memoranda.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
+import javax.swing.*;
 
 import main.java.memoranda.*;
 
-/*$Id: EventsPanel.java,v 1.25 2005/02/19 10:06:25 rawsushi Exp $*/
+
 public class ClassPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
     JToolBar eventsToolBar = new JToolBar();
     JScrollPane scrollPane = new JScrollPane();
+    private JPanel cardsPanel = new JPanel();
 
     JButton newClass = new JButton();
 
-    public ClassPanel(DailyItemsPanel _parentPanel) {
+    public ClassPanel() {
         try {
-            //parentPanel = _parentPanel;
             jbInit();
+            initCardsPanel();
         }
         catch (Exception ex) {
             new ExceptionDialog(ex);
@@ -74,4 +71,47 @@ public class ClassPanel extends JPanel {
         this.add(eventsToolBar, BorderLayout.NORTH);
 
 
-}}
+}
+    void initCardsPanel() {
+        cardsPanel.removeAll();
+        ArrayList<Course> courses = PersistentClass.getListOfCourses();
+
+        cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+
+        for (Course course : courses) {
+            JPanel card = createCourseCard(course);
+            cardsPanel.add(card);
+        }
+
+        scrollPane.setViewportView(cardsPanel);
+        cardsPanel.revalidate();
+        cardsPanel.repaint();
+    }
+
+    private JPanel createCourseCard(Course course) {
+
+        JPanel card = new JPanel(new BorderLayout());
+        card.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        JLabel instructorNameLabel;
+
+
+        JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
+        if(course.getInstructorName().equals("")){
+            instructorNameLabel = new JLabel("Instructor: Not Assigned");
+        } else {
+            instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
+        }
+
+        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
+
+
+        JPanel infoPanel = new JPanel(new GridLayout(3, 1));
+        infoPanel.add(classNameLabel);
+        infoPanel.add(instructorNameLabel);
+        infoPanel.add(classSizeLabel);
+
+        card.add(infoPanel, BorderLayout.CENTER);
+
+        return card;
+    }
+}
