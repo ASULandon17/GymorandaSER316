@@ -296,7 +296,7 @@ public class AgendaGenerator {
 		return s + "</td>";
 	}
 
-	static String generateEventsInfo(CalendarDate date) {
+	static String generatePersonalInfo() {
 		String s =
 				"<td width=\"34%\" valign=\"top\">"
 						+ "<h1>"
@@ -380,7 +380,7 @@ public class AgendaGenerator {
 	public static String getAgenda(CalendarDate date, Collection expandedTasks) {
 		String s = HEADER;
 		s += generateAllProjectsInfo(date, expandedTasks);
-		s += generateEventsInfo(date);
+		s += generatePersonalInfo();
 		s += generateStickers(date);
 		//        /*DEBUG*/System.out.println(s+FOOTER);
 		return s + FOOTER;

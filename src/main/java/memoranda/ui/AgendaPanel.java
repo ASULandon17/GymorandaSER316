@@ -200,9 +200,11 @@ public class AgendaPanel extends JPanel {
 					} else if (d.startsWith("memoranda:changebelt")) {
 						final JFrame parent = new JFrame();
 						Object[] options = BeltValue.values();
-						Object selectionObject = JOptionPane.showInputDialog(parent, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+						Object selectionObject = JOptionPane.showInputDialog(parent, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, User.getBeltRank());
+						// Nothing selected
 						if(selectionObject == null)
 							return;
+						User.setBeltRank((BeltValue) selectionObject);
 						String selectionString = selectionObject.toString();
 						System.out.println(selectionString);
 					}
