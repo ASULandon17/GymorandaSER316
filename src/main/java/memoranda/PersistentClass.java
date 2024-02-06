@@ -87,7 +87,7 @@ public class PersistentClass {
             jsonObject.put("classLength", course.getClassLength());
             jsonObject.put("maxClassSize", course.getMaxClassSize());
             jsonObject.put("currentClassSize", course.getCurrentClassSize());
-            jsonObject.put("classID", course.getClassID());
+            jsonObject.put("classID", course.getClassId());
             jsonObject.put("isPublic", course.getPublic());
             jsonObject.put("roster", course.getRoster());
 
@@ -121,7 +121,7 @@ public class PersistentClass {
 
         for (Course course : courses) {
 
-            if (course.getClassID() == classId) {
+            if (course.getClassId() == classId) {
                 return course;
             }
         }
@@ -184,7 +184,7 @@ public class PersistentClass {
     public static void addInstructorToCourse(String instructorUserName, int classId) {
 
         for (Course course : courses) {
-            if (course.getClassID() == classId) {
+            if (course.getClassId() == classId) {
 
                 // check if there's already an instructor
                 if (course.getInstructorName().isEmpty()) {
@@ -211,7 +211,7 @@ public class PersistentClass {
         for (Course course : courses) {
 
             // make sure course exists
-            if (course.getClassID() == classId) {
+            if (course.getClassId() == classId) {
 
                 // see if student is already registered
                 if (!course.isStudentRegistered(studentUserName)) {

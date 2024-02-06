@@ -4,7 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * This class provides course objects that encapsulate the classes.json data to increase interoperability.
+ * This class provides course objects that encapsulate
+ * the classes.json data to increase interoperability.
  */
 public class Course {
 
@@ -13,24 +14,24 @@ public class Course {
     private int classLength;
     private int maxClassSize;
     private int currentClassSize;
-    private int classID;
+    private int classId;
 
     private boolean isPublic;
     private final JSONArray roster;
 
     /**
      * Create  course from a JSON object.
-     * @param courseJSON entry from classes.json
+     * @param courseJson entry from classes.json
      */
-    public Course(JSONObject courseJSON) {
+    public Course(JSONObject courseJson) {
 
-        this.className = courseJSON.getString("className");
-        this.instructorName = courseJSON.getString("instructorName");
-        this.classLength = courseJSON.getInt("classLength");
-        this.maxClassSize = courseJSON.getInt("maxClassSize");
-        this.classID = courseJSON.getInt("classID");
-        this.isPublic = courseJSON.getBoolean("isPublic");
-        this.roster = courseJSON.getJSONArray("roster");
+        this.className = courseJson.getString("className");
+        this.instructorName = courseJson.getString("instructorName");
+        this.classLength = courseJson.getInt("classLength");
+        this.maxClassSize = courseJson.getInt("maxClassSize");
+        this.classId = courseJson.getInt("classID");
+        this.isPublic = courseJson.getBoolean("isPublic");
+        this.roster = courseJson.getJSONArray("roster");
         this.currentClassSize = 0;
 
     }
@@ -40,16 +41,17 @@ public class Course {
      * @param className name of class
      * @param classLength length of class in hours
      * @param maxClassSize max students
-     * @param classID unique id
+     * @param classId unique id
      * @param classIsPublic public or private class
      */
-    public Course(String className, int classLength, int maxClassSize, int classID, boolean classIsPublic) {
+    public Course(String className, int classLength,
+                  int maxClassSize, int classId, boolean classIsPublic) {
 
         this.className = className;
         this.classLength = classLength;
         this.maxClassSize = maxClassSize;
         this.currentClassSize = 0;
-        this.classID = classID;
+        this.classId = classId;
         this.isPublic = classIsPublic;
         this.instructorName = ""; // leave as empty string until updated by owner
         this.roster = new JSONArray(); // no students yet
@@ -60,18 +62,18 @@ public class Course {
      * @param className name of class
      * @param classLength length of class in hours
      * @param maxClassSize max students
-     * @param classID unique id
+     * @param classId unique id
      * @param classIsPublic public or private class
      * @param instructorName instructor username
      */
-    public Course(String className, int classLength, int maxClassSize, int classID,
+    public Course(String className, int classLength, int maxClassSize, int classId,
                   boolean classIsPublic, String instructorName) {
 
         this.className = className;
         this.classLength = classLength;
         this.maxClassSize = maxClassSize;
         this.currentClassSize = 0;
-        this.classID = classID;
+        this.classId = classId;
         this.isPublic = classIsPublic;
         this.instructorName = instructorName;
         this.roster = new JSONArray(); // no students yet
@@ -121,7 +123,7 @@ public class Course {
 
         if (isStudentRegistered(userName)) {
 
-            for (int i = 0; i< roster.length(); i++) {
+            for (int i = 0; i < roster.length(); i++) {
 
                 // find the student index and remove them
                 if (roster.getJSONObject(i).getString("userName").equals(userName)) {
@@ -157,30 +159,38 @@ public class Course {
     public void setInstructorName(String instructorName) {
         this.instructorName = instructorName;
     }
+
     public String getInstructorName() {
         return this.instructorName;
     }
 
+
     public void setClassLength(int classLength) {
         this.classLength = classLength;
     }
+
     public int getClassLength() {
         return this.classLength;
     }
 
+
     public void setMaxClassSize(int maxClassSize) {
         this.maxClassSize = maxClassSize;
     }
+
     public int getMaxClassSize() {
         return this.maxClassSize;
     }
 
-    public void setClassID(int classID) {
-        this.classID = classID;
+
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
-    public int getClassID() {
-        return this.classID;
+
+    public int getClassId() {
+        return this.classId;
     }
+
 
     public void setPublic(boolean trueOrFalse) {
 
@@ -190,6 +200,7 @@ public class Course {
     public boolean getPublic() {
         return this.isPublic;
     }
+
 
 
 
