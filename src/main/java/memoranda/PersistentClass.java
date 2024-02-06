@@ -108,6 +108,11 @@ public class PersistentClass {
         // No objects here!
     }
 
+    /**
+     * Helper method to look up a course by its unique ID.
+     * @param classID unique class id
+     * @return Course object
+     */
     public static Course getCourseByID(int classID) {
 
         for(Course course : courses) {

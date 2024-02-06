@@ -1,16 +1,15 @@
 package test.java;
 
-import org.json.*;
-
 import main.java.memoranda.PersistentClass;
-import main.java.memoranda.Course;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
+/**
+ * This class facilities the testing of both Course.java and PersistentClass.java.
+ */
 public class CourseTest {
 
     @Before

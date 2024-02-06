@@ -3,7 +3,9 @@ package main.java.memoranda;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
+/**
+ * This class provides course objects that encapsulate the classes.json data to increase interoperability.
+ */
 public class Course {
 
     private String className;
