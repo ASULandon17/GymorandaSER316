@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import main.java.memoranda.*;
 
@@ -26,16 +30,18 @@ public class ClassPanel extends JPanel {
             new ExceptionDialog(ex);
         }
     }
-
+    public void refreshCards(){
+        initCardsPanel();
+    }
 
     void newClassButtonHelper(JButton button){
         button.setFocusable(false);
         button.setBorderPainted(false);
-        button.setContentAreaFilled(false); // Necessary for some Look and Feels to honor background color
-        button.setOpaque(true); // Make the button paint its background
-        button.setBackground(new Color(0, 100, 0)); // Dark green background
-        button.setForeground(Color.WHITE); // White text
-        button.setPreferredSize(new Dimension(100, 30)); // Set the preferred size to create a rectangle shape
+        button.setContentAreaFilled(false);
+        button.setOpaque(true);
+        button.setBackground(new Color(0, 100, 0));
+        button.setForeground(Color.WHITE);
+        button.setPreferredSize(new Dimension(100, 30));
     }
 
     void jbInit() throws Exception {
@@ -51,7 +57,7 @@ public class ClassPanel extends JPanel {
         newClass.setToolTipText("Add a new class");
         newClass.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
-                NewclassPopup popup = new NewclassPopup();
+                NewclassPopup popup = new NewclassPopup(ClassPanel.this);
                 popup.setVisible(true);
 
             }
@@ -91,7 +97,11 @@ public class ClassPanel extends JPanel {
     private JPanel createCourseCard(Course course) {
 
         JPanel card = new JPanel(new BorderLayout());
-        card.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+        Border roundedLineBorder = new LineBorder(Color.BLACK, 1, true);
+        Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
+        CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
+        card.setBorder(compoundBorder);
         JLabel instructorNameLabel;
 
 
@@ -104,11 +114,14 @@ public class ClassPanel extends JPanel {
 
         JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
 
-
+        JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
         JPanel infoPanel = new JPanel(new GridLayout(3, 1));
+
+        infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         infoPanel.add(classNameLabel);
         infoPanel.add(instructorNameLabel);
         infoPanel.add(classSizeLabel);
+        infoPanel.add(classLength);
 
         card.add(infoPanel, BorderLayout.CENTER);
 
