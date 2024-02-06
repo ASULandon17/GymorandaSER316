@@ -1,12 +1,15 @@
 package main.java.memoranda;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.FileWriter;
+import java.io.IOException;
 
-import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * This class provides the backend for interacting with Classes within Gymoranda.
@@ -19,6 +22,7 @@ public class PersistentClass {
     static {
         loadClassesFromFile();
     }
+
     public static ArrayList<Course> getListOfCourses() {
         return courses;
     }
@@ -42,6 +46,7 @@ public class PersistentClass {
         }
 
     }
+
     /**
      * Loads the classes to the arraylist from the JSON file.
      */
@@ -67,7 +72,6 @@ public class PersistentClass {
 
 
     /**
-     *
      * Saves the Room list to the json file.
      */
     private static void saveClassesToFile() {
@@ -102,7 +106,7 @@ public class PersistentClass {
 
 
     /**
-     * Ensures JVM doesn't make a default constructor for utility class
+     * Ensures JVM doesn't make a default constructor for utility class.
      */
     private PersistentClass() {
         // No objects here!
@@ -110,13 +114,14 @@ public class PersistentClass {
 
     /**
      * Helper method to look up a course by its unique ID.
-     * @param classID unique class id
+     * @param classId unique class id
      * @return Course object
      */
-    public static Course getCourseByID(int classID) {
+    public static Course getCourseById(int classId) {
 
-        for(Course course : courses) {
-            if (course.getClassID() == classID) {
+        for (Course course : courses) {
+
+            if (course.getClassID() == classId) {
                 return course;
             }
         }
@@ -125,45 +130,46 @@ public class PersistentClass {
     }
 
     /**
-     * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
+     * This method allows the owner to add a new class if they also
+     * do not know which instructor will teach it yet.
      * @param className name of the class
      * @param classLength length of the class in hours
      * @param maxClassSize max class size
-     * @param classID unique class ID (int)
-     * @return true or false pending success
+     * @param classId unique class ID (int)
      */
-    public static void addNewClass(String className, int classLength, int maxClassSize, int classID, boolean classIsPublic) {
+    public static void addNewClass(String className, int classLength,
+                                   int maxClassSize, int classId, boolean classIsPublic) {
 
         // check if class already exists:
-        if (getCourseByID(classID) == null) {
-            courses.add(new Course(className, classLength, maxClassSize, classID, classIsPublic));
+        if (getCourseById(classId) == null) {
+            courses.add(new Course(className, classLength, maxClassSize, classId, classIsPublic));
             saveClassesToFile();
-        }
-        else {
+
+        } else {
             System.out.println("Class already exists");
         }
 
     }
 
     /**
-     * This method allows the owner to add a new class if they do know the instructor that will be teaching
+     * This method allows the owner to add a new class if
+     * they do know the instructor that will be teaching.
      * @param className name of the class
      * @param classLength length of the class in hours
      * @param maxClassSize max class size
-     * @param classID unique class ID (int)
+     * @param classId unique class ID (int)
      * @param instructorUserName name of instructor teaching the course
-     * @return true or false pending success
      */
-    public static void addNewClass(String className, int classLength, int maxClassSize, int classID,
+    public static void addNewClass(String className, int classLength, int maxClassSize, int classId,
                                       boolean classIsPublic, String instructorUserName) {
 
         // check if class already exists:
-        if (getCourseByID(classID) == null) {
-            courses.add(new Course(className, classLength, maxClassSize,classID, classIsPublic, instructorUserName));
+        if (getCourseById(classId) == null) {
+            courses.add(new Course(className, classLength,
+                    maxClassSize,classId, classIsPublic, instructorUserName));
             saveClassesToFile();
 
-        }
-        else {
+        } else {
             System.out.println("Class already exists");
         }
 
@@ -171,15 +177,14 @@ public class PersistentClass {
 
 
     /**
-     * This method adds an instructor to a specific class
+     * This method adds an instructor to a specific class.
      * @param instructorUserName username of instructor
-     * @param classID classID
-     * @return 0 - Instructor added; 1 - instructor is already assigned; 2 - IO or JSON exception thrown; 3 - JSON file not found
+     * @param classId classID
      */
-    public static void addInstructorToCourse(String instructorUserName, int classID) {
+    public static void addInstructorToCourse(String instructorUserName, int classId) {
 
         for (Course course : courses) {
-            if (course.getClassID() == classID) {
+            if (course.getClassID() == classId) {
 
                 // check if there's already an instructor
                 if (course.getInstructorName().isEmpty()) {
@@ -195,31 +200,25 @@ public class PersistentClass {
     }
 
     /**
-     * addStudentToCourse() allows user to register for a course as long as the course isn't full
+     * addStudentToCourse() allows user to register
+     * for a course as long as the course isn't full
      * AND they aren't already registered.
      * @param studentUserName username of student registering
-     * @param classID classID for the course they want to register for
-     * @return 0 - student added successfully, 1 - JSON file not found, 2 - IO or JSON Exception thrown,
-     * 3 - class is full, 4 - student is already registered for course
+     * @param classId classId for the course they want to register for
      */
-    public static void addStudentToCourse(String studentUserName, int classID) {
+    public static void addStudentToCourse(String studentUserName, int classId) {
 
         for (Course course : courses) {
-           // make sure course exists
-            if (course.getClassID() == classID) {
+
+            // make sure course exists
+            if (course.getClassID() == classId) {
 
                 // see if student is already registered
                 if (!course.isStudentRegistered(studentUserName)) {
 
                     course.addStudentToRoster(studentUserName);
                 }
-
-
             }
         }
-
     }
-
-
-
 }

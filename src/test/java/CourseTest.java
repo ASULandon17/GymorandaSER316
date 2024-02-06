@@ -70,7 +70,7 @@ public class CourseTest {
         PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "craig");
 
 
-        assertEquals("Duplicate class was added and instructor was overwritten","jeff", PersistentClass.getCourseByID(60).getInstructorName());
+        assertEquals("Duplicate class was added and instructor was overwritten","jeff", PersistentClass.getCourseById(60).getInstructorName());
 
     }
 
@@ -81,7 +81,7 @@ public class CourseTest {
         PersistentClass.addInstructorToCourse("steve", 60);
 
         assertEquals("Instructor not added to course","steve",
-                PersistentClass.getCourseByID(60).getInstructorName());
+                PersistentClass.getCourseById(60).getInstructorName());
 
     }
 
@@ -94,7 +94,7 @@ public class CourseTest {
         PersistentClass.addInstructorToCourse("craig", 60);
 
         assertEquals("Instructor was overwritten","steve",
-                PersistentClass.getCourseByID(60).getInstructorName());
+                PersistentClass.getCourseById(60).getInstructorName());
     }
 
 
@@ -116,7 +116,7 @@ public class CourseTest {
 
 
         assertEquals("Instructor is incorrect","scuba lord",
-                PersistentClass.getCourseByID(99).getInstructorName());
+                PersistentClass.getCourseById(99).getInstructorName());
 
     }
 
@@ -128,12 +128,12 @@ public class CourseTest {
         PersistentClass.addStudentToCourse("bob", 99);
 
         assertEquals("Student was not added to course", "bob",
-                PersistentClass.getCourseByID(99).getRoster().getJSONObject(0).getString("userName"));
+                PersistentClass.getCourseById(99).getRoster().getJSONObject(0).getString("userName"));
 
     }
 
 
-    // add student to a course that's already registered
+
     @Test
     public void testAddStudentToCourseThatIsAlreadyRegistered() {
        // add a class and 1 student
@@ -157,8 +157,8 @@ public class CourseTest {
         // add a student to a course that doesn't exist
         PersistentClass.addStudentToCourse("bob", 22);
 
-        assertEquals("Student was added to existing course", 0, PersistentClass.getCourseByID(99).getCurrentClassSize());
-        assertNull("Course was created improperly", PersistentClass.getCourseByID(22));
+        assertEquals("Student was added to existing course", 0, PersistentClass.getCourseById(99).getCurrentClassSize());
+        assertNull("Course was created improperly", PersistentClass.getCourseById(22));
     }
 
     @Test
@@ -166,7 +166,7 @@ public class CourseTest {
         // add a student to a course that doesn't exist
         PersistentClass.addStudentToCourse("bob", 22);
         // make sure course was not added
-        assertNull("Course that doesn't exisit was added to file", PersistentClass.getCourseByID(22));
+        assertNull("Course that doesn't exisit was added to file", PersistentClass.getCourseById(22));
     }
 
 
@@ -180,19 +180,20 @@ public class CourseTest {
         PersistentClass.addStudentToCourse("chuck", 99);
 
         // ensure class size is 2
-        assertEquals("Class size is not correct", 2, PersistentClass.getCourseByID(99).getCurrentClassSize());
+        assertEquals("Class size is not correct", 2, PersistentClass.getCourseById(99).getCurrentClassSize());
 
         // remove the first student on the roster
-        PersistentClass.getCourseByID(99).removeStudentFromRoster("bob");
+        PersistentClass.getCourseById(99).removeStudentFromRoster("bob");
 
         // ensure the current class size is 1 after removing student
-        assertEquals("Class size was not reduced to 1", 1, PersistentClass.getCourseByID(99).getCurrentClassSize());
+        assertEquals("Class size was not reduced to 1", 1, PersistentClass.getCourseById(99).getCurrentClassSize());
 
         // check if only chuck is left
-        assertTrue("Wrong student was deleted", PersistentClass.getCourseByID(99).isStudentRegistered("chuck"));
+        assertTrue("Wrong student was deleted", PersistentClass.getCourseById(99).isStudentRegistered("chuck"));
 
 
     }
+
 
     @Test
     public void testRemoveStudentFromRosterThatDoesNotExist() {
@@ -204,10 +205,10 @@ public class CourseTest {
         PersistentClass.addStudentToCourse("chuck", 99);
 
         // try to remove a student that isn't on the roster
-        PersistentClass.getCourseByID(99).removeStudentFromRoster("larry");
+        PersistentClass.getCourseById(99).removeStudentFromRoster("larry");
 
         // check that class size wasn't changed
-        assertEquals("A student was removed", 2, PersistentClass.getCourseByID(99).getCurrentClassSize());
+        assertEquals("A student was removed", 2, PersistentClass.getCourseById(99).getCurrentClassSize());
     }
 
 
