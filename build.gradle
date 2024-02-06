@@ -12,7 +12,7 @@ compileJava.options.encoding = 'UTF-8'
 
 // Repositories and dependencies for code go here
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 build.dependsOn jacocoTestReport
@@ -25,6 +25,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     testImplementation project(path: ':')
     implementation files('cls/')
+    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'com.sun.xml.ws:jaxws-rt:2.3.3'
+
 }
 
 jacocoTestReport {
@@ -53,7 +56,7 @@ apply plugin: 'checkstyle'
 // }
 
 tasks.withType(Checkstyle) {
-  
+ 
   reports {
     //html.enabled = true
     //xml.enabled = false
@@ -61,6 +64,7 @@ tasks.withType(Checkstyle) {
     //include '**/*.java'
     include '**/Course.java', '**/PersistentClass.java'
  }
+
 
 checkstyle {
     toolVersion = "8.8"
