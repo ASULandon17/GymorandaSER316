@@ -24,9 +24,7 @@ import javax.swing.JToolBar;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import main.java.memoranda.EventsManager;
-import main.java.memoranda.EventsScheduler;
-import main.java.memoranda.History;
+import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
 import main.java.memoranda.date.DateListener;
@@ -52,6 +50,8 @@ public class EventsPanel extends JPanel {
     JMenuItem ppNewEvent = new JMenuItem();
     DailyItemsPanel parentPanel = null;
 
+    JButton newClass = new JButton();
+
     public EventsPanel(DailyItemsPanel _parentPanel) {
         try {
             parentPanel = _parentPanel;
@@ -71,9 +71,23 @@ public class EventsPanel extends JPanel {
         button.setMaximumSize(new Dimension(24, 24));
     }
 
+    void newClassButtonHelper(JButton button){
+        button.setFocusable(false);
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false); // Necessary for some Look and Feels to honor background color
+        button.setOpaque(true); // Make the button paint its background
+        button.setBackground(new Color(0, 100, 0)); // Dark green background
+        button.setForeground(Color.WHITE); // White text
+        button.setPreferredSize(new Dimension(100, 30)); // Set the preferred size to create a rectangle shape
+    }
+
     void jbInit() throws Exception {
         eventsToolBar.setFloatable(false);
-
+        historyBackB.setVisible(false);
+        historyForwardB.setVisible(false);
+        newEventB.setVisible(false);
+        editEventB.setVisible(false);
+        removeEventB.setVisible(false);
         historyBackB.setAction(History.historyBackAction);
         historyBackB.setToolTipText(Local.getString("History back"));
         jbInitHelper(historyBackB);
@@ -92,6 +106,20 @@ public class EventsPanel extends JPanel {
         newEventB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newEventB_actionPerformed(e);
+            }
+        });
+
+        newClass.setText("Add a class");
+        if(User.getUserType() == UserType.OWNER){
+            newClass.setVisible(true);
+        } else {
+            newClass.setVisible(false);
+        }
+        newClassButtonHelper(newClass);
+        newClass.setToolTipText("Add a new class");
+        newClass.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(ActionEvent e){
+
             }
         });
 
@@ -160,7 +188,7 @@ public class EventsPanel extends JPanel {
         eventsToolBar.add(removeEventB, null);
         eventsToolBar.addSeparator(new Dimension(8, 24));
         eventsToolBar.add(editEventB, null);
-
+        eventsToolBar.add(newClass, null);
         this.add(eventsToolBar, BorderLayout.NORTH);
 
         PopupListener ppListener = new PopupListener();
