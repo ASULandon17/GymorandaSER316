@@ -113,7 +113,6 @@ public class Course {
         }
     }
 
-    //todo: test remove student functionality
     /**
      * Provides functionality to remove student from a class roster.
      * @param userName username of student

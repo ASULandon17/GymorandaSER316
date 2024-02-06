@@ -5,8 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * This class facilities the testing of both Course.java and PersistentClass.java.
@@ -170,6 +169,46 @@ public class CourseTest {
         assertNull("Course that doesn't exisit was added to file", PersistentClass.getCourseByID(22));
     }
 
+
+    @Test
+    public void testRemoveStudentFromRoster() {
+
+        // add new class with two students:
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        PersistentClass.addStudentToCourse("bob", 99);
+        PersistentClass.addStudentToCourse("chuck", 99);
+
+        // ensure class size is 2
+        assertEquals("Class size is not correct", 2, PersistentClass.getCourseByID(99).getCurrentClassSize());
+
+        // remove the first student on the roster
+        PersistentClass.getCourseByID(99).removeStudentFromRoster("bob");
+
+        // ensure the current class size is 1 after removing student
+        assertEquals("Class size was not reduced to 1", 1, PersistentClass.getCourseByID(99).getCurrentClassSize());
+
+        // check if only chuck is left
+        assertTrue("Wrong student was deleted", PersistentClass.getCourseByID(99).isStudentRegistered("chuck"));
+
+
+    }
+
+    @Test
+    public void testRemoveStudentFromRosterThatDoesNotExist() {
+
+        // add new class with two students:
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        PersistentClass.addStudentToCourse("bob", 99);
+        PersistentClass.addStudentToCourse("chuck", 99);
+
+        // try to remove a student that isn't on the roster
+        PersistentClass.getCourseByID(99).removeStudentFromRoster("larry");
+
+        // check that class size wasn't changed
+        assertEquals("A student was removed", 2, PersistentClass.getCourseByID(99).getCurrentClassSize());
+    }
 
 
 }
