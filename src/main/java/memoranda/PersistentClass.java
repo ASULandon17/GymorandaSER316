@@ -90,6 +90,10 @@ public class PersistentClass {
             jsonObject.put("classID", course.getClassId());
             jsonObject.put("isPublic", course.getPublic());
             jsonObject.put("roster", course.getRoster());
+            jsonObject.put("year", course.getClassYear());
+            jsonObject.put("month", course.getClassMonth());
+            jsonObject.put("day", course.getClassDay());
+            jsonObject.put("hour", course.getClassHour());
 
             jsonArray.put(jsonObject);
         }
@@ -136,13 +140,19 @@ public class PersistentClass {
      * @param classLength length of the class in hours
      * @param maxClassSize max class size
      * @param classId unique class ID (int)
+     * @param year year of date class is scheduled
+     * @param month month of date class is scheduled
+     * @param day day of date class is scheduled
+     * @param hour hour of date class is scheduled
      */
     public static void addNewClass(String className, int classLength,
-                                   int maxClassSize, int classId, boolean classIsPublic) {
+                                   int maxClassSize, int classId, boolean classIsPublic,
+                                   int year, int month, int day, int hour) {
 
         // check if class already exists:
         if (getCourseById(classId) == null) {
-            courses.add(new Course(className, classLength, maxClassSize, classId, classIsPublic));
+            courses.add(new Course(className, classLength, maxClassSize, classId, classIsPublic,
+                                    year, month, day, hour));
             saveClassesToFile();
 
         } else {
@@ -161,12 +171,14 @@ public class PersistentClass {
      * @param instructorUserName name of instructor teaching the course
      */
     public static void addNewClass(String className, int classLength, int maxClassSize, int classId,
-                                      boolean classIsPublic, String instructorUserName) {
+                                      boolean classIsPublic, String instructorUserName, 
+                                      int year, int month, int day, int hour) {
 
         // check if class already exists:
         if (getCourseById(classId) == null) {
             courses.add(new Course(className, classLength,
-                    maxClassSize,classId, classIsPublic, instructorUserName));
+                    maxClassSize,classId, classIsPublic, instructorUserName,
+                    year, month, day, hour));
             saveClassesToFile();
 
         } else {
@@ -222,9 +234,13 @@ public class PersistentClass {
         }
     }
 
-    public static void deleteCourseById(int classId){
-        for(int i = 0; i < courses.size(); i++){
-            if(courses.get(i).getClassId() == classId){
+    /**
+     * deleteCourseById() removes course with specified id from class.json
+     * @param classId classId for the course they want to register for
+     */
+    public static void deleteCourseById(int classId) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getClassId() == classId) {
                 courses.remove(i);
                 saveClassesToFile();
                 return;
