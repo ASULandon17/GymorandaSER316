@@ -1,4 +1,4 @@
-package test.java;
+//package test.java;
 
 import main.java.memoranda.PersistentClass;
 import org.junit.After;
@@ -34,7 +34,7 @@ public class CourseTest {
         PersistentClass.loadClassesFromFile();
 
 
-        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().getFirst().getClassId());
+        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().get(0).getClassId());
     }
 
     @Test
@@ -209,6 +209,44 @@ public class CourseTest {
 
         // check that class size wasn't changed
         assertEquals("A student was removed", 2, PersistentClass.getCourseById(99).getCurrentClassSize());
+    }
+
+    @Test
+    public void testDeleteExistingCourseById(){
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        PersistentClass.addNewClass("scuba diving2", 6, 5, 1,
+                false, "scuba lord2");
+        int initialSize = PersistentClass.getListOfCourses().size();
+        int classIdToDelete = 1;
+
+        PersistentClass.deleteCourseById(classIdToDelete);
+        assertEquals(initialSize - 1, PersistentClass.getListOfCourses().size());
+        assertNull(PersistentClass.getCourseById(classIdToDelete));
+    }
+
+    @Test
+    public void testPersistenceOfDeletion(){
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        PersistentClass.addNewClass("scuba diving2", 6, 5, 1,
+                false, "scuba lord2");
+        int classIdToDelete = 1;
+        PersistentClass.deleteCourseById(classIdToDelete);
+        PersistentClass.loadClassesFromFile();
+        assertNull(PersistentClass.getCourseById(classIdToDelete));
+    }
+
+    @Test
+    public void testDeleteNonExistingCourse() {
+
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord");
+        int initialSize = PersistentClass.getListOfCourses().size();
+        int nonExistingClassId = 1;
+        PersistentClass.deleteCourseById(nonExistingClassId);
+
+        assertEquals(initialSize, PersistentClass.getListOfCourses().size());
     }
 
 
