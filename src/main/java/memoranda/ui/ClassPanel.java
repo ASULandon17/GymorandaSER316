@@ -30,6 +30,7 @@ public class ClassPanel extends JPanel {
             new ExceptionDialog(ex);
         }
     }
+    //This is used in NewclassPopup so that on adding a new class, the UI refreshes.
     public void refreshCards(){
         initCardsPanel();
     }
@@ -57,6 +58,7 @@ public class ClassPanel extends JPanel {
         newClass.setToolTipText("Add a new class");
         newClass.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
+                //Pass the classpanel so that we can refresh the UI on adding a new class
                 NewclassPopup popup = new NewclassPopup(ClassPanel.this);
                 popup.setVisible(true);
 
@@ -115,13 +117,19 @@ public class ClassPanel extends JPanel {
         JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
 
         JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
-        JPanel infoPanel = new JPanel(new GridLayout(3, 1));
+        String isPublic = "Private";
+        if(course.getPublic()){
+            isPublic = "Public";
+        }
+        JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
+        JPanel infoPanel = new JPanel(new GridLayout(5, 1));
 
         infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         infoPanel.add(classNameLabel);
         infoPanel.add(instructorNameLabel);
         infoPanel.add(classSizeLabel);
         infoPanel.add(classLength);
+        infoPanel.add(classPrivacy);
 
         card.add(infoPanel, BorderLayout.CENTER);
 
