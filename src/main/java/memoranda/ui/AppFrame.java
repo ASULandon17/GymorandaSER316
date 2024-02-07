@@ -617,11 +617,9 @@ public class AppFrame extends JFrame {
             this.setLocation(x, y);
         }
 
-        String pan = (String) Context.get("CURRENT_PANEL");
-        if (pan != null) {
-            workPanel.selectPanel(pan);
-            setEnabledEditorMenus(pan.equalsIgnoreCase("NOTES"));
-        }
+        // Force Home to open on start-up
+        // Conditional is no longer needed as pan cannot be NULL
+        workPanel.selectPanel("AGENDA");
 
         CurrentProject.addProjectListener(new ProjectListener() {
 
