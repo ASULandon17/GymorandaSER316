@@ -221,8 +221,8 @@ public class CourseTest {
         int classIdToDelete = 1;
 
         PersistentClass.deleteCourseById(classIdToDelete);
-        assertEquals(initialSize - 1, PersistentClass.getListOfCourses().size());
-        assertNull(PersistentClass.getCourseById(classIdToDelete));
+        assertEquals("Course size should have decreased", initialSize - 1, PersistentClass.getListOfCourses().size());
+        assertNull("Course should not exist", PersistentClass.getCourseById(classIdToDelete));
     }
 
     @Test
@@ -234,7 +234,7 @@ public class CourseTest {
         int classIdToDelete = 1;
         PersistentClass.deleteCourseById(classIdToDelete);
         PersistentClass.loadClassesFromFile();
-        assertNull(PersistentClass.getCourseById(classIdToDelete));
+        assertNull("Course should not exist", PersistentClass.getCourseById(classIdToDelete));
     }
 
     @Test
@@ -246,7 +246,7 @@ public class CourseTest {
         int nonExistingClassId = 1;
         PersistentClass.deleteCourseById(nonExistingClassId);
 
-        assertEquals(initialSize, PersistentClass.getListOfCourses().size());
+        assertEquals("No course should have been deleted", initialSize, PersistentClass.getListOfCourses().size());
     }
 
     @Test
