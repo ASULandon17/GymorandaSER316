@@ -6,3 +6,4 @@
 
 users.json
 *.json
+.classpath
