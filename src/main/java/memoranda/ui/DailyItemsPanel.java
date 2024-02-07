@@ -61,7 +61,6 @@ public class DailyItemsPanel extends JPanel {
     BorderLayout borderLayout3 = new BorderLayout();
     JPanel editorsPanel = new JPanel();
     CardLayout cardLayout1 = new CardLayout();
-    //EditorPanel is no longer in use, can be removed. Left in for now so as not to break any code
     public EditorPanel editorPanel = new EditorPanel(this);
     public RoomPanel roomPanel = new RoomPanel(this);
     JLabel currentDateLabel = new JLabel();
@@ -209,8 +208,6 @@ public class DailyItemsPanel extends JPanel {
 		editorsPanel.add(agendaPanel, "AGENDA");
 		editorsPanel.add(eventsPanel, "EVENTS");
 		editorsPanel.add(tasksPanel, "TASKS");
-		//editorPanel is no longer in use, can be fully removed from code if possible
-		editorsPanel.add(editorPanel, "NON-EXISTENT");
 		editorsPanel.add(roomPanel, "NOTES");
 
 		splitPane.add(mainPanel, JSplitPane.RIGHT);
