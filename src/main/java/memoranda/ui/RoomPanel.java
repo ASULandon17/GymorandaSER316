@@ -1,5 +1,9 @@
 package main.java.memoranda.ui;
 
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import java.awt.BorderLayout;
@@ -58,7 +62,7 @@ public class RoomPanel extends JPanel {
 	ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
 	ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
 	
-	String[] columnNames = {"Time", "Class Name", "Trainer", "Level", "Availability", "Sign Up"};
+	String[] columnNames = {"Time", "Class Name", "Trainer", "Availability", "Sign Up"};
 	Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
 					   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
 					   		{"12:00", "Akido", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
@@ -179,13 +183,19 @@ public class RoomPanel extends JPanel {
 		  //parse through each Id in class list, check if it the same date as selected on the calendar, update it in the correct slot on table
 		  for(Integer id : classList) {
 			  Course course = PersistentClass.getCourseById((int) id);
-			  if(course.getDate() == date) {
+			  String courseDate = "" + Integer.toString(course.getClassDay()) + "/" + 
+			                           Integer.toString(course.getClassMonth()) + "/" + 
+			                           Integer.toString(course.getClassYear());
+			  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			  if(courseDate == sdf.format(new CurrentDate().get())) {
 				  //send the class to helper function to fill out it's row in the table
-				  tableData = fillOutRow(tableData, course.getTime() - 8, course.getTime(), course.getClassName, course.getInstructor(), course.getLevel(), course.getSpotsRemaining());
+				  tableData = fillOutRow(tableData, course.getClassHour() - 8, course.getClassHour(), course.getClassName(), 
+				          course.getInstructorName(), course.getSpotsRemaining());
 				  //if the class is over an hour, fill out all of the time slots it takes up
 				  if(course.getClassLength() > 1) {
 					  for(int i = 1; i < course.getClassLength(); i++) {
-						  tableData = fillOutRow(tableData, course.getTime() - 8 + i, course.getTime(), course.getClassName, course.getInstructor(), course.getLevel(), course.getSpotsRemaining());
+						  tableData = fillOutRow(tableData, course.getClassHour() - 8 + i, course.getClassHour(), course.getClassName(), 
+						          course.getInstructorName(), course.getSpotsRemaining());
 					  }
 				  }
 			  }
@@ -201,7 +211,6 @@ public class RoomPanel extends JPanel {
 		  return tableData;
 	  }
 	  
-	  
 	  /**
 	   * A method to fill out each row of a table for a room which corresponds to 1 hour of a class
 	   * @param table
@@ -214,11 +223,10 @@ public class RoomPanel extends JPanel {
 	   * @return table; the table with the row filled out
 	   */
 	  
-	  Object[][] fillOutRow(Object[][] table, int row, int time, String className, String instructor, int level, int spotsRemaining) {
+	  Object[][] fillOutRow(Object[][] table, int row, int time, String className, String instructor, int spotsRemaining) {
 		  table[row][0] = Integer.toString(time);
 		  table[row][1] = className;
 		  table[row][2] = instructor;
-		  table[row][3] = Integer.toString(level);
 		  table[row][4] = Integer.toString(spotsRemaining);
 		  if(spotsRemaining != 0) {
 			  table[row][5] = createSignUpButton();
