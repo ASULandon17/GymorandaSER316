@@ -234,34 +234,34 @@ public class WorkPanel extends JPanel {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("AGENDA");
 		setCurrentButton(agendaB);
-		Context.put("CURRENT_PANEL", "AGENDA");
+		// Removed Context.put for CURRENT_PANEL to force Home to open on start
 	}
 
 	public void notesB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("NOTES");
 		setCurrentButton(notesB);
-		Context.put("CURRENT_PANEL", "AGENDA");
+		// Removed Context.put for CURRENT_PANEL to force Home to open on start
 	}
 
 	public void tasksB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("TASKS");
 		setCurrentButton(tasksB);
-		Context.put("CURRENT_PANEL", "AGENDA");
+		// Removed Context.put for CURRENT_PANEL to force Home to open on start
 	}
 
 	public void eventsB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("EVENTS");
 		setCurrentButton(eventsB);
-		Context.put("CURRENT_PANEL", "AGENDA");
+		// Removed Context.put for CURRENT_PANEL to force Home to open on start
 	}
 
 	public void filesB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "FILES");
 		setCurrentButton(filesB);
-		Context.put("CURRENT_PANEL", "AGENDA");
+		// Removed Context.put for CURRENT_PANEL to force Home to open on start
 	}
 
 	void setCurrentButton(JButton cb) {
