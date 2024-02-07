@@ -15,6 +15,10 @@ public class Course {
     private int maxClassSize;
     private int currentClassSize;
     private int classId;
+    private int year;
+    private int month;
+    private int day;
+    private int hour; //using 24hr clock format for hour
 
     private boolean isPublic;
     private final JSONArray roster;
@@ -32,6 +36,10 @@ public class Course {
         this.classId = courseJson.getInt("classID");
         this.isPublic = courseJson.getBoolean("isPublic");
         this.roster = courseJson.getJSONArray("roster");
+        this.year = courseJson.getInt("year");
+        this.month = courseJson.getInt("month");
+        this.day = courseJson.getInt("day");
+        this.hour = courseJson.getInt("hour");
         this.currentClassSize = 0;
 
     }
@@ -43,9 +51,14 @@ public class Course {
      * @param maxClassSize max students
      * @param classId unique id
      * @param classIsPublic public or private class
+     * @param year year of date class is scheduled
+     * @param month month of date class is scheduled
+     * @param day day of date class is scheduled
+     * @param hour hour of date class is scheduled
      */
     public Course(String className, int classLength,
-                  int maxClassSize, int classId, boolean classIsPublic) {
+                  int maxClassSize, int classId, boolean classIsPublic,
+                  int year, int month, int day, int hour) {
 
         this.className = className;
         this.classLength = classLength;
@@ -54,6 +67,11 @@ public class Course {
         this.classId = classId;
         this.isPublic = classIsPublic;
         this.instructorName = ""; // leave as empty string until updated by owner
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        
         this.roster = new JSONArray(); // no students yet
     }
 
@@ -65,9 +83,14 @@ public class Course {
      * @param classId unique id
      * @param classIsPublic public or private class
      * @param instructorName instructor username
+     * @param year year of date class is scheduled
+     * @param month month of date class is scheduled
+     * @param day day of date class is scheduled
+     * @param hour hour of date class is scheduled
      */
     public Course(String className, int classLength, int maxClassSize, int classId,
-                  boolean classIsPublic, String instructorName) {
+                  boolean classIsPublic, String instructorName, 
+                  int year, int month, int day, int hour) {
 
         this.className = className;
         this.classLength = classLength;
@@ -76,6 +99,11 @@ public class Course {
         this.classId = classId;
         this.isPublic = classIsPublic;
         this.instructorName = instructorName;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        
         this.roster = new JSONArray(); // no students yet
     }
 
@@ -201,9 +229,35 @@ public class Course {
         return this.isPublic;
     }
 
+    public int getClassYear() {
+        return this.year;
+    }
+    
+    public void setClassYear(int year) {
+        this.year = year;
+    }
 
+    public int getClassMonth() {
+        return this.month;
+    }
+    
+    public void setClassMonth(int month) {
+        this.month = month;
+    }
 
+    public int getClassDay() {
+        return this.day;
+    }
+    
+    public void setClassDay(int day) {
+        this.day = day;
+    }
 
-
-
+    public int getClassHour() {
+        return this.hour;
+    }
+    
+    public void setClassHour(int hour) {
+        this.hour = hour;
+    }
 }

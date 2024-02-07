@@ -12,6 +12,10 @@ public class NewclassPopup extends JFrame {
     private JTextField classLengthField;
     private JTextField maxClassSizeField;
     private JTextField classIdField;
+    private JTextField classDateYearField;
+    private JTextField classDateMonthField;
+    private JTextField classDateDayField;
+    private JTextField classDateHourField;
     private JCheckBox classIsPublicCheckBox;
     private JButton submitButton;
     //DOES NOT CURRENTLY ALLOW YOU TO ADD WITH A TRAINER AS TRAINER FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET
@@ -39,6 +43,11 @@ public class NewclassPopup extends JFrame {
         classLengthField = new JTextField();
         maxClassSizeField = new JTextField();
         classIdField = new JTextField();
+        classDateYearField = new JTextField();
+        classDateMonthField = new JTextField();
+        classDateDayField = new JTextField();
+        classDateHourField = new JTextField();
+        
         classIsPublicCheckBox = new JCheckBox("Yes, make public");
 
         formPanel.add(new JLabel("Class Name:"));
@@ -49,6 +58,14 @@ public class NewclassPopup extends JFrame {
         formPanel.add(maxClassSizeField);
         formPanel.add(new JLabel("Class ID:"));
         formPanel.add(classIdField);
+        formPanel.add(new JLabel("Class Year: "));
+        formPanel.add(classDateYearField);
+        formPanel.add(new JLabel("Class Month: "));
+        formPanel.add(classDateMonthField);
+        formPanel.add(new JLabel("Class Day: "));
+        formPanel.add(classDateDayField);
+        formPanel.add(new JLabel("Class Hour: "));
+        formPanel.add(classDateHourField);
         formPanel.add(new JLabel("Public Class:"));
         formPanel.add(classIsPublicCheckBox);
 
@@ -78,9 +95,13 @@ public class NewclassPopup extends JFrame {
             int classLength = Integer.parseInt(classLengthField.getText());
             int maxClassSize = Integer.parseInt(maxClassSizeField.getText());
             int classId = Integer.parseInt(classIdField.getText());
+            int classYear = Integer.parseInt(classDateYearField.getText());
+            int classMonth = Integer.parseInt(classDateMonthField.getText());
+            int classDay = Integer.parseInt(classDateDayField.getText());
+            int classHour = Integer.parseInt(classDateHourField.getText());
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic);
+            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour);
             JOptionPane.showMessageDialog(this, "Class added succesfully");
             clearForm();
             if(classPanelRef != null){
@@ -98,6 +119,10 @@ public class NewclassPopup extends JFrame {
         classLengthField.setText("");
         maxClassSizeField.setText("");
         classIdField.setText("");
+        classDateYearField.setText("");
+        classDateMonthField.setText("");
+        classDateDayField.setText("");
+        classDateHourField.setText("");
         classIsPublicCheckBox.setSelected(false);
     }
 }
