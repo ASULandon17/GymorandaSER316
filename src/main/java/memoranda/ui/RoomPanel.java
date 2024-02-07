@@ -63,23 +63,26 @@ public class RoomPanel extends JPanel {
 	ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
 	
 	String[] columnNames = {"Time", "Class Name", "Trainer", "Availability", "Sign Up"};
-	Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
-					   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
-					   		{"12:00", "Akido", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
-	//Object[][] desertData = getTableData(currentDate.get(), "Desert");
-	Object[][] jungleData = {{"10:00", "Kids Class", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
-			   				{"11:00", "Kickboxing", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
-			   				{"12:00", "Krav Maga", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
-	Object[][] arcticData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
-			   				{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
-			   				{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
-	Object[][] beachData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
-							{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
-							{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	//Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+	//				   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+	//				   		{"12:00", "Akido", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
+	Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
+	Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
+	Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
+	//Object[][] jungleData = {{"10:00", "Kids Class", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+	//		   				{"11:00", "Kickboxing", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+	//		   				{"12:00", "Krav Maga", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	//Object[][] arcticData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+	//		   				{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+	//		   				{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
+	//Object[][] beachData = {{"10:00", "Muay Thai", "Dummy Trainer", "1", "20", "Sign-up Button"}, 
+	//						{"11:00", "Judo", "Dummy Trainer 2", "2", "20", "Sign-up Button"},
+	//						{"12:00", "Meditation", "Dummy Trainer 3", "3", "20", "Sign-up Button"}};
 	JTable desertTable = new JTable(desertData, columnNames);
 	JTable jungleTable = new JTable(jungleData, columnNames);
 	JTable arcticTable = new JTable(arcticData, columnNames);
-	JTable beachTable = new JTable(arcticData, columnNames);
+	JTable beachTable = new JTable(beachData, columnNames);
 	
 	
 	DailyItemsPanel parentPanel = null;
@@ -173,41 +176,47 @@ public class RoomPanel extends JPanel {
 	
 	  Object[][] getTableData(CalendarDate date, String roomName) {
 		  Room room = Rooms.getRoomByName(roomName);
-		  if(room.equals(null)) {
-			  System.out.println("Error: No Room by this name");  //create error catching when done w/method & debugging
-			  return null;
-		  }
 		  Object[][] tableData = new Object[ROWS][COLUMNS];
-		  List<Integer> classList = room.getClassIds();
-		  
-		  //parse through each Id in class list, check if it the same date as selected on the calendar, update it in the correct slot on table
-		  for(Integer id : classList) {
-			  Course course = PersistentClass.getCourseById((int) id);
-			  String courseDate = "" + Integer.toString(course.getClassDay()) + "/" + 
-			                           Integer.toString(course.getClassMonth()) + "/" + 
-			                           Integer.toString(course.getClassYear());
-			  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			  if(courseDate == sdf.format(new CurrentDate().get())) {
-				  //send the class to helper function to fill out it's row in the table
-				  tableData = fillOutRow(tableData, course.getClassHour() - 8, course.getClassHour(), course.getClassName(), 
-				          course.getInstructorName(), course.getSpotsRemaining());
-				  //if the class is over an hour, fill out all of the time slots it takes up
-				  if(course.getClassLength() > 1) {
-					  for(int i = 1; i < course.getClassLength(); i++) {
-						  tableData = fillOutRow(tableData, course.getClassHour() - 8 + i, course.getClassHour(), course.getClassName(), 
-						          course.getInstructorName(), course.getSpotsRemaining());
-					  }
-				  }
-			  }
+		  if(room == null) {
+			  System.out.println("Error: No Room by this name");  //create error catching when done w/method & debugging
+		  } else {
+    		  List<Integer> classList = room.getClassIds();
+    		  
+    		  //parse through each Id in class list, check if it the same date as selected on the calendar, update it in the correct slot on table
+    		  for(Integer id : classList) {
+    			  Course course = PersistentClass.getCourseById((int) id);
+    			  String courseDate = "" + Integer.toString(course.getClassDay()) + "/" + 
+    			                           Integer.toString(course.getClassMonth()) + "/" + 
+    			                           Integer.toString(course.getClassYear());
+    			  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    			  if(courseDate == sdf.format(new CurrentDate().get())) {
+    				  //send the class to helper function to fill out it's row in the table
+    				  tableData = fillOutRow(tableData, course.getClassHour() - 8, course.getClassHour(), course.getClassName(), 
+    				          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize());
+    				  //if the class is over an hour, fill out all of the time slots it takes up
+    				  if(course.getClassLength() > 1) {
+    					  for(int i = 1; i < course.getClassLength(); i++) {
+    						  tableData = fillOutRow(tableData, course.getClassHour() - 8 + i, course.getClassHour(), course.getClassName(), 
+    						          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize());
+    					  }
+    				  }
+    			  }
+    		  }
+		  }
 			  // fill out empty spots in the schedule with "No class"
 			  for(int i = 0; i < ROWS; i++) {
-				  if(tableData[i][0].isEmpty()) {
+				  if ((tableData[i][0]) == null) {
 					  for(int j = 0; j < COLUMNS; j++) {
-						  tableData[i][j] = "No class";
+					      if (j == 0 && i <= 4) {
+					          tableData[i][j] = "" + (i+8) + ":00 AM";
+					      } else if (j == 0) {
+					          tableData[i][j] = "" + (i-4) + ":00 PM";
+					      } else {
+					          tableData[i][j] = "No class";
+					      }
 					  }
 				  }
 			  }
-		  }
 		  return tableData;
 	  }
 	  
@@ -229,9 +238,9 @@ public class RoomPanel extends JPanel {
 		  table[row][2] = instructor;
 		  table[row][4] = Integer.toString(spotsRemaining);
 		  if(spotsRemaining != 0) {
-			  table[row][5] = createSignUpButton();
+			  table[row][5] = "Sign up button to come";
 		  } else {
-			  table[row][5] = "Class if full!";
+			  table[row][5] = "Class is full!";
 		  }
 		  return table;
 	  }
