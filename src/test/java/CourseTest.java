@@ -1,4 +1,4 @@
-//package test.java;
+package test.java;
 
 import main.java.memoranda.PersistentClass;
 import org.junit.After;
