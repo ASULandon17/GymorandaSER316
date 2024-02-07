@@ -221,4 +221,14 @@ public class PersistentClass {
             }
         }
     }
+
+    public static void deleteCourseById(int classId){
+        for(int i = 0; i < courses.size(); i++){
+            if(courses.get(i).getClassId() == classId){
+                courses.remove(i);
+                saveClassesToFile();
+                return;
+            }
+        }
+    }
 }

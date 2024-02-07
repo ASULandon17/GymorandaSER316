@@ -134,6 +134,19 @@ public class ClassPanel extends JPanel {
 
         card.add(infoPanel, BorderLayout.CENTER);
 
+        if(User.getUserType() == UserType.OWNER){
+            JButton deleteButton = new JButton("Delete");
+            deleteButton.addActionListener(e -> {
+                PersistentClass.deleteCourseById(course.getClassId());
+                refreshCards();
+            });
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setBackground(Color.WHITE);
+            buttonPanel.add(deleteButton);
+            card.add(buttonPanel, BorderLayout.SOUTH);
+        }
+
+
         return card;
     }
 }
