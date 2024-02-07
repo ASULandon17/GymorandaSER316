@@ -16,9 +16,10 @@ public class NewclassPopup extends JFrame {
     private JButton submitButton;
     //DOES NOT CURRENTLY ALLOW YOU TO ADD WITH A TRAINER AS TRAINER FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET
 
-    public NewclassPopup(){
+    private ClassPanel classPanelRef;
+    public NewclassPopup(ClassPanel classPanelRef){
         super("Add New Class");
-
+        this.classPanelRef = classPanelRef;
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -82,6 +83,9 @@ public class NewclassPopup extends JFrame {
             PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic);
             JOptionPane.showMessageDialog(this, "Class added succesfully");
             clearForm();
+            if(classPanelRef != null){
+                classPanelRef.refreshCards();
+            }
             this.dispose();
         } catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "Please check your inputs. Make sure numerical fields are correct.", "Input Error", JOptionPane.ERROR_MESSAGE);
