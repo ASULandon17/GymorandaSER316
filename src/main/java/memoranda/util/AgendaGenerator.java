@@ -19,7 +19,6 @@ import java.util.Collections;
 
 import nu.xom.Element;
 
-import javax.jws.soap.SOAPBinding;
 
 /**
  *  
