@@ -241,27 +241,27 @@ public class WorkPanel extends JPanel {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("NOTES");
 		setCurrentButton(notesB);
-		Context.put("CURRENT_PANEL", "NOTES");
+		Context.put("CURRENT_PANEL", "AGENDA");
 	}
 
 	public void tasksB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("TASKS");
 		setCurrentButton(tasksB);
-		Context.put("CURRENT_PANEL", "TASKS");
+		Context.put("CURRENT_PANEL", "AGENDA");
 	}
 
 	public void eventsB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("EVENTS");
 		setCurrentButton(eventsB);
-		Context.put("CURRENT_PANEL", "EVENTS");
+		Context.put("CURRENT_PANEL", "AGENDA");
 	}
 
 	public void filesB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "FILES");
 		setCurrentButton(filesB);
-		Context.put("CURRENT_PANEL", "FILES");
+		Context.put("CURRENT_PANEL", "AGENDA");
 	}
 
 	void setCurrentButton(JButton cb) {
