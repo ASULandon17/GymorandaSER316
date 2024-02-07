@@ -51,27 +51,28 @@ import main.java.memoranda.util.Util;
 
 /* $Id: DailyItemsPanel.java,v 1.22 2005/02/13 03:06:10 rawsushi Exp $ */
 public class DailyItemsPanel extends JPanel {
-	BorderLayout borderLayout1 = new BorderLayout();
-	JSplitPane splitPane = new JSplitPane();
-	JPanel controlPanel = new JPanel(); /* Contains the calendar */
-	JPanel mainPanel = new JPanel();
-	BorderLayout borderLayout2 = new BorderLayout();
-	JPanel statusPanel = new JPanel();
-	BorderLayout borderLayout3 = new BorderLayout();
-	JPanel editorsPanel = new JPanel();
-	CardLayout cardLayout1 = new CardLayout();
-	//EditorPanel is no longer in use, can be removed. Left in for now so as not to break any code
-	public EditorPanel editorPanel = new EditorPanel(this);
-	public RoomPanel roomPanel = new RoomPanel(this);
-	JLabel currentDateLabel = new JLabel();
-	BorderLayout borderLayout4 = new BorderLayout();
-	TaskPanel tasksPanel = new TaskPanel(this);
-	EventsPanel eventsPanel = new EventsPanel(this);
-	AgendaPanel agendaPanel = new AgendaPanel(this);
-	ImageIcon expIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_right.png"));
-	ImageIcon collIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_left.png"));
-	ImageIcon bookmarkIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/star8.png"));
-	boolean expanded = true;
+
+    BorderLayout borderLayout1 = new BorderLayout();
+    JSplitPane splitPane = new JSplitPane();
+    JPanel controlPanel = new JPanel(); /* Contains the calendar */
+    JPanel mainPanel = new JPanel();
+    BorderLayout borderLayout2 = new BorderLayout();
+    JPanel statusPanel = new JPanel();
+    BorderLayout borderLayout3 = new BorderLayout();
+    JPanel editorsPanel = new JPanel();
+    CardLayout cardLayout1 = new CardLayout();
+    //EditorPanel is no longer in use, can be removed. Left in for now so as not to break any code
+    //public EditorPanel editorPanel = new EditorPanel(this);
+    public RoomPanel roomPanel = new RoomPanel(this);
+    JLabel currentDateLabel = new JLabel();
+    BorderLayout borderLayout4 = new BorderLayout();
+    TaskPanel tasksPanel = new TaskPanel(this);
+    ClassPanel eventsPanel = new ClassPanel();
+    AgendaPanel agendaPanel = new AgendaPanel(this);
+    ImageIcon expIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_right.png"));
+    ImageIcon collIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_left.png"));
+    ImageIcon bookmarkIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/star8.png"));
+    boolean expanded = true;
 
 	Note currentNote;
 	CalendarDate currentDate;
