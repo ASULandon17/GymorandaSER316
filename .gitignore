@@ -7,3 +7,4 @@
 users.json
 *.json
 .classpath
+.project
