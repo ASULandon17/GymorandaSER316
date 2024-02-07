@@ -34,7 +34,7 @@ public class CourseTest {
         PersistentClass.loadClassesFromFile();
 
 
-        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().getFirst().getClassId());
+        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().get(0).getClassId());
     }
 
     @Test

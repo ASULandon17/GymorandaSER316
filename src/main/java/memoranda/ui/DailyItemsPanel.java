@@ -62,7 +62,7 @@ public class DailyItemsPanel extends JPanel {
     JPanel editorsPanel = new JPanel();
     CardLayout cardLayout1 = new CardLayout();
     //EditorPanel is no longer in use, can be removed. Left in for now so as not to break any code
-    //public EditorPanel editorPanel = new EditorPanel(this);
+    public EditorPanel editorPanel = new EditorPanel(this);
     public RoomPanel roomPanel = new RoomPanel(this);
     JLabel currentDateLabel = new JLabel();
     BorderLayout borderLayout4 = new BorderLayout();
