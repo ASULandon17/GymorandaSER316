@@ -249,6 +249,25 @@ public class CourseTest {
         assertEquals(initialSize, PersistentClass.getListOfCourses().size());
     }
 
+    @Test
+    public void testDateAndTimeGettersAndSetters() {
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord", 2025, 3, 7, 18);
+        assertEquals("getYear not working", 2025, PersistentClass.getCourseById(99).getClassYear());
+        assertEquals("getMonth not working", 3, PersistentClass.getCourseById(99).getClassMonth());
+        assertEquals("getDay not working", 7, PersistentClass.getCourseById(99).getClassDay());
+        assertEquals("getHour not working", 18, PersistentClass.getCourseById(99).getClassHour());
+        
+        PersistentClass.getCourseById(99).setClassYear(2026);
+        PersistentClass.getCourseById(99).setClassMonth(4);
+        PersistentClass.getCourseById(99).setClassDay(8);
+        PersistentClass.getCourseById(99).setClassHour(19);
+        
+        assertEquals("setYear not working", 2026, PersistentClass.getCourseById(99).getClassYear());
+        assertEquals("setMonth not working", 4, PersistentClass.getCourseById(99).getClassMonth());
+        assertEquals("setDay not working", 8, PersistentClass.getCourseById(99).getClassDay());
+        assertEquals("setHour not working", 19, PersistentClass.getCourseById(99).getClassHour());
+    }
 
 }
 

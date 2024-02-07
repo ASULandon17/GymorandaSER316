@@ -234,9 +234,13 @@ public class PersistentClass {
         }
     }
 
-    public static void deleteCourseById(int classId){
-        for(int i = 0; i < courses.size(); i++){
-            if(courses.get(i).getClassId() == classId){
+    /**
+     * deleteCourseById() removes course with specified id from class.json
+     * @param classId classId for the course they want to register for
+     */
+    public static void deleteCourseById(int classId) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getClassId() == classId) {
                 courses.remove(i);
                 saveClassesToFile();
                 return;
