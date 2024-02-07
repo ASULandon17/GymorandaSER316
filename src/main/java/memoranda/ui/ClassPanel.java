@@ -99,6 +99,7 @@ public class ClassPanel extends JPanel {
     private JPanel createCourseCard(Course course) {
 
         JPanel card = new JPanel(new BorderLayout());
+        card.setBackground(Color.WHITE);
 
         Border roundedLineBorder = new LineBorder(Color.BLACK, 1, true);
         Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
@@ -123,7 +124,7 @@ public class ClassPanel extends JPanel {
         }
         JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
         JPanel infoPanel = new JPanel(new GridLayout(5, 1));
-
+        infoPanel.setBackground(Color.WHITE);
         infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         infoPanel.add(classNameLabel);
         infoPanel.add(instructorNameLabel);
