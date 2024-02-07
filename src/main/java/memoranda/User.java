@@ -135,6 +135,34 @@ public class User {
     }
 
     /**
+     * Sets user's belt rank to given rank value.
+     */
+    public static void setBeltRank(BeltValue rank) {
+        _beltRank = rank;
+        try {
+            File file = new File("users.json");
+
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("beltRank", _beltRank.toString());
+                    break;
+                }
+            }
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * Upgrade a member to trainer
      * Returns 0 if the User changed from a member to a trainer
      * Returns -1 if the User is already a trainer
