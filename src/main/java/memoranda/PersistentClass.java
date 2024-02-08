@@ -1,319 +1,250 @@
 package main.java.memoranda;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.FileWriter;
+import java.io.IOException;
 
-import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * This class provides the backend for interacting with Classes within Gymoranda.
  */
 public class PersistentClass {
 
-    private static String _className;
-    private static int _classLength;
-    private static int _maxClassSize;
-    private static int _classID;
-    private static String _studentUserName;
-    private static String _instructorUserName;
+    private static final ArrayList<Course> courses = new ArrayList<>();
 
 
+    static {
+        loadClassesFromFile();
+    }
 
-
-
-    /**
-     * This method adds an instructor to a specific class
-     * @param instructorUserName username of instructor
-     * @param classID classID
-     * @return 0 - Instructor added; 1 - instructor is already assigned; 2 - IO or JSON exception thrown; 3 - JSON file not found
-     */
-    public static int addInstructorToCourse(String instructorUserName, int classID) {
-
-        _instructorUserName = instructorUserName;
-        _classID = classID;
-        // pull in the classes array, check if it has an instructor
-
-        try {
-            File file = new File("classes.json");
-
-            if (!file.exists()) {
-                return 3; // JSON file not found
-            }
-
-            String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
-            JSONArray classes = new JSONArray(classContent);
-
-            for (int i = 0; i < classes.length(); i++) {
-
-                JSONObject classs = classes.getJSONObject(i);
-
-                // If a class doesn't have an instructor, update instructor field
-                if (classs.getString("instructorName").equals("TBD") && classs.getInt("classID") == _classID) {
-
-                    classs.remove("instructorName");
-                    classs.put("instructorName", _instructorUserName);
-
-                } else if (classs.getString("instructorName").equals(_instructorUserName) && classs.getInt("classID") == _classID) {
-
-                    return 1; // This instructor is already assigned
-                }
-
-
-                    // write updates to file
-                try (FileWriter writer = new FileWriter("classes.json")) {
-                    writer.write(classes.toString());
-                }
-
-
-            }
-
-        } catch (IOException | JSONException e) {
-            return 2;
-        }
-
-        return 0;
+    public static ArrayList<Course> getListOfCourses() {
+        return courses;
     }
 
     /**
-     * addStudentToCourse() allows user to register for a course as long as the course isn't full
+     * Clears the ArrayList and the json file.
+     */
+    public static void clearCourses() {
+        courses.clear();
+        clearCourseFile();
+    }
+
+    private static void clearCourseFile() {
+
+        try (FileWriter file = new FileWriter("classes.json")) {
+
+            file.write(new JSONArray().toString()); // Write an empty array to the file
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * Loads the classes to the arraylist from the JSON file.
+     */
+    public static void loadClassesFromFile() {
+
+        try {
+
+            String content = new String(Files.readAllBytes(Paths.get("classes.json")));
+            JSONArray jsonArray = new JSONArray(content);
+            courses.clear(); // Clear existing rooms before loading
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                courses.add(new Course(jsonObject));
+            }
+
+        } catch (IOException e) {
+
+            System.out.println("No existing classes.json found. A new one will be created.");
+        }
+    }
+
+
+    /**
+     * Saves the Room list to the json file.
+     */
+    private static void saveClassesToFile() {
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course course : courses) {
+
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("className", course.getClassName());
+            jsonObject.put("instructorName", course.getInstructorName());
+            jsonObject.put("classLength", course.getClassLength());
+            jsonObject.put("maxClassSize", course.getMaxClassSize());
+            jsonObject.put("currentClassSize", course.getCurrentClassSize());
+            jsonObject.put("classID", course.getClassId());
+            jsonObject.put("isPublic", course.getPublic());
+            jsonObject.put("roster", course.getRoster());
+            jsonObject.put("year", course.getClassYear());
+            jsonObject.put("month", course.getClassMonth());
+            jsonObject.put("day", course.getClassDay());
+            jsonObject.put("hour", course.getClassHour());
+
+            jsonArray.put(jsonObject);
+        }
+
+        try (FileWriter file = new FileWriter("classes.json")) {
+
+            file.write(jsonArray.toString(4)); // Pretty print
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Ensures JVM doesn't make a default constructor for utility class.
+     */
+    private PersistentClass() {
+        // No objects here!
+    }
+
+    /**
+     * Helper method to look up a course by its unique ID.
+     * @param classId unique class id
+     * @return Course object
+     */
+    public static Course getCourseById(int classId) {
+
+        for (Course course : courses) {
+
+            if (course.getClassId() == classId) {
+                return course;
+            }
+        }
+
+        return null; // no matching course found
+    }
+
+    /**
+     * This method allows the owner to add a new class if they also
+     * do not know which instructor will teach it yet.
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classId unique class ID (int)
+     * @param year year of date class is scheduled
+     * @param month month of date class is scheduled
+     * @param day day of date class is scheduled
+     * @param hour hour of date class is scheduled
+     */
+    public static void addNewClass(String className, int classLength,
+                                   int maxClassSize, int classId, boolean classIsPublic,
+                                   int year, int month, int day, int hour) {
+
+        // check if class already exists:
+        if (getCourseById(classId) == null) {
+            courses.add(new Course(className, classLength, maxClassSize, classId, classIsPublic,
+                                    year, month, day, hour));
+            saveClassesToFile();
+
+        } else {
+            System.out.println("Class already exists");
+        }
+
+    }
+
+    /**
+     * This method allows the owner to add a new class if
+     * they do know the instructor that will be teaching.
+     * @param className name of the class
+     * @param classLength length of the class in hours
+     * @param maxClassSize max class size
+     * @param classId unique class ID (int)
+     * @param instructorUserName name of instructor teaching the course
+     */
+    public static void addNewClass(String className, int classLength, int maxClassSize, int classId,
+                                      boolean classIsPublic, String instructorUserName, 
+                                      int year, int month, int day, int hour) {
+
+        // check if class already exists:
+        if (getCourseById(classId) == null) {
+            courses.add(new Course(className, classLength,
+                    maxClassSize,classId, classIsPublic, instructorUserName,
+                    year, month, day, hour));
+            saveClassesToFile();
+
+        } else {
+            System.out.println("Class already exists");
+        }
+
+    }
+
+
+    /**
+     * This method adds an instructor to a specific class.
+     * @param instructorUserName username of instructor
+     * @param classId classID
+     */
+    public static void addInstructorToCourse(String instructorUserName, int classId) {
+
+        for (Course course : courses) {
+            if (course.getClassId() == classId) {
+
+                // check if there's already an instructor
+                if (course.getInstructorName().isEmpty()) {
+
+                    course.setInstructorName(instructorUserName);
+
+                } else {
+
+                    System.out.println("There is already an instructor assigned to this course!");
+                }
+            }
+        }
+    }
+
+    /**
+     * addStudentToCourse() allows user to register
+     * for a course as long as the course isn't full
      * AND they aren't already registered.
      * @param studentUserName username of student registering
-     * @param classID classID for the course they want to register for
-     * @return 0 - student added successfully, 1 - JSON file not found, 2 - IO or JSON Exception thrown,
-     * 3 - class is full, 4 - student is already registered for course
+     * @param classId classId for the course they want to register for
      */
-    public static int addStudentToCourse(String studentUserName, int classID) {
+    public static void addStudentToCourse(String studentUserName, int classId) {
 
-        _studentUserName = studentUserName;
-        _classID = classID;
+        for (Course course : courses) {
 
-        // pull in the classes array
+            // make sure course exists
+            if (course.getClassId() == classId) {
 
-        try {
-            File file = new File("classes.json");
+                // see if student is already registered
+                if (!course.isStudentRegistered(studentUserName)) {
 
-            if (!file.exists()) {
-                return 1; // JSON file not found
-            }
-
-            String classContent = new String(Files.readAllBytes(Paths.get("classes.json")));
-            JSONArray classes = new JSONArray(classContent); // current list of classes
-
-
-            for (int i = 0; i < classes.length(); i++) {
-
-                JSONObject classs = classes.getJSONObject(i);
-
-                int maxRoster = classs.getInt("maxClassSize");
-
-                if (classs.getInt("classID") == _classID) { // if we're on the right class, pull the roster
-
-                    JSONArray students = classs.getJSONArray("roster");
-
-                    if (students.length() < maxRoster) {
-
-                        for (int j = 0; j <= students.length(); j++) {
-
-                            // if array is empty, add the student
-                            if (students.isNull(j)) {
-
-                                students.put(_studentUserName);
-
-
-                                // write update to file
-                                try (FileWriter writer = new FileWriter("classes.json")) {
-                                    writer.write(classes.toString());
-                                }
-
-                                return 0;
-
-                                // check to see if student is already registered for the course
-                            } else if (!students.getString(j).equals(_studentUserName)){
-
-                                students.put(_studentUserName);
-
-                                // write update to file
-                                try (FileWriter writer = new FileWriter("classes.json")) {
-                                    writer.write(classes.toString());
-                                }
-
-                                return 0;
-
-                            }else if (students.getJSONObject(j).getString(_studentUserName).equals(_studentUserName)){
-
-                                return 4; // Student already registered for course
-
-                            }
-
-                            else {
-                                j++; // go onto next class entry
-                            }
-                        }
-                    }
+                    course.addStudentToRoster(studentUserName);
                 }
             }
-
-        } catch (IOException | JSONException e) {
-            return 2;
         }
-
-        return 3;
     }
 
     /**
-     * This method allows the owner to add a new class if they also do not know which instructor will teach it yet
-     * @param className name of the class
-     * @param classLength length of the class in hours
-     * @param maxClassSize max class size
-     * @param classID unique class ID (int)
-     * @return true or false pending success
+     * deleteCourseById() removes course with specified id from class.json
+     * @param classId classId for the course they want to register for
      */
-    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID) {
-        _className = className;
-        _classLength = classLength;
-        _maxClassSize = maxClassSize;
-        _classID = classID;
-
-        JSONObject classObject = new JSONObject();
-        classObject.put("className", _className);
-        classObject.put("classLength", _classLength);
-        classObject.put("maxClassSize", _maxClassSize);
-        classObject.put("classID", _classID);
-        classObject.put("instructorName", "TBD");
-
-        return addNewClass(classObject);
-
-    }
-
-    /**
-     * This method allows the owner to add a new class if they do know the instructor that will be teaching
-     * @param className name of the class
-     * @param classLength length of the class in hours
-     * @param maxClassSize max class size
-     * @param classID unique class ID (int)
-     * @param instructorUserName name of instructor teaching the course
-     * @return true or false pending success
-     */
-    public static boolean addNewClass(String className, int classLength, int maxClassSize, int classID, String instructorUserName) {
-        _className = className;
-        _classLength = classLength;
-        _maxClassSize = maxClassSize;
-        _classID = classID;
-        _instructorUserName = instructorUserName;
-
-        JSONObject classObject = new JSONObject();
-        classObject.put("className", _className);
-        classObject.put("classLength", _classLength);
-        classObject.put("maxClassSize", _maxClassSize);
-        classObject.put("classID", _classID);
-        classObject.put("instructorName", _instructorUserName);
-
-        return addNewClass(classObject);
-
-    }
-
-    private static boolean addNewClass (JSONObject classObject) {
-        JSONArray roster = new JSONArray(); // add JSON array of students registered for the course
-        classObject.put("roster", roster);
-
-        try {
-            File file = new File("classes.json");
-            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
-
-            if (file.exists()) {
-                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
-                classesArray = new JSONArray(content);
-            } else {
-                classesArray = new JSONArray();
+    public static void deleteCourseById(int classId) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getClassId() == classId) {
+                courses.remove(i);
+                saveClassesToFile();
+                return;
             }
-
-            // Check to make sure the class doesn't already exist
-            for (int i = 0; i < classesArray.length(); i++) {
-                JSONObject classs = classesArray.getJSONObject(i);
-                if (classs.getInt("classID") == _classID) {
-                    return false; // classID already exists
-                }
-            }
-
-            classesArray.put(classObject);
-
-            // Write to classes JSON file
-            try (FileWriter writer = new FileWriter("classes.json")) {
-                writer.write(classesArray.toString());
-            }
-
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-            return false;
         }
-
-        return true;
-    }
-
-    /**
-     * This method returns the total amount of students currently signed up for the course.
-     * @param classID unique ID of the course
-     * @return number of students registered (0 if empty) OR 99 if there is an error.
-     */
-    public static int getClassSize (int classID) {
-        _classID = classID;
-
-        try {
-            File file = new File("classes.json");
-            JSONArray classesArray; // load in the JSON file to a JSON array or if it doesn't exist, create new file
-
-            if (!file.exists()){
-                return 99;
-            }
-            else if (file.exists()) {
-                String content = new String(Files.readAllBytes(Paths.get("classes.json")));
-                classesArray = new JSONArray(content);
-            }
-            else{
-
-                classesArray = new JSONArray();
-            }
-
-            for (int i = 0; i < classesArray.length(); i++) {
-
-                JSONObject iterator = classesArray.getJSONObject(i);
-
-                System.out.println(iterator);
-
-                if(iterator.getInt("classID") == _classID) {
-                    JSONArray roster = iterator.getJSONArray("roster");
-                    return roster.length();
-
-                }
-
-            }
-
-            } catch (Exception e) {
-
-            e.printStackTrace();
-
-            return 99;
-        }
-
-        return 0;
-    }
-
-    /**
-     * This method will determine how many spots are left for a given course
-     * @param classID specific course ID number
-     * @return number of spots remaining in the class
-     */
-    public static int getSpotsRemaining(int classID) {
-        _classID = classID;
-
-        return (get_maxClassSize() - getClassSize(_classID));
-    }
-
-    public static int get_maxClassSize () {
-        return _maxClassSize;
     }
 }

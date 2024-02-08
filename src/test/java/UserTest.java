@@ -1,3 +1,5 @@
+package test.java;
+
 import org.json.*;
 import static org.junit.Assert.*;
 
