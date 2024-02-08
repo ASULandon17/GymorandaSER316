@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -150,13 +151,15 @@ public class RoomPanel extends JPanel {
         
         //Add class SignUp
         classSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
-        classSignUp.setLayout(new GridLayout());
+        classSignUp.setLayout(new GridLayout(1, 3, 5, 5));
         classSignUp.add(new JLabel("Class Id: "));
         classSignUp.add(signUpIdField);
+        classSignUp.add(signUpButton);
         signUpButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signUserUp();
+                createTables();
             }
         });
         
@@ -164,9 +167,10 @@ public class RoomPanel extends JPanel {
 		
         //Create listener that changes date when new calendar day is picked
 		CurrentDate.addDateListener(new DateListener() {
+		    @Override
             public void dateChange(CalendarDate d) {
                 	
-            //add room tables below images
+            //refresh tables for the given date
             createTables();
             }
         });
@@ -205,10 +209,6 @@ public class RoomPanel extends JPanel {
 	 * @return String[][] of data that fills out the table
 	 */
 	  public Object[][] getTableData(CalendarDate date, String roomName) {
-	      //get rid of this conditional after testing, used to create dummy data
-	      if (roomName == "Desert") {
-	          addDataToClassesAndRoomsForTesting();
-	      }
 	      //Grab room that table is for
 		  Room room = Rooms.getRoomByName(roomName);
 		  //set up empty tableData object
@@ -302,8 +302,16 @@ public class RoomPanel extends JPanel {
 	      //get course user tried to sign up for
 	      int classId = Integer.parseInt(signUpIdField.getText());
 	      Course course = PersistentClass.getCourseById((int) classId);
-	      if(course.getCurrentClassSize() < course.getMaxClassSize()) {
-	          course.addStudentToRoster(User.getUsername());
+	      //if there's room in the class add the user
+	      try {
+	          if(course.getCurrentClassSize() < course.getMaxClassSize()) {
+	              System.out.println(User.getUsername());
+	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
+	              course.addStudentToRoster(User.getUsername());
+	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
+	          }
+	      } catch (Exception ex){
+	          JOptionPane.showMessageDialog(this, "There is not course with the given Id", "Input Error", JOptionPane.ERROR_MESSAGE);
 	      }
 	  }
 	  
