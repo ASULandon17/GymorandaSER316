@@ -1,7 +1,13 @@
 package main.java.memoranda;
 
-import main.java.memoranda.BeltValue;
-
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Vector;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 /**
  * Trainer class to construct a trainer object
  * Trainer's have a name, beltRank and a trainingRank
@@ -31,6 +37,56 @@ public class Trainer {
         this.beltRank = beltRank;
         this.trainingRank = trainingRank;
     }
+
+    public Trainer getTrainer(String name) {
+        Trainer trainer = null;
+        try {
+            File file = new File("users.json");
+            if (!file.exists()) {
+                return null;
+            }
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(name)) {
+                    trainer = new Trainer(user.getString("username"), user.getString("beltRank"), user.getString("trainingRank"));
+                }
+            }
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return trainer;
+    }
+
+
+    public Vector<Trainer> getTrainers() {
+        Vector<Trainer> trainers = new Vector<>();
+        try {
+            File file = new File("users.json");
+            if (!file.exists()) {
+                return null;
+            }
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+
+            JSONArray usersArray = new JSONArray(content);
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("userType").equals("TRAINER")) {
+                        trainers.add(new Trainer(user.getString("username"), user.getString("beltRank"), user.getString("trainingRank")));
+                }
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return trainers;
+    }
+
 
     public String getTrainerName() {
         return this.trainerName;
