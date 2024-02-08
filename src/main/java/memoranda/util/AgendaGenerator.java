@@ -122,10 +122,13 @@ public class AgendaGenerator {
 	}
 
 	/**
+	 *
 	 * @param p
 	 * @param date
-	 * @param s
+	 * @param tl
 	 * @param t
+	 * @param level
+	 * @param expandedTasks
 	 * @return
 	 */
 	private static String renderTask(Project p, CalendarDate date, TaskList tl, Task t, int level, Collection expandedTasks) {
@@ -282,7 +285,7 @@ public class AgendaGenerator {
 		String s =
 				"<td width=\"66%\" valign=\"top\">"
 						+ "<h1>"
-						+ Local.getString("Projects and tasks")
+						+ Local.getString("My Current Gym Classes")
 						+ "</h1>\n";
 		s += generateProjectInfo(CurrentProject.get(), date, expandedTasks);        
 		for (Iterator i = ProjectManager.getActiveProjects().iterator();

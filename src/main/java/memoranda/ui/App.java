@@ -179,6 +179,15 @@ public class App {
 			(screenSize.height - 300) / 2);
 		splash.setUndecorated(true);
 		splash.setVisible(true);
+
+		// Wait 2 seconds for splash screen to show
+		try {
+			Thread.sleep(2000);
+		}
+		catch(InterruptedException e) {
+			System.out.println("Error waiting for splash screen display");
+			e.printStackTrace();
+		}
 	}
 
 	private void showLogin(){
