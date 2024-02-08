@@ -145,8 +145,36 @@ public class RoomPanel extends JPanel {
 		arcticTextLabel.setFont(textFont);
 		beachTextLabel.setFont(textFont);
 		
-		//retrieve data from current day   
-		Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
+		//add room tables below images
+		createTables();
+        
+        //Add class SignUp
+        classSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
+        classSignUp.setLayout(new GridLayout());
+        classSignUp.add(new JLabel("Class Id: "));
+        classSignUp.add(signUpIdField);
+        signUpButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signUserUp();
+            }
+        });
+        
+        this.add(classSignUp, BorderLayout.SOUTH);
+		
+        //Create listener that changes date when new calendar day is picked
+		CurrentDate.addDateListener(new DateListener() {
+            public void dateChange(CalendarDate d) {
+                	
+            //add room tables below images
+            createTables();
+            }
+        });
+	}
+	
+	public void createTables() {
+	  //retrieve data from current day   
+        Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
         Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
         Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
         Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
@@ -168,50 +196,6 @@ public class RoomPanel extends JPanel {
         jungleTablePanel.add(new JScrollPane(jungleTable));
         arcticTablePanel.add(new JScrollPane(arcticTable));
         beachTablePanel.add(new JScrollPane(beachTable));
-        
-        //Add class SignUp
-        classSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
-        classSignUp.setLayout(new GridLayout());
-        classSignUp.add(new JLabel("Class Id: "));
-        classSignUp.add(signUpIdField);
-        signUpButton.addActionListener( new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                signUserUp();
-            }
-        });
-        
-        this.add(classSignUp, BorderLayout.SOUTH);
-		
-        //Create listener that changes date when new calendar day is picked
-		CurrentDate.addDateListener(new DateListener() {
-            public void dateChange(CalendarDate d) {
-                		
-            //retrieve data from current day    
-    		Object[][] desertData = getTableData(d, "Desert");
-    	    Object[][] jungleData = getTableData(d, "Jungle");
-    	    Object[][] arcticData = getTableData(d, "Arctic");
-    	    Object[][] beachData = getTableData(d, "Beach");
-    	    
-    	    //create tables
-    	    JTable desertTable = new JTable(desertData, columnNames);
-    	    JTable jungleTable = new JTable(jungleData, columnNames);
-    	    JTable arcticTable = new JTable(arcticData, columnNames);
-    	    JTable beachTable = new JTable(beachData, columnNames);
-    	    
-    	    //set row height
-    	    desertTable.setRowHeight(ROW_HEIGHT);
-            jungleTable.setRowHeight(ROW_HEIGHT);
-            arcticTable.setRowHeight(ROW_HEIGHT);
-            beachTable.setRowHeight(ROW_HEIGHT);
-    	    
-    	    //Add table UI 
-            desertTablePanel.add(new JScrollPane(desertTable));
-            jungleTablePanel.add(new JScrollPane(jungleTable));
-            arcticTablePanel.add(new JScrollPane(arcticTable));
-            beachTablePanel.add(new JScrollPane(beachTable));
-            }
-        });
 	}
 	
 	/**
