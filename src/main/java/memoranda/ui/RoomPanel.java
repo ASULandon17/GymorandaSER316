@@ -5,6 +5,8 @@ import java.util.List;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -26,13 +28,12 @@ import main.java.memoranda.PersistentClass;
 import main.java.memoranda.Course;
 import main.java.memoranda.Rooms;
 import main.java.memoranda.Room;
+import main.java.memoranda.User;
 
 public class RoomPanel extends JPanel {
 	static final int ROWS = 12;
 	static final int COLUMNS = 5;
 	static final int ROW_HEIGHT = 30;
-	
-	private CalendarDate currentDate;
 	
 	private BorderLayout borderLayout1 = new BorderLayout();
 	private JPanel imagePanel = new JPanel();
@@ -65,6 +66,7 @@ public class RoomPanel extends JPanel {
 	
 	private JPanel classSignUp = new JPanel();
 	private JTextField signUpIdField = new JTextField();
+	private JButton signUpButton = new JButton("Sign Up");
 	
 	private String[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
 	
@@ -172,6 +174,13 @@ public class RoomPanel extends JPanel {
         classSignUp.setLayout(new GridLayout());
         classSignUp.add(new JLabel("Class Id: "));
         classSignUp.add(signUpIdField);
+        signUpButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signUserUp();
+            }
+        });
+        
         this.add(classSignUp, BorderLayout.SOUTH);
 		
         //Create listener that changes date when new calendar day is picked
@@ -284,20 +293,34 @@ public class RoomPanel extends JPanel {
 	      if (hour < 8 || hour > 19) {
 	          return table;
 	      }
+	      //formats AM and PM correctly
 	      if (hour <= 12) {
 	          table[row][0] = "" + hour + ":00 AM";
 	      } else {
 	          table[row][0] = "" + (hour-12) + ":00 PM";
 	      }
+	      //Add id to correct row
 	      table[row][1] = id;
+	      //Add classname to correct row
 		  table[row][2] = className;
+		  //Add instructor if one is present, default message if not
 		  if (instructor != "") {
 		      table[row][3] = instructor;
 		  } else {
 		      table[row][3] = "No instructor yet";
 		  }
+		  //Add correct number of spots remaining
 		  table[row][4] = Integer.toString(spotsRemaining);
 		  return table;
+	  }
+	  
+	  public void signUserUp() {
+	      //get course user tried to sign up for
+	      int classId = Integer.parseInt(signUpIdField.getText());
+	      Course course = PersistentClass.getCourseById((int) classId);
+	      if(course.getCurrentClassSize() < course.getMaxClassSize()) {
+	          course.addStudentToRoster(User.getUsername());
+	      }
 	  }
 	  
 	  //get rid of this method that creates dummy rooms and classes after testing
