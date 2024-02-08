@@ -1,9 +1,5 @@
 package main.java.memoranda.ui;
 
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import java.awt.BorderLayout;
@@ -13,9 +9,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
@@ -31,53 +30,45 @@ import main.java.memoranda.Room;
 public class RoomPanel extends JPanel {
 	static final int ROWS = 12;
 	static final int COLUMNS = 5;
-	CalendarDate currentDate;
+	static final int ROW_HEIGHT = 30;
 	
-	BorderLayout borderLayout1 = new BorderLayout();
-	JPanel imagePanel = new JPanel();
-	JPanel tablePanel = new JPanel();
-	JPanel desertImagePanel = new JPanel();
-	JPanel jungleImagePanel = new JPanel();
-	JPanel arcticImagePanel = new JPanel();
-	JPanel beachImagePanel = new JPanel();
-	JPanel desertTablePanel = new JPanel();
-	JPanel jungleTablePanel = new JPanel();
-	JPanel arcticTablePanel = new JPanel();
-	JPanel beachTablePanel = new JPanel();
-	JPanel desertTextPanel = new JPanel();
-	JPanel jungleTextPanel = new JPanel();
-	JPanel arcticTextPanel = new JPanel();
-	JPanel beachTextPanel = new JPanel();
-	JLabel desertImageLabel = new JLabel();
-	JLabel jungleImageLabel = new JLabel();
-	JLabel arcticImageLabel = new JLabel();
-	JLabel beachImageLabel = new JLabel();
-	JLabel desertTextLabel = new JLabel("Desert Room");
-	JLabel jungleTextLabel = new JLabel("Jungle Room");
-	JLabel arcticTextLabel = new JLabel("Arctic Room");
-	JLabel beachTextLabel = new JLabel("Beach Room");
-	Font textFont = new Font("Verdana", Font.PLAIN, 14);
-	ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
-	ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
-	ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
-	ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
+	private CalendarDate currentDate;
 	
-	String[] columnNames = {"Time", "Class Name", "Trainer", "Availability", "Sign Up"};
-	//Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "20", "Sign-up Button"}, 
-	//				   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "20", "Sign-up Button"},
-	//				   		{"12:00", "Akido", "Dummy Trainer 3", "20", "Sign-up Button"}};
-	//Object[][] jungleData = {{"10:00", "Kids Class", "Dummy Trainer", "20", "Sign-up Button"}, 
-	//		   				{"11:00", "Kickboxing", "Dummy Trainer 2", "20", "Sign-up Button"},
-	//		   				{"12:00", "Krav Maga", "Dummy Trainer 3", "20", "Sign-up Button"}};
-	//Object[][] arcticData = {{"10:00", "Muay Thai", "Dummy Trainer", "20", "Sign-up Button"}, 
-	//		   				{"11:00", "Judo", "Dummy Trainer 2", "20", "Sign-up Button"},
-	//		   				{"12:00", "Meditation", "Dummy Trainer 3", "20", "Sign-up Button"}};
-	//Object[][] beachData = {{"10:00", "Muay Thai", "Dummy Trainer", "20", "Sign-up Button"}, 
-	//						{"11:00", "Judo", "Dummy Trainer 2", "20", "Sign-up Button"},
-	//						{"12:00", "Meditation", "Dummy Trainer 3", "20", "Sign-up Button"}};
+	private BorderLayout borderLayout1 = new BorderLayout();
+	private JPanel imagePanel = new JPanel();
+	private JPanel tablePanel = new JPanel();
+	private JPanel desertImagePanel = new JPanel();
+	private JPanel jungleImagePanel = new JPanel();
+	private JPanel arcticImagePanel = new JPanel();
+	private JPanel beachImagePanel = new JPanel();
+	private JPanel desertTablePanel = new JPanel();
+	private JPanel jungleTablePanel = new JPanel();
+	private JPanel arcticTablePanel = new JPanel();
+	private JPanel beachTablePanel = new JPanel();
+	private JPanel desertTextPanel = new JPanel();
+	private JPanel jungleTextPanel = new JPanel();
+	private JPanel arcticTextPanel = new JPanel();
+	private JPanel beachTextPanel = new JPanel();
+	private JLabel desertImageLabel = new JLabel();
+	private JLabel jungleImageLabel = new JLabel();
+	private JLabel arcticImageLabel = new JLabel();
+	private JLabel beachImageLabel = new JLabel();
+	private JLabel desertTextLabel = new JLabel("Desert Room");
+	private JLabel jungleTextLabel = new JLabel("Jungle Room");
+	private JLabel arcticTextLabel = new JLabel("Arctic Room");
+	private JLabel beachTextLabel = new JLabel("Beach Room");
+	private Font textFont = new Font("Verdana", Font.PLAIN, 14);
+	private ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
+	private ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
+	private ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
+	private ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
 	
+	private JPanel classSignUp = new JPanel();
+	private JTextField signUpIdField = new JTextField();
 	
-	DailyItemsPanel parentPanel = null;
+	private String[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
+	
+	private DailyItemsPanel parentPanel = null;
 	
 	public RoomPanel(DailyItemsPanel parent) {
 		try {
@@ -152,34 +143,58 @@ public class RoomPanel extends JPanel {
 		arcticTextLabel.setFont(textFont);
 		beachTextLabel.setFont(textFont);
 		
+		//retrieve data from current day   
 		Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
         Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
         Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
         Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
         
+        //create tables
         JTable desertTable = new JTable(desertData, columnNames);
         JTable jungleTable = new JTable(jungleData, columnNames);
         JTable arcticTable = new JTable(arcticData, columnNames);
         JTable beachTable = new JTable(beachData, columnNames);
+        
+        //set row height
+        desertTable.setRowHeight(ROW_HEIGHT);
+        jungleTable.setRowHeight(ROW_HEIGHT);
+        arcticTable.setRowHeight(ROW_HEIGHT);
+        beachTable.setRowHeight(ROW_HEIGHT);
         
         //Add table UI 
         desertTablePanel.add(new JScrollPane(desertTable));
         jungleTablePanel.add(new JScrollPane(jungleTable));
         arcticTablePanel.add(new JScrollPane(arcticTable));
         beachTablePanel.add(new JScrollPane(beachTable));
+        
+        //Add class SignUp
+        classSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
+        classSignUp.setLayout(new GridLayout());
+        classSignUp.add(new JLabel("Class Id: "));
+        classSignUp.add(signUpIdField);
+        this.add(classSignUp, BorderLayout.SOUTH);
 		
+        //Create listener that changes date when new calendar day is picked
 		CurrentDate.addDateListener(new DateListener() {
             public void dateChange(CalendarDate d) {
                 		
+            //retrieve data from current day    
     		Object[][] desertData = getTableData(d, "Desert");
     	    Object[][] jungleData = getTableData(d, "Jungle");
     	    Object[][] arcticData = getTableData(d, "Arctic");
     	    Object[][] beachData = getTableData(d, "Beach");
     	    
+    	    //create tables
     	    JTable desertTable = new JTable(desertData, columnNames);
     	    JTable jungleTable = new JTable(jungleData, columnNames);
     	    JTable arcticTable = new JTable(arcticData, columnNames);
     	    JTable beachTable = new JTable(beachData, columnNames);
+    	    
+    	    //set row height
+    	    desertTable.setRowHeight(ROW_HEIGHT);
+            jungleTable.setRowHeight(ROW_HEIGHT);
+            arcticTable.setRowHeight(ROW_HEIGHT);
+            beachTable.setRowHeight(ROW_HEIGHT);
     	    
     	    //Add table UI 
             desertTablePanel.add(new JScrollPane(desertTable));
@@ -196,35 +211,38 @@ public class RoomPanel extends JPanel {
 	 * @param roomName
 	 * @return String[][] of data that fills out the table
 	 */
-	
 	  public Object[][] getTableData(CalendarDate date, String roomName) {
-	      //get rid of this after testing
+	      //get rid of this conditional after testing, used to create dummy data
 	      if (roomName == "Desert") {
 	          addDataToClassesAndRoomsForTesting();
 	      }
+	      //Grab room that table is for
 		  Room room = Rooms.getRoomByName(roomName);
+		  //set up empty tableData object
 		  Object[][] tableData = new Object[ROWS][COLUMNS];
+		  // conditional to catch if there is no room so it will skip to filling out with no class
 		  if(room == null) {
-			  System.out.println("Error: No Room by this name");  //create error catching when done w/method & debugging
+			  System.out.println("Error: No Room by this name");
 		  } else {
+		      //gather all classes in the room
     		  List<Integer> classList = room.getClassIds();
     		  if (classList != null) {
         		  //parse through each Id in class list, check if it the same date as selected on the calendar, update it in the correct slot on table
         		  for(Integer id : classList) {
+        		      //get the course by id
         			  Course course = PersistentClass.getCourseById((int) id);
-        			  String courseDate = "" + Integer.toString(course.getClassDay()) + "/" + 
-        			                           Integer.toString(course.getClassMonth()) + "/" + 
-        			                           Integer.toString(course.getClassYear());
+        			  //format class date so it can be compared
         			  CalendarDate formattedDate = new CalendarDate(course.getClassDay(), course.getClassMonth() - 1, course.getClassYear());
+        			  //check if the date on the calendar is the same as the date of the class
         			  if (formattedDate.equals(date)) {
         				  //send the class to helper function to fill out it's row in the table
         				  tableData = fillOutRow(tableData, course.getClassHour() - 8, course.getClassHour(), course.getClassName(), 
-        				          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize());
+        				          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize(), course.getClassId());
         				  //if the class is over an hour, fill out all of the time slots it takes up
         				  if(course.getClassLength() > 1) {
         					  for(int i = 1; i < course.getClassLength(); i++) {
         						  tableData = fillOutRow(tableData, course.getClassHour() - 8 + i, course.getClassHour() + i, course.getClassName(), 
-        						          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize());
+        						          course.getInstructorName(), course.getMaxClassSize() - course.getCurrentClassSize(), course.getClassId());
         					  }
         				  }
         			  }
@@ -233,7 +251,7 @@ public class RoomPanel extends JPanel {
     		      System.out.println("No classes for " + roomName + " found");
     		  }
 		  }
-			  // fill out empty spots in the schedule with "No class"
+			  // fill out empty spots in the schedule with "No Class"
 			  for(int i = 0; i < ROWS; i++) {
 				  if ((tableData[i][0]) == null) {
 					  for(int j = 0; j < COLUMNS; j++) {
@@ -242,7 +260,7 @@ public class RoomPanel extends JPanel {
 					      } else if (j == 0) {
 					          tableData[i][j] = "" + (i-4) + ":00 PM";
 					      } else {
-					          tableData[i][j] = "Available";
+					          tableData[i][j] = "No Class";
 					      }
 					  }
 				  }
@@ -260,26 +278,29 @@ public class RoomPanel extends JPanel {
 	   * @param level
 	   * @param spotsRemaining
 	   * @return table; the table with the row filled out
-	   */
-	  
-	  public Object[][] fillOutRow(Object[][] table, int row, int hour, String className, String instructor, int spotsRemaining) {
+	   */ 
+	  public Object[][] fillOutRow(Object[][] table, int row, int hour, String className, String instructor, int spotsRemaining, int id) {
+	      //returns the table with nothing done if the hour the class is schedule for is outside gym hours
+	      if (hour < 8 || hour > 19) {
+	          return table;
+	      }
 	      if (hour <= 12) {
 	          table[row][0] = "" + hour + ":00 AM";
 	      } else {
 	          table[row][0] = "" + (hour-12) + ":00 PM";
 	      }
-		  table[row][1] = className;
-		  table[row][2] = instructor;
-		  table[row][3] = Integer.toString(spotsRemaining);
-		  if(spotsRemaining != 0) {
-			  table[row][4] = "Sign up button to come";
+	      table[row][1] = id;
+		  table[row][2] = className;
+		  if (instructor != "") {
+		      table[row][3] = instructor;
 		  } else {
-			  table[row][4] = "Class is full!";
+		      table[row][3] = "No instructor yet";
 		  }
+		  table[row][4] = Integer.toString(spotsRemaining);
 		  return table;
 	  }
 	  
-	  //get rid of this after testing
+	  //get rid of this method that creates dummy rooms and classes after testing
 	  public void addDataToClassesAndRoomsForTesting() {
 	      Rooms.clearRooms();
 	      PersistentClass.clearCourses();
