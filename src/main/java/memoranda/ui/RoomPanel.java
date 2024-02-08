@@ -66,10 +66,6 @@ public class RoomPanel extends JPanel {
 	//Object[][] desertData = {{"10:00", "Beginner Jiu-Jitsu", "Dummy Trainer", "20", "Sign-up Button"}, 
 	//				   		{"11:00", "Advanced Karate", "Dummy Trainer 2", "20", "Sign-up Button"},
 	//				   		{"12:00", "Akido", "Dummy Trainer 3", "20", "Sign-up Button"}};
-	Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
-	Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
-	Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
-	Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
 	//Object[][] jungleData = {{"10:00", "Kids Class", "Dummy Trainer", "20", "Sign-up Button"}, 
 	//		   				{"11:00", "Kickboxing", "Dummy Trainer 2", "20", "Sign-up Button"},
 	//		   				{"12:00", "Krav Maga", "Dummy Trainer 3", "20", "Sign-up Button"}};
@@ -79,10 +75,6 @@ public class RoomPanel extends JPanel {
 	//Object[][] beachData = {{"10:00", "Muay Thai", "Dummy Trainer", "20", "Sign-up Button"}, 
 	//						{"11:00", "Judo", "Dummy Trainer 2", "20", "Sign-up Button"},
 	//						{"12:00", "Meditation", "Dummy Trainer 3", "20", "Sign-up Button"}};
-	JTable desertTable = new JTable(desertData, columnNames);
-	JTable jungleTable = new JTable(jungleData, columnNames);
-	JTable arcticTable = new JTable(arcticData, columnNames);
-	JTable beachTable = new JTable(beachData, columnNames);
 	
 	
 	DailyItemsPanel parentPanel = null;
@@ -160,11 +152,42 @@ public class RoomPanel extends JPanel {
 		arcticTextLabel.setFont(textFont);
 		beachTextLabel.setFont(textFont);
 		
-		//Add table UI 
-		desertTablePanel.add(new JScrollPane(desertTable));
-		jungleTablePanel.add(new JScrollPane(jungleTable));
-		arcticTablePanel.add(new JScrollPane(arcticTable));
-		beachTablePanel.add(new JScrollPane(beachTable));
+		Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
+        Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
+        Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
+        Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
+        
+        JTable desertTable = new JTable(desertData, columnNames);
+        JTable jungleTable = new JTable(jungleData, columnNames);
+        JTable arcticTable = new JTable(arcticData, columnNames);
+        JTable beachTable = new JTable(beachData, columnNames);
+        
+        //Add table UI 
+        desertTablePanel.add(new JScrollPane(desertTable));
+        jungleTablePanel.add(new JScrollPane(jungleTable));
+        arcticTablePanel.add(new JScrollPane(arcticTable));
+        beachTablePanel.add(new JScrollPane(beachTable));
+		
+		CurrentDate.addDateListener(new DateListener() {
+            public void dateChange(CalendarDate d) {
+                		
+    		Object[][] desertData = getTableData(d, "Desert");
+    	    Object[][] jungleData = getTableData(d, "Jungle");
+    	    Object[][] arcticData = getTableData(d, "Arctic");
+    	    Object[][] beachData = getTableData(d, "Beach");
+    	    
+    	    JTable desertTable = new JTable(desertData, columnNames);
+    	    JTable jungleTable = new JTable(jungleData, columnNames);
+    	    JTable arcticTable = new JTable(arcticData, columnNames);
+    	    JTable beachTable = new JTable(beachData, columnNames);
+    	    
+    	    //Add table UI 
+            desertTablePanel.add(new JScrollPane(desertTable));
+            jungleTablePanel.add(new JScrollPane(jungleTable));
+            arcticTablePanel.add(new JScrollPane(arcticTable));
+            beachTablePanel.add(new JScrollPane(beachTable));
+            }
+        });
 	}
 	
 	/**
@@ -176,9 +199,9 @@ public class RoomPanel extends JPanel {
 	
 	  public Object[][] getTableData(CalendarDate date, String roomName) {
 	      //get rid of this after testing
-	      //if (roomName == "Desert") {
-	      //    addDataToClassesAndRoomsForTesting();
-	      //}
+	      if (roomName == "Desert") {
+	          addDataToClassesAndRoomsForTesting();
+	      }
 		  Room room = Rooms.getRoomByName(roomName);
 		  Object[][] tableData = new Object[ROWS][COLUMNS];
 		  if(room == null) {
@@ -193,8 +216,6 @@ public class RoomPanel extends JPanel {
         			                           Integer.toString(course.getClassMonth()) + "/" + 
         			                           Integer.toString(course.getClassYear());
         			  CalendarDate formattedDate = new CalendarDate(course.getClassDay(), course.getClassMonth() - 1, course.getClassYear());
-        			  System.out.println(formattedDate);
-                      System.out.println(date);
         			  if (formattedDate.equals(date)) {
         				  //send the class to helper function to fill out it's row in the table
         				  tableData = fillOutRow(tableData, course.getClassHour() - 8, course.getClassHour(), course.getClassName(), 
@@ -289,8 +310,6 @@ public class RoomPanel extends JPanel {
 	      Rooms.addClassToRoom("Beach", 69);
 	      Rooms.addClassToRoom("Jungle", 70);
 	  }
-	  
-	  
 	  
 	  //createSignUpButton()
 	  

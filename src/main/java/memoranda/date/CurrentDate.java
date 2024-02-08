@@ -25,7 +25,6 @@ public class CurrentDate {
 
     public static void set(CalendarDate date) {
         if (date.equals(_date)) return;
-        System.out.println(date);
         _date = date;
         dateChanged(date);
     }
