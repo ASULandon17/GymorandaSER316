@@ -40,7 +40,7 @@ public class Course {
         this.month = courseJson.getInt("month");
         this.day = courseJson.getInt("day");
         this.hour = courseJson.getInt("hour");
-        this.currentClassSize = 0;
+        this.currentClassSize = courseJson.getJSONArray("roster").length();
 
     }
 

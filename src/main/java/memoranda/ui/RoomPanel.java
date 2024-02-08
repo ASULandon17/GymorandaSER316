@@ -171,17 +171,19 @@ public class RoomPanel extends JPanel {
             public void dateChange(CalendarDate d) {
                 	
             //refresh tables for the given date
-            createTables();
+		        createTables();
             }
         });
 	}
+	
+	
 	
 	public void createTables() {
 	  //retrieve data from current day   
         Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
         Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
         Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
-        Object[][] beachData = getTableData(CurrentDate.get(), "Beach");
+        Object[][] beachData = getTableData(CurrentDate.get(), "Beach");     
         
         //create tables
         JTable desertTable = new JTable(desertData, columnNames);
@@ -200,6 +202,7 @@ public class RoomPanel extends JPanel {
         jungleTablePanel.add(new JScrollPane(jungleTable));
         arcticTablePanel.add(new JScrollPane(arcticTable));
         beachTablePanel.add(new JScrollPane(beachTable));
+        
 	}
 	
 	/**
@@ -210,6 +213,7 @@ public class RoomPanel extends JPanel {
 	 */
 	  public Object[][] getTableData(CalendarDate date, String roomName) {
 	      //Grab room that table is for
+	      System.out.println("getTableData Ran");
 		  Room room = Rooms.getRoomByName(roomName);
 		  //set up empty tableData object
 		  Object[][] tableData = new Object[ROWS][COLUMNS];
@@ -307,11 +311,11 @@ public class RoomPanel extends JPanel {
 	          if(course.getCurrentClassSize() < course.getMaxClassSize()) {
 	              System.out.println(User.getUsername());
 	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
-	              course.addStudentToRoster(User.getUsername());
+	              PersistentClass.addStudentToCourse(User.getUsername(), classId);
 	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
 	          }
 	      } catch (Exception ex){
-	          JOptionPane.showMessageDialog(this, "There is not course with the given Id", "Input Error", JOptionPane.ERROR_MESSAGE);
+	          JOptionPane.showMessageDialog(this, "There is no course with the given Id", "Input Error", JOptionPane.ERROR_MESSAGE);
 	      }
 	  }
 	  
