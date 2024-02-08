@@ -268,6 +268,8 @@ public class CourseTest {
         assertEquals("setDay not working", 8, PersistentClass.getCourseById(99).getClassDay());
         assertEquals("setHour not working", 19, PersistentClass.getCourseById(99).getClassHour());
     }
+
+    
 }
 
 
