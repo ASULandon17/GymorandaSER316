@@ -105,32 +105,7 @@ public class ClassPanel extends JPanel {
         Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
         CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
         card.setBorder(compoundBorder);
-        JLabel instructorNameLabel;
-
-
-        JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
-        if(course.getInstructorName().equals("")){
-            instructorNameLabel = new JLabel("Instructor: Not Assigned");
-        } else {
-            instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
-        }
-
-        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
-
-        JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
-        String isPublic = "Private";
-        if(course.getPublic()){
-            isPublic = "Public";
-        }
-        JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
-        JPanel infoPanel = new JPanel(new GridLayout(5, 1));
-        infoPanel.setBackground(Color.WHITE);
-        infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        infoPanel.add(classNameLabel);
-        infoPanel.add(instructorNameLabel);
-        infoPanel.add(classSizeLabel);
-        infoPanel.add(classLength);
-        infoPanel.add(classPrivacy);
+        JPanel infoPanel = buildInfoPanel(course);
 
         card.add(infoPanel, BorderLayout.CENTER);
 
@@ -156,7 +131,45 @@ public class ClassPanel extends JPanel {
             buttonPanel.add(manageInstructorButton);
             card.add(buttonPanel, BorderLayout.SOUTH);
         }
-        
+
         return card;
+    }
+
+    /**
+     * Constructs the infoPanel for a class card.
+     * @param course course added
+     * @return card infoPanel
+     */
+    private static JPanel buildInfoPanel(Course course) {
+
+        JLabel instructorNameLabel;
+
+        JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
+        if (course.getInstructorName().equals("")) {
+            instructorNameLabel = new JLabel("Instructor: Not Assigned");
+        } else {
+            instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
+        }
+
+        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
+
+        JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
+        String isPublic = "Private";
+        if (course.getPublic()) {
+            isPublic = "Public";
+        }
+
+        JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
+        JPanel infoPanel = new JPanel(new GridLayout(5, 1));
+
+        infoPanel.setBackground(Color.WHITE);
+        infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        infoPanel.add(classNameLabel);
+        infoPanel.add(instructorNameLabel);
+        infoPanel.add(classSizeLabel);
+        infoPanel.add(classLength);
+        infoPanel.add(classPrivacy);
+
+        return infoPanel;
     }
 }
