@@ -113,29 +113,39 @@ public class ClassPanel extends JPanel {
         // Add "Delete and Manage Instructor" buttons to class card if user is an Owner
         if (User.getUserType() == UserType.OWNER) {
 
-            JButton deleteButton = new JButton("Delete");
-            deleteButton.addActionListener(e -> {
-                PersistentClass.deleteCourseById(course.getClassId());
-                refreshCards();
-            });
-
-            JButton manageInstructorButton = new JButton("Manage Instructor");
-            manageInstructorButton.addActionListener(e -> {
-                // If manage instructor is clicked, open up instructor manager window and pull in course object
-                ManageInstructorPopup manageInstructorPopup = new ManageInstructorPopup(ClassPanel.this, course);
-                manageInstructorPopup.setVisible(true);
-
-            });
-
-            // Create button panel for owner buttons
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setBackground(Color.WHITE);
-            buttonPanel.add(deleteButton);
-            buttonPanel.add(manageInstructorButton);
+            JPanel buttonPanel = buildButtonPanel(course);
             card.add(buttonPanel, BorderLayout.SOUTH);
         }
 
         return card;
+    }
+
+    /**
+     * Helper to build the button panel for owner management actions
+     * @param course course object
+     * @return button panel with owner options
+     */
+    private JPanel buildButtonPanel(Course course) {
+        JButton deleteButton = new JButton("Delete");
+        deleteButton.addActionListener(e -> {
+            PersistentClass.deleteCourseById(course.getClassId());
+            refreshCards();
+        });
+
+        JButton manageInstructorButton = new JButton("Manage Instructor");
+        manageInstructorButton.addActionListener(e -> {
+            // If manage instructor is clicked, open up instructor manager window and pull in course object
+            ManageInstructorPopup manageInstructorPopup = new ManageInstructorPopup(ClassPanel.this, course);
+            manageInstructorPopup.setVisible(true);
+
+        });
+
+        // Create button panel for owner buttons
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(manageInstructorButton);
+        return buttonPanel;
     }
 
     /**
