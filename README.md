@@ -1,6 +1,6 @@
 # GYMORANDA
 >*A Team Kaffeeklatsch Production*<br>
-*Release 1*
+*Release 2*
 
 ![image info](src/main/resources/ui/Gymoranda.png)
 
