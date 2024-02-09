@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
@@ -69,8 +70,23 @@ public class RoomPanel extends JPanel {
 	private JTextField signUpIdField = new JTextField();
 	private JButton signUpButton = new JButton("Sign Up");
 	
-	private String[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
+	private Object[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
 	
+	Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
+    Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
+    Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
+    Object[][] beachData = getTableData(CurrentDate.get(), "Beach"); 
+    
+    DefaultTableModel desertDT = new DefaultTableModel(desertData, columnNames);
+    DefaultTableModel jungleDT = new DefaultTableModel(jungleData, columnNames);
+    DefaultTableModel arcticDT = new DefaultTableModel(arcticData, columnNames);
+    DefaultTableModel beachDT = new DefaultTableModel(beachData, columnNames);
+	
+    JTable desertTableM = new JTable(desertDT);
+    JTable jungleTableM = new JTable(jungleDT);
+    JTable arcticTableM = new JTable(arcticDT);
+    JTable beachTableM = new JTable(beachDT);
+    
 	private DailyItemsPanel parentPanel = null;
 	
 	public RoomPanel(DailyItemsPanel parent) {
@@ -146,8 +162,18 @@ public class RoomPanel extends JPanel {
 		arcticTextLabel.setFont(textFont);
 		beachTextLabel.setFont(textFont);
 		
-		//add room tables below images
-		createTables();
+		//add room tables below images 
+        //set row height
+        desertTableM.setRowHeight(ROW_HEIGHT);
+        jungleTableM.setRowHeight(ROW_HEIGHT);
+        arcticTableM.setRowHeight(ROW_HEIGHT);
+        beachTableM.setRowHeight(ROW_HEIGHT);
+        
+        //Add table UI 
+        desertTablePanel.add(new JScrollPane(desertTableM));
+        jungleTablePanel.add(new JScrollPane(jungleTableM));
+        arcticTablePanel.add(new JScrollPane(arcticTableM));
+        beachTablePanel.add(new JScrollPane(beachTableM));
         
         //Add class SignUp
         classSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -159,7 +185,7 @@ public class RoomPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signUserUp();
-                createTables();
+                updateTables();
             }
         });
         
@@ -171,38 +197,32 @@ public class RoomPanel extends JPanel {
             public void dateChange(CalendarDate d) {
                 	
             //refresh tables for the given date
-		        createTables();
+		        updateTables();
             }
         });
 	}
 	
-	
-	
 	public void createTables() {
-	  //retrieve data from current day   
-        Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
+
+        
+	}
+	
+	public void updateTables() {
+	    
+	    Object[][] desertData = getTableData(CurrentDate.get(), "Desert");
         Object[][] jungleData = getTableData(CurrentDate.get(), "Jungle");
         Object[][] arcticData = getTableData(CurrentDate.get(), "Arctic");
-        Object[][] beachData = getTableData(CurrentDate.get(), "Beach");     
+        Object[][] beachData = getTableData(CurrentDate.get(), "Beach");  
         
-        //create tables
-        JTable desertTable = new JTable(desertData, columnNames);
-        JTable jungleTable = new JTable(jungleData, columnNames);
-        JTable arcticTable = new JTable(arcticData, columnNames);
-        JTable beachTable = new JTable(beachData, columnNames);
+        desertDT.setDataVector(desertData, columnNames); 
+        jungleDT.setDataVector(jungleData, columnNames);
+        arcticDT.setDataVector(arcticData, columnNames);
+        beachDT.setDataVector(beachData, columnNames);
         
-        //set row height
-        desertTable.setRowHeight(ROW_HEIGHT);
-        jungleTable.setRowHeight(ROW_HEIGHT);
-        arcticTable.setRowHeight(ROW_HEIGHT);
-        beachTable.setRowHeight(ROW_HEIGHT);
-        
-        //Add table UI 
-        desertTablePanel.add(new JScrollPane(desertTable));
-        jungleTablePanel.add(new JScrollPane(jungleTable));
-        arcticTablePanel.add(new JScrollPane(arcticTable));
-        beachTablePanel.add(new JScrollPane(beachTable));
-        
+       desertDT.fireTableDataChanged();
+       jungleDT.fireTableDataChanged();
+       arcticDT.fireTableDataChanged();
+       beachDT.fireTableDataChanged();
 	}
 	
 	/**
@@ -309,10 +329,7 @@ public class RoomPanel extends JPanel {
 	      //if there's room in the class add the user
 	      try {
 	          if(course.getCurrentClassSize() < course.getMaxClassSize()) {
-	              System.out.println(User.getUsername());
-	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
 	              PersistentClass.addStudentToCourse(User.getUsername(), classId);
-	              System.out.println(PersistentClass.getCourseById(classId).getCurrentClassSize());
 	          }
 	      } catch (Exception ex){
 	          JOptionPane.showMessageDialog(this, "There is no course with the given Id", "Input Error", JOptionPane.ERROR_MESSAGE);
