@@ -121,7 +121,10 @@ public class ClassPanel extends JPanel {
 
             JButton manageInstructorButton = new JButton("Manage Instructor");
             manageInstructorButton.addActionListener(e -> {
-                // do stuff in Sprint 3
+                // If manage instructor is clicked, open up instructor manager window and pull in course object
+                ManageInstructorPopup manageInstructorPopup = new ManageInstructorPopup(ClassPanel.this, course);
+                manageInstructorPopup.setVisible(true);
+
             });
 
             // Create button panel for owner buttons
