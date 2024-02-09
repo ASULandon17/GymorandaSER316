@@ -1,16 +1,16 @@
 package main.java.memoranda.ui;
 
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+
+import javax.swing.*;
+import javax.swing.border.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
-import main.java.memoranda.*;
 
 
 public class ClassPanel extends JPanel {
@@ -105,11 +105,60 @@ public class ClassPanel extends JPanel {
         Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
         CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
         card.setBorder(compoundBorder);
+        JPanel infoPanel = buildInfoPanel(course);
+
+        card.add(infoPanel, BorderLayout.CENTER);
+
+
+        // Add "Delete and Manage Instructor" buttons to class card if user is an Owner
+        if (User.getUserType() == UserType.OWNER) {
+
+            JPanel buttonPanel = buildButtonPanel(course);
+            card.add(buttonPanel, BorderLayout.SOUTH);
+        }
+
+        return card;
+    }
+
+    /**
+     * Helper to build the button panel for owner management actions
+     * @param course course object
+     * @return button panel with owner options
+     */
+    private JPanel buildButtonPanel(Course course) {
+        JButton deleteButton = new JButton("Delete");
+        deleteButton.addActionListener(e -> {
+            PersistentClass.deleteCourseById(course.getClassId());
+            refreshCards();
+        });
+
+        JButton manageInstructorButton = new JButton("Manage Instructor");
+        manageInstructorButton.addActionListener(e -> {
+            // If manage instructor is clicked, open up instructor manager window and pull in course object
+            ManageInstructorPopup manageInstructorPopup = new ManageInstructorPopup(ClassPanel.this, course);
+            manageInstructorPopup.setVisible(true);
+
+        });
+
+        // Create button panel for owner buttons
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(manageInstructorButton);
+        return buttonPanel;
+    }
+
+    /**
+     * Constructs the infoPanel for a class card.
+     * @param course course added
+     * @return card infoPanel
+     */
+    private static JPanel buildInfoPanel(Course course) {
+
         JLabel instructorNameLabel;
 
-
         JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
-        if(course.getInstructorName().equals("")){
+        if (course.getInstructorName().equals("")) {
             instructorNameLabel = new JLabel("Instructor: Not Assigned");
         } else {
             instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
@@ -119,11 +168,13 @@ public class ClassPanel extends JPanel {
 
         JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
         String isPublic = "Private";
-        if(course.getPublic()){
+        if (course.getPublic()) {
             isPublic = "Public";
         }
+
         JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
         JPanel infoPanel = new JPanel(new GridLayout(5, 1));
+
         infoPanel.setBackground(Color.WHITE);
         infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         infoPanel.add(classNameLabel);
@@ -132,21 +183,6 @@ public class ClassPanel extends JPanel {
         infoPanel.add(classLength);
         infoPanel.add(classPrivacy);
 
-        card.add(infoPanel, BorderLayout.CENTER);
-
-        if(User.getUserType() == UserType.OWNER){
-            JButton deleteButton = new JButton("Delete");
-            deleteButton.addActionListener(e -> {
-                PersistentClass.deleteCourseById(course.getClassId());
-                refreshCards();
-            });
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setBackground(Color.WHITE);
-            buttonPanel.add(deleteButton);
-            card.add(buttonPanel, BorderLayout.SOUTH);
-        }
-
-
-        return card;
+        return infoPanel;
     }
 }
