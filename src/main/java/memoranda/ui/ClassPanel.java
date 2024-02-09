@@ -148,7 +148,7 @@ public class ClassPanel extends JPanel {
 
             JButton manageInstructorButton = new JButton("Manage Instructor");
             manageInstructorButton.addActionListener(e -> {
-                // do stuff
+                // do stuff in Sprint 3
             });
 
             // Create button panel for owner buttons
