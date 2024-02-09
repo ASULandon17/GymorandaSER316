@@ -1,16 +1,18 @@
 package main.java.memoranda.ui;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
-import main.java.memoranda.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 
 public class ClassPanel extends JPanel {
@@ -134,17 +136,29 @@ public class ClassPanel extends JPanel {
 
         card.add(infoPanel, BorderLayout.CENTER);
 
-        if(User.getUserType() == UserType.OWNER){
+
+        // Add "Delete and Manage Instructor" buttons to class card if user is an Owner
+        if (User.getUserType() == UserType.OWNER) {
+
             JButton deleteButton = new JButton("Delete");
             deleteButton.addActionListener(e -> {
                 PersistentClass.deleteCourseById(course.getClassId());
                 refreshCards();
             });
+
+            JButton manageInstructorButton = new JButton("Manage Instructor");
+            manageInstructorButton.addActionListener(e -> {
+                // do stuff
+            });
+
+            // Create button panel for owner buttons
             JPanel buttonPanel = new JPanel();
             buttonPanel.setBackground(Color.WHITE);
             buttonPanel.add(deleteButton);
+            buttonPanel.add(manageInstructorButton);
             card.add(buttonPanel, BorderLayout.SOUTH);
         }
+
 
 
         return card;
