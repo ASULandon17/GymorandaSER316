@@ -1,9 +1,16 @@
 package test.java;
 
+import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 
 import static org.junit.Assert.*;
 
@@ -267,6 +274,36 @@ public class CourseTest {
         assertEquals("setMonth not working", 4, PersistentClass.getCourseById(99).getClassMonth());
         assertEquals("setDay not working", 8, PersistentClass.getCourseById(99).getClassDay());
         assertEquals("setHour not working", 19, PersistentClass.getCourseById(99).getClassHour());
+    }
+
+    @Test
+    public void testNoClasses() {
+        ArrayList<Course> result = PersistentClass.getNext5Classes();
+        assertNull("Expected null when there are no classes", result);
+    }
+
+    @Test
+    public void testLessThanFiveClasses() {
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        PersistentClass.addNewClass("Class 1", 2, 30, 101, true, "instructor1", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 10);
+        PersistentClass.addNewClass("Class 2", 2, 30, 102, true, "instructor2", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 12);
+        PersistentClass.addNewClass("Class 3", 2, 30, 103, true, "instructor3", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 14);
+
+        ArrayList<Course> result = PersistentClass.getNext5Classes();
+        assertNotNull("Expected a non-null list of classes", result);
+        assertEquals("Expected 3 classes", 3, result.size());
+    }
+
+    @Test
+    public void testMoreThanFiveClasses() {
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        for (int i = 1; i <= 6; i++) {
+            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i);
+        }
+
+        ArrayList<Course> result = PersistentClass.getNext5Classes();
+        assertNotNull("Expected a non-null list of classes", result);
+        assertEquals("Expected 5 classes", 5, result.size());
     }
 }
 
