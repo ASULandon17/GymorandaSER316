@@ -4,14 +4,12 @@ import main.java.memoranda.Course;
 
 import javax.swing.*;
 
+/**
+ * UI for Owner to manage the instructor assigned to a course.
+ */
 public class ManageInstructorPopup extends JFrame {
 
     private ClassPanel cpRef; // stores reference to parent class panel
-    private JLabel currentInstructorLabel;
-    private JLabel instructorLabel;
-    private JButton instructorButton;
-
-
 
     public ManageInstructorPopup(ClassPanel cpRef, Course course) {
         super("Manage Instructor");
@@ -25,6 +23,10 @@ public class ManageInstructorPopup extends JFrame {
     }
 
 
+    /**
+     * Builds UI for Manage Instructor Popup Window.
+     * @param course course object to reference course data
+     */
     private void initUI(Course course) {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -33,22 +35,22 @@ public class ManageInstructorPopup extends JFrame {
         JPanel instructorPanel = new JPanel();
         instructorPanel.setLayout(new BoxLayout(instructorPanel, BoxLayout.Y_AXIS));
 
-        currentInstructorLabel = new JLabel();
+        JLabel currentInstructorLabel = new JLabel();
         currentInstructorLabel.setText("Current Instructor: ");
-        instructorLabel = new JLabel(course.getInstructorName()); // will just be empty if there's not an instructor
+        JLabel instructorLabel = new JLabel(course.getInstructorName()); // will just be empty if there's not an instructor
 
 
         // Set button text based on if course has an instructor
-        instructorButton = new JButton();
+        JButton instructorButton = new JButton();
         if (course.getInstructorName().isEmpty()) {
             instructorButton.setText("Assign Instructor");
         } else {
             instructorButton.setText("Change Instructor");
         }
 
-        instructorButton.addActionListener( e -> {
-            // Do things - Sprint 3 todo
-
+        instructorButton.addActionListener(e -> {
+            // Do things - Sprint 3
+            //todo:
             // Open up UI that displays currently available instructors
             // Owner can select one
             // Instructor is updated on actual course object and displayed on UI
