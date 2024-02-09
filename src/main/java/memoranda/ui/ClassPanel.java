@@ -6,10 +6,8 @@ import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -158,9 +156,7 @@ public class ClassPanel extends JPanel {
             buttonPanel.add(manageInstructorButton);
             card.add(buttonPanel, BorderLayout.SOUTH);
         }
-
-
-
+        
         return card;
     }
 }
