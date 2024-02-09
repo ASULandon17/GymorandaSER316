@@ -8,11 +8,11 @@ Events/Classes UI:
 src\main\java\memoranda\ui\EventsPanel.java
 src\main\java\memoranda\ui\EventsTable.java
 
-Tasks/Rooms UI:
+Tasks/Trainers UI:
 src\main\java\memoranda\ui\TaskPanel.java
 src\main\java\memoranda\ui\TaskTable.java
 
-Notes/Trainers UI:
+Notes/Rooms UI:
 src\main\java\memoranda\ui\NotesControlPanel.java (side search portion)
 src\main\java\memoranda\ui\EditorPanel.java (Main section where notes are written)
 

@@ -1,6 +1,10 @@
 package main.java.memoranda;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Room class for individual rooms.
@@ -9,7 +13,7 @@ public class Room {
 
     private boolean hasClass;
     private String roomName;
-    private Integer classId;
+    private List<Integer> classIds;
 
     /**
      * Constructor to set a room up that has a class.
@@ -20,7 +24,8 @@ public class Room {
     public Room(boolean hasClass, String roomName, int classId) {
         this.hasClass = hasClass;
         this.roomName = roomName;
-        this.classId = classId;
+        this.classIds = new ArrayList<>();
+        this.classIds.add(classId);
     }
 
     /**
@@ -30,7 +35,7 @@ public class Room {
     public Room(String roomName){
         this.hasClass = false;
         this.roomName = roomName;
-        this.classId = null;
+        this.classIds = new ArrayList<>();
     }
 
 
@@ -41,19 +46,26 @@ public class Room {
     public Room(JSONObject jsonObject){
         this.roomName = jsonObject.getString("roomName");
         this.hasClass = jsonObject.getBoolean("hasClass");
-        this.classId = jsonObject.has("classId") ? jsonObject.getInt("classId") : null;
+        //this.classId = jsonObject.has("classId") ? jsonObject.getInt("classId") : null;
+        if(jsonObject.has("classId")) {
+        	this.classIds = new ArrayList<>();
+        	JSONArray classIdList = jsonObject.getJSONArray("classId");
+        	for(int i = 0; i < classIdList.length(); i++) {
+        		this.classIds.add(classIdList.getInt(i));
+        	}
+        }
     }
 
     public void setName(String roomName){
         this.roomName = roomName;
     }
 
-    public Integer getClassId(){
-        return this.classId;
+    public List<Integer> getClassIds(){
+        return this.classIds;
     }
 
-    public void setClassId(Integer classId){
-        this.classId = classId;
+    public void addClassId(Integer classId){
+        this.classIds.add(classId);
     }
 
     public boolean getHasClass() {
