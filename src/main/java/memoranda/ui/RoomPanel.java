@@ -233,13 +233,12 @@ public class RoomPanel extends JPanel {
 	 */
 	  public Object[][] getTableData(CalendarDate date, String roomName) {
 	      //Grab room that table is for
-	      System.out.println("getTableData Ran");
 		  Room room = Rooms.getRoomByName(roomName);
 		  //set up empty tableData object
 		  Object[][] tableData = new Object[ROWS][COLUMNS];
 		  // conditional to catch if there is no room so it will skip to filling out with no class
 		  if(room == null) {
-			  System.out.println("Error: No Room by this name");
+			  System.out.println("Error: No Room named: " + room);
 		  } else {
 		      //gather all classes in the room
     		  List<Integer> classList = room.getClassIds();
