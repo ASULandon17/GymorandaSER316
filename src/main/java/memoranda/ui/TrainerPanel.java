@@ -10,27 +10,39 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Vector;
 
+/**
+ * TrainerPanel
+ * creates a panel displaying the current trainers' data
+ */
 public class TrainerPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
     JToolBar eventsToolBar = new JToolBar();
     JScrollPane scrollPane = new JScrollPane();
     private JPanel cardsPanel = new JPanel();
 
-    JButton newClass = new JButton();
+    JButton newTrainer = new JButton();
 
+    /**
+     * TrainerPanel
+     * constructor for creating a new trainer panel
+     */
     public TrainerPanel() {
         try {
             jbInit();
             initCardsPanel();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             new ExceptionDialog(ex);
         }
     }
     //This is used in NewclassPopup so that on adding a new class, the UI refreshes.
 
-
-    void newClassButtonHelper(JButton button){
+    /**
+     * newTrainerButtonHelper
+     * takes a button and sets the necessary areas the values they need
+     *
+     * @param button the button to be given values
+     */
+    private void newTrainerButtonHelper(JButton button) {
         button.setFocusable(false);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
@@ -40,17 +52,21 @@ public class TrainerPanel extends JPanel {
         button.setPreferredSize(new Dimension(100, 30));
     }
 
+    /**
+     * jbInit
+     * initializes button to add a trainer
+     */
     void jbInit() throws Exception {
         eventsToolBar.setFloatable(false);
 
-        newClass.setText("Add a class");
-        if(User.getUserType() == UserType.OWNER){
-            newClass.setVisible(true);
+        newTrainer.setText("Add a trainer");
+        if (User.getUserType() == UserType.OWNER) {
+            newTrainer.setVisible(true);
         } else {
-            newClass.setVisible(false);
+            newTrainer.setVisible(false);
         }
-        newClassButtonHelper(newClass);
-        newClass.setToolTipText("Add a new class");
+        newTrainerButtonHelper(newTrainer);
+        newTrainer.setToolTipText("Add a new trainer");
 
 
         this.setLayout(borderLayout1);
@@ -63,12 +79,16 @@ public class TrainerPanel extends JPanel {
 
         eventsToolBar.addSeparator(new Dimension(8, 24));
 
-        eventsToolBar.add(newClass, null);
+        eventsToolBar.add(newTrainer, null);
         this.add(eventsToolBar, BorderLayout.NORTH);
 
 
     }
 
+    /**
+     * initCardsPanel
+     * creates a card for all the trainers that are found available
+     */
     void initCardsPanel() {
         cardsPanel.removeAll();
         TrainerList trainerList = new TrainerList();
@@ -86,6 +106,13 @@ public class TrainerPanel extends JPanel {
         cardsPanel.repaint();
     }
 
+    /**
+     * createTrainerCard
+     * creates a card given a trainer
+     *
+     * @param trainer the trainer to be used for the card
+     * @return a card that displays the trainer's details
+     */
     private JPanel createTrainerCard(Trainer trainer) {
 
         JPanel card = new JPanel(new BorderLayout());
@@ -110,8 +137,6 @@ public class TrainerPanel extends JPanel {
         infoPanel.add(trainerBeltLabel);
 
         card.add(infoPanel, BorderLayout.CENTER);
-
-
 
 
         return card;
