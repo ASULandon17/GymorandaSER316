@@ -29,8 +29,23 @@ public class RoomsTest {
         List<Room> rooms = Rooms.getRooms();
         assertEquals(1, rooms.size());
         Room room = rooms.get(0);
-        assertTrue(room.getHasClass());
-        assertEquals("Room101", room.getRoomName());
+        assertTrue("Room should have a class", room.getHasClass());
+        assertEquals("Room name should match", "Room101", room.getRoomName());
+        assertTrue("Room should contain the class ID added", room.getClassIds().contains(1));
+    }
+
+    @Test
+    public void testAddRoomWithMultipleClassIds() {
+        // First, add a room with a single class ID
+        Rooms.addRoom(true, "MulticlassRoom", 101);
+        // Then, add another class ID to the same room
+        Rooms.addClassToRoom("MulticlassRoom", 102);
+
+        Room room = Rooms.getRoomByName("MulticlassRoom");
+        assertNotNull("Room should not be null", room);
+        assertTrue("Room should have classes", room.getHasClass());
+        assertEquals("Room should have 2 class IDs", 2, room.getClassIds().size());
+        assertTrue("Room should contain both class IDs", room.getClassIds().containsAll(List.of(101, 102)));
     }
 
     @Test
@@ -52,11 +67,12 @@ public class RoomsTest {
 
     @Test
     public void testAddRoomNoClass(){
-        Rooms.addRoom("Noclass");
+        Rooms.addRoom("NoclassRoom");
         List<Room> rooms = Rooms.getRooms();
-        assertEquals(1, rooms.size());
+        assertEquals("Only one room should be added", 1, rooms.size());
         Room room = rooms.get(0);
-        assertFalse(room.getHasClass());
+        assertFalse("Room should not have a class", room.getHasClass());
+        assertTrue("Class IDs list should be empty", room.getClassIds().isEmpty());
     }
 
     @Test
@@ -69,12 +85,13 @@ public class RoomsTest {
     @Test
     public void testAddClassToRoom() {
         String roomName = "Lab1";
-        Rooms.addRoom( roomName);
-        Rooms.addClassToRoom(roomName, 102);
+        Rooms.addRoom(roomName); // Initially adding room without a class
+        Rooms.addClassToRoom(roomName, 102); // Adding a class ID to the room
         Room room = Rooms.getRoomByName(roomName);
-        assertNotNull("Room should exist", room);
-        assertTrue("Room should have a class", room.getHasClass());
-        assertEquals("Class ID should be updated to 102", 102, (int) room.getClassId());
+
+        assertNotNull("Room should exist after adding a class ID", room);
+        assertTrue("Room should be marked as having a class", room.getHasClass());
+        assertTrue("Room should contain the class ID added", room.getClassIds().contains(102));
     }
     @Test
     public void testGetRoomByName() {

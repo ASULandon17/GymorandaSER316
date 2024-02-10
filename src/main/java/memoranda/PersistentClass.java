@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.time.LocalDateTime;
+import java.util.stream.Collectors;
+
+
 /**
  * This class provides the backend for interacting with Classes within Gymoranda.
  */
@@ -232,6 +236,7 @@ public class PersistentClass {
                 }
             }
         }
+        saveClassesToFile();
     }
 
     /**
@@ -246,5 +251,36 @@ public class PersistentClass {
                 return;
             }
         }
+    }
+
+    /**
+     * Returns the next 5 classes that are soonest to happen based on the current date and time, or null if there are no upcoming classes.
+     * @return ArrayList of the next 5 upcoming Course objects, or null if no classes are scheduled.
+     */
+    public static ArrayList<Course> getNext5Classes() {
+        LocalDateTime now = LocalDateTime.now();
+
+        ArrayList<Course> upcomingCourses = PersistentClass.getListOfCourses().stream()
+                .filter(course -> {
+                    LocalDateTime courseDateTime = LocalDateTime.of(course.getClassYear(), course.getClassMonth(),
+                            course.getClassDay(), course.getClassHour(), 0);
+                    return courseDateTime.isAfter(now);
+                })
+                .sorted((course1, course2) -> {
+                    LocalDateTime courseDateTime1 = LocalDateTime.of(course1.getClassYear(), course1.getClassMonth(),
+                            course1.getClassDay(), course1.getClassHour(), 0);
+                    LocalDateTime courseDateTime2 = LocalDateTime.of(course2.getClassYear(), course2.getClassMonth(),
+                            course2.getClassDay(), course2.getClassHour(), 0);
+                    return courseDateTime1.compareTo(courseDateTime2);
+                })
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        // Check if there are no upcoming courses and return null
+        if (upcomingCourses.isEmpty()) {
+            return null;
+        }
+
+        // Return the top 5 or fewer if less than 5 upcoming classes are available
+        return upcomingCourses.size() > 5 ? new ArrayList<>(upcomingCourses.subList(0, 5)) : upcomingCourses;
     }
 }

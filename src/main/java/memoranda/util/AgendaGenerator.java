@@ -11,6 +11,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.ArrayList;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
@@ -281,20 +282,33 @@ public class AgendaGenerator {
 		return s + generateTasksInfo(p, date,expandedTasks);        
 	}
 
-	static String generateAllProjectsInfo(CalendarDate date, Collection expandedTasks) {
+	private static String generateCourseInfo(Course course) {
+		String formattedDateTime = String.format("%d/%d/%d at %02d:00", course.getClassMonth(), course.getClassDay(), course.getClassYear(), course.getClassHour());
+		String instructorName = course.getInstructorName().isEmpty() ? "Not assigned" : course.getInstructorName();
+
+		return "<p><b>Class Name:</b> " + course.getClassName() +
+				"<br><b>Instructor:</b> " + instructorName +
+				"<br><b>Time:</b> " + formattedDateTime +
+				"</p>\n";
+	}
+
+	static String generateUpcomingClasses() {
 		String s =
 				"<td width=\"66%\" valign=\"top\">"
 						+ "<h1>"
-						+ Local.getString("My Current Gym Classes")
+						+ Local.getString("Upcoming Classes")
 						+ "</h1>\n";
-		s += generateProjectInfo(CurrentProject.get(), date, expandedTasks);        
-		for (Iterator i = ProjectManager.getActiveProjects().iterator();
-				i.hasNext();
-				) {
-			Project p = (Project) i.next();
-			if (!p.getID().equals(CurrentProject.get().getID()))
-				s += generateProjectInfo(p, date, expandedTasks);
+
+		ArrayList<Course> next5Classes = PersistentClass.getNext5Classes();
+
+		if (next5Classes == null || next5Classes.isEmpty()) {
+			s += "No upcoming classes";
+		} else {
+			for (Course course : next5Classes) {
+				s += generateCourseInfo(course);
+			}
 		}
+
 		return s + "</td>";
 	}
 
@@ -381,7 +395,7 @@ public class AgendaGenerator {
 	
 	public static String getAgenda(CalendarDate date, Collection expandedTasks) {
 		String s = HEADER;
-		s += generateAllProjectsInfo(date, expandedTasks);
+		s += generateUpcomingClasses();
 		s += generatePersonalInfo();
 		s += generateStickers(date);
 		//        /*DEBUG*/System.out.println(s+FOOTER);

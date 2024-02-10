@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import main.java.memoranda.Room;
 
 /**
  * Rooms class that stores a list of the current available rooms.
@@ -73,7 +74,7 @@ public class Rooms {
     public static void addClassToRoom(String roomName, int classId) {
         for (Room room : rooms) {
             if (room.getRoomName().equals(roomName)) {
-                room.setClassId(classId); // Set the classId for the room
+                room.addClassId(classId); // Set the classId for the room
                 room.setHasClass(true);
                 saveRoomsToFile(); // Save changes to the JSON file
                 break; // Exit the loop once the room is found and updated
@@ -106,8 +107,8 @@ public class Rooms {
             jsonObject.put("hasClass", room.getHasClass());
             jsonObject.put("roomName", room.getRoomName());
             // Only add classId if it is not null
-            if (room.getClassId() != null) {
-                jsonObject.put("classId", room.getClassId());
+            if (!room.getClassIds().isEmpty()) {
+                jsonObject.put("classId", new JSONArray(room.getClassIds()));
             }
             jsonArray.put(jsonObject);
         }
