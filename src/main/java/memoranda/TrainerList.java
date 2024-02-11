@@ -42,7 +42,9 @@ public class TrainerList {
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
                 if (user.getString("userType").equals("TRAINER")) {
-                    trainers.add(new Trainer(user.getString("username"), getRank(user.getString("beltRank")), getRank(user.getString("trainingRank"))));
+                    trainers.add(new Trainer(user.getString("username"), BeltValue.valueOf(user.getString("beltRank")),
+                            BeltValue.valueOf(user.getString("trainingRank")), user.getInt("startAvailability"),
+                            user.getInt("endAvailability")));
                 }
             }
         } catch (IOException | JSONException e) {
@@ -72,7 +74,9 @@ public class TrainerList {
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
                 if (user.getString("username").equals(name) && user.getString("userType").equals("TRAINER")) {
-                    trainer = new Trainer(user.getString("username"), getRank(user.getString("beltRank")), getRank(user.getString("trainingRank")));
+                    trainer = new Trainer(user.getString("username"), BeltValue.valueOf(user.getString("beltRank")),
+                            BeltValue.valueOf(user.getString("trainingRank")), user.getInt("startAvailability"),
+                            user.getInt("endAvailability"));
                 }
             }
 
@@ -83,64 +87,6 @@ public class TrainerList {
         return trainer;
     }
 
-    /**
-     * getRank
-     * converts the given string into the equivalent belt value
-     *
-     * @param userRank string value of user's rank
-     * @return belt value of user's rank
-     */
-    private BeltValue getRank(String userRank) {
-        BeltValue rank = null;
-        switch (userRank) {
-            case "NO_BELT":
-                rank = BeltValue.NO_BELT;
-                break;
-            case "WHITE":
-                rank = BeltValue.WHITE;
-                break;
-            case "YELLOW":
-                rank = BeltValue.YELLOW;
-                break;
-            case "ORANGE":
-                rank = BeltValue.ORANGE;
-                break;
-            case "PURPLE":
-                rank = BeltValue.PURPLE;
-                break;
-            case "BLUE":
-                rank = BeltValue.BLUE;
-                break;
-            case "BLUE_STRIPE":
-                rank = BeltValue.BLUE_STRIPE;
-                break;
-            case "GREEN":
-                rank = BeltValue.GREEN;
-                break;
-            case "GREEN_STRIPE":
-                rank = BeltValue.GREEN_STRIPE;
-                break;
-            case "BROWN1":
-                rank = BeltValue.BROWN1;
-                break;
-            case "BROWN2":
-                rank = BeltValue.BROWN2;
-                break;
-            case "BROWN3":
-                rank = BeltValue.BROWN3;
-                break;
-            case "BLACK1":
-                rank = BeltValue.BLACK1;
-                break;
-            case "BLACK2":
-                rank = BeltValue.BLACK2;
-                break;
-            case "BLACK3":
-                rank = BeltValue.BLACK3;
-                break;
-        }
-
-        return rank;
-    }
+    // Removed the need for the switch statement
 
 }
