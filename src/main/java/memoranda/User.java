@@ -19,11 +19,23 @@ public class User {
     private static BeltValue _beltRank = BeltValue.WHITE;
     private static UserType _userType;
     private static BeltValue _trainingRank = BeltValue.NO_BELT;
+    // The earliest a Trainer can start, set to 0 for non-trainers
+    private static int _startAvailability = 0;
+    // The latest a Trainer can work, set to 0 for non-trainers
+    private static int _endAvailability = 0;
 
     public static boolean signUp(String newUser, String newPassword, UserType userType){
         _username = newUser;
         _password = newPassword;
         _userType = userType;
+
+        //Check if userType is TRAINER to update availability
+        if(_userType == UserType.TRAINER) {
+            // All Trainers start will completely open availability
+            // They can update their availability after
+            _startAvailability = 8;   //8:00am
+            _endAvailability = 19;    //7:00pm
+        }
 
         JSONObject userObject = new JSONObject();
         userObject.put("username", _username);
@@ -31,6 +43,8 @@ public class User {
         userObject.put("beltRank", _beltRank);
         userObject.put("userType", _userType);
         userObject.put("trainingRank", _trainingRank);
+        userObject.put("startAvailability", _startAvailability);
+        userObject.put("endAvailability", _endAvailability);
 
         try {
             File file = new File("users.json");
@@ -82,6 +96,8 @@ public class User {
                     _beltRank = BeltValue.valueOf(user.getString("beltRank"));
                     _userType = UserType.valueOf(user.getString("userType"));
                     _trainingRank = BeltValue.valueOf(user.getString("trainingRank"));
+                    _startAvailability = user.getInt("startAvailability");
+                    _endAvailability = user.getInt("endAvailability");
                     return true;
                 }
             }
@@ -104,6 +120,62 @@ public class User {
 
     public static BeltValue getTrainingRank() {
         return _trainingRank;
+    }
+
+    public static int getStartAvailability() {
+        return _startAvailability;
+    }
+
+    public static int getEndAvailability() {
+        return _endAvailability;
+    }
+
+    public static void setStartAvailability(int start) {
+        _startAvailability = start;
+        try {
+            File file = new File("users.json");
+
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("startAvailability", _startAvailability);
+                    break;
+                }
+            }
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setEndAvailability(int end) {
+        _endAvailability = end;
+        try {
+            File file = new File("users.json");
+
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("endAvailability", _endAvailability);
+                    break;
+                }
+            }
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -177,6 +249,9 @@ public class User {
             changedUserType = 0;
             _userType = UserType.TRAINER;
             increaseTrainingRank();
+            // Change availability from 0 to 8am-7pm
+            setStartAvailability(8);
+            setEndAvailability(19);
             try {
                 File file = new File("users.json");
                 String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
@@ -187,6 +262,8 @@ public class User {
                     if (user.getString("username").equals(_username)) {
                         // Update the user type in the JSON object
                         user.put("userType", _userType.toString());
+                        user.put("startAvailability", _startAvailability);
+                        user.put("endAvailability", _endAvailability);
                         break;
                     }
                 }
