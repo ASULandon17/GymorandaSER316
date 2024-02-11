@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * tests for the trainer list class
  */
-public class trainerListTest {
+public class TrainerListTest {
     /**
      * set up for the trainer methods needing to read from users.json
      */
