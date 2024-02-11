@@ -1,49 +1,17 @@
 package main.java.memoranda.ui;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Insets;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-
-import main.java.memoranda.CurrentNote;
-import main.java.memoranda.CurrentProject;
-import main.java.memoranda.EventNotificationListener;
-import main.java.memoranda.EventsScheduler;
-import main.java.memoranda.History;
-import main.java.memoranda.HistoryItem;
-import main.java.memoranda.HistoryListener;
-import main.java.memoranda.Note;
-import main.java.memoranda.NoteList;
-import main.java.memoranda.NoteListener;
-import main.java.memoranda.Project;
-import main.java.memoranda.ProjectListener;
-import main.java.memoranda.ResourcesList;
-import main.java.memoranda.Task;
-import main.java.memoranda.TaskList;
+import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
 import main.java.memoranda.date.DateListener;
 import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Local;
 import main.java.memoranda.util.Util;
-
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  * 
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
@@ -65,8 +33,10 @@ public class DailyItemsPanel extends JPanel {
     public RoomPanel roomPanel = new RoomPanel(this);
     JLabel currentDateLabel = new JLabel();
     BorderLayout borderLayout4 = new BorderLayout();
-    TaskPanel tasksPanel = new TaskPanel(this);
+
+    TrainerPanel tasksPanel = new TrainerPanel();
     ClassPanel eventsPanel = new ClassPanel();
+
     AgendaPanel agendaPanel = new AgendaPanel(this);
     ImageIcon expIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_right.png"));
     ImageIcon collIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_left.png"));
@@ -360,6 +330,7 @@ public class DailyItemsPanel extends JPanel {
 	void currentProjectChanged(Project newprj, NoteList nl, TaskList tl, ResourcesList rl) {
 //		Util.debug("currentProjectChanged");
 
+
 		Cursor cur = App.getFrame().getCursor();
 		App.getFrame().setCursor(waitCursor);
 		if (!changedByHistory)
@@ -444,18 +415,14 @@ public class DailyItemsPanel extends JPanel {
 			calendar.jnCalendar.renderer.setTask(null);
 			// calendar.jnCalendar.updateUI();
 		}
-		if (pan.equals("TASKS") && (tasksPanel.taskTable.getSelectedRow() > -1)) {
-			Task t = CurrentProject.getTaskList().getTask(tasksPanel.taskTable.getModel()
-					.getValueAt(tasksPanel.taskTable.getSelectedRow(), TaskTable.TASK_ID).toString());
-			calendar.jnCalendar.renderer.setTask(t);
-			// calendar.jnCalendar.updateUI();
-		}
+		
 		boolean isAg = pan.equals("AGENDA");
 		agendaPanel.setActive(isAg);
 		if (isAg)
 			agendaPanel.refresh(CurrentDate.get());
 		cardLayout1.show(editorsPanel, pan);
 		cardLayout2.show(mainTabsPanel, pan + "TAB");
+
 		calendar.jnCalendar.updateUI();
 		CurrentPanel = pan;
 	}

@@ -1,7 +1,5 @@
 package main.java.memoranda;
 
-import main.java.memoranda.BeltValue;
-
 /**
  * Trainer class to construct a trainer object
  * Trainer's have a name, beltRank and a trainingRank
@@ -31,6 +29,13 @@ public class Trainer {
         this.beltRank = beltRank;
         this.trainingRank = trainingRank;
     }
+
+
+
+
+
+
+
 
     public String getTrainerName() {
         return this.trainerName;
