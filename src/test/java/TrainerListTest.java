@@ -6,7 +6,6 @@ import main.java.memoranda.TrainerList;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -23,9 +22,12 @@ public class TrainerListTest {
      */
     @Before
     public void setUp() throws IOException {
-        File file = new File("users.json");
         PrintWriter writer = new PrintWriter("users.json", StandardCharsets.UTF_8);
-        writer.println("[{\"password\":\"Trainer1\",\"trainingRank\":\"NO_BELT\",\"beltRank\":\"WHITE\",\"userType\":\"TRAINER\",\"username\":\"Trainer1\"},{\"password\":\"Trainer2\",\"trainingRank\":\"NO_BELT\",\"beltRank\":\"WHITE\",\"userType\":\"TRAINER\",\"username\":\"Trainer2\"}]");
+        writer.println("[{\"endAvailability\":\"19\",\"startAvailability\":\"8\",\"password\":\"Trainer1\"," +
+                "\"trainingRank\":\"NO_BELT\",\"beltRank\":\"WHITE\",\"userType\":\"TRAINER\",\"username\":" +
+                "\"Trainer1\"},{\"endAvailability\":\"19\",\"startAvailability\":\"8\",\"password\":\"Trainer2\"," +
+                "\"trainingRank\":\"NO_BELT\",\"beltRank\":\"WHITE\",\"userType\":\"TRAINER\",\"username\":" +
+                "\"Trainer2\"}]");
         writer.close();
 
     }
