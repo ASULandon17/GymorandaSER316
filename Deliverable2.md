@@ -222,6 +222,11 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
+	I think that I did work consistently and put in enough work into the project. I was able to complete all the tasks I 
+ 	assigned to myself and I was always checking the Slack board to keep up to date with all the information as it came 
+  	in. I helped implement features constantly throughout the Sprint which can be seen through my PRs as I made some at 
+    the beginning, the middle and the end of the Sprint. I also attempted tasks that were out of my comfort level in order
+    to learn more and help out my team.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
@@ -231,24 +236,44 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+ [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/90948d4b4aefd9c115f8b20cf78512ada6b2edd2) - Create Trainer class to store Trainer objects for future User Stories
+ 
+ [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9b79d6ba25d2bf18fce1c2cc3c4a64ce69fb6b38) - Update User.java to implement UserType and BeltValue enumerated types to make code more readable
+ 
+ [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/1c25cb72f70a84e91121245f9c73adf2fe0587e2) - Add start and end availability attributes to Trainers to be used for scheduling
+ 
+ [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0e93d14d35247c93424d623a547a2f6e1e15b749) - Update User.java to implement the availability attributes and properly store in users.json
+ 
+ [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/96145dc1538571d7b2ae17f01cd38e9e1f83f03e) - Update TrainerPanel.java to display the Trainer's availability
+ 
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+ [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/24) - Implement Trainer.java to create a Trainer class to be used for further development
+ 
+ [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/28) - Update User.java to utilize enumerated types BeltValue and UserType
+ 
+ [PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/40) - Improve user experience by allowing Splash screen to be shown and open the program at Home Page
+ 
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+ [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/d1931f4510f30b85f83887c2083a65a3ac30b780) - Unit tests for User.java functionality
+ 
+ [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2279ede9c5617650b063145c30b63c3834322d57) - Unit tests for User.java start and end availability
+ 
+ [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/6a4d65e11f434e46f8e4110d11a112dadc52a95d) - Update JSONTest to be easily implemented by multiple Test classes and fix test cases for new implementation
+ 
 
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+ [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/23#issuecomment-1920580454) - Code Review for PR made by Jack
+ 
+ [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32#pullrequestreview-1866326382) - Code Review for PR made by Jake
+ 
+ [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/37#pullrequestreview-1868749238) - Code Review for PR made by Jack
+ 
 
   **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
