@@ -51,6 +51,7 @@ import main.java.memoranda.util.Local;
 import main.java.memoranda.util.ProjectExporter;
 import main.java.memoranda.util.ProjectPackager;
 import main.java.memoranda.util.Util;
+import main.java.memoranda.User;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -264,9 +265,8 @@ public class AppFrame extends JFrame {
         contentPane.setLayout(borderLayout1);
         //this.setSize(new Dimension(800, 500));
         //this.setTitle("Gymoranda - " + CurrentProject.get().getTitle());
-
         //this will later use a function like User.get().getAccountType();
-        this.setTitle("Gymoranda - " + "Member");
+        this.setTitle("Gymoranda - " + User.getUserType() + " - " + User.getUsername());
         //Added a space to App.VERSION_INFO to make it look some nicer
         statusBar.setText(" Version:" + App.VERSION_INFO + " (Build "
                 + App.BUILD_INFO + " )");
@@ -617,11 +617,9 @@ public class AppFrame extends JFrame {
             this.setLocation(x, y);
         }
 
-        String pan = (String) Context.get("CURRENT_PANEL");
-        if (pan != null) {
-            workPanel.selectPanel(pan);
-            setEnabledEditorMenus(pan.equalsIgnoreCase("NOTES"));
-        }
+        // Force Home to open on start-up
+        // Conditional is no longer needed as pan cannot be NULL
+        workPanel.selectPanel("AGENDA");
 
         CurrentProject.addProjectListener(new ProjectListener() {
 

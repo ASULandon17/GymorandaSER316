@@ -11,20 +11,16 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.ArrayList;
 
-import main.java.memoranda.CurrentProject;
-import main.java.memoranda.Event;
-import main.java.memoranda.EventsManager;
-import main.java.memoranda.EventsScheduler;
-import main.java.memoranda.Project;
-import main.java.memoranda.ProjectManager;
-import main.java.memoranda.Task;
-import main.java.memoranda.TaskList;
+import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 
 import java.util.Collections;
 
 import nu.xom.Element;
+
+
 /**
  *  
  */
@@ -127,10 +123,13 @@ public class AgendaGenerator {
 	}
 
 	/**
+	 *
 	 * @param p
 	 * @param date
-	 * @param s
+	 * @param tl
 	 * @param t
+	 * @param level
+	 * @param expandedTasks
 	 * @return
 	 */
 	private static String renderTask(Project p, CalendarDate date, TaskList tl, Task t, int level, Collection expandedTasks) {
@@ -283,75 +282,53 @@ public class AgendaGenerator {
 		return s + generateTasksInfo(p, date,expandedTasks);        
 	}
 
-	static String generateAllProjectsInfo(CalendarDate date, Collection expandedTasks) {
+	private static String generateCourseInfo(Course course) {
+		String formattedDateTime = String.format("%d/%d/%d at %02d:00", course.getClassMonth(), course.getClassDay(), course.getClassYear(), course.getClassHour());
+		String instructorName = course.getInstructorName().isEmpty() ? "Not assigned" : course.getInstructorName();
+
+		return "<p><b>Class Name:</b> " + course.getClassName() +
+				"<br><b>Instructor:</b> " + instructorName +
+				"<br><b>Time:</b> " + formattedDateTime +
+				"</p>\n";
+	}
+
+	static String generateUpcomingClasses() {
 		String s =
 				"<td width=\"66%\" valign=\"top\">"
 						+ "<h1>"
-						+ Local.getString("Projects and tasks")
+						+ Local.getString("Upcoming Classes")
 						+ "</h1>\n";
-		s += generateProjectInfo(CurrentProject.get(), date, expandedTasks);        
-		for (Iterator i = ProjectManager.getActiveProjects().iterator();
-				i.hasNext();
-				) {
-			Project p = (Project) i.next();
-			if (!p.getID().equals(CurrentProject.get().getID()))
-				s += generateProjectInfo(p, date, expandedTasks);
+
+		ArrayList<Course> next5Classes = PersistentClass.getNext5Classes();
+
+		if (next5Classes == null || next5Classes.isEmpty()) {
+			s += "No upcoming classes";
+		} else {
+			for (Course course : next5Classes) {
+				s += generateCourseInfo(course);
+			}
 		}
+
 		return s + "</td>";
 	}
 
-	static String generateEventsInfo(CalendarDate date) {
+	static String generatePersonalInfo() {
 		String s =
 				"<td width=\"34%\" valign=\"top\">"
-						+ "<a href=\"memoranda:events\"><h1>"
-						+ Local.getString("Events")
-						+ "</h1></a>\n"
-						+ "<table width=\"100%\" valign=\"top\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#FFFFF6\">\n";
-		Vector v = (Vector) EventsManager.getEventsForDate(date);
-		int n = 0;
-		for (Iterator i = v.iterator(); i.hasNext();) {
-			Event e = (Event) i.next();
-			String txt = e.getText();
-			String iurl =
-					main.java.memoranda.ui
-					.AppFrame
-					.class
-					.getResource("/ui/agenda/spacer.gif")
-					.toExternalForm();
-			if (date.equals(CalendarDate.today())) {
-				if (e.getTime().after(new Date()))
-					txt = "<b>" + txt + "</b>";
-				if ((EventsScheduler.isEventScheduled())
-						&& (EventsScheduler
-								.getFirstScheduledEvent()
-								.getTime()
-								.equals(e.getTime()))) {
-					iurl =
-							main.java.memoranda.ui
-							.AppFrame
-							.class
-							.getResource("/ui/agenda/arrow.gif")
-							.toExternalForm();
-				}
-			}
-			String icon =
-					"<img align=\"right\" width=\"16\" height=\"16\" src=\""
-							+ iurl
-							+ "\" border=\"0\"  hspace=\"0\" vspace=\"0\" alt=\"\">";
-
-			s += "<tr>\n<td>"
-					+ icon
-					+ "</td>"
-					+ "<td nowrap class=\"eventtime\">"
-					+ e.getTimeString()
-					+ "</td>"
-					+ "<td width=\"100%\" class=\"eventtext\">&nbsp;&nbsp;"
-					+ txt
-					+ "</td>\n"
-					+ "</tr>";
-
+						+ "<h1>"
+						+ Local.getString("Personal Info")
+						+ "</h1>\n"
+						+"<h2>"
+						+ "<b>User: </b>"
+						+ User.getUsername() + "<br>"
+						+ "<b>Belt Rank: </b>"
+						+ User.getBeltRank() + "<br><br><br>"
+						+ "<a href=\"memoranda:changebelt\"><b><u>[Change Belt]</b></u></a>";
+		if(User.getUserType() == UserType.TRAINER)
+		{
+			s += "<b>Training Rank: </b>" + User.getTrainingRank();
 		}
-		return s + "</table>";
+		return s;
 	}
 
 	static String generateStickers(CalendarDate date) {
@@ -418,8 +395,8 @@ public class AgendaGenerator {
 	
 	public static String getAgenda(CalendarDate date, Collection expandedTasks) {
 		String s = HEADER;
-		s += generateAllProjectsInfo(date, expandedTasks);
-		s += generateEventsInfo(date);
+		s += generateUpcomingClasses();
+		s += generatePersonalInfo();
 		s += generateStickers(date);
 		//        /*DEBUG*/System.out.println(s+FOOTER);
 		return s + FOOTER;
