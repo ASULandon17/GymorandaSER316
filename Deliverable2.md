@@ -120,7 +120,198 @@ Include a screenshot of your Burndown chart here and analyse in detail for me wh
 
 Copy the section for each team member and then everyone adds their individual contributions. 
 
-#### Team member <A> -- replace <A> with your name:
+
+#### Team member -- Jack Quinn:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+ 
+#### Team member -- Landon Messmore:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Cameron Thieme:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Dylan White:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Natel Whitaker:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Jacob Smith:
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
