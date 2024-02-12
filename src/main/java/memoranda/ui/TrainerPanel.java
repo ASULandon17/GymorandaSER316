@@ -128,6 +128,31 @@ public class TrainerPanel extends JPanel {
         JLabel trainerRankLabel = new JLabel("Training Rank: " + trainer.getTrainingRank());
         JLabel trainerBeltLabel = new JLabel("Belt Rank: " + trainer.getBeltRank());
 
+        // Create a string based on the availability of the Trainer
+        int start = trainer.getStartAvailability();
+        int end = trainer.getEndAvailability();
+        String availability = "";
+        if(start < 12) {
+            availability = start + ":00 a.m. to ";
+        }
+        else {
+            if(start != 12) {
+                start = start % 12;  //Change from 24hr to 12hr clock
+            }
+            availability = start + ":00 p.m. to ";
+        }
+        if(end < 12) {
+            availability += end + ":00 a.m.";
+        }
+        else {
+            if(end != 12) {
+                end = end % 12;  //Change from 24hr to 12hr clock
+            }
+            availability += end + ":00 p.m.";
+        }
+
+        JLabel trainerAvailabilityLabel = new JLabel("Availability: " + availability);
+
 
         JPanel infoPanel = new JPanel(new GridLayout(5, 1));
         infoPanel.setBackground(Color.WHITE);
@@ -135,6 +160,7 @@ public class TrainerPanel extends JPanel {
         infoPanel.add(trainerNameLabel);
         infoPanel.add(trainerRankLabel);
         infoPanel.add(trainerBeltLabel);
+        infoPanel.add(trainerAvailabilityLabel);
 
         card.add(infoPanel, BorderLayout.CENTER);
 
