@@ -124,7 +124,8 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team member -- Jack Quinn:
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
-
+  
+Yes, I believe that I worked consistently and put in a good amount of work into the project.  I was also able to help out others when I wasn't directly working on any of my own Tasks.
 
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
@@ -134,24 +135,44 @@ Copy the section for each team member and then everyone adds their individual co
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+   [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2c87d8435d4259fe84840bb6202a3dac3924f673) - Created a User class as well as integrated the Login and Signup functionality.
+   
+   [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/53f3ec63a5d27227c8cb5f6a78610c4ef9090a27) - Built Login and Signup UI.
+   
+   [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c82a7f882200815eb50f587504d7d9002674272f) - Continued to create functionality for the Rooms.
+   
+   [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/88fead1a14db2b73b2ea5ec8c7b2f8239d2f4cc1) - Added UI to allow an Owner to add a Class.
+   
+   [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/bdea3f7d19cd12b844c78d3b062d9e44e21a6b03) - Added UI functionality to let owner delete a Course.
+   
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+   [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/31) - PR for room functionality.
+   
+   [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/23) - PR for Login and Signup Ui and functionality.
+   
+   [PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/35) - PR for UI for an owner to add a class.
+   
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+   [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/972bed846b0f761a28a50a7b7ee83785220b1774) - Unit tests for the getNext5Classes function.
+   
+   [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/ebf95b9f16789041ba867f7f0c6c39334d8ce499) - Unit tests for deleteCourseById.
+   
+   [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c82a7f882200815eb50f587504d7d9002674272f) - Unit tests for Rooms functionality.
+   
 
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+   [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44) - Code review for PR made by Jake.
+   
+   [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/40) - Code review for PR made by Cameron.
+   
+   [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/43) - Code review for PR made by Landon.
+   
 
   **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
