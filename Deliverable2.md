@@ -285,7 +285,9 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-
+    I think I work consistently and put enough work in that was needed from me this sprint. I was able to communicate on slack regularly 
+    and did my assigned User Story. Due to how the User Stories were distributed, by the time I was done with mine there were no more
+    available User Stories to work on so the latter half of the sprint I was unable to assist further, though if needed I would have.
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
@@ -294,29 +296,27 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/7d20db042d5687f506584343e7662dbc3f14fa88) - Add Change belt menu + set belt method
+
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/5bc0af09a1ee017e663b9a8136c8f4d23cd2dea6) - Update belt rank to update user JSON file
+
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/a1f61fbe9e8c9b0081d8355f2b214b2c37862cf7) - Add UI feedback on belt set
+
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/5b630310f27e5330da56ff601f376a97d2f4d98b) - Change belt change button look
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/33) - Display User's personal info on the Home page of the app. Also allow user to change belt rank.
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
-
-    - link1
-    - link2
 
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+[Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/33#pullrequestreview-1866447393) - Code Review for Pull Req made by Jacob
 
   **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
 
 
  #### Team member -- Natel Whitaker:
