@@ -42,13 +42,13 @@ I would also advise you to already fill out the Contributions section (End of sp
 ### Meeting minutes of your Daily Scrums (3 per week, should not take longer than 10 minutes):
 > Add as many rows as needed and fill out the table. (Burndown starts with Sprint 2, and Continuous Integration starts with Sprint 3, not needed before that). 
 
-| Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
-|---|---|---|---|--|--|
-| 31 JAN 2024 | All members attended | Reviewed Sprint 2 goals and each member stated the tasks they're going to start with. | N/A - Beginning of Sprint |  |  |
-| 2 FEB 2024 | All members attended | Quick discussion of everyone's progress as well as next steps for completing the tasks with large dependencies. | On track |  |  |
-| 5 FEB 2024 | All members attended | Update on individual progress and short discussion to help a member get past a barrier stopping progress on a US. | On track |  |  |
-| 7 FEB 2024 | All members attended | Quick discussion on current progress, no issues slowing progress found. | On track | | |
-| 9 FEB 2024 | All members attended | Update on individual progress and short discussion to determine the work needed to wrap up the sprint. | Ahead | | Final meeting of the Sprint. |
+| Date        | Who did NOT attend   | Meeting notes (very brief)                                                                                        | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info              |
+|-------------|----------------------|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------|------------------------------|
+| 31 JAN 2024 | All members attended | Reviewed Sprint 2 goals and each member stated the tasks they're going to start with.                             | N/A - Beginning of Sprint                                    |                                                      |                              |
+| 2 FEB 2024  | All members attended | Quick discussion of everyone's progress as well as next steps for completing the tasks with large dependencies.   | On track                                                     |                                                      |                              |
+| 5 FEB 2024  | All members attended | Update on individual progress and short discussion to help a member get past a barrier stopping progress on a US. | On track                                                     |                                                      |                              |
+| 7 FEB 2024  | All members attended | Quick discussion on current progress, no issues slowing progress found.                                           | On track                                                     |                                                      |                              |
+| 9 FEB 2024  | All members attended | Update on individual progress and short discussion to determine the work needed to wrap up the sprint.            | Ahead                                                        |                                                      | Final meeting of the Sprint. |
 
 
 ## 3: After the Sprint
@@ -112,7 +112,11 @@ Answer as a team!
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
 
-> Your Answer
+![image info](sprint2Burndown.png)
+> Our burn down chart shows that our expectations for what we can get done and the consistency of our work improved greatly from the previous sprint. 
+> Due to the nature of our team's schedule dynamic and needed to meet entirely asynchronously, we went with the relative mass approach to assigning scores to user stories. 
+> We could see this method not always being the most effective, especially if we didn't have a good idea of what our other team members can get done, but it turned out to provide a good estimate for this sprint.
+> We made a lot of progress going into the final weekend (the big dip on 9 Feb) and then Cameron brought us home with wrapping up the final task on the last day.
 
 ### Contributions:
 
@@ -361,38 +365,40 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-
+    This sprint I was able to actually get started at the beginning and got to code a lot more consistently. I challenged myself to learn new concepts related to 
+    data persistence utilizing JSON files and to get more comfortable interacting with UI design in Java. I think I contributed a fair share this cycle and helped out
+    my team members when possible to help us have a successful sprint!
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
-  Example: 
-  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
-
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/7750d48ecadbc346daf7c997b3f62f1cfe0e20db) - added save and load from a json file functionality for classes in the program.
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/29/commits/02c088503889786b59713d03b9f535b0aad37a37) - added a JSONTest superclass that all the test classes which handle json reading and writing can extend to create a clean
+test environment without deleting local data. This helps avoid the situation where a client runs the software tests and it deletes all their user data. See adjacent commits for more code and changes to make it more compatible.
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44/commits/161fa0198e4d30f780433018ab2638af99fe32e9) - Add the manage instructor popup window functionality.
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/7750d48ecadbc346daf7c997b3f62f1cfe0e20db) - Added the Courses class (described below in PRs).
+ 
 
-  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+ **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/files) - Updated build.gradle to include jacocoTestReport functionality for the project and added Course.java which creates a Course object
+based on the classes.json data so that other classes don't need to worry about reading and writing to the json file and classes can be more easily interacted with. This PR also contains the associated unit tests.  
+[PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/27) - Developed PersistentClass which handles class persistence in the program. When a new class is added, it stores the data in a json file
+and when the program is started, it loads the existing classes. This PR also contains associated unit tests.  
+[PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44/files) - First dip into UI development. Added a "manage instructor" window to the courses panel that's opened by a button which shows up to users registered as an owner.   
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
+[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/04227cf7733d873d762a385ed986c016312766c4) - test cases for removing a student from the course roster and updating the json file.
+[Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/fe6a305dc8a0e53c470a4dfea7ff4fa8e702450d) - Test cases for adding student to a course and updating the classes json file properly.
+[Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/ffee49e861d16b7d36019875361db4af4f5571f3) - Test cases for Courses.java that builds objects based on the json data.
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+[Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/41#pullrequestreview-1873078971)
+[Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/43#pullrequestreview-1872427462)
 
-  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
  
   
 
