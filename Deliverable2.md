@@ -188,7 +188,7 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-
+	I do believe I worked consistently and put in enough work into the project. I worked either every day or every other day on a piece of functionality that was large and complicated for me. I think what I accomplished this sprint was a significant piece of functionality and it may make our next sprint easier by serving as a blueprint of a possible way to implement the pages' UI and cross-functionality between classes.  
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
@@ -197,24 +197,37 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+  [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/50b81271b4def214f7f9c8ac80c791c80bd79193) - Began creating UI for 'Rooms' page.
+  
+  [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9847c97ee4625a9a957a7ec066fc05f5c91e1fc9) - Added function that populates table data for when there are classes in a room.
+  
+  [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/797678d20f26af2c3ee010c918f75609ac7a1efa) - Updated RoomPanel.java with a DefaultTableModel in order to update table when data changed.
+  
+  [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2df96dfe97fd9e2fdcf4e07ffc5af2d9dc2e0075) - Added date and time attributes and functionality to 'classes'.
+  
+  [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/cce5f91fff0c1c43d0e187f427bc643422313816) - Added signup button and functionality to RoomPanel.java.
+  
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+  [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/43) - This was my big project I worked on this sprint. Added 'Rooms' page UI and functionality to display all classes in each room on whatever day was selected on the calendar as well as give users a place to sign up for the classes.
+  
+  [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/39) - Added date and time attributes and methods to Room.java and refactored Rooms.java and RoomsTests to work with them
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+  [Unit Test 1 & 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c7ff72bf44880e5fe4f3d1cdb45b792883ccd002) - I updated 'deleteCourseById' to work with 'Courses' class after refactoring and I wrote 'testDateAndTimeGettersAndSetters'.
 
+  Most of my work was centered around UI this Sprint so I wasn't able to write many unit tests.
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+  [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/41#pullrequestreview-1871569410) - Code Review for PR made by Natel. 
+
+  [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44#pullrequestreview-1873304138) - Code Review for PR made by Jake.
+
+  [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/42#pullrequestreview-1871565502) - Code Review for PR made by Jack.
+
 
   **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
