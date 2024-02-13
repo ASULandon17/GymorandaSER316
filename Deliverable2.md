@@ -323,7 +323,9 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-	I think I worked relatively consistently trying to work on what I assigned myself a little each day or every other day when I could. I believe I did put enough work into the project but I could have been a 	bit more proactive in helping others with PRs and troubleshooting.
+	I think I worked relatively consistently trying to work on what I assigned myself a little each day or every other
+ 	day when I could. I believe I did put enough work into the project but I could have been a bit more proactive in helping
+  	others with PRs and troubleshooting.
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
