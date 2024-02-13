@@ -327,7 +327,9 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-
+	I think I worked relatively consistently trying to work on what I assigned myself a little each day or every other
+ 	day when I could. I believe I did put enough work into the project but I could have been a bit more proactive in helping
+  	others with PRs and troubleshooting.
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
@@ -336,29 +338,28 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/35dc0273ce6d5ae06e37d6d28a6236504e613ac1) - added tests for the trainer list
+    
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/e98be462139c24a3968cd6be242071ed53a1ea47) - fixed logic error with getTrainer and added comments
 
   **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/46) - Merge updated docs into dev
+
+[PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/46) - US-#70 creating UI for trainers
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+[TEST 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/blob/dev/src/test/java/TrainerListTest.java) - Trainer List tests
 
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+ [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/41) - US-#70 creating UI for trainers
+
+ [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/46) - Merge updated docs into dev
 
   **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
-
-    - link1
-    - link2
 
 
  #### Team member -- Jacob Smith:
