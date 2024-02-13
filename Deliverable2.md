@@ -375,9 +375,12 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
   **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
 [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/7750d48ecadbc346daf7c997b3f62f1cfe0e20db) - added save and load from a json file functionality for classes in the program.
+
 [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/29/commits/02c088503889786b59713d03b9f535b0aad37a37) - added a JSONTest superclass that all the test classes which handle json reading and writing can extend to create a clean
 test environment without deleting local data. This helps avoid the situation where a client runs the software tests and it deletes all their user data. See adjacent commits for more code and changes to make it more compatible.
+
 [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44/commits/161fa0198e4d30f780433018ab2638af99fe32e9) - Add the manage instructor popup window functionality.
+
 [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/7750d48ecadbc346daf7c997b3f62f1cfe0e20db) - Added the Courses class (described below in PRs).
  
 
@@ -385,19 +388,24 @@ test environment without deleting local data. This helps avoid the situation whe
 
 [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/files) - Updated build.gradle to include jacocoTestReport functionality for the project and added Course.java which creates a Course object
 based on the classes.json data so that other classes don't need to worry about reading and writing to the json file and classes can be more easily interacted with. This PR also contains the associated unit tests.  
+
 [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/27) - Developed PersistentClass which handles class persistence in the program. When a new class is added, it stores the data in a json file
 and when the program is started, it loads the existing classes. This PR also contains associated unit tests.  
+
 [PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44/files) - First dip into UI development. Added a "manage instructor" window to the courses panel that's opened by a button which shows up to users registered as an owner.   
 
    **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
 [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/04227cf7733d873d762a385ed986c016312766c4) - test cases for removing a student from the course roster and updating the json file.
+
 [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/fe6a305dc8a0e53c470a4dfea7ff4fa8e702450d) - Test cases for adding student to a course and updating the classes json file properly.
+
 [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32/commits/ffee49e861d16b7d36019875361db4af4f5571f3) - Test cases for Courses.java that builds objects based on the json data.
   
   **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
 [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/41#pullrequestreview-1873078971)
+
 [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/43#pullrequestreview-1872427462)
 
  
