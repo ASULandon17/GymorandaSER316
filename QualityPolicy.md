@@ -105,7 +105,13 @@
 
 
 **Static Analysis**  (online: start Sprint 3, campus: start Sprint 3)
-  > Your Static Analysis policy   
+  > Static Analysis should be done by each member of the team prior to making a pull request. If time permits for the developer, static analysis should be done prior to every push to GitHub. There should be zero Checkstyle or Spotbugs errors within newly written code. Our goal is to create quality code that can be easily expanded upon in the future.
+
+> Throughout the Sprint, if a team member has extra time on their hands, they should work towards lowering the total amount of Checkstyle and Spotbugs errors throughout the program. There is no goal set for the errors in the old code, but progress towards removing those errors is welcome.
 
 **Continuous Integration**  (start Sprint 3, campus: start Sprint 3)
-  > Your Continuous Integration policy
+  > Continuous Integration will run for both the master and dev branches every time a pull request or commit is made. Only these two branches should be setup for continuous integration as it would require a large amount of time to build the program each time any branch has commits made.
+
+> The master branch should always succeed. There should never be a case where the master fails. If the master branch fails the Continuous Integration attempt, it is top priority to fix the master and ensure it succeeds.
+
+> If the dev branch fails, it is the responsibility of the developer that submitted the code that made it fail to fix the branch. All other developers have the ability to help fix the branch. It is a high priority to fix this branch as soon as possible in order to resume progress towards completing the Sprint. If a pull request is made and the dev branch fails, developers should wait to pull the branch into their own repositories for merging until it is fixed.
