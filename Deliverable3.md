@@ -7,31 +7,33 @@
 
 **Sprint Number:** 3
 
-**Scrum Master**: TBD
+**Scrum Master**: Natel Whitaker
 
-**Git Master**: TBD
+**Git Master**: Dylan White
 
 ### Sprint Planning (For Sprint 1-3)
 Document your Sprint Planning here. Also check the kickoff document for more details on what needs to be done. This is just the documentation. 
 
 **Sprint Goal:** Finish implementing all features, ensure data persistence and interoperability across program, and polish the user interface.
 
-**How many User Stories did you add to the Product Backlog:**  Number
+**How many User Stories did you add to the Product Backlog:**  15
 
 **How many User Stories did you add to this Sprint:** 
-> Answer the questions below about your Sprint Planning?
+> We added 9 User Stories to our board this Sprint.
 
 **Why did you add these US, why do you think you can get them done in the next Sprint?**
 
-> Your Answer
+> We chose these User Stories because they add functionality that we deemed most important and beneficial to our project. We selected these 9 because
+> we now have a better grasp of what our team can accomplish in a Sprint and we believe that they collectively require the exact amount of effort we're able to deliver.
 
 **Why do you think these fit well with your Sprint goal? (details)**
 
-> Your Answer
+> These fit well with our Sprint goal because they put the finishing touches on features we committed to delivering by tieing together the last of our classes that need to share data,
+> structuring our data in a more efficient manner, and making our user interface look professional and ready to hit the market.
 
 **Do you have a rough idea what you need to do? (if the answer is no then please let me know on Slack)**
 
-> Your Answer
+> Yes
 
 
 
