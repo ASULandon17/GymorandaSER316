@@ -188,7 +188,10 @@ Yes, I believe that I worked consistently and put in a good amount of work into 
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
-	I do believe I worked consistently and put in enough work into the project. I worked either every day or every other day on a piece of functionality that was large and complicated for me. I think what I accomplished this sprint was a significant piece of functionality and it may make our next sprint easier by serving as a blueprint of a possible way to implement the pages' UI and cross-functionality between classes.  
+	I do believe I worked consistently and put in enough work into the project. 
+ 	I worked either every day or every other day on a piece of functionality that was large and complicated for me. 
+  	I think what I accomplished this sprint was a significant piece of functionality and it may make our next sprint easier 
+   	by serving as a blueprint of a possible way to implement the pages' UI and cross-functionality between classes.  
 
  Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
 
