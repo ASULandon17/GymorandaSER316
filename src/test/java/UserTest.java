@@ -92,4 +92,24 @@ public class UserTest extends JSONTest{
         User.increaseTrainingRank();
         assertEquals("User has the wrong training rank after increasing one stage from BLACK3", BeltValue.BLACK3, User.getTrainingRank());
     }
+
+    /**
+     * Test Case to check if changing start availability executes properly
+     */
+    @Test
+    public void setStartAvailabilityTest() {
+        User.signUp(name, password, userType);
+        User.setStartAvailability(10);
+        assertEquals("User has the wrong start availability after changing", 10, User.getStartAvailability());
+    }
+
+    /**
+     * Test Case to check if changing end availability executes properly
+     */
+    @Test
+    public void setEndAvailabilityTest() {
+        User.signUp(name, password, userType);
+        User.setEndAvailability(16);
+        assertEquals("User has the wrong end availability after changing", 16, User.getEndAvailability());
+    }
 }

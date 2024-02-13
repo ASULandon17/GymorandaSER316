@@ -44,9 +44,11 @@ I would also advise you to already fill out the Contributions section (End of sp
 
 | Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
 |---|---|---|---|--|--|
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
+| 31 JAN 2024 | All members attended | Reviewed Sprint 2 goals and each member stated the tasks they're going to start with. | N/A - Beginning of Sprint |  |  |
+| 2 FEB 2024 | All members attended | Quick discussion of everyone's progress as well as next steps for completing the tasks with large dependencies. | On track |  |  |
+| 5 FEB 2024 | All members attended | Update on individual progress and short discussion to help a member get past a barrier stopping progress on a US. | On track |  |  |
+| 7 FEB 2024 | All members attended | Quick discussion on current progress, no issues slowing progress found. | On track | | |
+| 9 FEB 2024 | All members attended | Update on individual progress and short discussion to determine the work needed to wrap up the sprint. | Ahead | | Final meeting of the Sprint. |
 
 
 ## 3: After the Sprint
@@ -118,7 +120,244 @@ Include a screenshot of your Burndown chart here and analyse in detail for me wh
 
 Copy the section for each team member and then everyone adds their individual contributions. 
 
-#### Team member <A> -- replace <A> with your name:
+
+#### Team member -- Jack Quinn:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+  
+Yes, I believe that I worked consistently and put in a good amount of work into the project.  I was also able to help out others when I wasn't directly working on any of my own Tasks.
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+   [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2c87d8435d4259fe84840bb6202a3dac3924f673) - Created a User class as well as integrated the Login and Signup functionality.
+   
+   [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/53f3ec63a5d27227c8cb5f6a78610c4ef9090a27) - Built Login and Signup UI.
+   
+   [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c82a7f882200815eb50f587504d7d9002674272f) - Continued to create functionality for the Rooms.
+   
+   [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/88fead1a14db2b73b2ea5ec8c7b2f8239d2f4cc1) - Added UI to allow an Owner to add a Class.
+   
+   [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/bdea3f7d19cd12b844c78d3b062d9e44e21a6b03) - Added UI functionality to let owner delete a Course.
+   
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+   [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/31) - PR for room functionality.
+   
+   [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/23) - PR for Login and Signup Ui and functionality.
+   
+   [PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/35) - PR for UI for an owner to add a class.
+   
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+   [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/972bed846b0f761a28a50a7b7ee83785220b1774) - Unit tests for the getNext5Classes function.
+   
+   [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/ebf95b9f16789041ba867f7f0c6c39334d8ce499) - Unit tests for deleteCourseById.
+   
+   [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c82a7f882200815eb50f587504d7d9002674272f) - Unit tests for Rooms functionality.
+   
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+   [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/44) - Code review for PR made by Jake.
+   
+   [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/40) - Code review for PR made by Cameron.
+   
+   [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/43) - Code review for PR made by Landon.
+   
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+ 
+#### Team member -- Landon Messmore:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Cameron Thieme:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+	I think that I did work consistently and put in enough work into the project. I was able to complete all the tasks I 
+ 	assigned to myself and I was always checking the Slack board to keep up to date with all the information as it came 
+  	in. I helped implement features constantly throughout the Sprint which can be seen through my PRs as I made some at 
+    the beginning, the middle and the end of the Sprint. I also attempted tasks that were out of my comfort level in order
+    to learn more and help out my team.
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+ [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/90948d4b4aefd9c115f8b20cf78512ada6b2edd2) - Create Trainer class to store Trainer objects for future User Stories
+ 
+ [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9b79d6ba25d2bf18fce1c2cc3c4a64ce69fb6b38) - Update User.java to implement UserType and BeltValue enumerated types to make code more readable
+ 
+ [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/1c25cb72f70a84e91121245f9c73adf2fe0587e2) - Add start and end availability attributes to Trainers to be used for scheduling
+ 
+ [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0e93d14d35247c93424d623a547a2f6e1e15b749) - Update User.java to implement the availability attributes and properly store in users.json
+ 
+ [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/96145dc1538571d7b2ae17f01cd38e9e1f83f03e) - Update TrainerPanel.java to display the Trainer's availability
+ 
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+ [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/24) - Implement Trainer.java to create a Trainer class to be used for further development
+ 
+ [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/28) - Update User.java to utilize enumerated types BeltValue and UserType
+ 
+ [PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/40) - Improve user experience by allowing Splash screen to be shown and open the program at Home Page
+ 
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+ [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/d1931f4510f30b85f83887c2083a65a3ac30b780) - Unit tests for User.java functionality
+ 
+ [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2279ede9c5617650b063145c30b63c3834322d57) - Unit tests for User.java start and end availability
+ 
+ [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/6a4d65e11f434e46f8e4110d11a112dadc52a95d) - Update JSONTest to be easily implemented by multiple Test classes and fix test cases for new implementation
+ 
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+ [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/23#issuecomment-1920580454) - Code Review for PR made by Jack
+ 
+ [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/32#pullrequestreview-1866326382) - Code Review for PR made by Jake
+ 
+ [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/37#pullrequestreview-1868749238) - Code Review for PR made by Jack
+ 
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Dylan White:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+    I think I work consistently and put enough work in that was needed from me this sprint. I was able to communicate on slack regularly 
+    and did my assigned User Story. Due to how the User Stories were distributed, by the time I was done with mine there were no more
+    available User Stories to work on so the latter half of the sprint I was unable to assist further, though if needed I would have.
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/7d20db042d5687f506584343e7662dbc3f14fa88) - Add Change belt menu + set belt method
+
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/5bc0af09a1ee017e663b9a8136c8f4d23cd2dea6) - Update belt rank to update user JSON file
+
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/a1f61fbe9e8c9b0081d8355f2b214b2c37862cf7) - Add UI feedback on belt set
+
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/5b630310f27e5330da56ff601f376a97d2f4d98b) - Change belt change button look
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/33) - Display User's personal info on the Home page of the app. Also allow user to change belt rank.
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+[Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/33#pullrequestreview-1866447393) - Code Review for Pull Req made by Jacob
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+
+
+ #### Team member -- Natel Whitaker:
+
+  **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
+
+
+
+ Below I want links that I can click on to your commit or PullRequest with your work (not the branch you worked on). I also want a short description what this commit/PR is about (or test etc.)
+
+  Example: 
+  [Commit 1](https://github.com/amehlhase316/memoranda/commit/b949872433ae07f723bebe13c916064d03ef8882) - Updated DeliverableX.md table to include who did not attend meetings
+
+  **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+  **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+   **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+  
+  **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+  **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+ #### Team member -- Jacob Smith:
 
   **Do you think you individually worked consistently and put in enough work into the project (give a short answer). 
 
