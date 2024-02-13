@@ -7,9 +7,9 @@
 
 **Sprint Number:** 3
 
-**Scrum Master**: TBD
+**Scrum Master**: Natel Whitaker
 
-**Git Master**: TBD
+**Git Master**: Dylan White
 
 ### Sprint Planning (For Sprint 1-3)
 Document your Sprint Planning here. Also check the kickoff document for more details on what needs to be done. This is just the documentation. 
