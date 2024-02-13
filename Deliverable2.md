@@ -62,15 +62,15 @@ Answer as a team!
 
 **What do you think is the value you created this Sprint?**
 
-> Your Answer
+> As a team, we were able to begin developing and implementing the “Gymoranda” features we believe the program should have. A large portion of the backend was completed, allowing us to focus largely on improving the UI portion next Sprint.
 
 **Do you think you worked enough and that you did what was expected of you?**
 
-> Your Answer
+> Our burndown chart follows the estimated line closely while remaining slightly under for the large majority of the Sprint. We believe we did work enough as we were able to complete all of our User Stories by the end of the Sprint.
 
 **Would you say you met the customers’ expectations? Why, why not?**
 
-> Your Answer
+> We did meet the customer’s expectations. All of the User Stories we promised to complete were completed at the end of the Sprint.
 
 
 ### Sprint Retrospective
@@ -79,35 +79,35 @@ Answer as a team!
 
 **Did you meet your sprint goal?**
 
-> Your Answer
+> Our goal was to design and implement core features of Gymoranda while also refining the existing code base. We believe this goal was met as a large portion of the Gymoranda functionality was added to the program, including but not limited to a user login, a page displaying the Trainers, a page displaying the Rooms, and a page displaying the available Classes. We were also able to refactor code that was still necessary and remove portions of the existing code that were no longer needed for our uses.
 
 **Did you complete all stories on your Spring Backlog?**
 
-> Your Answer
+> Yes, all the stories in the sprint backlog were completed by the end of the Sprint.
 
 **If not, what went wrong?**
 
-> Your Answer
+> N/A
 
 **Did you work at a consistent rate of speed, or velocity? (Meaning did you work during the whole Sprint or did you start working when the deadline approached.)**
 
-> Your Answer
+> While each of our members had various other commitments and were not able to work on the project every day, the progress made on the Sprint was consistent. The Burndown chart for our Sprint follows the estimated line very closely until the last few days of the Sprint where we get ahead.
 
 **Did you deliver business value?**
 
-> Your Answer
+> We did deliver bonus value. Jake was able to start work on tasks that would be needed for Sprint 3. He added UI elements and wrote comments specifying what needed to be done for the feature to be properly implemented. This helps prepare us for Sprint 3 and will allow for the start of the Sprint to be smooth.
 
 **Did you follow the Scrum process (e.g. move Tasks correctly?, keep the Taiga board up to date? work consistently?)**
 
-> Your Answer
+> Yes, we followed the Scrum process and kept the Taiga board up to date. Every member participated in the Daily Scrums allowing us to all be kept up to date with the current status of the Sprint. Tasks in the Taiga board were properly assigned to members and moved through the stages of development.
 
 **Are there things the team thinks it can do better in the next Sprint? (not needed for last Sprint)**
 
-> Your Answer
+> One large issue that occurred during the start of the Sprint was the large amount of dependencies between the User Stories. This was due to the backend that needed to be developed that almost all of the User Stories used. As a team, we can spend more time creating the User Stories to limit the overall dependencies and to create a plan for handling any dependencies that do occur.
 
 **How do you feel at this point? Get a pulse on the optimism of the team.**
 
-> Your Answer
+> Overall, the team is very happy with the completion of the Sprint. We were able to complete all of the commitments we made and our Burndown chart vastly improved from the last Sprint. We are excited to see what we can complete within the last Sprint.
 
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
