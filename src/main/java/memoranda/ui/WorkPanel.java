@@ -16,7 +16,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
-import main.java.memoranda.util.Context;
 import main.java.memoranda.util.Local;
 
 /**
@@ -33,7 +32,7 @@ public class WorkPanel extends JPanel {
 
 	public JButton notesB = new JButton();
 	public DailyItemsPanel dailyItemsPanel = new DailyItemsPanel(this);
-	public ResourcesPanel filesPanel = new ResourcesPanel();
+	public PersonalPanel filesPanel = new PersonalPanel();
 	public JButton agendaB = new JButton();
 	public JButton tasksB = new JButton();
 	public JButton eventsB = new JButton();
