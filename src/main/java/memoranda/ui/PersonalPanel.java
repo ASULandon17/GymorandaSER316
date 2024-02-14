@@ -1,10 +1,16 @@
 package main.java.memoranda.ui;
 
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 
 public class PersonalPanel extends JPanel {
@@ -27,12 +33,29 @@ public class PersonalPanel extends JPanel {
         JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setPreferredSize(new Dimension(400, 200)); // Example size, adjust as needed
         leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1)); // Border around the left panel
+        JPanel labelPanel = new JPanel();
+        labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS)); // Vertical layout for labels
+        labelPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Optional padding
 
-        // Title label at the top of the left panel
-        JLabel titleLabel = new JLabel("Thanks for using Gymoranda, " + username, JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Set font size and style
-        leftPanel.add(titleLabel, BorderLayout.NORTH); // Add the title to the top of the left panel
+        // Title label
+        JLabel titleLabel = new JLabel("Thanks for using Gymoranda, " + username);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center align in BoxLayout
 
+        // Upcoming classes label
+        JLabel upcomingLabel = new JLabel("My upcoming classes:");
+        upcomingLabel.setFont(new Font("Arial", Font.BOLD, 16)); // Set font, adjust as needed
+        upcomingLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center align in BoxLayout
+
+        // Add labels to the label panel
+        labelPanel.add(titleLabel);
+        labelPanel.add(Box.createRigidArea(new Dimension(0, 15))); // Spacer between labels
+        labelPanel.add(upcomingLabel);
+
+        // Add the label panel to the top of the left panel
+        leftPanel.add(labelPanel, BorderLayout.NORTH);
+
+        initializeLeftPanel(leftPanel);
         // Right panel configuration
         JPanel rightPanel = new JPanel();
         rightPanel.setPreferredSize(new Dimension(200, 200)); // Example size, adjust as needed
@@ -112,5 +135,68 @@ public class PersonalPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "Passwords do not match.");
             }
         });
+    }
+
+    private void initializeLeftPanel(JPanel leftPanel){
+        ArrayList<Course> nextEnrolled = PersistentClass.getNext5EnrolledClasses(username);
+        if(nextEnrolled == null){
+            return;
+        }
+        JPanel cardsPanel = new JPanel();
+        cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        for (Course course: nextEnrolled) {
+            JPanel card = createCourseCard(course);
+            cardsPanel.add(card);
+        }
+        leftPanel.add(cardsPanel);
+    }
+
+    private JPanel createCourseCard(Course course) {
+
+        JPanel card = new JPanel(new BorderLayout());
+        card.setBackground(Color.WHITE);
+
+        Border roundedLineBorder = new LineBorder(Color.BLACK, 1, true);
+        Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
+        CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
+        card.setBorder(compoundBorder);
+        JPanel infoPanel = buildInfoPanel(course);
+
+        card.add(infoPanel, BorderLayout.CENTER);
+
+        return card;
+    }
+
+    private static JPanel buildInfoPanel(Course course) {
+
+        JLabel instructorNameLabel;
+
+        JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
+        if (course.getInstructorName().equals("")) {
+            instructorNameLabel = new JLabel("Instructor: Not Assigned");
+        } else {
+            instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
+        }
+
+        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
+
+        JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
+        String isPublic = "Private";
+        if (course.getPublic()) {
+            isPublic = "Public";
+        }
+
+        JLabel classPrivacy = new JLabel("Class Type: " + isPublic);
+        JPanel infoPanel = new JPanel(new GridLayout(5, 1));
+
+        infoPanel.setBackground(Color.WHITE);
+        infoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        infoPanel.add(classNameLabel);
+        infoPanel.add(instructorNameLabel);
+        infoPanel.add(classSizeLabel);
+        infoPanel.add(classLength);
+        infoPanel.add(classPrivacy);
+
+        return infoPanel;
     }
 }
