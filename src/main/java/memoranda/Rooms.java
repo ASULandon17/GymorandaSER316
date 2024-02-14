@@ -128,13 +128,28 @@ public class Rooms {
             String content = new String(Files.readAllBytes(Paths.get("Rooms.json")));
             JSONArray jsonArray = new JSONArray(content);
             rooms.clear(); // Clear existing rooms before loading
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                rooms.add(new Room(jsonObject));
+            if (jsonArray.length() == 0) {
+                // If the JSON array is empty, initialize default rooms
+                initializeDefaultRooms();
+            } else {
+                // Load rooms from the JSON array as usual
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    rooms.add(new Room(jsonObject));
+                }
             }
         } catch (IOException e) {
             System.out.println("No existing Rooms.json found. A new one will be created.");
         }
+    }
+
+    private static void initializeDefaultRooms(){
+        rooms.clear();
+        addRoom("Desert");
+        addRoom("Jungle");
+        addRoom("Arctic");
+        addRoom("Beach");
+        saveRoomsToFile();
     }
 
     /**
