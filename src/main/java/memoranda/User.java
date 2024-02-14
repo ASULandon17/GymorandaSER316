@@ -6,6 +6,8 @@ import org.json.JSONException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
@@ -51,7 +53,7 @@ public class User {
             JSONArray usersArray;
 
             if (file.exists()) {
-                String content = new String(Files.readAllBytes(Paths.get("users.json")));
+                String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
                 usersArray = new JSONArray(content);
             } else {
                 usersArray = new JSONArray();
@@ -67,7 +69,7 @@ public class User {
 
             usersArray.put(userObject);
 
-            try (FileWriter fileWriter = new FileWriter("users.json")) {
+            try (FileWriter fileWriter = new FileWriter("users.json", StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
             return true;
@@ -84,7 +86,7 @@ public class User {
                 return false;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -136,7 +138,7 @@ public class User {
             File file = new File("users.json");
 
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -146,7 +148,7 @@ public class User {
                     break;
                 }
             }
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
         } catch (IOException | JSONException e) {
@@ -160,7 +162,7 @@ public class User {
             File file = new File("users.json");
 
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -170,7 +172,7 @@ public class User {
                     break;
                 }
             }
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
         } catch (IOException | JSONException e) {
@@ -187,7 +189,7 @@ public class User {
             File file = new File("users.json");
 
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -197,7 +199,7 @@ public class User {
                     break;
                 }
             }
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
         } catch (IOException | JSONException e) {
@@ -215,7 +217,7 @@ public class User {
             File file = new File("users.json");
 
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -225,7 +227,7 @@ public class User {
                     break;
                 }
             }
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
         } catch (IOException | JSONException e) {
@@ -254,7 +256,7 @@ public class User {
             setEndAvailability(19);
             try {
                 File file = new File("users.json");
-                String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
+                String content = new String(Files.readAllBytes(Paths.get(file.toURI())), StandardCharsets.UTF_8);
                 JSONArray usersArray = new JSONArray(content);
 
                 for (int i = 0; i < usersArray.length(); i++) {
@@ -269,7 +271,7 @@ public class User {
                 }
 
                 // Write the updated JSON array back to the file
-                try (FileWriter fileWriter = new FileWriter(file)) {
+                try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                     fileWriter.write(usersArray.toString());
                 }
 
@@ -297,7 +299,7 @@ public class User {
         _trainingRank = _trainingRank.increaseBelt();
         try {
             File file = new File("users.json");
-            String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
+            String content = new String(Files.readAllBytes(Paths.get(file.toURI())), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -309,7 +311,7 @@ public class User {
             }
 
             // Write the updated JSON array back to the file
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
 
@@ -333,7 +335,7 @@ public class User {
                 System.out.println("User file not found.");
                 return false;
             }
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             // Iterate through the users array to find the current user and update the password
@@ -346,7 +348,7 @@ public class User {
             }
 
             // Write the updated JSON array back to the file
-            try (FileWriter fileWriter = new FileWriter(file)) {
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
             return true; // Return true to indicate the password was successfully changed
