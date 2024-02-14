@@ -317,4 +317,42 @@ public class User {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Function to allow the current user to change their password.
+     * @param newPassword, the new password to change to.
+     * @return true if password change, false if password not properly changed.
+     */
+    public static boolean changePassword(String newPassword){
+        _password = newPassword;
+        try {
+            File file = new File("users.json");
+
+            // Check if the file exists and read its content
+            if (!file.exists()) {
+                System.out.println("User file not found.");
+                return false;
+            }
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray usersArray = new JSONArray(content);
+
+            // Iterate through the users array to find the current user and update the password
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("password", _password);
+                    break; // Exit the loop once the user is found and updated
+                }
+            }
+
+            // Write the updated JSON array back to the file
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(usersArray.toString());
+            }
+            return true; // Return true to indicate the password was successfully changed
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return false; // Return false to indicate the password change failed
+        }
+    }
 }

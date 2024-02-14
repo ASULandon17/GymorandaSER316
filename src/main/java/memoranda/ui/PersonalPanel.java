@@ -3,13 +3,7 @@ package main.java.memoranda.ui;
 import main.java.memoranda.User;
 
 import java.awt.*;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 
@@ -102,5 +96,21 @@ public class PersonalPanel extends JPanel {
         changePassword.add(confirmNewPasswordTextField);
         changePassword.add(changePasswordButton);
         rightPanel.add(changePassword);
+
+        changePasswordButton.addActionListener(e -> {
+            String newPassword = newPasswordTextField.getText();
+            String confirmNewPassword = confirmNewPasswordTextField.getText();
+
+            if(newPassword.equals(confirmNewPassword)){
+                boolean didChange = User.changePassword(newPassword);
+                if(!didChange){
+                    JOptionPane.showMessageDialog(this, "Error changing password");
+                } else{
+                    JOptionPane.showMessageDialog(this, "Changed password successfully.");
+                }
+            } else{
+                JOptionPane.showMessageDialog(this, "Passwords do not match.");
+            }
+        });
     }
 }
