@@ -2,6 +2,9 @@ package test.java;
 
 import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+import main.java.memoranda.util.Local;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -304,6 +307,19 @@ public class CourseTest {
         ArrayList<Course> result = PersistentClass.getNext5Classes();
         assertNotNull("Expected a non-null list of classes", result);
         assertEquals("Expected 5 classes", 5, result.size());
+    }
+
+    @Test
+    public void testGetNext5EnrolledClasses(){
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        String username = "testUser";
+        for (int i = 1; i <= 6; i++) {
+            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i);
+            PersistentClass.addStudentToCourse(username,100 + i);
+        }
+        ArrayList<Course> result = PersistentClass.getNext5EnrolledClasses(username);
+        assertNotNull("Expected a non null list of classes", result);
+
     }
 }
 
