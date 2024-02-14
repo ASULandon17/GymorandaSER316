@@ -112,4 +112,19 @@ public class UserTest extends JSONTest{
         User.setEndAvailability(16);
         assertEquals("User has the wrong end availability after changing", 16, User.getEndAvailability());
     }
+
+    /**
+     * Test case for changing the user's password.
+     */
+    @Test
+    public void testChangePassword(){
+        User.signUp(name, password, userType);
+
+        // Define a new password different from the initial one
+        String newPassword = "newPassword123";
+
+        assertTrue("Password change should return true", User.changePassword(newPassword));
+
+        assertTrue("User should be able to log in with the new password", User.login(name, newPassword));
+    }
 }

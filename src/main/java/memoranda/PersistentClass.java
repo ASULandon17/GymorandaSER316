@@ -283,4 +283,48 @@ public class PersistentClass {
         // Return the top 5 or fewer if less than 5 upcoming classes are available
         return upcomingCourses.size() > 5 ? new ArrayList<>(upcomingCourses.subList(0, 5)) : upcomingCourses;
     }
+
+    /**
+     * Returns the next 5 enrolled classes for a given username.
+     * @param username
+     * @return
+     */
+    public static ArrayList<Course> getNext5EnrolledClasses(String username){
+        LocalDateTime now = LocalDateTime.now();
+
+        ArrayList<Course> enrolledUpcomingCourses = PersistentClass.getListOfCourses().stream()
+                .filter(course -> {
+                    LocalDateTime courseDateTime = LocalDateTime.of(course.getClassYear(), course.getClassMonth(),
+                            course.getClassDay(), course.getClassHour(), 0);
+                    boolean isFutureCourse = courseDateTime.isAfter(now);
+
+                    // New check for user enrollment in the updated roster format
+                    boolean isUserEnrolled = false;
+                    JSONArray roster = course.getRoster();
+                    for (int j = 0; j < roster.length(); j++) {
+                        JSONObject enrolledUser = roster.getJSONObject(j);
+                        if (enrolledUser.getString("userName").equals(username)) {
+                            isUserEnrolled = true;
+                            break;
+                        }
+                    }
+                    return isFutureCourse && isUserEnrolled;
+                })
+                .sorted((course1, course2) -> {
+                    LocalDateTime courseDateTime1 = LocalDateTime.of(course1.getClassYear(), course1.getClassMonth(),
+                            course1.getClassDay(), course1.getClassHour(), 0);
+                    LocalDateTime courseDateTime2 = LocalDateTime.of(course2.getClassYear(), course2.getClassMonth(),
+                            course2.getClassDay(), course2.getClassHour(), 0);
+                    return courseDateTime1.compareTo(courseDateTime2);
+                })
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        // Return null if there are no upcoming courses the user is enrolled in
+        if (enrolledUpcomingCourses.isEmpty()) {
+            return null;
+        }
+
+        // Return the top 5 or fewer if less than 5 upcoming classes are available and the user is enrolled in them
+        return enrolledUpcomingCourses.size() > 5 ? new ArrayList<>(enrolledUpcomingCourses.subList(0, 5)) : enrolledUpcomingCourses;
+    }
 }
