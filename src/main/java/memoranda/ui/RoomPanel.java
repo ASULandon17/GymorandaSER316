@@ -277,7 +277,8 @@ public class RoomPanel extends JPanel {
                                   course.getClassHour(), course.getClassName(), 
                                   course.getInstructorName(),
                                   course.getMaxClassSize() - course.getCurrentClassSize(),
-                                  course.getClassId());
+                                  course.getClassId(),
+                                  course.isStudentRegistered(User.getUsername()));
                         //if the class is over an hour, fill out all of the time slots it takes up
                         if (course.getClassLength() > 1) {
                             for (int i = 1; i < course.getClassLength(); i++) {
@@ -286,7 +287,8 @@ public class RoomPanel extends JPanel {
                                       course.getClassName(), 
                                       course.getInstructorName(), 
                                       course.getMaxClassSize() - course.getCurrentClassSize(), 
-                                      course.getClassId());
+                                      course.getClassId(),
+                                      course.isStudentRegistered(User.getUsername()));
                             }
                         }
                     }
@@ -324,7 +326,7 @@ public class RoomPanel extends JPanel {
      * @return table The object[][] that has now been updated w/row of data
      */
     public Object[][] fillOutRow(Object[][] table, int row, int hour, String className, 
-            String instructor, int spotsRemaining, int id) {
+            String instructor, int spotsRemaining, int id, boolean studentInClass) {
         //returns the table with nothing done if hour is outside gym hours
         if (hour < 8 || hour > 19) {
             return table;
@@ -346,7 +348,7 @@ public class RoomPanel extends JPanel {
             table[row][3] = "No instructor yet";
         }
         //Add correct number of spots remaining
-        table[row][4] = Integer.toString(spotsRemaining);
+        table[row][4] = studentInClass ? "Enrolled!" : Integer.toString(spotsRemaining);
         return table;
     }
     /**
