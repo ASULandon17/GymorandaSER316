@@ -238,6 +238,30 @@ public class PersistentClass {
         }
         saveClassesToFile();
     }
+    
+    /**
+     * addStudentToCourse() allows user to register
+     * for a course as long as the course isn't full
+     * AND they aren't already registered.
+     * @param studentUserName username of student registering
+     * @param classId classId for the course they want to register for
+     */
+    public static void removeStudentFromCourse(String studentUserName, int classId) {
+
+        for (Course course : courses) {
+
+            // make sure course exists
+            if (course.getClassId() == classId) {
+
+                // see if student is already registered
+                if (course.isStudentRegistered(studentUserName)) {
+
+                    course.removeStudentFromRoster(studentUserName);
+                }
+            }
+        }
+        saveClassesToFile();
+    }
 
     /**
      * deleteCourseById() removes course with specified id from class.json

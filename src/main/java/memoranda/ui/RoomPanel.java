@@ -354,33 +354,13 @@ public class RoomPanel extends JPanel {
     public void manageClass() {
         //get course user tried to sign up for
         int classId = Integer.parseInt(manageClassIdField.getText());
-        Course course = PersistentClass.getCourseById((int) classId);
-        if (course.isStudentRegistered(User.getUsername())) {
-            DropClassPopup popup = new DropClassPopup(RoomPanel.this, classId);
-            System.out.println("Would pop up drop class");
-        } else {
-            //SignUpClassPopup popup = new SignUpClassPopup(RoomPanel.this, classId);
-            System.out.println("Would pop up add class");
-        }
-        popup.setVisible(true);
-    }
-    
-    /**
-     * A method for signing a user up for the input class when the signup button is hit.
-     */
-    /*public void signUserUp() {
-        //get course user tried to sign up for
-        int classId = Integer.parseInt(signUpIdField.getText());
-        Course course = PersistentClass.getCourseById((int) classId);
-        //if there's room in the class add the user
         try {
-            if (course.getCurrentClassSize() < course.getMaxClassSize()) {
-                PersistentClass.addStudentToCourse(User.getUsername(), classId);
-            }
+            Course course = PersistentClass.getCourseById((int) classId);
+            ManageClassPopup popup = new ManageClassPopup(RoomPanel.this, course);
+            popup.setVisible(true);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "There is no course with the given Id", 
-                    "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error managing class: Class entered does not exist",
+                                          "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } 
-    */
+    }
 }
