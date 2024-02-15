@@ -1,9 +1,6 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
-import main.java.memoranda.User;
-import main.java.memoranda.UserType;
+import main.java.memoranda.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -70,6 +67,11 @@ public class ClassPanel extends JPanel {
         });
 
         this.setLayout(borderLayout1);
+
+        // Only show advanced courses to users that meet the minimum belt rank requirement
+        // Or to the owner
+        advancedClassesScrollPane.setEnabled(false);
+        if (User.getUserType() == UserType.OWNER || User.getBeltRank().isAdvanced() )
 
 
         // Tabbed pane contains a tab of beginner courses and a tab of advanced courses
