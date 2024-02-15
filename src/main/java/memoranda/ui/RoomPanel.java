@@ -71,10 +71,10 @@ public class RoomPanel extends JPanel {
     private ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
     
     //used for sign up button area
-    private JPanel classSignUp = new JPanel();
-    private JPanel centerPanelSignUp = new JPanel();
-    private JTextField signUpIdField = new JTextField();
-    private JButton signUpButton = new JButton("Sign Up");
+    private JPanel manageClass = new JPanel();
+    private JPanel centerPanelManageClass = new JPanel();
+    private JTextField manageClassIdField = new JTextField();
+    private JButton manageClassButton = new JButton("Manage Class");
     
     //used for tables
     private Object[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
@@ -188,25 +188,24 @@ public class RoomPanel extends JPanel {
         arcticTablePanel.add(new JScrollPane(arcticTableM));
         beachTablePanel.add(new JScrollPane(beachTableM));
         
-        //Add class SignUp
-        centerPanelSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
-        centerPanelSignUp.setLayout(new GridLayout(1, 3, 10, 10));
-        centerPanelSignUp.add(new JLabel("Class Id: "));
-        centerPanelSignUp.add(signUpIdField);
-        centerPanelSignUp.add(signUpButton);
-        classSignUp.setLayout(new GridBagLayout());
-        classSignUp.add(centerPanelSignUp);
-        this.add(classSignUp, BorderLayout.SOUTH);
+        //Add class ManageClass
+        centerPanelManageClass.setBorder(new EmptyBorder(10, 10, 10, 10));
+        centerPanelManageClass.setLayout(new GridLayout(1, 3, 10, 10));
+        centerPanelManageClass.add(new JLabel("Class Id: "));
+        centerPanelManageClass.add(manageClassIdField);
+        centerPanelManageClass.add(manageClassButton);
+        manageClass.setLayout(new GridBagLayout());
+        manageClass.add(centerPanelManageClass);
+        this.add(manageClass, BorderLayout.SOUTH);
         
         /**
          * Listener for when the sign up button is hit
          */
-        signUpButton.addActionListener(new ActionListener() {
+        manageClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signUserUp();
-                updateTables();
-                signUpIdField.setText("");
+                manageClass();
+                manageClassIdField.setText("");
             }
         });
         
@@ -351,11 +350,25 @@ public class RoomPanel extends JPanel {
         table[row][4] = studentInClass ? "Enrolled!" : Integer.toString(spotsRemaining);
         return table;
     }
+    
+    public void manageClass() {
+        //get course user tried to sign up for
+        int classId = Integer.parseInt(manageClassIdField.getText());
+        Course course = PersistentClass.getCourseById((int) classId);
+        if (course.isStudentRegistered(User.getUsername())) {
+            DropClassPopup popup = new DropClassPopup(RoomPanel.this, classId);
+            System.out.println("Would pop up drop class");
+        } else {
+            //SignUpClassPopup popup = new SignUpClassPopup(RoomPanel.this, classId);
+            System.out.println("Would pop up add class");
+        }
+        popup.setVisible(true);
+    }
+    
     /**
      * A method for signing a user up for the input class when the signup button is hit.
      */
-    
-    public void signUserUp() {
+    /*public void signUserUp() {
         //get course user tried to sign up for
         int classId = Integer.parseInt(signUpIdField.getText());
         Course course = PersistentClass.getCourseById((int) classId);
@@ -369,4 +382,5 @@ public class RoomPanel extends JPanel {
                     "Input Error", JOptionPane.ERROR_MESSAGE);
         }
     } 
+    */
 }
