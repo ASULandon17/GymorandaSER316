@@ -30,8 +30,7 @@ public class AppFrame extends JFrame {
     JSplitPane splitPane = new JSplitPane();
 
     JMenu jMenuEdit = new JMenu();
-    JMenu jMenuFormat = new JMenu();
-    JMenu jMenuInsert = new JMenu();
+
 
     public WorkPanel workPanel = new WorkPanel();
 
@@ -129,11 +128,9 @@ public class AppFrame extends JFrame {
         splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 
         splitPane.setContinuousLayout(true);
+
         splitPane.setDividerSize(3);
-
         splitPane.setDividerLocation(28);
-
-
         splitPane.setDividerLocation(28);
 
 
@@ -167,34 +164,11 @@ public class AppFrame extends JFrame {
         splitPane.setBorder(null);
         workPanel.setBorder(null);
 
-        setEnabledEditorMenus(false);
-
-
-        java.awt.event.ActionListener setMenusDisabled = new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                setEnabledEditorMenus(false);
-            }
-        };
-
-        this.workPanel.dailyItemsPanel.taskB
-                .addActionListener(setMenusDisabled);
-        this.workPanel.dailyItemsPanel.alarmB.addActionListener(
-                setMenusDisabled);
-
-        this.workPanel.tasksB.addActionListener(setMenusDisabled);
-        this.workPanel.eventsB.addActionListener(setMenusDisabled);
-        this.workPanel.filesB.addActionListener(setMenusDisabled);
-        this.workPanel.agendaB.addActionListener(setMenusDisabled);
-
-        this.workPanel.notesB.addActionListener(
-                new java.awt.event.ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        setEnabledEditorMenus(true);
-                    }
-                });
 
         Object fwo = Context.get("FRAME_WIDTH");
         Object fho = Context.get("FRAME_HEIGHT");
+
+
         if ((fwo != null) && (fho != null)) {
             int w = Integer.parseInt((String) fwo);
             int h = Integer.parseInt((String) fho);
@@ -297,11 +271,7 @@ public class AppFrame extends JFrame {
             ((ActionListener) exitListeners.get(i)).actionPerformed(null);
     }
 
-    public void setEnabledEditorMenus(boolean enabled) {
-        this.jMenuEdit.setEnabled(enabled);
-        this.jMenuFormat.setEnabled(enabled);
-        this.jMenuInsert.setEnabled(enabled);
-    }
+
 
     public void showPreferences() {
         PreferencesDialog dlg = new PreferencesDialog(this);
