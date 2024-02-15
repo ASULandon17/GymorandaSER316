@@ -94,7 +94,7 @@ public class Course {
      * @param month          month of date class is scheduled
      * @param day            day of date class is scheduled
      * @param hour           hour of date class is scheduled
-     * @param isAdvanced
+     * @param isAdvanced     is course advanced
      */
     public Course(String className, int classLength, int maxClassSize, int classId,
                   boolean classIsPublic, String instructorName,
@@ -114,6 +114,10 @@ public class Course {
         this.isAdvanced = isAdvanced;
         
         this.roster = new JSONArray(); // no students yet
+    }
+
+    public boolean isCourseAdvanced() {
+        return isAdvanced;
     }
 
     /**

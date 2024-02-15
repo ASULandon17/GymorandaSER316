@@ -101,7 +101,9 @@ public class NewclassPopup extends JFrame {
             int classHour = Integer.parseInt(classDateHourField.getText());
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour);
+            // placeholder until class builder UI updated
+
+            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour, false);
             JOptionPane.showMessageDialog(this, "Class added succesfully");
             clearForm();
             if(classPanelRef != null){

@@ -95,6 +95,7 @@ public class PersistentClass {
             jsonObject.put("month", course.getClassMonth());
             jsonObject.put("day", course.getClassDay());
             jsonObject.put("hour", course.getClassHour());
+            jsonObject.put("isAdvanced", course.isCourseAdvanced());
 
             jsonArray.put(jsonObject);
         }

@@ -21,7 +21,9 @@ public class ClassPanel extends JPanel {
     JTabbedPane classesTabbedPane = new JTabbedPane();
     JScrollPane beginnerClassesScrollPane = new JScrollPane();
     JScrollPane advancedClassesScrollPane = new JScrollPane();
-    private JPanel cardsPanel = new JPanel();
+    JPanel beginnerCardsPanel = new JPanel();
+    JPanel advancedCardsPanel = new JPanel();
+
 
     JButton newClassBtn = new JButton();
 
@@ -92,19 +94,30 @@ public class ClassPanel extends JPanel {
 }
 
     void initCardsPanel() {
-        cardsPanel.removeAll();
+        beginnerCardsPanel.removeAll();
         ArrayList<Course> courses = PersistentClass.getListOfCourses();
 
-        cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        beginnerCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        advancedCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
         for (Course course : courses) {
+
             JPanel card = createCourseCard(course);
-            cardsPanel.add(card);
+
+            // decide if course goes onto beginner or advanced tab
+            if (course.isCourseAdvanced()){
+
+                advancedCardsPanel.add(card);
+            } else {
+
+                beginnerCardsPanel.add(card);
+            }
+
         }
 
-        beginnerClassesScrollPane.setViewportView(cardsPanel);
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
+        beginnerClassesScrollPane.setViewportView(beginnerCardsPanel);
+        beginnerCardsPanel.revalidate();
+        beginnerCardsPanel.repaint();
     }
 
     private JPanel createCourseCard(Course course) {
