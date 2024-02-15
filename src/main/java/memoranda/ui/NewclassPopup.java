@@ -17,6 +17,7 @@ public class NewclassPopup extends JFrame {
     private JTextField classDateDayField;
     private JTextField classDateHourField;
     private JCheckBox classIsPublicCheckBox;
+    private JCheckBox classIsAdvancedCheckBox;
     private JButton submitButton;
     //DOES NOT CURRENTLY ALLOW YOU TO ADD WITH A TRAINER AS TRAINER FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET
 
@@ -49,6 +50,7 @@ public class NewclassPopup extends JFrame {
         classDateHourField = new JTextField();
         
         classIsPublicCheckBox = new JCheckBox("Yes, make public");
+        classIsAdvancedCheckBox = new JCheckBox("Make advanced class");
 
         formPanel.add(new JLabel("Class Name:"));
         formPanel.add(classNameField);
@@ -68,6 +70,7 @@ public class NewclassPopup extends JFrame {
         formPanel.add(classDateHourField);
         formPanel.add(new JLabel("Public Class:"));
         formPanel.add(classIsPublicCheckBox);
+        formPanel.add(classIsAdvancedCheckBox);
 
         // Submit button at the bottom
         submitButton = new JButton("Submit");
@@ -100,11 +103,11 @@ public class NewclassPopup extends JFrame {
             int classDay = Integer.parseInt(classDateDayField.getText());
             int classHour = Integer.parseInt(classDateHourField.getText());
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
+            boolean classIsAdvanced = classIsAdvancedCheckBox.isSelected();
 
-            // placeholder until class builder UI updated
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour, false);
-            JOptionPane.showMessageDialog(this, "Class added succesfully");
+            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour, classIsAdvanced);
+            JOptionPane.showMessageDialog(this, "Class added successfully");
             clearForm();
             if(classPanelRef != null){
                 classPanelRef.refreshCards();
@@ -126,5 +129,6 @@ public class NewclassPopup extends JFrame {
         classDateDayField.setText("");
         classDateHourField.setText("");
         classIsPublicCheckBox.setSelected(false);
+        classIsAdvancedCheckBox.setSelected(false);
     }
 }

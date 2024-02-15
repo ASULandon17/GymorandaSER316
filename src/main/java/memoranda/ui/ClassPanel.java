@@ -116,8 +116,13 @@ public class ClassPanel extends JPanel {
         }
 
         beginnerClassesScrollPane.setViewportView(beginnerCardsPanel);
+        advancedClassesScrollPane.setViewportView(advancedCardsPanel);
+
         beginnerCardsPanel.revalidate();
         beginnerCardsPanel.repaint();
+
+        advancedCardsPanel.revalidate();
+        advancedCardsPanel.repaint();
     }
 
     private JPanel createCourseCard(Course course) {
