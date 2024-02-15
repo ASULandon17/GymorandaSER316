@@ -102,17 +102,6 @@ public class ProjectImpl implements Project {
         return _root.getAttribute("frozen") != null;
     }
 
-   
-    /*public int getProgress() {
-        Vector v = getAllTasks();
-        if (v.size() == 0) return 0;
-        int p = 0;
-        for (Enumeration en = v.elements(); en.hasMoreElements();) {
-          Task t = (Task) en.nextElement();
-          p += t.getProgress();
-        }
-        return (p*100)/(v.size()*100);
-    }*/
   
     
     /**
