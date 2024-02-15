@@ -125,26 +125,12 @@ public class AppFrame extends JFrame {
         });
 
 
-        splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-
-        splitPane.setContinuousLayout(true);
-
-        splitPane.setDividerSize(3);
-        splitPane.setDividerLocation(28);
-        splitPane.setDividerLocation(28);
-
-
-
-
-
         jMenuFileMin.setText(Local.getString("Close the window"));
         jMenuFileMin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F10,
                 InputEvent.ALT_MASK));
 
         jMenuFile.add(jMenuEditPref);
-
         jMenuFile.add(jMenuFileMin);
-
         jMenuFile.add(jMenuFileExit);
 
         jMenuHelp.add(jMenuHelpGuide);
@@ -158,10 +144,8 @@ public class AppFrame extends JFrame {
         this.setJMenuBar(menuBar);
 
 
-        contentPane.add(splitPane, BorderLayout.CENTER);
-        splitPane.add(workPanel, JSplitPane.BOTTOM);
+        contentPane.add(workPanel, BorderLayout.CENTER);
 
-        splitPane.setBorder(null);
         workPanel.setBorder(null);
 
 
