@@ -53,13 +53,11 @@ public class ClassPanel extends JPanel {
         classesToolBar.setFloatable(false);
 
         newClassBtn.setText("Add a class");
-        if(User.getUserType() == UserType.OWNER){
-            newClassBtn.setVisible(true);
-        } else {
-            newClassBtn.setVisible(false);
-        }
+
+        newClassBtn.setVisible(User.getUserType() == UserType.OWNER);
         newClassButtonHelper(newClassBtn);
         newClassBtn.setToolTipText("Add a new class");
+
         newClassBtn.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Pass the classpanel so that we can refresh the UI on adding a new class
@@ -76,18 +74,18 @@ public class ClassPanel extends JPanel {
         classesTabbedPane.addTab("Beginner", beginnerClassesScrollPane);
         classesTabbedPane.addTab("Advanced", advancedClassesScrollPane);
 
-        beginnerClassesScrollPane.getViewport().setBackground(Color.white);
+        // Set background color of the scroll panes
+        beginnerClassesScrollPane.getViewport().setBackground(Color.WHITE);
+        advancedClassesScrollPane.getViewport().setBackground(Color.WHITE);
 
+        // Add tabbed pane to the class panel layout
         this.add(classesTabbedPane, BorderLayout.CENTER);
 
-        //this.add(beginnerClassesScrollPane, BorderLayout.CENTER);
 
         classesToolBar.addSeparator(new Dimension(8, 24));
-
-
         classesToolBar.addSeparator(new Dimension(8, 24));
-
         classesToolBar.add(newClassBtn, null);
+
         this.add(classesToolBar, BorderLayout.NORTH);
 
 
