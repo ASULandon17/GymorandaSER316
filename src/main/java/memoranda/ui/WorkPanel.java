@@ -1,22 +1,13 @@
 package main.java.memoranda.ui;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
+import main.java.memoranda.util.Local;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
-
-import main.java.memoranda.util.Local;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 /**
  * 
@@ -113,8 +104,8 @@ public class WorkPanel extends JPanel {
 		});
 		eventsB.setIcon(
 			new ImageIcon(
-				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/classes.png")));
+                    Objects.requireNonNull(AppFrame.class.getResource(
+                            "/ui/icons/classes.png"))));
 		eventsB.setOpaque(false);
 		eventsB.setMargin(new Insets(0, 0, 0, 0));
 		//eventsB.setSelected(true);
@@ -124,8 +115,8 @@ public class WorkPanel extends JPanel {
 		tasksB.setMargin(new Insets(0, 0, 0, 0));
 		tasksB.setIcon(
 			new ImageIcon(
-				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/trainers.png")));
+                    Objects.requireNonNull(AppFrame.class.getResource(
+                            "/ui/icons/trainers.png"))));
 		tasksB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		tasksB.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,8 +156,8 @@ public class WorkPanel extends JPanel {
 		});
 		notesB.setIcon(
 			new ImageIcon(
-				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/rooms.png")));
+                    Objects.requireNonNull(AppFrame.class.getResource(
+                            "/ui/icons/rooms.png"))));
 		notesB.setMargin(new Insets(0, 0, 0, 0));
 		notesB.setSelected(true);
 		this.setPreferredSize(new Dimension(1073, 300));
@@ -175,8 +166,8 @@ public class WorkPanel extends JPanel {
 		filesB.setMargin(new Insets(0, 0, 0, 0));
 		filesB.setIcon(
 			new ImageIcon(
-				main.java.memoranda.ui.AppFrame.class.getResource(
-					"/ui/icons/personal.png")));
+                    Objects.requireNonNull(AppFrame.class.getResource(
+                            "/ui/icons/personal.png"))));
 		filesB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		filesB.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
