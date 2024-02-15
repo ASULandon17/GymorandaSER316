@@ -15,11 +15,15 @@ import java.util.ArrayList;
 
 public class ClassPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-    JToolBar eventsToolBar = new JToolBar();
-    JScrollPane scrollPane = new JScrollPane();
+    JToolBar classesToolBar = new JToolBar();
+
+    // tabbed pane to hold the basic and advanced courses tabs
+    JTabbedPane classesTabbedPane = new JTabbedPane();
+    JScrollPane beginnerClassesScrollPane = new JScrollPane();
+    JScrollPane advancedClassesScrollPane = new JScrollPane();
     private JPanel cardsPanel = new JPanel();
 
-    JButton newClass = new JButton();
+    JButton newClassBtn = new JButton();
 
     public ClassPanel() {
         try {
@@ -46,17 +50,17 @@ public class ClassPanel extends JPanel {
     }
 
     void jbInit() throws Exception {
-        eventsToolBar.setFloatable(false);
+        classesToolBar.setFloatable(false);
 
-        newClass.setText("Add a class");
+        newClassBtn.setText("Add a class");
         if(User.getUserType() == UserType.OWNER){
-            newClass.setVisible(true);
+            newClassBtn.setVisible(true);
         } else {
-            newClass.setVisible(false);
+            newClassBtn.setVisible(false);
         }
-        newClassButtonHelper(newClass);
-        newClass.setToolTipText("Add a new class");
-        newClass.addActionListener(new java.awt.event.ActionListener(){
+        newClassButtonHelper(newClassBtn);
+        newClassBtn.setToolTipText("Add a new class");
+        newClassBtn.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Pass the classpanel so that we can refresh the UI on adding a new class
                 NewclassPopup popup = new NewclassPopup(ClassPanel.this);
@@ -66,20 +70,29 @@ public class ClassPanel extends JPanel {
         });
 
         this.setLayout(borderLayout1);
-        scrollPane.getViewport().setBackground(Color.white);
-
-        this.add(scrollPane, BorderLayout.CENTER);
-
-        eventsToolBar.addSeparator(new Dimension(8, 24));
 
 
-        eventsToolBar.addSeparator(new Dimension(8, 24));
+        // Tabbed pane contains a tab of beginner courses and a tab of advanced courses
+        classesTabbedPane.addTab("Beginner", beginnerClassesScrollPane);
+        classesTabbedPane.addTab("Advanced", advancedClassesScrollPane);
 
-        eventsToolBar.add(newClass, null);
-        this.add(eventsToolBar, BorderLayout.NORTH);
+        beginnerClassesScrollPane.getViewport().setBackground(Color.white);
+
+        this.add(classesTabbedPane, BorderLayout.CENTER);
+
+        //this.add(beginnerClassesScrollPane, BorderLayout.CENTER);
+
+        classesToolBar.addSeparator(new Dimension(8, 24));
+
+
+        classesToolBar.addSeparator(new Dimension(8, 24));
+
+        classesToolBar.add(newClassBtn, null);
+        this.add(classesToolBar, BorderLayout.NORTH);
 
 
 }
+
     void initCardsPanel() {
         cardsPanel.removeAll();
         ArrayList<Course> courses = PersistentClass.getListOfCourses();
@@ -91,7 +104,7 @@ public class ClassPanel extends JPanel {
             cardsPanel.add(card);
         }
 
-        scrollPane.setViewportView(cardsPanel);
+        beginnerClassesScrollPane.setViewportView(cardsPanel);
         cardsPanel.revalidate();
         cardsPanel.repaint();
     }
