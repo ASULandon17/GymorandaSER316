@@ -1,6 +1,7 @@
 package main.java.memoranda.ui;
 
 import main.java.memoranda.*;
+import main.java.memoranda.ui.gymoranda.LookAndFeel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -43,7 +44,7 @@ public class TrainerPanel extends JPanel {
      * @param button the button to be given values
      */
     private void newTrainerButtonHelper(JButton button) {
-        ClassPanel.buttonHelper(button);
+        LookAndFeel.gymButtonHelper(button);
     }
 
     /**

@@ -4,6 +4,7 @@ import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
+import main.java.memoranda.ui.gymoranda.LookAndFeel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -43,19 +44,10 @@ public class ClassPanel extends JPanel {
     }
 
     private void classButtonHelper(JButton button){
-        buttonHelper(button);
+        LookAndFeel.gymButtonHelper(button);
 
     }
 
-    static void buttonHelper(JButton button) {
-        button.setFocusable(false);
-        button.setBorderPainted(false);
-        button.setContentAreaFilled(false);
-        button.setOpaque(true);
-        button.setBackground(new Color(0, 100, 0));
-        button.setForeground(Color.WHITE);
-        button.setPreferredSize(new Dimension(100, 30));
-    }
 
     void jbInit() throws Exception {
         classesToolBar.setFloatable(false);
