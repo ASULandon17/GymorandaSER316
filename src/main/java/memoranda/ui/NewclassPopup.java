@@ -1,5 +1,8 @@
 package main.java.memoranda.ui;
 import main.java.memoranda.PersistentClass;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
@@ -7,6 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewclassPopup extends JFrame {
     private JTextField classNameField;
     private JTextField classLengthField;
@@ -130,5 +140,30 @@ public class NewclassPopup extends JFrame {
         classDateHourField.setText("");
         classIsPublicCheckBox.setSelected(false);
         classIsAdvancedCheckBox.setSelected(false);
+    }
+    private String[] getTeacherList() {
+        List<String> list = new ArrayList<>();
+
+        try {
+            File file = new File("users.json");
+            if (!file.exists()) {
+                return null;
+            }
+
+            String content = Files.readString(Paths.get("users.json"));
+
+            JSONArray usersArray = new JSONArray(content);
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("userType").equals("TRAINER")) {
+                    list.add(user.getString("username"));
+                }
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return list.toArray(new String[0]);
     }
 }
