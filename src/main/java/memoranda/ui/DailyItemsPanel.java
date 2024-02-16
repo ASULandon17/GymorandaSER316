@@ -36,7 +36,7 @@ public class DailyItemsPanel extends JPanel {
     TrainerPanel tasksPanel = new TrainerPanel();
     ClassPanel eventsPanel = new ClassPanel();
 
-    AgendaPanel agendaPanel = new AgendaPanel(this, eventsPanel);
+    AgendaPanel agendaPanel = new AgendaPanel(this);
     ImageIcon expIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_right.png"));
     ImageIcon collIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_left.png"));
     ImageIcon bookmarkIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/star8.png"));

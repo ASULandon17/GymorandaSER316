@@ -1,12 +1,16 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.*;
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
 
 import javax.swing.*;
-import javax.swing.border.*;
-
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 
@@ -21,7 +25,7 @@ public class ClassPanel extends JPanel {
     JPanel beginnerCardsPanel = new JPanel();
     JPanel advancedCardsPanel = new JPanel();
 
-
+    JButton refreshCardsBtn = new JButton();
     JButton newClassBtn = new JButton();
 
     public ClassPanel() {
@@ -38,7 +42,7 @@ public class ClassPanel extends JPanel {
         initCardsPanel();
     }
 
-    void newClassButtonHelper(JButton button){
+    void classButtonHelper(JButton button){
         button.setFocusable(false);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
@@ -52,23 +56,37 @@ public class ClassPanel extends JPanel {
         classesToolBar.setFloatable(false);
 
         newClassBtn.setText("Add a class");
-
         newClassBtn.setVisible(User.getUserType() == UserType.OWNER);
-        newClassButtonHelper(newClassBtn);
+        classButtonHelper(newClassBtn);
         newClassBtn.setToolTipText("Add a new class");
 
-        newClassBtn.addActionListener(new java.awt.event.ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                //Pass the classpanel so that we can refresh the UI on adding a new class
-                NewclassPopup popup = new NewclassPopup(ClassPanel.this);
-                popup.setVisible(true);
+        newClassBtn.addActionListener(e -> {
+            //Pass the classpanel so that we can refresh the UI on adding a new class
+            NewclassPopup popup = new NewclassPopup(ClassPanel.this);
+            popup.setVisible(true);
 
-            }
         });
 
+
+        refreshCardsBtn.setText("Refresh Cards");
+        classButtonHelper(refreshCardsBtn);
+        refreshCardsBtn.setToolTipText("Refresh cards to load changes");
+        refreshCardsBtn.addActionListener(e -> {
+
+            // refresh the page when the refresh button is pressed
+
+            if ((User.getUserType() == UserType.OWNER) || (User.getBeltRank().isAdvanced())) {
+                classesTabbedPane.setEnabledAt(1, true);
+            } else {
+                classesTabbedPane.setEnabledAt(1, false);
+            }
+
+            classesTabbedPane.revalidate();
+            classesTabbedPane.repaint();
+        });
+
+
         this.setLayout(borderLayout1);
-
-
 
 
         // Tabbed pane contains a tab of beginner courses and a tab of advanced courses
@@ -93,7 +111,9 @@ public class ClassPanel extends JPanel {
 
         classesToolBar.addSeparator(new Dimension(8, 24));
         classesToolBar.addSeparator(new Dimension(8, 24));
+
         classesToolBar.add(newClassBtn, null);
+        classesToolBar.add(refreshCardsBtn, null);
 
         this.add(classesToolBar, BorderLayout.NORTH);
 
@@ -103,6 +123,8 @@ public class ClassPanel extends JPanel {
 
     void initCardsPanel() {
         beginnerCardsPanel.removeAll();
+        advancedCardsPanel.removeAll();
+
         ArrayList<Course> courses = PersistentClass.getListOfCourses();
 
         beginnerCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
@@ -131,6 +153,8 @@ public class ClassPanel extends JPanel {
 
         advancedCardsPanel.revalidate();
         advancedCardsPanel.repaint();
+
+
     }
 
     private JPanel createCourseCard(Course course) {
