@@ -65,16 +65,20 @@ public class RoomPanel extends JPanel {
     private JLabel arcticTextLabel = new JLabel("Arctic Room");
     private JLabel beachTextLabel = new JLabel("Beach Room");
     private Font textFont = new Font("Verdana", Font.PLAIN, 14);
-    private ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
-    private ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
-    private ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
-    private ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
+    private ImageIcon desertIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
+    private ImageIcon jungleIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
+    private ImageIcon arcticIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
+    private ImageIcon beachIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
     
     //used for sign up button area
-    private JPanel classSignUp = new JPanel();
-    private JPanel centerPanelSignUp = new JPanel();
-    private JTextField signUpIdField = new JTextField();
-    private JButton signUpButton = new JButton("Sign Up");
+    private JPanel manageClass = new JPanel();
+    private JPanel centerPanelManageClass = new JPanel();
+    private JTextField manageClassIdField = new JTextField();
+    private JButton manageClassButton = new JButton("Manage Class");
     
     //used for tables
     private Object[] columnNames = {"Time", "ID", "Class Name", "Trainer", "Availability"};
@@ -188,25 +192,24 @@ public class RoomPanel extends JPanel {
         arcticTablePanel.add(new JScrollPane(arcticTableM));
         beachTablePanel.add(new JScrollPane(beachTableM));
         
-        //Add class SignUp
-        centerPanelSignUp.setBorder(new EmptyBorder(10, 10, 10, 10));
-        centerPanelSignUp.setLayout(new GridLayout(1, 3, 10, 10));
-        centerPanelSignUp.add(new JLabel("Class Id: "));
-        centerPanelSignUp.add(signUpIdField);
-        centerPanelSignUp.add(signUpButton);
-        classSignUp.setLayout(new GridBagLayout());
-        classSignUp.add(centerPanelSignUp);
-        this.add(classSignUp, BorderLayout.SOUTH);
+        //Add class ManageClass
+        centerPanelManageClass.setBorder(new EmptyBorder(10, 10, 10, 10));
+        centerPanelManageClass.setLayout(new GridLayout(1, 3, 10, 10));
+        centerPanelManageClass.add(new JLabel("Class Id: "));
+        centerPanelManageClass.add(manageClassIdField);
+        centerPanelManageClass.add(manageClassButton);
+        manageClass.setLayout(new GridBagLayout());
+        manageClass.add(centerPanelManageClass);
+        this.add(manageClass, BorderLayout.SOUTH);
         
         /**
          * Listener for when the sign up button is hit
          */
-        signUpButton.addActionListener(new ActionListener() {
+        manageClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signUserUp();
-                updateTables();
-                signUpIdField.setText("");
+                manageClass();
+                manageClassIdField.setText("");
             }
         });
         
@@ -277,7 +280,8 @@ public class RoomPanel extends JPanel {
                                   course.getClassHour(), course.getClassName(), 
                                   course.getInstructorName(),
                                   course.getMaxClassSize() - course.getCurrentClassSize(),
-                                  course.getClassId());
+                                  course.getClassId(),
+                                  course.isStudentRegistered(User.getUsername()));
                         //if the class is over an hour, fill out all of the time slots it takes up
                         if (course.getClassLength() > 1) {
                             for (int i = 1; i < course.getClassLength(); i++) {
@@ -286,7 +290,8 @@ public class RoomPanel extends JPanel {
                                       course.getClassName(), 
                                       course.getInstructorName(), 
                                       course.getMaxClassSize() - course.getCurrentClassSize(), 
-                                      course.getClassId());
+                                      course.getClassId(),
+                                      course.isStudentRegistered(User.getUsername()));
                             }
                         }
                     }
@@ -324,7 +329,7 @@ public class RoomPanel extends JPanel {
      * @return table The object[][] that has now been updated w/row of data
      */
     public Object[][] fillOutRow(Object[][] table, int row, int hour, String className, 
-            String instructor, int spotsRemaining, int id) {
+            String instructor, int spotsRemaining, int id, boolean studentInClass) {
         //returns the table with nothing done if hour is outside gym hours
         if (hour < 8 || hour > 19) {
             return table;
@@ -340,31 +345,30 @@ public class RoomPanel extends JPanel {
         //Add class name to correct row
         table[row][2] = className;
         //Add instructor if one is present, default message if not
-        if (instructor != "") {
+        if (!instructor.equals("")) {
             table[row][3] = instructor;
         } else {
             table[row][3] = "No instructor yet";
         }
         //Add correct number of spots remaining
-        table[row][4] = Integer.toString(spotsRemaining);
+        table[row][4] = studentInClass ? "Enrolled!" : Integer.toString(spotsRemaining);
         return table;
     }
-    /**
-     * A method for signing a user up for the input class when the signup button is hit.
-     */
     
-    public void signUserUp() {
-        //get course user tried to sign up for
-        int classId = Integer.parseInt(signUpIdField.getText());
-        Course course = PersistentClass.getCourseById((int) classId);
-        //if there's room in the class add the user
+    /**
+     * Kicks off the popup when manage class button is clicked.
+     */
+    public void manageClass() {
         try {
-            if (course.getCurrentClassSize() < course.getMaxClassSize()) {
-                PersistentClass.addStudentToCourse(User.getUsername(), classId);
-            }
+            //get course user tried to sign up for
+            int classId = Integer.parseInt(manageClassIdField.getText());
+            Course course = PersistentClass.getCourseById((int) classId);
+            //invoke popup
+            ManageClassPopup popup = new ManageClassPopup(RoomPanel.this, course);
+            popup.setVisible(true);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "There is no course with the given Id", 
-                    "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this, "Error: You must enter a valid Class Id", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } 
+    }
 }

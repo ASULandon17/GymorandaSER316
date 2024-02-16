@@ -304,7 +304,7 @@ public class CourseTest {
     }
 
     @Test
-    public void testGetNext5EnrolledClasses(){
+    public void testGetNext5EnrolledClasses() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         String username = "testUser";
         for (int i = 1; i <= 6; i++) {
@@ -313,7 +313,29 @@ public class CourseTest {
         }
         ArrayList<Course> result = PersistentClass.getNext5EnrolledClasses(username);
         assertNotNull("Expected a non null list of classes", result);
+    }
+    
+    //Basically the same test as removeStudentFromRoster, but this does it from PersistentClass.java
+    //instead of Course.java so that it can call saveClassesToFile and the data will persist
+    @Test
+    public void testRemoveStudentFromCourse() {
+     // add new class with two students:
+        PersistentClass.addNewClass("scuba diving", 6, 5, 99,
+                false, "scuba lord", 2024, 2, 7, 14, false);
+        PersistentClass.addStudentToCourse("bob", 99);
+        PersistentClass.addStudentToCourse("chuck", 99);
+        
+     // ensure class size is 2
+        assertEquals("Class size is not correct", 2, PersistentClass.getCourseById(99).getCurrentClassSize());
+        
+     // remove the first student on the roster
+        PersistentClass.removeStudentFromCourse("bob", 99);
 
+        // ensure the current class size is 1 after removing student
+        assertEquals("Class size was not reduced to 1", 1, PersistentClass.getCourseById(99).getCurrentClassSize());
+
+        // check if only chuck is left
+        assertTrue("Wrong student was deleted", PersistentClass.getCourseById(99).isStudentRegistered("chuck"));
     }
 
 

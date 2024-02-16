@@ -236,6 +236,28 @@ public class PersistentClass {
         }
         saveClassesToFile();
     }
+    
+    /**
+     * removeStudentFromCourse() removes student from specified course
+     * @param studentUserName username of student dropping course
+     * @param classId classId for the course they will be removed from
+     */
+    public static void removeStudentFromCourse(String studentUserName, int classId) {
+
+        for (Course course : courses) {
+
+            // make sure course exists
+            if (course.getClassId() == classId) {
+
+                // see if student is already registered
+                if (course.isStudentRegistered(studentUserName)) {
+
+                    course.removeStudentFromRoster(studentUserName);
+                }
+            }
+        }
+        saveClassesToFile();
+    }
 
     /**
      * deleteCourseById() removes course with specified id from class.json
