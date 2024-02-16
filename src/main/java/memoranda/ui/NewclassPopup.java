@@ -120,9 +120,10 @@ public class NewclassPopup extends JFrame {
             int classHour = Integer.parseInt(classDateHourField.getText());
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
             boolean classIsAdvanced = classIsAdvancedCheckBox.isSelected();
+            String teacherName = String.valueOf(teacherList.getSelectedItem());
 
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour, classIsAdvanced);
+            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, teacherName, classYear, classMonth, classDay, classHour, classIsAdvanced);
             JOptionPane.showMessageDialog(this, "Class added successfully");
             clearForm();
             if(classPanelRef != null){
