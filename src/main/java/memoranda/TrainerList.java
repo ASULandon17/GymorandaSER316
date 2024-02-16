@@ -2,6 +2,7 @@ package main.java.memoranda;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -37,7 +38,7 @@ public class TrainerList {
                 return null;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
 
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
@@ -70,7 +71,7 @@ public class TrainerList {
                 return null;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
@@ -122,7 +123,7 @@ public class TrainerList {
                 return false;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
@@ -134,7 +135,7 @@ public class TrainerList {
                         user.put("endAvailability", availability);
                     }
                     // Write the updated JSON array back to the file
-                    Files.write(Paths.get("users.json"), usersArray.toString().getBytes(), StandardOpenOption.WRITE);
+                    Files.write(Paths.get("users.json"), usersArray.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE);
                     return true;
                 }
             }
