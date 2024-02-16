@@ -100,6 +100,7 @@ public class ClassPanel extends JPanel {
 
 }
 
+
     void initCardsPanel() {
         beginnerCardsPanel.removeAll();
         ArrayList<Course> courses = PersistentClass.getListOfCourses();
