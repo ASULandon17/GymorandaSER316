@@ -1,5 +1,8 @@
 package main.java.memoranda.ui;
 import main.java.memoranda.PersistentClass;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
@@ -7,6 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewclassPopup extends JFrame {
     private JTextField classNameField;
     private JTextField classLengthField;
@@ -19,7 +29,8 @@ public class NewclassPopup extends JFrame {
     private JCheckBox classIsPublicCheckBox;
     private JCheckBox classIsAdvancedCheckBox;
     private JButton submitButton;
-    //DOES NOT CURRENTLY ALLOW YOU TO ADD WITH A TRAINER AS TRAINER FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET
+
+    private JComboBox teacherList;
 
     private ClassPanel classPanelRef;
     public NewclassPopup(ClassPanel classPanelRef){
@@ -38,7 +49,7 @@ public class NewclassPopup extends JFrame {
         mainPanel.setLayout(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel formPanel = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
 
         classNameField = new JTextField();
         classLengthField = new JTextField();
@@ -51,6 +62,8 @@ public class NewclassPopup extends JFrame {
         
         classIsPublicCheckBox = new JCheckBox("Yes, make public");
         classIsAdvancedCheckBox = new JCheckBox("Make advanced class");
+
+        teacherList = new JComboBox<String>(getTeacherList());
 
         formPanel.add(new JLabel("Class Name:"));
         formPanel.add(classNameField);
@@ -71,6 +84,9 @@ public class NewclassPopup extends JFrame {
         formPanel.add(new JLabel("Public Class:"));
         formPanel.add(classIsPublicCheckBox);
         formPanel.add(classIsAdvancedCheckBox);
+        formPanel.add(new JLabel(""));
+        formPanel.add(new JLabel("Teacher:"));
+        formPanel.add(teacherList);
 
         // Submit button at the bottom
         submitButton = new JButton("Submit");
@@ -104,9 +120,10 @@ public class NewclassPopup extends JFrame {
             int classHour = Integer.parseInt(classDateHourField.getText());
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
             boolean classIsAdvanced = classIsAdvancedCheckBox.isSelected();
+            String teacherName = String.valueOf(teacherList.getSelectedItem());
 
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, classYear, classMonth, classDay, classHour, classIsAdvanced);
+            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, teacherName, classYear, classMonth, classDay, classHour, classIsAdvanced);
             JOptionPane.showMessageDialog(this, "Class added successfully");
             clearForm();
             if(classPanelRef != null){
@@ -130,5 +147,30 @@ public class NewclassPopup extends JFrame {
         classDateHourField.setText("");
         classIsPublicCheckBox.setSelected(false);
         classIsAdvancedCheckBox.setSelected(false);
+    }
+    private String[] getTeacherList() {
+        List<String> list = new ArrayList<>();
+
+        try {
+            File file = new File("users.json");
+            if (!file.exists()) {
+                return new String[0];
+            }
+
+            String content = Files.readString(Paths.get("users.json"));
+
+            JSONArray usersArray = new JSONArray(content);
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("userType").equals("TRAINER")) {
+                    list.add(user.getString("username"));
+                }
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return new String[0];
+        }
+
+        return list.toArray(new String[0]);
     }
 }
