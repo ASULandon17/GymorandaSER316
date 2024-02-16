@@ -75,11 +75,14 @@ public class ClassPanel extends JPanel {
 
             // refresh the page when the refresh button is pressed
 
-            try {
-                jbInit();
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
+            if ((User.getUserType() == UserType.OWNER) || (User.getBeltRank().isAdvanced())) {
+                classesTabbedPane.setEnabledAt(1, true);
+            } else {
+                classesTabbedPane.setEnabledAt(1, false);
             }
+
+            classesTabbedPane.revalidate();
+            classesTabbedPane.repaint();
         });
 
 
