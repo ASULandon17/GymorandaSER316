@@ -29,7 +29,7 @@ public class AgendaPanel extends JPanel {
 	String[] priorities = {"Muy Alta","Alta","Media","Baja","Muy Baja"};
 	JScrollPane scrollPane = new JScrollPane();
 
-	ClassPanel classPanelRef;
+
 	DailyItemsPanel parentPanel = null;
 
 	//	JPopupMenu agendaPPMenu = new JPopupMenu();
@@ -40,10 +40,10 @@ public class AgendaPanel extends JPanel {
 
 	boolean isActive = true;
 
-	public AgendaPanel(DailyItemsPanel _parentPanel, ClassPanel classPanelRef) {
+	public AgendaPanel(DailyItemsPanel _parentPanel) {
 		try {
 			parentPanel = _parentPanel;
-			this.classPanelRef = classPanelRef;
+
 			jbInit();
 		} catch (Exception ex) {
 			new ExceptionDialog(ex);
@@ -59,6 +59,7 @@ public class AgendaPanel extends JPanel {
 		viewer.addHyperlinkListener(new HyperlinkListener() {
 
 			public void hyperlinkUpdate(HyperlinkEvent e) {
+
 				if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 					String d = e.getDescription();
 					if (d.equalsIgnoreCase("memoranda:events"))
@@ -192,6 +193,9 @@ public class AgendaPanel extends JPanel {
 						// Nothing selected
 						if(selectionObject == null)
 							return;
+
+						//todo: maybe ref to class panel here?
+
 						User.setBeltRank((BeltValue) selectionObject);
 						refresh(CurrentDate.get());
 						JOptionPane.showMessageDialog(null,Local.getString("Belt rank successfully change to: " + selectionObject));

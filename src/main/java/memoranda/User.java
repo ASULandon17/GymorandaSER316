@@ -233,6 +233,8 @@ public class User {
 
     }
 
+
+
     /**
      * Upgrade a member to trainer
      * Returns 0 if the User changed from a member to a trainer
