@@ -43,13 +43,7 @@ public class TrainerPanel extends JPanel {
      * @param button the button to be given values
      */
     private void newTrainerButtonHelper(JButton button) {
-        button.setFocusable(false);
-        button.setBorderPainted(false);
-        button.setContentAreaFilled(false);
-        button.setOpaque(true);
-        button.setBackground(new Color(0, 100, 0));
-        button.setForeground(Color.WHITE);
-        button.setPreferredSize(new Dimension(100, 30));
+        ClassPanel.buttonHelper(button);
     }
 
     /**

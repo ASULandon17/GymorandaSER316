@@ -42,7 +42,12 @@ public class ClassPanel extends JPanel {
         initCardsPanel();
     }
 
-    void classButtonHelper(JButton button){
+    private void classButtonHelper(JButton button){
+        buttonHelper(button);
+
+    }
+
+    static void buttonHelper(JButton button) {
         button.setFocusable(false);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
