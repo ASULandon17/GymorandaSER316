@@ -4,6 +4,7 @@ import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
+import main.java.memoranda.ui.gymoranda.LookAndFeel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -42,15 +43,11 @@ public class ClassPanel extends JPanel {
         initCardsPanel();
     }
 
-    void classButtonHelper(JButton button){
-        button.setFocusable(false);
-        button.setBorderPainted(false);
-        button.setContentAreaFilled(false);
-        button.setOpaque(true);
-        button.setBackground(new Color(0, 100, 0));
-        button.setForeground(Color.WHITE);
-        button.setPreferredSize(new Dimension(100, 30));
+    private void classButtonHelper(JButton button){
+        LookAndFeel.gymButtonHelper(button);
+
     }
+
 
     void jbInit() throws Exception {
         classesToolBar.setFloatable(false);
@@ -109,11 +106,12 @@ public class ClassPanel extends JPanel {
         this.add(classesTabbedPane, BorderLayout.CENTER);
 
 
+        // Place buttons on the buttons bar with some space between them
         classesToolBar.addSeparator(new Dimension(8, 24));
-        classesToolBar.addSeparator(new Dimension(8, 24));
-
         classesToolBar.add(newClassBtn, null);
+        classesToolBar.addSeparator(new Dimension(8, 24));
         classesToolBar.add(refreshCardsBtn, null);
+        classesToolBar.addSeparator(new Dimension(8, 24));
 
         this.add(classesToolBar, BorderLayout.NORTH);
 
