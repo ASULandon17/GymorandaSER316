@@ -23,6 +23,8 @@ public class Course {
     private boolean isPublic;
     private final JSONArray roster;
 
+    private boolean isAdvanced;
+
     /**
      * Create  course from a JSON object.
      * @param courseJson entry from classes.json
@@ -40,25 +42,28 @@ public class Course {
         this.month = courseJson.getInt("month");
         this.day = courseJson.getInt("day");
         this.hour = courseJson.getInt("hour");
+        this.isAdvanced = courseJson.getBoolean("isAdvanced");
         this.currentClassSize = courseJson.getJSONArray("roster").length();
 
     }
 
     /**
      * Constructor for Course if instructor is not known.
-     * @param className name of class
-     * @param classLength length of class in hours
-     * @param maxClassSize max students
-     * @param classId unique id
+     *
+     * @param className     name of class
+     * @param classLength   length of class in hours
+     * @param maxClassSize  max students
+     * @param classId       unique id
      * @param classIsPublic public or private class
-     * @param year year of date class is scheduled
-     * @param month month of date class is scheduled
-     * @param day day of date class is scheduled
-     * @param hour hour of date class is scheduled
+     * @param year          year of date class is scheduled
+     * @param month         month of date class is scheduled
+     * @param day           day of date class is scheduled
+     * @param hour          hour of date class is scheduled
+     * @param isAdvanced
      */
     public Course(String className, int classLength,
                   int maxClassSize, int classId, boolean classIsPublic,
-                  int year, int month, int day, int hour) {
+                  int year, int month, int day, int hour, boolean isAdvanced) {
 
         this.className = className;
         this.classLength = classLength;
@@ -71,26 +76,29 @@ public class Course {
         this.month = month;
         this.day = day;
         this.hour = hour;
+        this.isAdvanced = isAdvanced;
         
         this.roster = new JSONArray(); // no students yet
     }
 
     /**
      * Constructor for Course if instructor is known.
-     * @param className name of class
-     * @param classLength length of class in hours
-     * @param maxClassSize max students
-     * @param classId unique id
-     * @param classIsPublic public or private class
+     *
+     * @param className      name of class
+     * @param classLength    length of class in hours
+     * @param maxClassSize   max students
+     * @param classId        unique id
+     * @param classIsPublic  public or private class
      * @param instructorName instructor username
-     * @param year year of date class is scheduled
-     * @param month month of date class is scheduled
-     * @param day day of date class is scheduled
-     * @param hour hour of date class is scheduled
+     * @param year           year of date class is scheduled
+     * @param month          month of date class is scheduled
+     * @param day            day of date class is scheduled
+     * @param hour           hour of date class is scheduled
+     * @param isAdvanced     is course advanced
      */
     public Course(String className, int classLength, int maxClassSize, int classId,
-                  boolean classIsPublic, String instructorName, 
-                  int year, int month, int day, int hour) {
+                  boolean classIsPublic, String instructorName,
+                  int year, int month, int day, int hour, boolean isAdvanced) {
 
         this.className = className;
         this.classLength = classLength;
@@ -103,8 +111,13 @@ public class Course {
         this.month = month;
         this.day = day;
         this.hour = hour;
+        this.isAdvanced = isAdvanced;
         
         this.roster = new JSONArray(); // no students yet
+    }
+
+    public boolean isCourseAdvanced() {
+        return isAdvanced;
     }
 
     /**

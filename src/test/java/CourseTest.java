@@ -2,18 +2,12 @@ package test.java;
 
 import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
-import main.java.memoranda.User;
-import main.java.memoranda.UserType;
-import main.java.memoranda.util.Local;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -37,26 +31,26 @@ public class CourseTest {
     public void testLoadingClassesFromFile() {
 
         // add two unique classes
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 12);
-        PersistentClass.addNewClass("super Smash bros", 2, 10, 61, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 12, false);
+        PersistentClass.addNewClass("super Smash bros", 2, 10, 61, true, 2024, 2, 7, 14, false);
         // new classes should save to json on creation
 
         PersistentClass.loadClassesFromFile();
 
 
-        assertEquals("Entries not saved properly",60, PersistentClass.getListOfCourses().get(0).getClassId());
+        assertEquals("Entries not saved properly", 60, PersistentClass.getListOfCourses().get(0).getClassId());
     }
 
     @Test
     public void testAddNewClassWithoutInstructor() {
 
-        PersistentClass.addNewClass("super Smash bros", 2, 10, 60, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("super Smash bros", 2, 10, 60, true, 2024, 2, 7, 14, false);
 
         assertEquals("first class not added", 1, PersistentClass.getListOfCourses().size());
 
-        PersistentClass.addNewClass("another course", 2, 10, 69, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("another course", 2, 10, 69, true, 2024, 2, 7, 14, false);
 
-        assertEquals("second unique class not added",2, PersistentClass.getListOfCourses().size());
+        assertEquals("second unique class not added", 2, PersistentClass.getListOfCourses().size());
 
     }
 
@@ -64,53 +58,53 @@ public class CourseTest {
     @Test
     public void testAddNewClassWithoutInstructorThatAlreadyExists() {
 
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14, false);
 
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14, false);
 
-        assertEquals("Duplicate class was added",1, PersistentClass.getListOfCourses().size());
+        assertEquals("Duplicate class was added", 1, PersistentClass.getListOfCourses().size());
 
     }
 
     @Test
     public void testAddNewClassWithInstructorThatAlreadyExists() {
 
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "jeff", 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "jeff", 2024, 2, 7, 14, false);
 
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "craig", 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, "craig", 2024, 2, 7, 14, false);
 
 
-        assertEquals("Duplicate class was added and instructor was overwritten","jeff", PersistentClass.getCourseById(60).getInstructorName());
+        assertEquals("Duplicate class was added and instructor was overwritten", "jeff", PersistentClass.getCourseById(60).getInstructorName());
 
     }
 
     @Test
     public void testAddInstructorToCourseWithoutInstructor() {
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14, false);
 
         PersistentClass.addInstructorToCourse("steve", 60);
 
-        assertEquals("Instructor not added to course","steve",
+        assertEquals("Instructor not added to course", "steve",
                 PersistentClass.getCourseById(60).getInstructorName());
 
     }
 
     @Test
     public void testAddInstructorToCourseWithInstructor() {
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60,true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14, false);
 
         PersistentClass.addInstructorToCourse("steve", 60);
         // try adding different instructor to same course
         PersistentClass.addInstructorToCourse("craig", 60);
 
-        assertEquals("Instructor was overwritten","steve",
+        assertEquals("Instructor was overwritten", "steve",
                 PersistentClass.getCourseById(60).getInstructorName());
     }
 
 
     @Test
     public void testAddInstructorToCourseThatDoesNotExist() {
-        PersistentClass.addNewClass("whale sharks", 2, 10, 60,true, 2024, 2, 7, 14);
+        PersistentClass.addNewClass("whale sharks", 2, 10, 60, true, 2024, 2, 7, 14, false);
         // try adding an instructor to a course that doesn't exist yet
         PersistentClass.addInstructorToCourse("craig", 62);
         // make sure program doesn't break
@@ -122,10 +116,10 @@ public class CourseTest {
     public void testAddNewClassWithInstructor() {
 
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
 
 
-        assertEquals("Instructor is incorrect","scuba lord",
+        assertEquals("Instructor is incorrect", "scuba lord",
                 PersistentClass.getCourseById(99).getInstructorName());
 
     }
@@ -133,7 +127,7 @@ public class CourseTest {
     @Test
     public void testAddStudentToEmptyCourse() {
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
 
         PersistentClass.addStudentToCourse("bob", 99);
 
@@ -146,9 +140,9 @@ public class CourseTest {
 
     @Test
     public void testAddStudentToCourseThatIsAlreadyRegistered() {
-       // add a class and 1 student
+        // add a class and 1 student
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addStudentToCourse("bob", 99);
 
         // try to add that student again
@@ -163,7 +157,7 @@ public class CourseTest {
     public void testAddStudentToCourseThatDoesNotExist() {
         // add a class
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         // add a student to a course that doesn't exist
         PersistentClass.addStudentToCourse("bob", 22);
 
@@ -185,7 +179,7 @@ public class CourseTest {
 
         // add new class with two students:
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addStudentToCourse("bob", 99);
         PersistentClass.addStudentToCourse("chuck", 99);
 
@@ -210,7 +204,7 @@ public class CourseTest {
 
         // add new class with two students:
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addStudentToCourse("bob", 99);
         PersistentClass.addStudentToCourse("chuck", 99);
 
@@ -224,9 +218,9 @@ public class CourseTest {
     @Test
     public void testDeleteExistingCourseById(){
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addNewClass("scuba diving2", 6, 5, 1,
-                false, "scuba lord2", 2024, 2, 7, 14);
+                false, "scuba lord2", 2024, 2, 7, 14, false);
         int initialSize = PersistentClass.getListOfCourses().size();
         int classIdToDelete = 1;
 
@@ -238,9 +232,9 @@ public class CourseTest {
     @Test
     public void testPersistenceOfDeletion(){
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addNewClass("scuba diving2", 6, 5, 1,
-                false, "scuba lord2", 2024, 2, 7, 14);
+                false, "scuba lord2", 2024, 2, 7, 14, false);
         int classIdToDelete = 1;
         PersistentClass.deleteCourseById(classIdToDelete);
         PersistentClass.loadClassesFromFile();
@@ -251,7 +245,7 @@ public class CourseTest {
     public void testDeleteNonExistingCourse() {
 
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         int initialSize = PersistentClass.getListOfCourses().size();
         int nonExistingClassId = 1;
         PersistentClass.deleteCourseById(nonExistingClassId);
@@ -262,17 +256,17 @@ public class CourseTest {
     @Test
     public void testDateAndTimeGettersAndSetters() {
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2025, 3, 7, 18);
+                false, "scuba lord", 2025, 3, 7, 18, false);
         assertEquals("getYear not working", 2025, PersistentClass.getCourseById(99).getClassYear());
         assertEquals("getMonth not working", 3, PersistentClass.getCourseById(99).getClassMonth());
         assertEquals("getDay not working", 7, PersistentClass.getCourseById(99).getClassDay());
         assertEquals("getHour not working", 18, PersistentClass.getCourseById(99).getClassHour());
-        
+
         PersistentClass.getCourseById(99).setClassYear(2026);
         PersistentClass.getCourseById(99).setClassMonth(4);
         PersistentClass.getCourseById(99).setClassDay(8);
         PersistentClass.getCourseById(99).setClassHour(19);
-        
+
         assertEquals("setYear not working", 2026, PersistentClass.getCourseById(99).getClassYear());
         assertEquals("setMonth not working", 4, PersistentClass.getCourseById(99).getClassMonth());
         assertEquals("setDay not working", 8, PersistentClass.getCourseById(99).getClassDay());
@@ -288,9 +282,9 @@ public class CourseTest {
     @Test
     public void testLessThanFiveClasses() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
-        PersistentClass.addNewClass("Class 1", 2, 30, 101, true, "instructor1", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 10);
-        PersistentClass.addNewClass("Class 2", 2, 30, 102, true, "instructor2", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 12);
-        PersistentClass.addNewClass("Class 3", 2, 30, 103, true, "instructor3", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 14);
+        PersistentClass.addNewClass("Class 1", 2, 30, 101, true, "instructor1", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 10, false);
+        PersistentClass.addNewClass("Class 2", 2, 30, 102, true, "instructor2", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 12, false);
+        PersistentClass.addNewClass("Class 3", 2, 30, 103, true, "instructor3", tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 14, false);
 
         ArrayList<Course> result = PersistentClass.getNext5Classes();
         assertNotNull("Expected a non-null list of classes", result);
@@ -301,7 +295,7 @@ public class CourseTest {
     public void testMoreThanFiveClasses() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         for (int i = 1; i <= 6; i++) {
-            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i);
+            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i, false);
         }
 
         ArrayList<Course> result = PersistentClass.getNext5Classes();
@@ -314,13 +308,17 @@ public class CourseTest {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         String username = "testUser";
         for (int i = 1; i <= 6; i++) {
-            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i);
+            PersistentClass.addNewClass("Class " + i, 2, 30, 100 + i, true, "instructor" + i, tomorrow.getYear(), tomorrow.getMonthValue(), tomorrow.getDayOfMonth(), 8 + i, false);
             PersistentClass.addStudentToCourse(username,100 + i);
         }
         ArrayList<Course> result = PersistentClass.getNext5EnrolledClasses(username);
         assertNotNull("Expected a non null list of classes", result);
 
     }
+
+
+
+
 }
 
 

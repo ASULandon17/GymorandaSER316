@@ -1,13 +1,14 @@
 package main.java.memoranda;
-import org.json.JSONObject;
+
 import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import main.java.memoranda.Room;
 
 /**
  * Rooms class that stores a list of the current available rooms.
@@ -40,6 +41,7 @@ public class Rooms {
 
     /**
      * Add a room with a class in it
+     *
      * @param hasClass
      * @param roomName
      * @param classId
@@ -48,13 +50,14 @@ public class Rooms {
         if (getRoomByName(roomName) == null) { // Check if the room name already exists
             rooms.add(new Room(hasClass, roomName, classId));
             saveRoomsToFile();
-        } else{
+        } else {
             System.out.println("Room already exists."); //probably want to change this down the line when we implement the UI.
         }
     }
 
     /**
      * Add an empty room, by roomName
+     *
      * @param roomName
      */
     public static void addRoom(String roomName) {
@@ -68,6 +71,7 @@ public class Rooms {
 
     /**
      * Adds classId, and sets hasClass to true based on roomName and classId
+     *
      * @param roomName
      * @param classId
      */
@@ -83,7 +87,8 @@ public class Rooms {
     }
 
     /**
-     *  Gets back a single room when searching for it by roomName.
+     * Gets back a single room when searching for it by roomName.
+     *
      * @param roomName
      * @return
      */
@@ -97,7 +102,6 @@ public class Rooms {
     }
 
     /**
-     *
      * Saves the Room list to the json file.
      */
     private static void saveRoomsToFile() {
@@ -143,17 +147,20 @@ public class Rooms {
         }
     }
 
-    private static void initializeDefaultRooms(){
+    private static void initializeDefaultRooms() {
         rooms.clear();
         addRoom("Desert");
         addRoom("Jungle");
         addRoom("Arctic");
         addRoom("Beach");
         saveRoomsToFile();
+
+
     }
 
     /**
      * Returns the list of rooms.
+     *
      * @return
      */
     public static List<Room> getRooms() {
