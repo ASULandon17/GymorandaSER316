@@ -29,7 +29,8 @@ public class NewclassPopup extends JFrame {
     private JCheckBox classIsPublicCheckBox;
     private JCheckBox classIsAdvancedCheckBox;
     private JButton submitButton;
-    //DOES NOT CURRENTLY ALLOW YOU TO ADD WITH A TRAINER AS TRAINER FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET
+
+    private JComboBox teacherList;
 
     private ClassPanel classPanelRef;
     public NewclassPopup(ClassPanel classPanelRef){
@@ -48,7 +49,7 @@ public class NewclassPopup extends JFrame {
         mainPanel.setLayout(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel formPanel = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
 
         classNameField = new JTextField();
         classLengthField = new JTextField();
@@ -61,6 +62,8 @@ public class NewclassPopup extends JFrame {
         
         classIsPublicCheckBox = new JCheckBox("Yes, make public");
         classIsAdvancedCheckBox = new JCheckBox("Make advanced class");
+
+        teacherList = new JComboBox<String>(getTeacherList());
 
         formPanel.add(new JLabel("Class Name:"));
         formPanel.add(classNameField);
@@ -81,6 +84,9 @@ public class NewclassPopup extends JFrame {
         formPanel.add(new JLabel("Public Class:"));
         formPanel.add(classIsPublicCheckBox);
         formPanel.add(classIsAdvancedCheckBox);
+        formPanel.add(new JLabel(""));
+        formPanel.add(new JLabel("Teacher:"));
+        formPanel.add(teacherList);
 
         // Submit button at the bottom
         submitButton = new JButton("Submit");
