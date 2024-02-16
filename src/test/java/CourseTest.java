@@ -321,7 +321,7 @@ public class CourseTest {
     public void testRemoveStudentFromCourse() {
      // add new class with two students:
         PersistentClass.addNewClass("scuba diving", 6, 5, 99,
-                false, "scuba lord", 2024, 2, 7, 14);
+                false, "scuba lord", 2024, 2, 7, 14, false);
         PersistentClass.addStudentToCourse("bob", 99);
         PersistentClass.addStudentToCourse("chuck", 99);
         

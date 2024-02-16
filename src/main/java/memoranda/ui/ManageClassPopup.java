@@ -51,7 +51,7 @@ public class ManageClassPopup extends JFrame {
         mainPanel.setLayout(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        JPanel infoPanel = new JPanel(new GridLayout(7, 1, 10, 10));
+        JPanel infoPanel = new JPanel(new GridLayout(8, 1, 10, 10));
         
         //Get data needed for correctly displaying class
         int hour = course.getClassHour();
@@ -59,10 +59,12 @@ public class ManageClassPopup extends JFrame {
         String date = course.getClassMonth() + "/" 
                     + course.getClassDay() + "/" 
                     + course.getClassYear();
+        String difficulty = course.isCourseAdvanced() ? "Advanced" : "Beginner";
         
         //add class data to popup panel
         infoPanel.add(new JLabel("Class Name: " + course.getClassName(), SwingConstants.CENTER));
         infoPanel.add(new JLabel("Class Size: " + course.getMaxClassSize(), SwingConstants.CENTER));
+        infoPanel.add(new JLabel("Difficulty: " + difficulty, SwingConstants.CENTER));
         infoPanel.add(new JLabel("Instructor: " + course.getInstructorName(), 
                 SwingConstants.CENTER));
         infoPanel.add(new JLabel("Date: " + date, SwingConstants.CENTER));
@@ -127,6 +129,12 @@ public class ManageClassPopup extends JFrame {
      */
     private void addClass() {
         if (course.getCurrentClassSize() < course.getMaxClassSize()) {
+            if (course.isCourseAdvanced() && (!User.getBeltRank().isAdvanced())) {
+                JOptionPane.showMessageDialog(this, 
+                "You need to have a belt rank of at least blue to enter an advanced class");
+                this.dispose();
+                return;
+            }
             PersistentClass.addStudentToCourse(User.getUsername(), course.getClassId());
             JOptionPane.showMessageDialog(this, "You were added to the class succesfully");
         } else {
