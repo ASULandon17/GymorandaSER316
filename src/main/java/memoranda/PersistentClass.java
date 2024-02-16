@@ -238,11 +238,9 @@ public class PersistentClass {
     }
     
     /**
-     * addStudentToCourse() allows user to register
-     * for a course as long as the course isn't full
-     * AND they aren't already registered.
-     * @param studentUserName username of student registering
-     * @param classId classId for the course they want to register for
+     * removeStudentFromCourse() removes student from specified course
+     * @param studentUserName username of student dropping course
+     * @param classId classId for the course they will be removed from
      */
     public static void removeStudentFromCourse(String studentUserName, int classId) {
 
