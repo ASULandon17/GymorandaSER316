@@ -1,24 +1,5 @@
 package main.java.memoranda.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.SwingUtilities;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-
 import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
@@ -27,10 +8,15 @@ import main.java.memoranda.util.AgendaGenerator;
 import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Local;
 import main.java.memoranda.util.Util;
-
-import javax.swing.JOptionPane;
-
 import nu.xom.Element;
+
+import javax.swing.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
 /*$Id: AgendaPanel.java,v 1.11 2005/02/15 16:58:02 rawsushi Exp $*/
 public class AgendaPanel extends JPanel {
@@ -43,6 +29,7 @@ public class AgendaPanel extends JPanel {
 	String[] priorities = {"Muy Alta","Alta","Media","Baja","Muy Baja"};
 	JScrollPane scrollPane = new JScrollPane();
 
+	ClassPanel classPanelRef;
 	DailyItemsPanel parentPanel = null;
 
 	//	JPopupMenu agendaPPMenu = new JPopupMenu();
@@ -53,9 +40,10 @@ public class AgendaPanel extends JPanel {
 
 	boolean isActive = true;
 
-	public AgendaPanel(DailyItemsPanel _parentPanel) {
+	public AgendaPanel(DailyItemsPanel _parentPanel, ClassPanel classPanelRef) {
 		try {
 			parentPanel = _parentPanel;
+			this.classPanelRef = classPanelRef;
 			jbInit();
 		} catch (Exception ex) {
 			new ExceptionDialog(ex);
@@ -207,6 +195,7 @@ public class AgendaPanel extends JPanel {
 						User.setBeltRank((BeltValue) selectionObject);
 						refresh(CurrentDate.get());
 						JOptionPane.showMessageDialog(null,Local.getString("Belt rank successfully change to: " + selectionObject));
+
 					}
 
 				}

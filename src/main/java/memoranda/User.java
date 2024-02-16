@@ -1,19 +1,15 @@
 package main.java.memoranda;
-import org.json.JSONObject;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.stream.Collectors;
-
-import main.java.memoranda.BeltValue;
-import main.java.memoranda.UserType;
 
 public class User {
     private static String _username;
@@ -227,6 +223,7 @@ public class User {
                     break;
                 }
             }
+
             try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
