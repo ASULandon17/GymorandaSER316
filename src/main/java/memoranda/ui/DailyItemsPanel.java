@@ -28,7 +28,6 @@ public class DailyItemsPanel extends JPanel {
     BorderLayout borderLayout3 = new BorderLayout();
     JPanel editorsPanel = new JPanel();
     CardLayout cardLayout1 = new CardLayout();
-    public EditorPanel editorPanel = new EditorPanel(this);
     public RoomPanel roomPanel = new RoomPanel(this);
     JLabel currentDateLabel = new JLabel();
     BorderLayout borderLayout4 = new BorderLayout();
@@ -208,7 +207,6 @@ public class DailyItemsPanel extends JPanel {
 				// cannot save note here, changing to new project
 				currentNote = CurrentProject.getNoteList().getNoteForDate(CurrentDate.get());
 				CurrentNote.set(currentNote, false);
-				editorPanel.setDocument(currentNote);
 
 //                // DEBUG
 //                if (currentNote != null) {
@@ -265,7 +263,6 @@ public class DailyItemsPanel extends JPanel {
 		currentDate = CurrentDate.get();
 		currentNote = CurrentProject.getNoteList().getNoteForDate(CurrentDate.get());
 		CurrentNote.set(currentNote, true);
-		editorPanel.setDocument(currentNote);
 		History.add(new HistoryItem(CurrentDate.get(), CurrentProject.get()));
 		cmainPanel.add(mainTabsPanel, BorderLayout.CENTER);
 		mainTabsPanel.add(eventsTabbedPane, "EVENTSTAB");
