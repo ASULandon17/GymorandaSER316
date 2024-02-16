@@ -68,10 +68,7 @@ public class ClassPanel extends JPanel {
 
         this.setLayout(borderLayout1);
 
-        // Only show advanced courses to users that meet the minimum belt rank requirement
-        // Or to the owner
-        advancedClassesScrollPane.setEnabled(false);
-        if (User.getUserType() == UserType.OWNER || User.getBeltRank().isAdvanced() )
+
 
 
         // Tabbed pane contains a tab of beginner courses and a tab of advanced courses
@@ -81,6 +78,14 @@ public class ClassPanel extends JPanel {
         // Set background color of the scroll panes
         beginnerClassesScrollPane.getViewport().setBackground(Color.WHITE);
         advancedClassesScrollPane.getViewport().setBackground(Color.WHITE);
+
+        // Only show advanced courses to users that meet the minimum belt rank requirement
+        // Or to the owner
+        classesTabbedPane.setEnabledAt(1, false);
+
+        if ((User.getUserType() == UserType.OWNER) || (User.getBeltRank().isAdvanced())) {
+            classesTabbedPane.setEnabledAt(1, true);
+        }
 
         // Add tabbed pane to the class panel layout
         this.add(classesTabbedPane, BorderLayout.CENTER);
