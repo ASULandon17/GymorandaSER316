@@ -1,8 +1,6 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
-import main.java.memoranda.User;
+import main.java.memoranda.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -118,7 +116,55 @@ public class PersonalPanel extends JPanel {
         changePassword.add(confirmNewPasswordLabel);
         changePassword.add(confirmNewPasswordTextField);
         changePassword.add(changePasswordButton);
+
         rightPanel.add(changePassword);
+        JPanel trainerSchedule;
+        if(User.getUserType() != UserType.MEMBER){
+            trainerSchedule = new JPanel(new GridLayout(0, 1));
+            Border trainerPad = BorderFactory.createEmptyBorder(10, 30, 10, 30);
+            trainerSchedule.setBorder(trainerPad);
+            class TimeItem {
+                String display;
+                int value;
+
+                public TimeItem(int hour) {
+                    this.value = hour;
+                    this.display = String.format("%d:00 %s", hour <= 12 ? hour : hour - 12, hour < 12 ? "AM" : "PM");
+                }
+
+                @Override
+                public String toString() { // ComboBox uses this method to display the item
+                    return display;
+                }
+
+                public int getValue() {
+                    return value;
+                }
+            }
+
+            JComboBox<TimeItem> scheduleStartComboBox = new JComboBox<>();
+            JComboBox<TimeItem> scheduleEndComboBox = new JComboBox<>();
+            for (int hour = 8; hour <= 19; hour++) {
+                scheduleStartComboBox.addItem(new TimeItem(hour));
+                scheduleEndComboBox.addItem(new TimeItem(hour));
+            }
+
+            scheduleStartComboBox.addActionListener(e ->  {
+                
+            });
+
+            scheduleEndComboBox.addActionListener(e->{
+
+            });
+            trainerSchedule.add(new JLabel("Schedule Start:"));
+            trainerSchedule.add(scheduleStartComboBox);
+            trainerSchedule.add(new JLabel("Schedule End:"));
+            trainerSchedule.add(scheduleEndComboBox);
+
+            rightPanel.add(trainerSchedule);
+
+        }
+
 
         changePasswordButton.addActionListener(e -> {
             String newPassword = newPasswordTextField.getText();
