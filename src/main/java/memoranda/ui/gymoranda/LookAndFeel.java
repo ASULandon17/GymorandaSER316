@@ -1,7 +1,8 @@
 package main.java.memoranda.ui.gymoranda;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Dimension;
 
 /**
  * This class contains UI helper methods for consistent design across Gymoranda.
