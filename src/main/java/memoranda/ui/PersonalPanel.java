@@ -1,10 +1,10 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
-import main.java.memoranda.User;
+import main.java.memoranda.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -118,7 +118,84 @@ public class PersonalPanel extends JPanel {
         changePassword.add(confirmNewPasswordLabel);
         changePassword.add(confirmNewPasswordTextField);
         changePassword.add(changePasswordButton);
+
         rightPanel.add(changePassword);
+        JPanel trainerSchedule;
+        if(User.getUserType() == UserType.TRAINER){
+            trainerSchedule = new JPanel(new GridLayout(0, 1));
+            Border trainerPad = BorderFactory.createEmptyBorder(10, 30, 10, 30);
+            trainerSchedule.setBorder(trainerPad);
+            TrainerList trainer = new TrainerList();
+            Trainer t = trainer.getTrainer(username);
+            class TimeItem {
+                String display;
+                int value;
+
+                public TimeItem(int hour) {
+                    this.value = hour;
+                    this.display = String.format("%d:00 %s", hour <= 12 ? hour : hour - 12, hour < 12 ? "AM" : "PM");
+                }
+
+                @Override
+                public String toString() { // ComboBox uses this method to display the item
+                    return display;
+                }
+
+                public int getValue() {
+                    return value;
+                }
+            }
+
+            JComboBox<TimeItem> scheduleStartComboBox = new JComboBox<>();
+            JComboBox<TimeItem> scheduleEndComboBox = new JComboBox<>();
+            for (int hour = 8; hour <= 19; hour++) {
+                scheduleStartComboBox.addItem(new TimeItem(hour));
+                scheduleEndComboBox.addItem(new TimeItem(hour));
+            }
+
+            // Set the combo boxes to the trainer's current start and end availability
+            int startAvailability = t.getStartAvailability();
+            int endAvailability = t.getEndAvailability();
+
+            // Preselect the start availability
+            for (int i = 0; i < scheduleStartComboBox.getItemCount(); i++) {
+                if (scheduleStartComboBox.getItemAt(i).getValue() == startAvailability) {
+                    scheduleStartComboBox.setSelectedIndex(i);
+                    break;
+                }
+            }
+
+            // Preselect the end availability
+            for (int i = 0; i < scheduleEndComboBox.getItemCount(); i++) {
+                if (scheduleEndComboBox.getItemAt(i).getValue() == endAvailability) {
+                    scheduleEndComboBox.setSelectedIndex(i);
+                    break;
+                }
+            }
+
+
+            scheduleStartComboBox.addActionListener(e -> {
+                TimeItem selectedItem = (TimeItem) scheduleStartComboBox.getSelectedItem();
+                if (selectedItem != null) {
+                    trainer.setTrainerStartAvailability(username,selectedItem.getValue());
+                }
+            });
+
+            scheduleEndComboBox.addActionListener(e -> {
+                TimeItem selectedEnd = (TimeItem) scheduleEndComboBox.getSelectedItem();
+                if (selectedEnd != null) {
+                    trainer.setTrainerEndAvailability(username,selectedEnd.getValue());
+                }
+            });
+            trainerSchedule.add(new JLabel("Schedule Start:"));
+            trainerSchedule.add(scheduleStartComboBox);
+            trainerSchedule.add(new JLabel("Schedule End:"));
+            trainerSchedule.add(scheduleEndComboBox);
+
+            rightPanel.add(trainerSchedule);
+
+        }
+
 
         changePasswordButton.addActionListener(e -> {
             String newPassword = newPasswordTextField.getText();
