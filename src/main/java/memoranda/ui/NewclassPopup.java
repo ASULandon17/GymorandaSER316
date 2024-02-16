@@ -154,7 +154,7 @@ public class NewclassPopup extends JFrame {
         try {
             File file = new File("users.json");
             if (!file.exists()) {
-                return null;
+                return new String[0];
             }
 
             String content = Files.readString(Paths.get("users.json"));
@@ -168,7 +168,7 @@ public class NewclassPopup extends JFrame {
             }
         } catch (IOException | JSONException e) {
             e.printStackTrace();
-            return null;
+            return new String[0];
         }
 
         return list.toArray(new String[0]);
