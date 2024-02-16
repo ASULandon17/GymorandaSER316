@@ -109,11 +109,12 @@ public class ClassPanel extends JPanel {
         this.add(classesTabbedPane, BorderLayout.CENTER);
 
 
+        // Place buttons on the buttons bar with some space between them
         classesToolBar.addSeparator(new Dimension(8, 24));
-        classesToolBar.addSeparator(new Dimension(8, 24));
-
         classesToolBar.add(newClassBtn, null);
+        classesToolBar.addSeparator(new Dimension(8, 24));
         classesToolBar.add(refreshCardsBtn, null);
+        classesToolBar.addSeparator(new Dimension(8, 24));
 
         this.add(classesToolBar, BorderLayout.NORTH);
 
