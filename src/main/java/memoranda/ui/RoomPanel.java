@@ -65,10 +65,14 @@ public class RoomPanel extends JPanel {
     private JLabel arcticTextLabel = new JLabel("Arctic Room");
     private JLabel beachTextLabel = new JLabel("Beach Room");
     private Font textFont = new Font("Verdana", Font.PLAIN, 14);
-    private ImageIcon desertIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
-    private ImageIcon jungleIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
-    private ImageIcon arcticIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
-    private ImageIcon beachIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
+    private ImageIcon desertIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/desert.png"));
+    private ImageIcon jungleIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/jungle.png"));
+    private ImageIcon arcticIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/arctic.png"));
+    private ImageIcon beachIcon = 
+          new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/beach.png"));
     
     //used for sign up button area
     private JPanel manageClass = new JPanel();
@@ -341,7 +345,7 @@ public class RoomPanel extends JPanel {
         //Add class name to correct row
         table[row][2] = className;
         //Add instructor if one is present, default message if not
-        if (instructor != "") {
+        if (!instructor.equals("")) {
             table[row][3] = instructor;
         } else {
             table[row][3] = "No instructor yet";
@@ -351,16 +355,20 @@ public class RoomPanel extends JPanel {
         return table;
     }
     
+    /**
+     * Kicks off the popup when manage class button is clicked.
+     */
     public void manageClass() {
-        //get course user tried to sign up for
-        int classId = Integer.parseInt(manageClassIdField.getText());
         try {
+            //get course user tried to sign up for
+            int classId = Integer.parseInt(manageClassIdField.getText());
             Course course = PersistentClass.getCourseById((int) classId);
+            //invoke popup
             ManageClassPopup popup = new ManageClassPopup(RoomPanel.this, course);
             popup.setVisible(true);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error managing class: Class entered does not exist",
-                                          "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this, "Error: You must enter a valid Class Id", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
