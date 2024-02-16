@@ -1,9 +1,6 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
-import main.java.memoranda.User;
-import main.java.memoranda.UserType;
+import main.java.memoranda.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -15,11 +12,17 @@ import java.util.ArrayList;
 
 public class ClassPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-    JToolBar eventsToolBar = new JToolBar();
-    JScrollPane scrollPane = new JScrollPane();
-    private JPanel cardsPanel = new JPanel();
+    JToolBar classesToolBar = new JToolBar();
 
-    JButton newClass = new JButton();
+    // tabbed pane to hold the basic and advanced courses tabs
+    JTabbedPane classesTabbedPane = new JTabbedPane();
+    JScrollPane beginnerClassesScrollPane = new JScrollPane();
+    JScrollPane advancedClassesScrollPane = new JScrollPane();
+    JPanel beginnerCardsPanel = new JPanel();
+    JPanel advancedCardsPanel = new JPanel();
+
+
+    JButton newClassBtn = new JButton();
 
     public ClassPanel() {
         try {
@@ -46,17 +49,15 @@ public class ClassPanel extends JPanel {
     }
 
     void jbInit() throws Exception {
-        eventsToolBar.setFloatable(false);
+        classesToolBar.setFloatable(false);
 
-        newClass.setText("Add a class");
-        if(User.getUserType() == UserType.OWNER){
-            newClass.setVisible(true);
-        } else {
-            newClass.setVisible(false);
-        }
-        newClassButtonHelper(newClass);
-        newClass.setToolTipText("Add a new class");
-        newClass.addActionListener(new java.awt.event.ActionListener(){
+        newClassBtn.setText("Add a class");
+
+        newClassBtn.setVisible(User.getUserType() == UserType.OWNER);
+        newClassButtonHelper(newClassBtn);
+        newClassBtn.setToolTipText("Add a new class");
+
+        newClassBtn.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Pass the classpanel so that we can refresh the UI on adding a new class
                 NewclassPopup popup = new NewclassPopup(ClassPanel.this);
@@ -66,34 +67,70 @@ public class ClassPanel extends JPanel {
         });
 
         this.setLayout(borderLayout1);
-        scrollPane.getViewport().setBackground(Color.white);
-
-        this.add(scrollPane, BorderLayout.CENTER);
-
-        eventsToolBar.addSeparator(new Dimension(8, 24));
 
 
-        eventsToolBar.addSeparator(new Dimension(8, 24));
 
-        eventsToolBar.add(newClass, null);
-        this.add(eventsToolBar, BorderLayout.NORTH);
+
+        // Tabbed pane contains a tab of beginner courses and a tab of advanced courses
+        classesTabbedPane.addTab("Beginner", beginnerClassesScrollPane);
+        classesTabbedPane.addTab("Advanced", advancedClassesScrollPane);
+
+        // Set background color of the scroll panes
+        beginnerClassesScrollPane.getViewport().setBackground(Color.WHITE);
+        advancedClassesScrollPane.getViewport().setBackground(Color.WHITE);
+
+        // Only show advanced courses to users that meet the minimum belt rank requirement
+        // Or to the owner
+        classesTabbedPane.setEnabledAt(1, false);
+
+        if ((User.getUserType() == UserType.OWNER) || (User.getBeltRank().isAdvanced())) {
+            classesTabbedPane.setEnabledAt(1, true);
+        }
+
+        // Add tabbed pane to the class panel layout
+        this.add(classesTabbedPane, BorderLayout.CENTER);
+
+
+        classesToolBar.addSeparator(new Dimension(8, 24));
+        classesToolBar.addSeparator(new Dimension(8, 24));
+        classesToolBar.add(newClassBtn, null);
+
+        this.add(classesToolBar, BorderLayout.NORTH);
 
 
 }
+
+
     void initCardsPanel() {
-        cardsPanel.removeAll();
+        beginnerCardsPanel.removeAll();
         ArrayList<Course> courses = PersistentClass.getListOfCourses();
 
-        cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        beginnerCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        advancedCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
         for (Course course : courses) {
+
             JPanel card = createCourseCard(course);
-            cardsPanel.add(card);
+
+            // decide if course goes onto beginner or advanced tab
+            if (course.isCourseAdvanced()){
+
+                advancedCardsPanel.add(card);
+            } else {
+
+                beginnerCardsPanel.add(card);
+            }
+
         }
 
-        scrollPane.setViewportView(cardsPanel);
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
+        beginnerClassesScrollPane.setViewportView(beginnerCardsPanel);
+        advancedClassesScrollPane.setViewportView(advancedCardsPanel);
+
+        beginnerCardsPanel.revalidate();
+        beginnerCardsPanel.repaint();
+
+        advancedCardsPanel.revalidate();
+        advancedCardsPanel.repaint();
     }
 
     private JPanel createCourseCard(Course course) {

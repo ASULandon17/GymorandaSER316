@@ -1,17 +1,14 @@
 package main.java.memoranda;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 
@@ -98,6 +95,7 @@ public class PersistentClass {
             jsonObject.put("month", course.getClassMonth());
             jsonObject.put("day", course.getClassDay());
             jsonObject.put("hour", course.getClassHour());
+            jsonObject.put("isAdvanced", course.isCourseAdvanced());
 
             jsonArray.put(jsonObject);
         }
@@ -151,12 +149,12 @@ public class PersistentClass {
      */
     public static void addNewClass(String className, int classLength,
                                    int maxClassSize, int classId, boolean classIsPublic,
-                                   int year, int month, int day, int hour) {
+                                   int year, int month, int day, int hour, boolean isAdvanced) {
 
         // check if class already exists:
         if (getCourseById(classId) == null) {
             courses.add(new Course(className, classLength, maxClassSize, classId, classIsPublic,
-                                    year, month, day, hour));
+                                    year, month, day, hour, isAdvanced));
             saveClassesToFile();
 
         } else {
@@ -176,13 +174,13 @@ public class PersistentClass {
      */
     public static void addNewClass(String className, int classLength, int maxClassSize, int classId,
                                       boolean classIsPublic, String instructorUserName, 
-                                      int year, int month, int day, int hour) {
+                                      int year, int month, int day, int hour, boolean isAdvanced) {
 
         // check if class already exists:
         if (getCourseById(classId) == null) {
             courses.add(new Course(className, classLength,
                     maxClassSize,classId, classIsPublic, instructorUserName,
-                    year, month, day, hour));
+                    year, month, day, hour, isAdvanced));
             saveClassesToFile();
 
         } else {

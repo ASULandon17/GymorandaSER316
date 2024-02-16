@@ -4,9 +4,8 @@ import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
 import main.java.memoranda.date.DateListener;
-import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Local;
-import main.java.memoranda.util.Util;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -37,7 +36,7 @@ public class DailyItemsPanel extends JPanel {
     TrainerPanel tasksPanel = new TrainerPanel();
     ClassPanel eventsPanel = new ClassPanel();
 
-    AgendaPanel agendaPanel = new AgendaPanel(this);
+    AgendaPanel agendaPanel = new AgendaPanel(this, eventsPanel);
     ImageIcon expIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_right.png"));
     ImageIcon collIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/exp_left.png"));
     ImageIcon bookmarkIcon = new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/star8.png"));
