@@ -116,34 +116,6 @@ public class EditorPanel extends JPanel {
 	 * doPrint(); } };
 	 */
 
-	public Action newAction = new AbstractAction(Local.getString("New note"),
-			new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/filenew.png"))) {
-		public void actionPerformed(ActionEvent e) {
-			newB_actionPerformed(e);
-		}
-	};
-
-	public Action exportAction = new AbstractAction(Local.getString("Export note to file"),
-			new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/export.png"))) {
-		public void actionPerformed(ActionEvent e) {
-			exportB_actionPerformed(e);
-		}
-	};
-
-	public Action importAction = new AbstractAction(Local.getString("Insert file"),
-			new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/import.png"))) {
-		public void actionPerformed(ActionEvent e) {
-			importB_actionPerformed(e);
-		}
-	};
-
-	public Action previewAction = new AbstractAction(Local.getString("Preview note in browser"),
-			new ImageIcon(main.java.memoranda.ui.AppFrame.class.getResource("/ui/icons/preview.png"))) {
-		public void actionPerformed(ActionEvent e) {
-			previewB_actionPerformed(e);
-		}
-	};
-
 	void jbInit() throws Exception {
 
 		if (!Configuration.get("DISABLE_L10N").equals("yes"))
@@ -335,77 +307,6 @@ public class EditorPanel extends JPanel {
 				.replaceSelection(DateFormat.getTimeInstance(DateFormat.SHORT, Local.getCurrentLocale()).format(d));
 	}
 
-	void exportB_actionPerformed(ActionEvent e) {
-		// Fix until Sun's JVM supports more locales...
-		UIManager.put("FileChooser.lookInLabelText", Local.getString("Save in:"));
-		UIManager.put("FileChooser.upFolderToolTipText", Local.getString("Up One Level"));
-		UIManager.put("FileChooser.newFolderToolTipText", Local.getString("Create New Folder"));
-		UIManager.put("FileChooser.listViewButtonToolTipText", Local.getString("List"));
-		UIManager.put("FileChooser.detailsViewButtonToolTipText", Local.getString("Details"));
-		UIManager.put("FileChooser.fileNameLabelText", Local.getString("File Name:"));
-		UIManager.put("FileChooser.filesOfTypeLabelText", Local.getString("Files of Type:"));
-		UIManager.put("FileChooser.saveButtonText", Local.getString("Save"));
-		UIManager.put("FileChooser.saveButtonToolTipText", Local.getString("Save selected file"));
-		UIManager.put("FileChooser.cancelButtonText", Local.getString("Cancel"));
-		UIManager.put("FileChooser.cancelButtonToolTipText", Local.getString("Cancel"));
-
-		JFileChooser chooser = new JFileChooser();
-		chooser.setFileHidingEnabled(false);
-		chooser.setDialogTitle(Local.getString("Export note"));
-		chooser.setAcceptAllFileFilterUsed(false);
-		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		chooser.addChoosableFileFilter(new AllFilesFilter(AllFilesFilter.XHTML));
-		chooser.addChoosableFileFilter(new AllFilesFilter(AllFilesFilter.HTML));
-		// chooser.addChoosableFileFilter(new
-		// AllFilesFilter(AllFilesFilter.RTF));
-		String lastSel = (String) Context.get("LAST_SELECTED_EXPORT_FILE");
-		if (lastSel != null)
-			chooser.setCurrentDirectory(new File(lastSel));
-
-		FileExportDialog dlg = new FileExportDialog(App.getFrame(), Local.getString("Export note"), chooser);
-		String enc = (String) Context.get("EXPORT_FILE_ENCODING");
-		if (enc != null)
-			dlg.encCB.setSelectedItem(enc);
-		String templ = (String) Context.get("EXPORT_TEMPLATE");
-		if (templ != null)
-			dlg.templF.setText(templ);
-		String xhtml = (String) Context.get("EXPORT_XHTML");
-		if ((xhtml != null) && (xhtml.equalsIgnoreCase("YES")))
-			dlg.xhtmlChB.setSelected(true);
-		String num = (String) Context.get("EXPORT_NUMENT");
-		if ((num != null) && (num.equalsIgnoreCase("YES")))
-			dlg.numentChB.setSelected(true);
-		Dimension dlgSize = new Dimension(550, 475);
-		dlg.setSize(dlgSize);
-		Dimension frmSize = App.getFrame().getSize();
-		Point loc = App.getFrame().getLocation();
-		dlg.setLocation((frmSize.width - dlgSize.width) / 2 + loc.x, (frmSize.height - dlgSize.height) / 2 + loc.y);
-		dlg.setVisible(true);
-		if (dlg.CANCELLED)
-			return;
-
-		Context.put("LAST_SELECTED_EXPORT_FILE", chooser.getSelectedFile().getPath());
-		Context.put("EXPORT_FILE_ENCODING", dlg.encCB.getSelectedItem());
-		Context.put("EXPORT_NUMENT", dlg.numentChB.isSelected() ? "YES" : "NO");
-		Context.put("EXPORT_XHTML", dlg.xhtmlChB.isSelected() ? "YES" : "NO");
-		String template = null;
-		if (dlg.usetemplChB.isSelected() && dlg.templF.getText().length() > 0) {
-			template = dlg.templF.getText();
-			Context.put("EXPORT_TEMPLATE", template);
-		}
-		/*
-		 * if (chooser.getFileFilter().getDescription().equals("Rich Text Format")) new
-		 * RTFFileExport(chooser.getSelectedFile(), editor.document); else
-		 */
-		int ei = dlg.encCB.getSelectedIndex();
-		enc = null;
-		if (ei == 1)
-			enc = "UTF-8";
-		File f = chooser.getSelectedFile();
-		new HTMLFileExport(f, editor.document, CurrentNote.get(), enc, dlg.numentChB.isSelected(), template,
-				dlg.xhtmlChB.isSelected());
-	}
-
 	String initialTitle = "";
 
 	public void setDocument(Note note) {
@@ -434,55 +335,4 @@ public class EditorPanel extends JPanel {
 	 * public boolean isDocumentChanged() { return editor.isDocumentChanged() ||
 	 * !titleField.getText().equals(initialTitle); }
 	 */
-
-	void importB_actionPerformed(ActionEvent e) {
-		// Fix until Sun's JVM supports more locales...
-		UIManager.put("FileChooser.lookInLabelText", Local.getString("Look in:"));
-		UIManager.put("FileChooser.upFolderToolTipText", Local.getString("Up One Level"));
-		UIManager.put("FileChooser.newFolderToolTipText", Local.getString("Create New Folder"));
-		UIManager.put("FileChooser.listViewButtonToolTipText", Local.getString("List"));
-		UIManager.put("FileChooser.detailsViewButtonToolTipText", Local.getString("Details"));
-		UIManager.put("FileChooser.fileNameLabelText", Local.getString("File Name:"));
-		UIManager.put("FileChooser.filesOfTypeLabelText", Local.getString("Files of Type:"));
-		UIManager.put("FileChooser.openButtonText", Local.getString("Open"));
-		UIManager.put("FileChooser.openButtonToolTipText", Local.getString("Open selected file"));
-		UIManager.put("FileChooser.cancelButtonText", Local.getString("Cancel"));
-		UIManager.put("FileChooser.cancelButtonToolTipText", Local.getString("Cancel"));
-
-		JFileChooser chooser = new JFileChooser();
-		chooser.setFileHidingEnabled(false);
-		chooser.setDialogTitle(Local.getString("Insert file"));
-		chooser.setAcceptAllFileFilterUsed(false);
-		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		chooser.addChoosableFileFilter(new AllFilesFilter(AllFilesFilter.HTML));
-		chooser.setPreferredSize(new Dimension(550, 375));
-		String lastSel = (String) Context.get("LAST_SELECTED_IMPORT_FILE");
-		if (lastSel != null)
-			chooser.setCurrentDirectory(new java.io.File(lastSel));
-		if (chooser.showOpenDialog(this) != JFileChooser.APPROVE_OPTION)
-			return;
-
-		Context.put("LAST_SELECTED_IMPORT_FILE", chooser.getSelectedFile().getPath());
-
-		File f = chooser.getSelectedFile();
-		new HTMLFileImport(f, editor);
-	}
-
-	void newB_actionPerformed(ActionEvent e) {
-		/*
-		 * CurrentNote.set(null, true); setDocument(null);
-		 * this.titleField.requestFocus();
-		 */
-	}
-
-	void previewB_actionPerformed(ActionEvent e) {
-		File f;
-		try {
-			f = Util.getTempFile();
-			new HTMLFileExport(f, editor.document, CurrentNote.get(), "UTF-8", false, null, false);
-			Util.runBrowser("file:" + f.getAbsolutePath());
-		} catch (IOException ioe) {
-			new ExceptionDialog(ioe, "Cannot create temporary file", null);
-		}
-	}
 }
