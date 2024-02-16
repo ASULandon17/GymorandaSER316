@@ -146,4 +146,46 @@ public class TrainerList {
         return false;
     }
 
+
+    /**
+     * Gets all trainers that are available to work at a given time.
+     *
+     * @param time for the class.
+     * @return vector of trainers that are available during that time.
+     */
+    public Vector<Trainer> getTrainersAvailableAtTime(int time){
+        Vector<Trainer> availableTrainers = new Vector<>();
+        try {
+            File file = new File("users.json");
+            if (!file.exists()) {
+                return availableTrainers;
+            }
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+
+            JSONArray usersArray = new JSONArray(content);
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("userType").equals("TRAINER")) {
+                    int startAvailability = user.getInt("startAvailability");
+                    int endAvailability = user.getInt("endAvailability");
+
+                    // Check if the given time is within the trainer's availability range
+                    if (time >= startAvailability && time <= endAvailability) {
+                        Trainer trainer = new Trainer(user.getString("username"),
+                                BeltValue.valueOf(user.getString("beltRank")),
+                                BeltValue.valueOf(user.getString("trainingRank")),
+                                startAvailability,
+                                endAvailability);
+                        availableTrainers.add(trainer);
+                    }
+                }
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+        return availableTrainers;
+    }
+
+
 }

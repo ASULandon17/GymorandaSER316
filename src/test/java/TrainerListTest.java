@@ -1,8 +1,6 @@
 package test.java;
 
-import main.java.memoranda.BeltValue;
-import main.java.memoranda.Trainer;
-import main.java.memoranda.TrainerList;
+import main.java.memoranda.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -83,5 +81,17 @@ public class TrainerListTest {
 
         Trainer updatedTrainer = trainerList.getTrainer("Trainer2");
         assertEquals(20, updatedTrainer.getEndAvailability());
+    }
+
+    @Test
+    public void testGetTrainersAtAvailableTime(){
+        User.signUp("testTrainer", "testPassword", UserType.TRAINER);
+        TrainerList t = new TrainerList();
+
+        t.setTrainerStartAvailability("testTrainer", 10);
+        t.setTrainerEndAvailability("testTrainer", 14);
+
+        Vector<Trainer> availableTrainers = t.getTrainersAvailableAtTime(12);
+        assertTrue("Trainer should be available", availableTrainers.size() > 1);
     }
 }
