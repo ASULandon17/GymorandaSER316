@@ -3,6 +3,8 @@ package main.java.memoranda.ui;
 import main.java.memoranda.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -119,10 +121,12 @@ public class PersonalPanel extends JPanel {
 
         rightPanel.add(changePassword);
         JPanel trainerSchedule;
-        if(User.getUserType() != UserType.MEMBER){
+        if(User.getUserType() == UserType.TRAINER){
             trainerSchedule = new JPanel(new GridLayout(0, 1));
             Border trainerPad = BorderFactory.createEmptyBorder(10, 30, 10, 30);
             trainerSchedule.setBorder(trainerPad);
+            TrainerList trainer = new TrainerList();
+            Trainer t = trainer.getTrainer(username);
             class TimeItem {
                 String display;
                 int value;
@@ -149,12 +153,39 @@ public class PersonalPanel extends JPanel {
                 scheduleEndComboBox.addItem(new TimeItem(hour));
             }
 
-            scheduleStartComboBox.addActionListener(e ->  {
-                
+            // Set the combo boxes to the trainer's current start and end availability
+            int startAvailability = t.getStartAvailability();
+            int endAvailability = t.getEndAvailability();
+
+            // Preselect the start availability
+            for (int i = 0; i < scheduleStartComboBox.getItemCount(); i++) {
+                if (scheduleStartComboBox.getItemAt(i).getValue() == startAvailability) {
+                    scheduleStartComboBox.setSelectedIndex(i);
+                    break;
+                }
+            }
+
+            // Preselect the end availability
+            for (int i = 0; i < scheduleEndComboBox.getItemCount(); i++) {
+                if (scheduleEndComboBox.getItemAt(i).getValue() == endAvailability) {
+                    scheduleEndComboBox.setSelectedIndex(i);
+                    break;
+                }
+            }
+
+
+            scheduleStartComboBox.addActionListener(e -> {
+                TimeItem selectedItem = (TimeItem) scheduleStartComboBox.getSelectedItem();
+                if (selectedItem != null) {
+                    trainer.setTrainerStartAvailability(username,selectedItem.getValue());
+                }
             });
 
-            scheduleEndComboBox.addActionListener(e->{
-
+            scheduleEndComboBox.addActionListener(e -> {
+                TimeItem selectedEnd = (TimeItem) scheduleEndComboBox.getSelectedItem();
+                if (selectedEnd != null) {
+                    trainer.setTrainerEndAvailability(username,selectedEnd.getValue());
+                }
             });
             trainerSchedule.add(new JLabel("Schedule Start:"));
             trainerSchedule.add(scheduleStartComboBox);
