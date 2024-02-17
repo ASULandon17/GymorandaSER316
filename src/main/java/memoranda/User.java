@@ -320,6 +320,35 @@ public class User {
     }
 
     /**
+     * Sets user's training rank to given rank value.
+     */
+    public static void setTrainingRank(BeltValue rank) {
+        _trainingRank = rank;
+        try {
+            File file = new File("users.json");
+
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            JSONArray usersArray = new JSONArray(content);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject user = usersArray.getJSONObject(i);
+                if (user.getString("username").equals(_username)) {
+                    user.put("trainingRank", _trainingRank.toString());
+                    break;
+                }
+            }
+
+            try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
+                fileWriter.write(usersArray.toString());
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * Function to allow the current user to change their password.
      * @param newPassword, the new password to change to.
      * @return true if password change, false if password not properly changed.
