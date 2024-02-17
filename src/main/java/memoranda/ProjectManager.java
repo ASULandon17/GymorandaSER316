@@ -30,7 +30,7 @@ public class ProjectManager {
     static Element _root = null;
     
     static {
-    	init();
+        init();
     }
 
     public static void init() {
@@ -64,14 +64,14 @@ public class ProjectManager {
     }
 
     public static int getAllProjectsNumber() {
-		int i;
+        int i;
         try {
-			i = ((Elements)_root.getChildElements("project")).size();
-		}
-		catch (NullPointerException e) {
-			i = 1;
-		}
-		return i;
+            i = ((Elements)_root.getChildElements("project")).size();
+        }
+        catch (NullPointerException e) {
+            i = 1;
+        }
+        return i;
     }
 
     public static Vector getActiveProjects() {
@@ -84,7 +84,7 @@ public class ProjectManager {
         }
         return v;
     }
-		
+
     public static int getActiveProjectsNumber() {
         Elements prjs = _root.getChildElements("project");
         int count = 0;

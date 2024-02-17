@@ -15,30 +15,30 @@ import main.java.memoranda.ui.EventNotificationDialog;
 /*$Id: DefaultEventNotifier.java,v 1.4 2004/01/30 12:17:41 alexeya Exp $*/
 public class DefaultEventNotifier implements EventNotificationListener {
 
-	/**
-	 * Constructor for DefaultEventNotifier.
-	 */
-	public DefaultEventNotifier() {
-		super();
-	}
+    /**
+     * Constructor for DefaultEventNotifier.
+     */
+    public DefaultEventNotifier() {
+        super();
+    }
 
-	/**
-	 * @see main.java.memoranda.EventNotificationListener#eventIsOccured(main.java.memoranda.Event)
-	 */
-	public void eventIsOccured(Event ev) {		
-		// Change title from "Memoranda event" to "Gymoranda event"
-		new EventNotificationDialog(
-			"Gymoranda event",
-			ev.getTimeString(),
-			ev.getText());
-	}
-	/**
-	 * @see main.java.memoranda.EventNotificationListener#eventsChanged()
-	 */
-	// There is currently no implementation here.
-	public void eventsChanged() {
-		System.out.println("DefaultEventChange");
-	}
+    /**
+     * @see main.java.memoranda.EventNotificationListener#eventIsOccured(main.java.memoranda.Event)
+     */
+    public void eventIsOccured(Event ev) {
+        // Change title from "Memoranda event" to "Gymoranda event"
+        new EventNotificationDialog(
+            "Gymoranda event",
+            ev.getTimeString(),
+            ev.getText());
+    }
+    /**
+     * @see main.java.memoranda.EventNotificationListener#eventsChanged()
+     */
+    // There is currently no implementation here.
+    public void eventsChanged() {
+        System.out.println("DefaultEventChange");
+    }
 
-	
+
 }

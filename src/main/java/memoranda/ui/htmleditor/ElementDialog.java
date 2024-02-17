@@ -62,57 +62,57 @@ public class ElementDialog extends JDialog {
 
 
   void jbInit() throws Exception {
-	this.setResizable(false);
-	headerPanel.setBackground(Color.WHITE);
-	header.setFont(new java.awt.Font("Dialog", 0, 20));
-	header.setForeground(new Color(0, 0, 124));
-	header.setText(Local.getString("Object properties"));
-	header.setIcon(new ImageIcon(
-		main.java.memoranda.ui.htmleditor.ElementDialog.class.getResource(
-		"/htmleditor/icons/textbig.png")));
+    this.setResizable(false);
+    headerPanel.setBackground(Color.WHITE);
+    header.setFont(new java.awt.Font("Dialog", 0, 20));
+    header.setForeground(new Color(0, 0, 124));
+    header.setText(Local.getString("Object properties"));
+    header.setIcon(new ImageIcon(
+        main.java.memoranda.ui.htmleditor.ElementDialog.class.getResource(
+        "/htmleditor/icons/textbig.png")));
     headerPanel.add(header);
     this.getContentPane().add(headerPanel, BorderLayout.NORTH);
     
     areaPanel.setBorder(BorderFactory.createEtchedBorder(Color.white,
-    	new Color(142, 142, 142)));
-	lblID.setText(Local.getString("ID"));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 0; gbc.gridy = 0;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(10, 10, 5, 5);
+        new Color(142, 142, 142)));
+    lblID.setText(Local.getString("ID"));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0; gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(10, 10, 5, 5);
     areaPanel.add(lblID, gbc);
-	idField.setPreferredSize(new Dimension(300, 25));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 1; gbc.gridy = 0;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(10, 5, 5, 10);
-	areaPanel.add(idField, gbc);
-	lblClass.setText(Local.getString("Class"));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 0; gbc.gridy = 1;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(5, 10, 5, 5);
-	areaPanel.add(lblClass, gbc);		
-	classField.setPreferredSize(new Dimension(300, 25));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 1; gbc.gridy = 1;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(5, 5, 5, 10);
-	areaPanel.add(classField, gbc);
-	lblStyle.setText(Local.getString("Style"));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 0; gbc.gridy = 2;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(5, 10, 10, 5);
-	areaPanel.add(lblStyle, gbc);
-	styleField.setPreferredSize(new Dimension(300, 25));
-	gbc = new GridBagConstraints();
-	gbc.gridx = 1; gbc.gridy = 2;
-	gbc.anchor = GridBagConstraints.WEST;
-	gbc.insets = new Insets(5, 5, 10, 10);
-	areaPanel.add(styleField, gbc);
-	this.getContentPane().add(areaPanel, BorderLayout.CENTER);				
-		
+    idField.setPreferredSize(new Dimension(300, 25));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1; gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(10, 5, 5, 10);
+    areaPanel.add(idField, gbc);
+    lblClass.setText(Local.getString("Class"));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0; gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(5, 10, 5, 5);
+    areaPanel.add(lblClass, gbc);
+    classField.setPreferredSize(new Dimension(300, 25));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1; gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(5, 5, 5, 10);
+    areaPanel.add(classField, gbc);
+    lblStyle.setText(Local.getString("Style"));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0; gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(5, 10, 10, 5);
+    areaPanel.add(lblStyle, gbc);
+    styleField.setPreferredSize(new Dimension(300, 25));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1; gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = new Insets(5, 5, 10, 10);
+    areaPanel.add(styleField, gbc);
+    this.getContentPane().add(areaPanel, BorderLayout.CENTER);
+
     cancelB.setMaximumSize(new Dimension(100, 26));
     cancelB.setMinimumSize(new Dimension(100, 26));
     cancelB.setPreferredSize(new Dimension(100, 26));
