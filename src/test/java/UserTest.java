@@ -127,4 +127,14 @@ public class UserTest extends JSONTest{
 
         assertTrue("User should be able to log in with the new password", User.login(name, newPassword));
     }
+
+    /**
+     * Test Case to check if setting training rank executes properly
+     */
+    @Test
+    public void setTrainingRankTest() {
+        User.signUp(name, password, UserType.TRAINER);
+        User.setTrainingRank(BeltValue.BLACK2);
+        assertEquals("User has the wrong training rank after changing", BeltValue.BLACK2, User.getTrainingRank());
+    }
 }
