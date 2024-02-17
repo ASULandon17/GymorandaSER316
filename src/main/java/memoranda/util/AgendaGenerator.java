@@ -4,21 +4,11 @@
  */
 package main.java.memoranda.util;
 
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Vector;
 import java.util.ArrayList;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
-
-import java.util.Collections;
-
-import nu.xom.Element;
 
 
 /**
@@ -41,17 +31,6 @@ public class AgendaGenerator {
 					+ "<body><table width=\"100%\" height=\"100%\" border=\"0\" cellpadding=\"4\" cellspacing=\"4\">\n"
 					+ "<tr>\n";
 	static String FOOTER = "</td></tr></table></body></html>";
-
-	/**
-	 *
-	 * @param p
-	 * @param date
-	 * @param tl
-	 * @param t
-	 * @param level
-	 * @param expandedTasks
-	 * @return
-	 */
 
 	private static String generateCourseInfo(Course course) {
 		String formattedDateTime = String.format("%d/%d/%d at %02d:00", course.getClassMonth(), course.getClassDay(), course.getClassYear(), course.getClassHour());
@@ -93,11 +72,17 @@ public class AgendaGenerator {
 						+ "<b>User: </b>"
 						+ User.getUsername() + "<br>"
 						+ "<b>Belt Rank: </b>"
-						+ User.getBeltRank() + "<br><br><br>"
-						+ "<a href=\"memoranda:changebelt\"><b><u>[Change Belt]</b></u></a>";
+						+ User.getBeltRank();
+		// Displays Training Rank after Belt Rank and before Change Belt buttons
 		if(User.getUserType() == UserType.TRAINER)
 		{
-			s += "<b>Training Rank: </b>" + User.getTrainingRank();
+			s += "<br><b>Training Rank: </b>" + User.getTrainingRank();
+		}
+		s += "<br><br><br>"
+						+ "<a href=\"memoranda:changeBelt\"><b><u>[Change Belt]</b></u></a>";
+		if(User.getUserType() == UserType.TRAINER)
+		{
+			s += "<br><a href=\"memoranda:changeTraining\"><b><u>[Change Training Rank]</b></u></a>";
 		}
 		return s;
 	}
@@ -106,83 +91,6 @@ public class AgendaGenerator {
 		String s = HEADER;
 		s += generateUpcomingClasses();
 		s += generatePersonalInfo();
-		//        /*DEBUG*/System.out.println(s+FOOTER);
 		return s + FOOTER;
 	}
-	/*    
-    we do not need this. Tasks are sorted using the Comparable interface
-    public static class TaskSorter {
-
-        static final int BY_IMP_RATE = 0;
-        static final int BY_END_DATE = 1;
-        static final int BY_PRIORITY = 2;
-        static final int BY_COMPLETION = 3;
-
-        private static Vector tasks = null;
-        private static CalendarDate date = null;  
-        private static int mode = 0;
-
-        public static long calcTaskRate(Task t, CalendarDate d) {
-            /*
-	 * A "Task rate" is an informal index of importance of the task
-	 * considering priority, number of days to deadline and current
-	 * progress.
-	 * 
-	 * rate = (100-progress) / (numOfDays+1) * (priority+1)
-	 * /
-            Calendar endDateCal = t.getEndDate().getCalendar();
-            Calendar dateCal = d.getCalendar();
-            int numOfDays = (endDateCal.get(Calendar.YEAR)*365 + endDateCal.get(Calendar.DAY_OF_YEAR)) - 
-                            (dateCal.get(Calendar.YEAR)*365 + dateCal.get(Calendar.DAY_OF_YEAR));
-            if (numOfDays < 0) return -1; //Something wrong ?
-            return (100-t.getProgress()) / (numOfDays+1) * (t.getPriority()+1);
-        }
-
-        static long getRate(Object task) {
-            Task t = (Task)task;
-            switch (mode) {
-                case BY_IMP_RATE: return -1*calcTaskRate(t, date);
-                case BY_END_DATE: return t.getEndDate().getDate().getTime();
-                case BY_PRIORITY: return 5-t.getPriority();
-                case BY_COMPLETION: return 100-t.getProgress();
-            }
-            return -1;         
-        }
-
-        private static void doSort(int L, int R) { // Hoar's QuickSort
-            int i = L;
-            int j = R;
-            long x = getRate(tasks.get((L + R) / 2));
-            Object w = null;
-            do {
-                while (getRate(tasks.get(i)) < x) 
-                    i++;
-                while (x < getRate(tasks.get(j)) && j > 0) 
-                    if (j > 0) j--;              
-                if (i <= j) {
-                    w = tasks.get(i);
-                    tasks.set(i, tasks.get(j));
-                    tasks.set(j, w);
-                    i++;
-                    j--;
-                }
-            }
-            while (i <= j);
-            if (L < j) 
-                doSort(L, j);       
-            if (i < R) 
-                doSort(i, R);         
-        }
-
-        public static void sort(Vector theTasks, CalendarDate theDate, int theMode) {
-            if (theTasks == null) return;
-            if (theTasks.size() <= 1) return;
-            tasks = theTasks; 
-            date = theDate;
-            mode = theMode;
-            doSort(0, tasks.size() - 1);
-        }
-
-    }
-	 */
 }

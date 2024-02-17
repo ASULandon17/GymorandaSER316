@@ -74,7 +74,7 @@ public class AgendaPanel extends JPanel {
 						CurrentProject.set(ProjectManager.getProject(id));
 					}
 					// Removed unused code
-					else if (d.startsWith("memoranda:changebelt")) {
+					else if (d.startsWith("memoranda:changeBelt")) {
 						final JFrame parent = new JFrame();
 						Object[] options = BeltValue.values();
 						Object selectionObject = JOptionPane.showInputDialog(parent, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, User.getBeltRank());
@@ -86,7 +86,20 @@ public class AgendaPanel extends JPanel {
 
 						User.setBeltRank((BeltValue) selectionObject);
 						refresh(CurrentDate.get());
-						JOptionPane.showMessageDialog(null,Local.getString("Belt rank successfully change to: " + selectionObject));
+						JOptionPane.showMessageDialog(null,Local.getString("Belt rank successfully changed to: " + selectionObject));
+
+					}
+					else if (d.startsWith("memoranda:changeTraining")) {
+						final JFrame parent = new JFrame();
+						Object[] options = BeltValue.values();
+						Object selectionObject = JOptionPane.showInputDialog(parent, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, User.getTrainingRank());
+						// Nothing selected
+						if(selectionObject == null)
+							return;
+
+						User.setTrainingRank((BeltValue) selectionObject);
+						refresh(CurrentDate.get());
+						JOptionPane.showMessageDialog(null,Local.getString("Training rank successfully changed to: " + selectionObject));
 
 					}
 
