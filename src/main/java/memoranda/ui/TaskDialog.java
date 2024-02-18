@@ -96,17 +96,17 @@ public class TaskDialog extends JDialog {
     // added by rawsushi
     JLabel jLabelEffort = new JLabel();
     JLabel jLabelDescription = new JLabel();
-	JCheckBox chkEndDate = new JCheckBox();
-	
-	JPanel jPanelProgress = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-	JLabel jLabelProgress = new JLabel();
-	JSpinner progress = new JSpinner(new SpinnerNumberModel(0, 0, 100, 5));
-	
-	//Forbid to set dates outside the bounds
-	CalendarDate startDateMin = CurrentProject.get().getStartDate();
-	CalendarDate startDateMax = CurrentProject.get().getEndDate();
-	CalendarDate endDateMin = startDateMin;
-	CalendarDate endDateMax = startDateMax;
+    JCheckBox chkEndDate = new JCheckBox();
+
+    JPanel jPanelProgress = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    JLabel jLabelProgress = new JLabel();
+    JSpinner progress = new JSpinner(new SpinnerNumberModel(0, 0, 100, 5));
+
+    //Forbid to set dates outside the bounds
+    CalendarDate startDateMin = CurrentProject.get().getStartDate();
+    CalendarDate startDateMax = CurrentProject.get().getEndDate();
+    CalendarDate endDateMin = startDateMin;
+    CalendarDate endDateMax = startDateMax;
     
     public TaskDialog(Frame frame, String title) {
         super(frame, title, true);
@@ -120,8 +120,8 @@ public class TaskDialog extends JDialog {
     }
     
     void jbInit() throws Exception {
-	this.setResizable(false);
-	this.setSize(new Dimension(430,300));
+    this.setResizable(false);
+    this.setSize(new Dimension(430,300));
         border1 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         border2 = BorderFactory.createEtchedBorder(Color.white, 
             new Color(142, 142, 142));
@@ -147,14 +147,14 @@ public class TaskDialog extends JDialog {
 
         startDate = new JSpinner(new SpinnerDateModel(new Date(),null,null,Calendar.DAY_OF_WEEK));
         endDate = new JSpinner(new SpinnerDateModel(new Date(),null,null,Calendar.DAY_OF_WEEK));
-		
+
         chkEndDate.setSelected(false);
-		chkEndDate_actionPerformed(null);
-		chkEndDate.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				chkEndDate_actionPerformed(e);
-			}
-		});
+        chkEndDate_actionPerformed(null);
+        chkEndDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                chkEndDate_actionPerformed(e);
+            }
+        });
         okB.setMaximumSize(new Dimension(100, 26));
         okB.setMinimumSize(new Dimension(100, 26));
         okB.setPreferredSize(new Dimension(100, 26));
@@ -180,7 +180,7 @@ public class TaskDialog extends JDialog {
         
         GridBagLayout gbLayout = (GridBagLayout) jPanel8.getLayout();
         jPanel8.setBorder(border3);
-				
+
         todoField.setBorder(border8);
         todoField.setPreferredSize(new Dimension(375, 24));
         GridBagConstraints gbCon = new GridBagConstraints();
@@ -215,16 +215,16 @@ public class TaskDialog extends JDialog {
 
         startDate.setBorder(border8);
         startDate.setPreferredSize(new Dimension(80, 24));                
-		SimpleDateFormat sdf = new SimpleDateFormat();
-		sdf = (SimpleDateFormat)DateFormat.getDateInstance(DateFormat.SHORT);
-		// //Added by (jcscoobyrs) on 14-Nov-2003 at 10:45:16 PM
-		startDate.setEditor(new JSpinner.DateEditor(startDate, sdf.toPattern()));
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf = (SimpleDateFormat)DateFormat.getDateInstance(DateFormat.SHORT);
+        // //Added by (jcscoobyrs) on 14-Nov-2003 at 10:45:16 PM
+        startDate.setEditor(new JSpinner.DateEditor(startDate, sdf.toPattern()));
 
         startDate.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-            	// it's an ugly hack so that the spinner can increase day by day
-            	SpinnerDateModel sdm = new SpinnerDateModel((Date)startDate.getModel().getValue(),null,null,Calendar.DAY_OF_WEEK);
-            	startDate.setModel(sdm);
+                // it's an ugly hack so that the spinner can increase day by day
+                SpinnerDateModel sdm = new SpinnerDateModel((Date)startDate.getModel().getValue(),null,null,Calendar.DAY_OF_WEEK);
+                startDate.setModel(sdm);
 
                 if (ignoreStartChanged)
                     return;
@@ -235,10 +235,10 @@ public class TaskDialog extends JDialog {
                     startDate.getModel().setValue(ed);
                     sd = ed;
                 }
-				if ((startDateMax != null) && sd.after(startDateMax.getDate())) {
-					startDate.getModel().setValue(startDateMax.getDate());
+                if ((startDateMax != null) && sd.after(startDateMax.getDate())) {
+                    startDate.getModel().setValue(startDateMax.getDate());
                     sd = startDateMax.getDate();
-				}
+                }
                 if ((startDateMin != null) && sd.before(startDateMin.getDate())) {
                     startDate.getModel().setValue(startDateMin.getDate());
                     sd = startDateMin.getDate();
@@ -269,33 +269,33 @@ public class TaskDialog extends JDialog {
         endDate.setBorder(border8);
         endDate.setPreferredSize(new Dimension(80, 24));
         
-		endDate.setEditor(new JSpinner.DateEditor(endDate, sdf.toPattern())); //Added by (jcscoobyrs) on
-		//14-Nov-2003 at 10:45:16PM
+        endDate.setEditor(new JSpinner.DateEditor(endDate, sdf.toPattern())); //Added by (jcscoobyrs) on
+        //14-Nov-2003 at 10:45:16PM
         
         endDate.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-            	// it's an ugly hack so that the spinner can increase day by day
-            	SpinnerDateModel sdm = new SpinnerDateModel((Date)endDate.getModel().getValue(),null,null,Calendar.DAY_OF_WEEK);
-            	endDate.setModel(sdm);
-            	
+                // it's an ugly hack so that the spinner can increase day by day
+                SpinnerDateModel sdm = new SpinnerDateModel((Date)endDate.getModel().getValue(),null,null,Calendar.DAY_OF_WEEK);
+                endDate.setModel(sdm);
+
                 if (ignoreEndChanged)
                     return;
                 ignoreEndChanged = true;
                 Date sd = (Date) startDate.getModel().getValue();
                 Date ed = (Date) endDate.getModel().getValue();				
-				if (ed.before(sd)) {
+                if (ed.before(sd)) {
                     endDate.getModel().setValue(ed);
                     ed = sd;
                 }
-				if ((endDateMax != null) && ed.after(endDateMax.getDate())) {
-					endDate.getModel().setValue(endDateMax.getDate());
+                if ((endDateMax != null) && ed.after(endDateMax.getDate())) {
+                    endDate.getModel().setValue(endDateMax.getDate());
                     ed = endDateMax.getDate();
-				}
+                }
                 if ((endDateMin != null) && ed.before(endDateMin.getDate())) {
                     endDate.getModel().setValue(endDateMin.getDate());
                     ed = endDateMin.getDate();
                 }
-				endCalFrame.cal.set(new CalendarDate(ed));
+                endCalFrame.cal.set(new CalendarDate(ed));
                 ignoreEndChanged = false;
             }
         });
@@ -342,7 +342,7 @@ public class TaskDialog extends JDialog {
         jPanel6.add(startDate, null);
         jPanel6.add(setStartDateB, null);
         jPanel2.add(jPanel1, null);
-		jPanel1.add(chkEndDate, null);
+        jPanel1.add(chkEndDate, null);
         jPanel1.add(jLabel2, null);
         jPanel1.add(endDate, null);
         jPanel1.add(setEndDateB, null);
@@ -380,46 +380,46 @@ public class TaskDialog extends JDialog {
         });
     }
 
-	public void setStartDate(CalendarDate d) {
-		this.startDate.getModel().setValue(d.getDate());
-	}
-	
-	public void setEndDate(CalendarDate d) {		
-		if (d != null) 
-			this.endDate.getModel().setValue(d.getDate());
-	}
-	
-	public void setStartDateLimit(CalendarDate min, CalendarDate max) {
-		this.startDateMin = min;
-		this.startDateMax = max;
-	}
-	
-	public void setEndDateLimit(CalendarDate min, CalendarDate max) {
-		this.endDateMin = min;
-		this.endDateMax = max;
-	}
-	
+    public void setStartDate(CalendarDate d) {
+        this.startDate.getModel().setValue(d.getDate());
+    }
+
+    public void setEndDate(CalendarDate d) {
+        if (d != null)
+            this.endDate.getModel().setValue(d.getDate());
+    }
+
+    public void setStartDateLimit(CalendarDate min, CalendarDate max) {
+        this.startDateMin = min;
+        this.startDateMax = max;
+    }
+
+    public void setEndDateLimit(CalendarDate min, CalendarDate max) {
+        this.endDateMin = min;
+        this.endDateMax = max;
+    }
+
     void okB_actionPerformed(ActionEvent e) {
-	CANCELLED = false;
+    CANCELLED = false;
         this.dispose();
     }
 
     void cancelB_actionPerformed(ActionEvent e) {
         this.dispose();
     }
-	
-	void chkEndDate_actionPerformed(ActionEvent e) {
-		endDate.setEnabled(chkEndDate.isSelected());
-		setEndDateB.setEnabled(chkEndDate.isSelected());
-		jLabel2.setEnabled(chkEndDate.isSelected());
-		if(chkEndDate.isSelected()) {
-			Date currentEndDate = (Date) endDate.getModel().getValue();
-			Date currentStartDate = (Date) startDate.getModel().getValue();
-			if(currentEndDate.getTime() < currentStartDate.getTime()) {
-				endDate.getModel().setValue(currentStartDate);
-			}
-		}
-	}
+
+    void chkEndDate_actionPerformed(ActionEvent e) {
+        endDate.setEnabled(chkEndDate.isSelected());
+        setEndDateB.setEnabled(chkEndDate.isSelected());
+        jLabel2.setEnabled(chkEndDate.isSelected());
+        if(chkEndDate.isSelected()) {
+            Date currentEndDate = (Date) endDate.getModel().getValue();
+            Date currentStartDate = (Date) startDate.getModel().getValue();
+            if(currentEndDate.getTime() < currentStartDate.getTime()) {
+                endDate.getModel().setValue(currentStartDate);
+            }
+        }
+    }
 
     void setStartDateB_actionPerformed(ActionEvent e) {
         startCalFrame.setLocation(setStartDateB.getLocation());
@@ -437,8 +437,8 @@ public class TaskDialog extends JDialog {
     }
     /*
     void setNotifB_actionPerformed(ActionEvent e) {
-    	((AppFrame)App.getFrame()).workPanel.dailyItemsPanel.eventsPanel.newEventB_actionPerformed(e, 
-			this.todoField.getText(), (Date)startDate.getModel().getValue(),(Date)endDate.getModel().getValue());
+        ((AppFrame)App.getFrame()).workPanel.dailyItemsPanel.eventsPanel.newEventB_actionPerformed(e,
+            this.todoField.getText(), (Date)startDate.getModel().getValue(),(Date)endDate.getModel().getValue());
     } */
 
 }

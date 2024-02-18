@@ -53,8 +53,8 @@ public class Util {
                 return Color.decode(colorVal.toLowerCase());
             }
             catch (Exception ex) {
-		    ex.printStackTrace();
-	    }
+            ex.printStackTrace();
+        }
         }
         else return defaultColor;
         return getColorForName(color, defaultColor);

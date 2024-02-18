@@ -39,7 +39,7 @@ public class NoteListImpl implements NoteList {
     }
 
     public NoteListImpl(Project prj) {
-    	
+
         //_root = new Element("noteslist", NS_JNNL);
         _root = new Element("noteslist");
         _doc = new Document(_root);
@@ -85,17 +85,17 @@ public class NoteListImpl implements NoteList {
                 Vector ds = m.getDays();
                 for (int di = 0; di < ds.size(); di++) {
                     Day d = (Day) ds.get(di);
-					Vector ns = d.getNotes();
-					for(int ni = 0; ni < ns.size(); ni++) {
-						NoteElement ne = (NoteElement) ns.get(ni);
-						Note n = new NoteImpl(ne.getElement(), _project);
-						if (n.isMarked()) v.add(n);
+                    Vector ns = d.getNotes();
+                    for(int ni = 0; ni < ns.size(); ni++) {
+                        NoteElement ne = (NoteElement) ns.get(ni);
+                        Note n = new NoteImpl(ne.getElement(), _project);
+                        if (n.isMarked()) v.add(n);
                 }
             }
         }
     }
-	        return v;
-	}
+            return v;
+    }
 
     public Collection getNotesForPeriod(CalendarDate startDate, CalendarDate endDate) {
         Vector v = new Vector();
@@ -130,23 +130,23 @@ public class NoteListImpl implements NoteList {
         return v;
     }
 
-	/**
-	 * returns the first note for a date.
-	 * @param date CalendarDate
-	 * @return Note
-	 */
-	 
+    /**
+     * returns the first note for a date.
+     * @param date CalendarDate
+     * @return Note
+     */
+
     public Note getNoteForDate(CalendarDate date) {
         Day d = getDay(date);
         if (d == null)
             return null;
-		Vector ns = d.getNotes();
-		if(!ns.isEmpty()) {
-			NoteElement n = (NoteElement) ns.get(0);
-			Note currentNote = new NoteImpl(n.getElement(), _project);
-			return currentNote; 
-		}
-		return null;
+        Vector ns = d.getNotes();
+        if(!ns.isEmpty()) {
+            NoteElement n = (NoteElement) ns.get(0);
+            Note currentNote = new NoteImpl(n.getElement(), _project);
+            return currentNote;
+        }
+        return null;
         //return new NoteImpl(d.getElement(), _project);
     }
 
@@ -160,7 +160,7 @@ public class NoteListImpl implements NoteList {
         Day d = m.getDay(date.getDay());
         if (d == null) 
             d = m.createDay(date.getDay());
-		NoteElement ne = d.createNote(Util.generateId());
+        NoteElement ne = d.createNote(Util.generateId());
         return new NoteImpl(ne.getElement(), _project);
     }
     
@@ -173,10 +173,10 @@ public class NoteListImpl implements NoteList {
         d.getElement().getParent().removeChild(d.getElement());             
     }
 */
-	 public void removeNote(CalendarDate date, String id) {
+     public void removeNote(CalendarDate date, String id) {
         Day d = getDay(date);
         if (d == null) return;
-		Vector ns = d.getNotes();
+        Vector ns = d.getNotes();
         // Changed to enhanced for from for loop for readability
          for (Object o : ns) {
              NoteElement n = (NoteElement) o;
@@ -185,11 +185,11 @@ public class NoteListImpl implements NoteList {
          }
 //		CurrentNote.set(null);
     }
-	
+
     public Note getActiveNote() {
         //return CurrentNote.get(); 
-    	return getNoteForDate(CurrentDate.get());
-    	// FIXED: Must return the first note for today [alexeya]
+        return getNoteForDate(CurrentDate.get());
+        // FIXED: Must return the first note for today [alexeya]
     }
 
     private Year getYear(int y) {
@@ -324,11 +324,11 @@ public class NoteListImpl implements NoteList {
 
     }
 
-	
-	/*
-	 * private class Day
-	 */
-	 
+
+    /*
+     * private class Day
+     */
+
     private class Day {
         Element dEl = null;
 
@@ -337,15 +337,15 @@ public class NoteListImpl implements NoteList {
             // Added to fix old '.notes' XML format 
             // Old-style XML is converted on the fly [alexeya]
             if (dEl.getAttribute("date") != null) {
-            	Attribute dAttr = dEl.getAttribute("date");
-            	Attribute tAttr = dEl.getAttribute("title");
-				Element nEl = new Element("note");
-				String date = dAttr.getValue().replace('/', '-');
-				nEl.addAttribute(new Attribute("refid", date));
-				nEl.addAttribute(new Attribute("title", tAttr.getValue()));
-				dEl.appendChild(nEl);
-            	dEl.removeAttribute(dAttr);            	
-				dEl.removeAttribute(tAttr);
+                Attribute dAttr = dEl.getAttribute("date");
+                Attribute tAttr = dEl.getAttribute("title");
+                Element nEl = new Element("note");
+                String date = dAttr.getValue().replace('/', '-');
+                nEl.addAttribute(new Attribute("refid", date));
+                nEl.addAttribute(new Attribute("title", tAttr.getValue()));
+                dEl.appendChild(nEl);
+                dEl.removeAttribute(dAttr);
+                dEl.removeAttribute(tAttr);
             }
         }
 
@@ -356,10 +356,10 @@ public class NoteListImpl implements NoteList {
         /*public Note getNote() {
             return new NoteImpl(dEl);
         }*/
-		
-		public NoteElement getNote(String d) {
+
+        public NoteElement getNote(String d) {
             if (dEl == null) 
-				return null;
+                return null;
             Elements ne = dEl.getChildElements("note");
             
             for (int i = 0; i < ne.size(); i++)
@@ -399,24 +399,24 @@ public class NoteListImpl implements NoteList {
             return dEl;
         }
     }
-	
-	
-	/*
-	 * private class Day
-	 */
-	 
-	private class NoteElement {
-		Element nEl;
-		
-		public NoteElement(Element el) {
-			nEl = el;
-		}
-		
-		public Element getElement() {
-			return nEl;
-		}
-	}
-	
+
+
+    /*
+     * private class Day
+     */
+
+    private class NoteElement {
+        Element nEl;
+
+        public NoteElement(Element el) {
+            nEl = el;
+        }
+
+        public Element getElement() {
+            return nEl;
+        }
+    }
+
     /**
      * @see main.java.memoranda.NoteList#getXMLContent()
      */

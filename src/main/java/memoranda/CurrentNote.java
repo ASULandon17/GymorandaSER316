@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class CurrentNote {
 
-	private static Note currentNote = null;
+    private static Note currentNote = null;
     private static Vector noteListeners = new Vector();
 
     public static Note get() {

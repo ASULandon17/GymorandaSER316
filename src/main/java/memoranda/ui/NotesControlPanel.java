@@ -48,12 +48,12 @@ public class NotesControlPanel extends JPanel {
     JMenuItem ppAddBkmrk = new JMenuItem();
     JMenuItem ppClearNote = new JMenuItem();
 //    JMenuItem ppInvertSort = new JMenuItem();
-	JCheckBoxMenuItem ppInvertSort = new JCheckBoxMenuItem();
+    JCheckBoxMenuItem ppInvertSort = new JCheckBoxMenuItem();
     JPopupMenu notesPPMenu = new JPopupMenu();
     JMenuItem ppOpenNote = new JMenuItem();
     JMenuItem ppRemoveBkmrk = new JMenuItem();
 
-	
+
     public NotesControlPanel() {
         try {
             jbInit();
@@ -134,10 +134,10 @@ public class NotesControlPanel extends JPanel {
             }
         });
         ppInvertSort.setEnabled(true);
-		boolean descSort =
-			(Configuration.get("NOTES_SORT_ORDER").equals("true"));
-		ppInvertSort.setSelected(descSort);
-		
+        boolean descSort =
+            (Configuration.get("NOTES_SORT_ORDER").equals("true"));
+        ppInvertSort.setSelected(descSort);
+
         ppRemoveBkmrk.setFont(new java.awt.Font("Dialog", 1, 11));
         ppRemoveBkmrk.setText(Local.getString("Remove bookmark"));
         ppRemoveBkmrk.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ public class NotesControlPanel extends JPanel {
         searchPanel.notesList.addMouseListener(lst);
         ListSelectionListener lsl = new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
-		ppSetEnabled();
+        ppSetEnabled();
             }
         };
         notesListPanel.notesList.getSelectionModel().addListSelectionListener(lsl);
@@ -178,20 +178,20 @@ public class NotesControlPanel extends JPanel {
         notesPPMenu.addSeparator();
         notesPPMenu.add(ppClearNote);
 
-		// remove notes using the DEL key
-		KeyListener delNotes = new KeyListener() {
-			public void keyPressed(KeyEvent e){
-				if(e.getKeyCode()==KeyEvent.VK_DELETE) {
-					ppClearNote_actionPerformed(null);
-				}
-			}
-			public void	keyReleased(KeyEvent e){}
-			public void keyTyped(KeyEvent e){} 
-		};
-		
-		notesListPanel.notesList.addKeyListener(delNotes);
-		bookmarksListPanel.notesList.addKeyListener(delNotes);
-		searchPanel.notesList.addKeyListener(delNotes);
+        // remove notes using the DEL key
+        KeyListener delNotes = new KeyListener() {
+            public void keyPressed(KeyEvent e){
+                if(e.getKeyCode()==KeyEvent.VK_DELETE) {
+                    ppClearNote_actionPerformed(null);
+                }
+            }
+            public void	keyReleased(KeyEvent e){}
+            public void keyTyped(KeyEvent e){}
+        };
+
+        notesListPanel.notesList.addKeyListener(delNotes);
+        bookmarksListPanel.notesList.addKeyListener(delNotes);
+        searchPanel.notesList.addKeyListener(delNotes);
     }
 
     public void refresh() {
@@ -200,7 +200,7 @@ public class NotesControlPanel extends JPanel {
     }
 
     void tabbedPane_stateChanged(ChangeEvent e) {
-	if(notesList!=null) notesList.clearSelection();
+    if(notesList!=null) notesList.clearSelection();
         switch (tabbedPane.getSelectedIndex()) {
             case 0 :
                 notesList = notesListPanel.notesList;
@@ -213,8 +213,8 @@ public class NotesControlPanel extends JPanel {
                 break;
         }
 
-	ppAddBkmrk.setEnabled(false);
-	ppRemoveBkmrk.setEnabled(false);
+    ppAddBkmrk.setEnabled(false);
+    ppRemoveBkmrk.setEnabled(false);
     }
 
     class PopupListener extends MouseAdapter {
@@ -242,7 +242,7 @@ public class NotesControlPanel extends JPanel {
     void setActiveNote() {
         Note note = (Note) notesList.getNote(notesList.getSelectedIndex());
         CurrentDate.set(note.getDate());
-		CurrentNote.set(note,true);
+        CurrentNote.set(note,true);
     }
    
 
@@ -260,7 +260,7 @@ public class NotesControlPanel extends JPanel {
         }
         notesList.updateUI();
         bookmarksListPanel.notesList.update();
-	ppSetEnabled();
+    ppSetEnabled();
     }
 
     void ppClearNote_actionPerformed(ActionEvent e) {
@@ -293,31 +293,31 @@ public class NotesControlPanel extends JPanel {
 
         for (int i = 0; i < notesList.getSelectedIndices().length; i++) {
             Note note = (Note) notesList.getNote(notesList.getSelectedIndices()[i]);
-			if(CurrentProject.getNoteList().getActiveNote() != null && note.getDate().equals(CurrentProject.getNoteList().getActiveNote().getDate())){ 
-				/*Debug*/ System.out.println("[DEBUG] Current note removed");
-				CurrentNote.set(null,true);
-			}
-			CurrentProject.getNoteList().removeNote(note.getDate(), note.getId());
-			CurrentStorage.get().removeNote(note);
+            if(CurrentProject.getNoteList().getActiveNote() != null && note.getDate().equals(CurrentProject.getNoteList().getActiveNote().getDate())){
+                /*Debug*/ System.out.println("[DEBUG] Current note removed");
+                CurrentNote.set(null,true);
+            }
+            CurrentProject.getNoteList().removeNote(note.getDate(), note.getId());
+            CurrentStorage.get().removeNote(note);
         }
         bookmarksListPanel.notesList.update();
-		searchPanel.notesList.update();
-		notesListPanel.notesList.update();
+        searchPanel.notesList.update();
+        notesListPanel.notesList.update();
         notesList.updateUI();
-		notesList.clearSelection();
+        notesList.clearSelection();
 //		notesList.requestFocus();*/
 //		((AppFrame)App.getFrame()).workPanel.dailyItemsPanel.editorPanel.editor.requestFocus();
     }
-	
+
     void ppOpenNote_actionPerformed(ActionEvent e) {
         setActiveNote();
     }
 
     void ppInvertSort_actionPerformed(ActionEvent e) {
-		Configuration.put(
-			"NOTES_SORT_ORDER",
+        Configuration.put(
+            "NOTES_SORT_ORDER",
                 ppInvertSort.isSelected());
-		Configuration.saveConfig();
+        Configuration.saveConfig();
         notesList.invertSortOrder();
         notesList.update();
     }
@@ -328,19 +328,18 @@ public class NotesControlPanel extends JPanel {
             note.setMark(false);
         }
         bookmarksListPanel.notesList.update();
-	ppSetEnabled();
+    ppSetEnabled();
         notesList.updateUI();
-	notesList.clearSelection();
-	((AppFrame)App.getFrame()).workPanel.dailyItemsPanel.editorPanel.editor.requestFocus();	
+    notesList.clearSelection();
     }
 
     void ppSetEnabled() {
     boolean enbl = (notesList.getModel().getSize() > 0) && (notesList.getSelectedIndex() > -1);
 
     ppRemoveBkmrk.setEnabled(enbl && (((Note) notesList.getNote(notesList.getSelectedIndex())).isMarked())
-    				|| notesList.getSelectedIndices().length > 1);
+                    || notesList.getSelectedIndices().length > 1);
     ppAddBkmrk.setEnabled(enbl && !(((Note) notesList.getNote(notesList.getSelectedIndex())).isMarked())
-    				|| notesList.getSelectedIndices().length > 1);
+                    || notesList.getSelectedIndices().length > 1);
     ppOpenNote.setEnabled(enbl);
     ppClearNote.setEnabled(enbl);
     }
