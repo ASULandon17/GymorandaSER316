@@ -46,9 +46,11 @@ I would also advise you to already fill out the Contributions section (End of sp
 
 | Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
 |---|---|---|---|--|--|
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
-|   |   |   |   |  |  |
+|14 FEB 2024|All members attended|Everyone seemed excited to start sprint 3! Eager to get tasks done.|N/A Start of sprint|Master and Dev pass|  |
+|16 FEB 2024|All members attended|Individual updates as well as noting being ahead.|Ahead|Master and Dev pass|  |
+|19 FEB 2024|All members attended|Individual updates.  Most tasks have been picked up|Ahead|Master and dev pass|  |
+|21 FEB 2024|All members attended|Individual updates.  Minor progress as most are focusing on individual assignment/other classes.|Ahead|Master and Dev pass|  |
+|23 FEB 2024|All members attended|Individual updates.  Acknowledging end of sprint|Ahead|Master and dev pass|  |
 
 
 ## 3: After the Sprint
