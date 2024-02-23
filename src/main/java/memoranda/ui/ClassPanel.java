@@ -1,18 +1,19 @@
 package main.java.memoranda.ui;
 
+import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import main.java.memoranda.Course;
 import main.java.memoranda.PersistentClass;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 import main.java.memoranda.ui.gymoranda.LookAndFeel;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.util.ArrayList;
 
 
 public class ClassPanel extends JPanel {
@@ -30,21 +31,24 @@ public class ClassPanel extends JPanel {
     JButton refreshCardsBtn = new JButton();
     JButton newClassBtn = new JButton();
 
+    /**
+     * Constructor for ClassPanel.
+     */
     public ClassPanel() {
         try {
             jbInit();
             initCardsPanel();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             new ExceptionDialog(ex);
         }
     }
+    
     //This is used in NewclassPopup so that on adding a new class, the UI refreshes.
-    public void refreshCards(){
+    public void refreshCards() {
         initCardsPanel();
     }
 
-    private void classButtonHelper(JButton button){
+    private void classButtonHelper(JButton button) {
         LookAndFeel.gymButtonHelper(button);
 
     }
@@ -117,7 +121,7 @@ public class ClassPanel extends JPanel {
         this.add(classesToolBar, BorderLayout.NORTH);
 
 
-}
+    }
 
 
     void initCardsPanel() {
@@ -135,7 +139,8 @@ public class ClassPanel extends JPanel {
             trainerInfoPanel.setLayout(new GridBagLayout());
             trainerInfoPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
             JLabel trainerInfoLabel = new JLabel("CLASSES YOU'RE TEACHING ARE OUTLINED IN RED");
-            trainerInfoLabel.setFont(new Font(trainerInfoLabel.getFont().toString(), Font.PLAIN, 20));
+            trainerInfoLabel.setFont(new 
+                    Font(trainerInfoLabel.getFont().toString(), Font.PLAIN, 20));
             trainerInfoLabel.setForeground(Color.red);
             trainerInfoPanel.add(trainerInfoLabel);
             this.add(trainerInfoPanel, BorderLayout.SOUTH);
@@ -150,12 +155,13 @@ public class ClassPanel extends JPanel {
                 && course.getInstructorName().equals(User.getUsername())) {
                 Border roundedLineBorder = new LineBorder(Color.RED, 2, true);
                 Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
-                CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
+                CompoundBorder compoundBorder = 
+                        new CompoundBorder(roundedLineBorder, paddingBorder);
                 card.setBorder(compoundBorder);
             } 
             
             // decide if course goes onto beginner or advanced tab
-            if (course.isCourseAdvanced()){
+            if (course.isCourseAdvanced()) {
 
                 advancedCardsPanel.add(card);
             } else {
@@ -202,7 +208,7 @@ public class ClassPanel extends JPanel {
     }
 
     /**
-     * Helper to build the button panel for owner management actions
+     * Helper to build the button panel for owner management actions.
      * @param course course object
      * @return button panel with owner options
      */
@@ -215,8 +221,9 @@ public class ClassPanel extends JPanel {
 
         JButton manageInstructorButton = new JButton("Manage Instructor");
         manageInstructorButton.addActionListener(e -> {
-            // If manage instructor is clicked, open up instructor manager window and pull in course object
-            ManageInstructorPopup manageInstructorPopup = new ManageInstructorPopup(ClassPanel.this, course);
+            //If manage instructor is clicked, open instructor manager window and pull in course obj
+            ManageInstructorPopup manageInstructorPopup = 
+                    new ManageInstructorPopup(ClassPanel.this, course);
             manageInstructorPopup.setVisible(true);
 
         });
@@ -245,7 +252,8 @@ public class ClassPanel extends JPanel {
             instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
         }
 
-        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
+        JLabel classSizeLabel = new JLabel("Size: " 
+                + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
 
         JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
         String isPublic = "Private";
