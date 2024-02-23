@@ -7,26 +7,24 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Vector;
-
-import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
- * TrainerList
- * contains methods that get either a trainer or all trainers out of ones that are signed up in the system
+ * Contains methods that get either a trainer or all trainers out of ones that are signed up in the
+ * system.
  */
 public class TrainerList {
     /**
-     * TrainerList
-     * constructor for creating a new TrainerList
+     * Constructor for creating a new TrainerList.
      */
     public TrainerList() {
     }
 
     /**
-     * getTrainers
-     * searches for currently signed up trainers and adds them all to a list to be returned.
+     * getTrainers searches for currently signed up trainers and adds them all to a list to be
+     * returned.
      *
      * @return a vector filled with the currently signed up trainers
      */
@@ -38,14 +36,17 @@ public class TrainerList {
                 return null;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            String content = new String(Files.readAllBytes(Paths.get("users.json")),
+                    StandardCharsets.UTF_8);
 
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
                 if (user.getString("userType").equals("TRAINER")) {
-                    trainers.add(new Trainer(user.getString("username"), BeltValue.valueOf(user.getString("beltRank")),
-                            BeltValue.valueOf(user.getString("trainingRank")), user.getInt("startAvailability"),
+                    trainers.add(new Trainer(user.getString("username"),
+                            BeltValue.valueOf(user.getString("beltRank")),
+                            BeltValue.valueOf(user.getString("trainingRank")),
+                            user.getInt("startAvailability"),
                             user.getInt("endAvailability")));
                 }
             }
@@ -57,8 +58,7 @@ public class TrainerList {
     }
 
     /**
-     * getTrainer
-     * searches for a trainer given their name
+     * Searches for a trainer given their name.
      *
      * @param name the name of the specified trainer
      * @return returns a trainer's information if found
@@ -71,13 +71,17 @@ public class TrainerList {
                 return null;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            String content = new String(Files.readAllBytes(Paths.get("users.json")),
+                    StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
-                if (user.getString("username").equals(name) && user.getString("userType").equals("TRAINER")) {
-                    trainer = new Trainer(user.getString("username"), BeltValue.valueOf(user.getString("beltRank")),
-                            BeltValue.valueOf(user.getString("trainingRank")), user.getInt("startAvailability"),
+                if (user.getString("username").equals(name)
+                        && user.getString("userType").equals("TRAINER")) {
+                    trainer = new Trainer(user.getString("username"),
+                            BeltValue.valueOf(user.getString("beltRank")),
+                            BeltValue.valueOf(user.getString("trainingRank")),
+                            user.getInt("startAvailability"),
                             user.getInt("endAvailability"));
                 }
             }
@@ -91,19 +95,21 @@ public class TrainerList {
 
     /**
      * Method to update the trainers start availability.
-     * @param name
-     * @param startAvailability
-     * @return
+     *
+     * @param name              trainer name
+     * @param startAvailability trainer's start availability
+     * @return success of update
      */
     public boolean setTrainerStartAvailability(String name, int startAvailability) {
         return updateTrainerAvailability(name, startAvailability, true);
     }
 
     /**
-     * Update the trainers end availability
-     * @param name
-     * @param endAvailability
-     * @return
+     * Update the trainers end availability.
+     *
+     * @param name            trainer name
+     * @param endAvailability end of trainer's availability window.
+     * @return success of update
      */
     public boolean setTrainerEndAvailability(String name, int endAvailability) {
         return updateTrainerAvailability(name, endAvailability, false);
@@ -111,10 +117,11 @@ public class TrainerList {
 
     /**
      * Updates the trainer by name with their availability.
-     * @param name
-     * @param availability
-     * @param isStart
-     * @return
+     *
+     * @param name         trainer name
+     * @param availability hours available
+     * @param isStart      decides whether to update start or end availability
+     * @return success of update
      */
     private boolean updateTrainerAvailability(String name, int availability, boolean isStart) {
         try {
@@ -123,19 +130,23 @@ public class TrainerList {
                 return false;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            String content = new String(Files.readAllBytes(Paths.get("users.json")),
+                    StandardCharsets.UTF_8);
             JSONArray usersArray = new JSONArray(content);
 
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
-                if (user.getString("username").equals(name) && user.getString("userType").equals("TRAINER")) {
+                if (user.getString("username").equals(name)
+                        && user.getString("userType").equals("TRAINER")) {
                     if (isStart) {
                         user.put("startAvailability", availability);
                     } else {
                         user.put("endAvailability", availability);
                     }
                     // Write the updated JSON array back to the file
-                    Files.write(Paths.get("users.json"), usersArray.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE);
+                    Files.write(Paths.get("users.json"),
+                            usersArray.toString().getBytes(StandardCharsets.UTF_8),
+                            StandardOpenOption.WRITE);
                     return true;
                 }
             }
@@ -153,7 +164,7 @@ public class TrainerList {
      * @param time for the class.
      * @return vector of trainers that are available during that time.
      */
-    public Vector<Trainer> getTrainersAvailableAtTime(int time){
+    public Vector<Trainer> getTrainersAvailableAtTime(int time) {
         Vector<Trainer> availableTrainers = new Vector<>();
         try {
             File file = new File("users.json");
@@ -161,7 +172,8 @@ public class TrainerList {
                 return availableTrainers;
             }
 
-            String content = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            String content = new String(Files.readAllBytes(Paths.get("users.json")),
+                    StandardCharsets.UTF_8);
 
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {

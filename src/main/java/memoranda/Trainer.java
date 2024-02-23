@@ -1,8 +1,8 @@
 package main.java.memoranda;
 
 /**
- * Trainer class to construct a trainer object
- * Trainer's have a name, beltRank and a trainingRank
+ * Trainer class to construct a trainer object.
+ * Trainer's have a name, beltRank and a trainingRank.
  */
 public class Trainer {
     private final String trainerName;
@@ -14,7 +14,7 @@ public class Trainer {
     private int endAvailability;
 
     /**
-     * Generic constructor for the Trainer class
+     * Generic constructor for the Trainer class.
      */
     public Trainer() {
         this.trainerName = "Unknown";
@@ -25,7 +25,8 @@ public class Trainer {
     }
 
     /**
-     * Constructor for the Trainer class
+     * Constructor for the Trainer class.
+     *
      * @param trainerName Trainer's name
      * @param beltRank Trainer's belt rank
      * @param trainingRank Trainer's training level
@@ -68,14 +69,14 @@ public class Trainer {
     }
 
     /**
-     * Increases the Trainer's belt rank
+     * Increases the Trainer's belt rank.
      */
     public void increaseBeltRank() {
         this.beltRank = beltRank.increaseBelt();
     }
 
     /**
-     * Increases the Trainer's training level
+     * Increases the Trainer's training level.
      */
     public void increaseTrainingRank() {
         this.trainingRank = trainingRank.increaseBelt();
