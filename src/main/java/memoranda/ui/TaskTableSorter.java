@@ -2,13 +2,9 @@ package main.java.memoranda.ui;
 
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.tree.*;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.*;
-import main.java.memoranda.util.*;
-
-import javax.swing.event.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -63,7 +59,7 @@ public class TaskTableSorter extends TaskTableModel{
         }
         else{
             Task t = (Task) parent;
-            if(activeOnly()) c = CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get());
+            if(activeOnly()) c = CurrentProject.getTaskList().getActiveSubTasks(t.getId(), CurrentDate.get());
             else c = t.getSubTasks();
         }
 
