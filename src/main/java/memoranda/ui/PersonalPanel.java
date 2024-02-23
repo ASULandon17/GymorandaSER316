@@ -1,20 +1,38 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.*;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
+import main.java.memoranda.Trainer;
+import main.java.memoranda.TrainerList;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
 
 
 public class PersonalPanel extends JPanel {
-    private String username;
+    private final String username;
 
 
     public PersonalPanel() {
@@ -31,11 +49,15 @@ public class PersonalPanel extends JPanel {
 
         // Left panel configuration
         JPanel leftPanel = new JPanel(new BorderLayout());
-        leftPanel.setPreferredSize(new Dimension(400, 200)); // Example size, adjust as needed
-        leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1)); // Border around the left panel
+        // Example size, adjust as needed
+        leftPanel.setPreferredSize(new Dimension(400, 200));
+        // Border around the left panel
+        leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         JPanel labelPanel = new JPanel();
-        labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS)); // Vertical layout for labels
-        labelPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Optional padding
+        // Vertical layout for labels
+        labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS));
+        // Optional padding
+        labelPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Title label
         JLabel titleLabel = new JLabel("Thanks for using Gymoranda, " + username);
@@ -44,12 +66,14 @@ public class PersonalPanel extends JPanel {
 
         // Upcoming classes label
         JLabel upcomingLabel = new JLabel("My upcoming classes:");
-        upcomingLabel.setFont(new Font("Arial", Font.BOLD, 16)); // Set font, adjust as needed
+        // Set font, adjust as needed
+        upcomingLabel.setFont(new Font("Arial", Font.BOLD, 16));
         upcomingLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center align in BoxLayout
 
         // Add labels to the label panel
         labelPanel.add(titleLabel);
-        labelPanel.add(Box.createRigidArea(new Dimension(0, 15))); // Spacer between labels
+        // Spacer between labels
+        labelPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         labelPanel.add(upcomingLabel);
 
         // Add the label panel to the top of the left panel
@@ -58,8 +82,10 @@ public class PersonalPanel extends JPanel {
         initializeLeftPanel(leftPanel);
         // Right panel configuration
         JPanel rightPanel = new JPanel();
-        rightPanel.setPreferredSize(new Dimension(200, 200)); // Example size, adjust as needed
-        rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1)); // Border around the right panel
+        // Example size, adjust as needed
+        rightPanel.setPreferredSize(new Dimension(200, 200));
+        // Border around the right panel
+        rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         initializeRightPanel(rightPanel);
         // Add left panel to the main panel
         gbc.gridx = 0;
@@ -84,7 +110,9 @@ public class PersonalPanel extends JPanel {
 
     private void initializeRightPanel(JPanel rightPanel) {
         rightPanel.setLayout(new FlowLayout());
-        rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding around components
+        // Padding around components
+        rightPanel.setBorder(BorderFactory
+                .createEmptyBorder(10, 10, 10, 10));
 
         // Fixed width for text fields
         int textFieldWidth = 250;
@@ -96,18 +124,21 @@ public class PersonalPanel extends JPanel {
 
         JLabel newPasswordLabel = new JLabel("New Password:");
         JTextField newPasswordTextField = new JTextField();
-        newPasswordTextField.setMaximumSize(new Dimension(textFieldWidth, newPasswordTextField.getPreferredSize().height + 5));
+        newPasswordTextField.setMaximumSize(new Dimension(textFieldWidth,
+                newPasswordTextField.getPreferredSize().height + 5));
 
 
         JLabel confirmNewPasswordLabel = new JLabel("Confirm New Password:");
         JTextField confirmNewPasswordTextField = new JTextField();
-        confirmNewPasswordTextField.setMaximumSize(new Dimension(textFieldWidth, confirmNewPasswordTextField.getPreferredSize().height + 5));
+        confirmNewPasswordTextField.setMaximumSize(new Dimension(textFieldWidth,
+                confirmNewPasswordTextField.getPreferredSize().height + 5));
 
         JButton changePasswordButton = new JButton("Change Password");
 
 
         JPanel changePassword = new JPanel(new GridLayout(0, 1));
-        Border padding = BorderFactory.createEmptyBorder(10, 30, 10, 30);
+        Border padding = BorderFactory
+                .createEmptyBorder(10, 30, 10, 30);
         changePassword.setBorder(padding);
 
         changePassword.add(usernameLabel);
@@ -121,9 +152,10 @@ public class PersonalPanel extends JPanel {
 
         rightPanel.add(changePassword);
         JPanel trainerSchedule;
-        if(User.getUserType() == UserType.TRAINER){
+        if (User.getUserType() == UserType.TRAINER) {
             trainerSchedule = new JPanel(new GridLayout(0, 1));
-            Border trainerPad = BorderFactory.createEmptyBorder(10, 30, 10, 30);
+            Border trainerPad = BorderFactory
+                    .createEmptyBorder(10, 30, 10, 30);
             trainerSchedule.setBorder(trainerPad);
             TrainerList trainer = new TrainerList();
             Trainer t = trainer.getTrainer(username);
@@ -133,7 +165,8 @@ public class PersonalPanel extends JPanel {
 
                 public TimeItem(int hour) {
                     this.value = hour;
-                    this.display = String.format("%d:00 %s", hour <= 12 ? hour : hour - 12, hour < 12 ? "AM" : "PM");
+                    this.display = String.format("%d:00 %s", hour <= 12 ? hour
+                            : hour - 12, hour < 12 ? "AM" : "PM");
                 }
 
                 @Override
@@ -177,14 +210,14 @@ public class PersonalPanel extends JPanel {
             scheduleStartComboBox.addActionListener(e -> {
                 TimeItem selectedItem = (TimeItem) scheduleStartComboBox.getSelectedItem();
                 if (selectedItem != null) {
-                    trainer.setTrainerStartAvailability(username,selectedItem.getValue());
+                    trainer.setTrainerStartAvailability(username, selectedItem.getValue());
                 }
             });
 
             scheduleEndComboBox.addActionListener(e -> {
                 TimeItem selectedEnd = (TimeItem) scheduleEndComboBox.getSelectedItem();
                 if (selectedEnd != null) {
-                    trainer.setTrainerEndAvailability(username,selectedEnd.getValue());
+                    trainer.setTrainerEndAvailability(username, selectedEnd.getValue());
                 }
             });
             trainerSchedule.add(new JLabel("Schedule Start:"));
@@ -201,27 +234,30 @@ public class PersonalPanel extends JPanel {
             String newPassword = newPasswordTextField.getText();
             String confirmNewPassword = confirmNewPasswordTextField.getText();
 
-            if(newPassword.equals(confirmNewPassword)){
+            if (newPassword.equals(confirmNewPassword)) {
                 boolean didChange = User.changePassword(newPassword);
-                if(!didChange){
-                    JOptionPane.showMessageDialog(this, "Error changing password");
-                } else{
-                    JOptionPane.showMessageDialog(this, "Changed password successfully.");
+                if (!didChange) {
+                    JOptionPane.showMessageDialog(this,
+                            "Error changing password");
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Changed password successfully.");
                 }
-            } else{
-                JOptionPane.showMessageDialog(this, "Passwords do not match.");
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Passwords do not match.");
             }
         });
     }
 
-    private void initializeLeftPanel(JPanel leftPanel){
+    private void initializeLeftPanel(JPanel leftPanel) {
         ArrayList<Course> nextEnrolled = PersistentClass.getNext5EnrolledClasses(username);
-        if(nextEnrolled == null){
+        if (nextEnrolled == null) {
             return;
         }
         JPanel cardsPanel = new JPanel();
         cardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        for (Course course: nextEnrolled) {
+        for (Course course : nextEnrolled) {
             JPanel card = createCourseCard(course);
             cardsPanel.add(card);
         }
@@ -255,7 +291,8 @@ public class PersonalPanel extends JPanel {
             instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());
         }
 
-        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/" + course.getMaxClassSize());
+        JLabel classSizeLabel = new JLabel("Size: " + course.getCurrentClassSize() + "/"
+                + course.getMaxClassSize());
 
         JLabel classLength = new JLabel("Length:" + course.getClassLength() + " hours.");
         String isPublic = "Private";
