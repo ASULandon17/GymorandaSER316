@@ -1,23 +1,28 @@
 package main.java.memoranda.ui;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import main.java.memoranda.Course;
-
-import javax.swing.*;
 
 /**
  * UI for Owner to manage the instructor assigned to a course.
  */
 public class ManageInstructorPopup extends JFrame {
 
-    private ClassPanel cpRef; // stores reference to parent class panel
-
+    /**
+     * Constructor for the manage instructor UI.
+     */
     public ManageInstructorPopup(ClassPanel cpRef, Course course) {
         super("Manage Instructor");
-        this.cpRef = cpRef;
+        // stores reference to parent class panel
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        initUI(course);
+        initUserInterface(course);
 
         setLocationRelativeTo(null); // centers the frame
     }
@@ -25,9 +30,10 @@ public class ManageInstructorPopup extends JFrame {
 
     /**
      * Builds UI for Manage Instructor Popup Window.
+     *
      * @param course course object to reference course data
      */
-    private void initUI(Course course) {
+    private void initUserInterface(Course course) {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -37,8 +43,10 @@ public class ManageInstructorPopup extends JFrame {
 
         JLabel currentInstructorLabel = new JLabel();
         currentInstructorLabel.setText("Current Instructor: ");
-        JLabel instructorLabel = new JLabel(course.getInstructorName()); // will just be empty if there's not an instructor
 
+        // will just be empty if there's not an instructor
+        JLabel instructorLabel = new JLabel(course.getInstructorName());
+        instructorPanel.add(instructorLabel);
 
         // Set button text based on if course has an instructor
         JButton instructorButton = new JButton();
@@ -49,7 +57,6 @@ public class ManageInstructorPopup extends JFrame {
         }
 
         instructorButton.addActionListener(e -> {
-            // Do things - Sprint 3
             //todo:
             // Open up UI that displays currently available instructors
             // Owner can select one
@@ -57,7 +64,7 @@ public class ManageInstructorPopup extends JFrame {
         });
 
         instructorPanel.add(currentInstructorLabel);
-        instructorPanel.add(instructorLabel);
+
         instructorPanel.add(instructorButton);
 
         mainPanel.add(instructorPanel);

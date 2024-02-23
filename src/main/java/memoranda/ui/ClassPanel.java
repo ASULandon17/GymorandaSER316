@@ -77,7 +77,7 @@ public class ClassPanel extends JPanel {
 
         newClassBtn.addActionListener(e -> {
             //Pass the classpanel so that we can refresh the UI on adding a new class
-            NewclassPopup popup = new NewclassPopup(ClassPanel.this);
+            NewClassPopup popup = new NewClassPopup(ClassPanel.this);
             popup.setVisible(true);
 
         });
