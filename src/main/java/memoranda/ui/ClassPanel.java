@@ -25,6 +25,7 @@ public class ClassPanel extends JPanel {
     JScrollPane advancedClassesScrollPane = new JScrollPane();
     JPanel beginnerCardsPanel = new JPanel();
     JPanel advancedCardsPanel = new JPanel();
+    JPanel trainerInfoPanel = new JPanel();
 
     JButton refreshCardsBtn = new JButton();
     JButton newClassBtn = new JButton();
@@ -127,11 +128,32 @@ public class ClassPanel extends JPanel {
 
         beginnerCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         advancedCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        
+        
+        //message for trainers telling them their classes are outlined in red
+        if (User.getUserType() == UserType.TRAINER) {
+            trainerInfoPanel.setLayout(new GridBagLayout());
+            trainerInfoPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+            JLabel trainerInfoLabel = new JLabel("CLASSES YOU'RE TEACHING ARE OUTLINED IN RED");
+            trainerInfoLabel.setFont(new Font(trainerInfoLabel.getFont().toString(), Font.PLAIN, 20));
+            trainerInfoLabel.setForeground(Color.red);
+            trainerInfoPanel.add(trainerInfoLabel);
+            this.add(trainerInfoPanel, BorderLayout.SOUTH);
+        }
 
         for (Course course : courses) {
 
             JPanel card = createCourseCard(course);
-
+            
+            //create conditional to outline cards in red if logged in trainer is teaching course
+            if (User.getUserType() == UserType.TRAINER
+                && course.getInstructorName().equals(User.getUsername())) {
+                Border roundedLineBorder = new LineBorder(Color.RED, 2, true);
+                Border paddingBorder = new EmptyBorder(10, 10, 10, 10);
+                CompoundBorder compoundBorder = new CompoundBorder(roundedLineBorder, paddingBorder);
+                card.setBorder(compoundBorder);
+            } 
+            
             // decide if course goes onto beginner or advanced tab
             if (course.isCourseAdvanced()){
 
