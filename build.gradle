@@ -56,8 +56,7 @@ apply plugin: 'checkstyle'
 tasks.withType(Checkstyle) {
  
   reports {
-    html.enabled = true
-    xml.enabled = false
+
   }
     include '**/*.java'
  }
