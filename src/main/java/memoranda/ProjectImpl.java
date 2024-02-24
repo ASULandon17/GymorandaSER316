@@ -162,11 +162,11 @@ public class ProjectImpl implements Project {
         if (desc == null) {
             desc = new Element("description");
             desc.appendChild(s);
-            _root.appendChild(desc);    	
+            _root.appendChild(desc);
         }
         else {
             desc.removeChildren();
-            desc.appendChild(s);    	
+            desc.appendChild(s);
         }
     }
         

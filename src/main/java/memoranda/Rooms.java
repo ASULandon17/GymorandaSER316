@@ -1,20 +1,19 @@
 package main.java.memoranda;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Rooms class that stores a list of the current available rooms.
  */
 public class Rooms {
-    private static List<Room> rooms = new ArrayList<>();
+    private static final List<Room> rooms = new ArrayList<>();
 
     static {
         loadRoomsFromFile();
@@ -29,7 +28,7 @@ public class Rooms {
     }
 
     /**
-     * Clears the Rooms.json file
+     * Clears the Rooms.json file.
      */
     private static void clearRoomsFile() {
         try (FileWriter file = new FileWriter("Rooms.json")) {
@@ -40,40 +39,42 @@ public class Rooms {
     }
 
     /**
-     * Add a room with a class in it
+     * Add a room with a class in it.
      *
-     * @param hasClass
-     * @param roomName
-     * @param classId
+     * @param hasClass does the room have a class in it
+     * @param roomName name of the room
+     * @param classId unique class id
      */
     public static void addRoom(boolean hasClass, String roomName, int classId) {
         if (getRoomByName(roomName) == null) { // Check if the room name already exists
             rooms.add(new Room(hasClass, roomName, classId));
             saveRoomsToFile();
         } else {
-            System.out.println("Room already exists."); //probably want to change this down the line when we implement the UI.
+            //probably want to change this down the line when we implement the UI.
+            System.out.println("Room already exists.");
         }
     }
 
     /**
-     * Add an empty room, by roomName
+     * Add an empty room by roomName.
      *
-     * @param roomName
+     * @param roomName name of the room
      */
     public static void addRoom(String roomName) {
         if (getRoomByName(roomName) == null) { // Check if the room name already exists
             rooms.add(new Room(roomName));
             saveRoomsToFile();
         } else {
-            System.out.println("Room already exists."); //probably want to change this down the line when we implement the UI.
+            //probably want to change this down the line when we implement the UI.
+            System.out.println("Room already exists.");
         }
     }
 
     /**
-     * Adds classId, and sets hasClass to true based on roomName and classId
+     * Adds classId, and sets hasClass to true based on roomName and classId.
      *
-     * @param roomName
-     * @param classId
+     * @param roomName name of the room
+     * @param classId unique class id
      */
     public static void addClassToRoom(String roomName, int classId) {
         for (Room room : rooms) {
@@ -89,8 +90,8 @@ public class Rooms {
     /**
      * Gets back a single room when searching for it by roomName.
      *
-     * @param roomName
-     * @return
+     * @param roomName name of the room
+     * @return Room object
      */
     public static Room getRoomByName(String roomName) {
         for (Room room : rooms) {
@@ -161,7 +162,7 @@ public class Rooms {
     /**
      * Returns the list of rooms.
      *
-     * @return
+     * @return list of all rooms
      */
     public static List<Room> getRooms() {
         return new ArrayList<>(rooms); // Return a copy of the rooms list

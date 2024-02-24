@@ -4,8 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * This class provides course objects that encapsulate
- * the classes.json data to increase interoperability.
+ * This class provides course objects that encapsulate the classes.json data to increase
+ * interoperability.
  */
 public class Course {
 
@@ -23,10 +23,11 @@ public class Course {
     private boolean isPublic;
     private final JSONArray roster;
 
-    private boolean isAdvanced;
+    private final boolean isAdvanced;
 
     /**
      * Create  course from a JSON object.
+     *
      * @param courseJson entry from classes.json
      */
     public Course(JSONObject courseJson) {
@@ -59,7 +60,7 @@ public class Course {
      * @param month         month of date class is scheduled
      * @param day           day of date class is scheduled
      * @param hour          hour of date class is scheduled
-     * @param isAdvanced
+     * @param isAdvanced    flags course as advanced or basic
      */
     public Course(String className, int classLength,
                   int maxClassSize, int classId, boolean classIsPublic,
@@ -77,7 +78,7 @@ public class Course {
         this.day = day;
         this.hour = hour;
         this.isAdvanced = isAdvanced;
-        
+
         this.roster = new JSONArray(); // no students yet
     }
 
@@ -94,7 +95,7 @@ public class Course {
      * @param month          month of date class is scheduled
      * @param day            day of date class is scheduled
      * @param hour           hour of date class is scheduled
-     * @param isAdvanced     is course advanced
+     * @param isAdvanced     flags course as advanced or basic
      */
     public Course(String className, int classLength, int maxClassSize, int classId,
                   boolean classIsPublic, String instructorName,
@@ -112,7 +113,7 @@ public class Course {
         this.day = day;
         this.hour = hour;
         this.isAdvanced = isAdvanced;
-        
+
         this.roster = new JSONArray(); // no students yet
     }
 
@@ -122,6 +123,7 @@ public class Course {
 
     /**
      * Helper method to see if a student is already on a class roster.
+     *
      * @param userName student username
      * @return true or false
      */
@@ -140,6 +142,7 @@ public class Course {
 
     /**
      * Provides functionality to add student to class roster.
+     *
      * @param username student username
      */
     public void addStudentToRoster(String username) {
@@ -158,6 +161,7 @@ public class Course {
 
     /**
      * Provides functionality to remove student from a class roster.
+     *
      * @param userName username of student
      */
     public void removeStudentFromRoster(String userName) {
@@ -245,7 +249,7 @@ public class Course {
     public int getClassYear() {
         return this.year;
     }
-    
+
     public void setClassYear(int year) {
         this.year = year;
     }
@@ -253,7 +257,7 @@ public class Course {
     public int getClassMonth() {
         return this.month;
     }
-    
+
     public void setClassMonth(int month) {
         this.month = month;
     }
@@ -261,7 +265,7 @@ public class Course {
     public int getClassDay() {
         return this.day;
     }
-    
+
     public void setClassDay(int day) {
         this.day = day;
     }
@@ -269,7 +273,7 @@ public class Course {
     public int getClassHour() {
         return this.hour;
     }
-    
+
     public void setClassHour(int hour) {
         this.hour = hour;
     }

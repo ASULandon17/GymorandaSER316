@@ -1,30 +1,18 @@
-/**
- * DefaultTask.java
- * Created on 12.02.2003, 15:30:40 Alex
- * Package: net.sf.memoranda
- *
- * @author Alex V. Alishevskikh, alex@openmechanics.net
- * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
- */
 package main.java.memoranda;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Vector;
-
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.date.CurrentDate;
-
-import java.util.Calendar;
-
 import nu.xom.Attribute;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
 
 /**
- *
+ * Task implementation.
  */
-/*$Id: TaskImpl.java,v 1.15 2005/12/01 08:12:26 alexeya Exp $*/
 public class TaskImpl implements Task, Comparable {
 
     private Element _element = null;
@@ -47,7 +35,7 @@ public class TaskImpl implements Task, Comparable {
     }
 
     public void setStartDate(CalendarDate date) {
-           setAttr("startDate", date.toString());
+        setAttr("startDate", date.toString());
     }
 
     public CalendarDate getEndDate() {
@@ -61,7 +49,7 @@ public class TaskImpl implements Task, Comparable {
         if (pr.getEndDate() != null)
             return pr.getEndDate();
         return this.getStartDate();
-        
+
     }
 
     public void setEndDate(CalendarDate date) {
@@ -74,12 +62,10 @@ public class TaskImpl implements Task, Comparable {
         Attribute attr = _element.getAttribute("effort");
         if (attr == null) {
             return 0;
-        }
-        else {
+        } else {
             try {
                 return Long.parseLong(attr.getValue());
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 return 0;
             }
         }
@@ -89,9 +75,7 @@ public class TaskImpl implements Task, Comparable {
         setAttr("effort", String.valueOf(effort));
     }
 
-    /*
-     * @see net.sf.memoranda.Task#getParentTask()
-     */
+
     public Task getParentTask() {
         Node parentNode = _element.getParent();
         if (parentNode instanceof Element) {
@@ -105,7 +89,7 @@ public class TaskImpl implements Task, Comparable {
     public String getParentId() {
         Task parent = this.getParentTask();
         if (parent != null)
-            return parent.getID();
+            return parent.getId();
         return null;
     }
 
@@ -113,8 +97,7 @@ public class TaskImpl implements Task, Comparable {
         Element thisElement = _element.getFirstChildElement("description");
         if (thisElement == null) {
             return null;
-        }
-        else {
+        } else {
             return thisElement.getValue();
         }
     }
@@ -124,15 +107,16 @@ public class TaskImpl implements Task, Comparable {
         if (desc == null) {
             desc = new Element("description");
             desc.appendChild(s);
-            _element.appendChild(desc);    	
-        }
-        else {
+            _element.appendChild(desc);
+        } else {
             desc.removeChildren();
-            desc.appendChild(s);    	
+            desc.appendChild(s);
         }
     }
 
-    /**s
+    /**
+     * s
+     *
      * @see main.java.memoranda.Task#getStatus
      */
     public int getStatus(CalendarDate date) {
@@ -141,26 +125,27 @@ public class TaskImpl implements Task, Comparable {
         if (isFrozen())
             return Task.FROZEN;
         if (isCompleted())
-                return Task.COMPLETED;
-        
+            return Task.COMPLETED;
+
         if (date.inPeriod(start, end)) {
             if (date.equals(end))
                 return Task.DEADLINE;
             else
                 return Task.ACTIVE;
-        }
-        else if(date.before(start)) {
-                return Task.SCHEDULED;
+        } else if (date.before(start)) {
+            return Task.SCHEDULED;
         }
 
-        if(start.after(end)) {
+        if (start.after(end)) {
             return Task.ACTIVE;
         }
 
         return Task.FAILED;
     }
+
     /**
      * Method isDependsCompleted.
+     *
      * @return boolean
      */
 /*
@@ -184,9 +169,9 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**
-     * @see main.java.memoranda.Task#getID()
+     * @see main.java.memoranda.Task#getId()
      */
-    public String getID() {
+    public String getId() {
         return _element.getAttribute("id").getValue();
     }
 
@@ -200,7 +185,7 @@ public class TaskImpl implements Task, Comparable {
     public String toString() {
         return getText();
     }
-    
+
     /**
      * @see main.java.memoranda.Task#setText
      */
@@ -227,42 +212,42 @@ public class TaskImpl implements Task, Comparable {
     /**
      * Removed from Task interface. Is not used anywhere else. We need to look into if this should be removed.
 
-    /**
+     /**
      * @see main.java.memoranda.Task#getDependsFrom()
      *
     public Collection getDependsFrom() {
-        Vector v = new Vector();
-        Elements deps = _element.getChildElements("dependsFrom");
-        for (int i = 0; i < deps.size(); i++) {
-            String id = deps.get(i).getAttribute("idRef").getValue();
-            Task t = _tl.getTask(id);
-            if (t != null)
-                v.add(t);
-        }
-        return v;
+    Vector v = new Vector();
+    Elements deps = _element.getChildElements("dependsFrom");
+    for (int i = 0; i < deps.size(); i++) {
+    String id = deps.get(i).getAttribute("idRef").getValue();
+    Task t = _tl.getTask(id);
+    if (t != null)
+    v.add(t);
+    }
+    return v;
     }
     /**
      * @see main.java.memoranda.Task#addDependsFrom(main.java.memoranda.Task)
      *
     public void addDependsFrom(Task task) {
-        Element dep = new Element("dependsFrom");
-        dep.addAttribute(new Attribute("idRef", task.getID()));
-        _element.appendChild(dep);
+    Element dep = new Element("dependsFrom");
+    dep.addAttribute(new Attribute("idRef", task.getID()));
+    _element.appendChild(dep);
     }
     /**
      * @see main.java.memoranda.Task#removeDependsFrom(main.java.memoranda.Task)
      *
     public void removeDependsFrom(Task task) {
-        Elements deps = _element.getChildElements("dependsFrom");
-        for (int i = 0; i < deps.size(); i++) {
-            String id = deps.get(i).getAttribute("idRef").getValue();
-            if (id.equals(task.getID())) {
-                _element.removeChild(deps.get(i));
-                return;
-            }
-        }
+    Elements deps = _element.getChildElements("dependsFrom");
+    for (int i = 0; i < deps.size(); i++) {
+    String id = deps.get(i).getAttribute("idRef").getValue();
+    if (id.equals(task.getID())) {
+    _element.removeChild(deps.get(i));
+    return;
     }
-    */
+    }
+    }
+     */
 
     /**
      * @see main.java.memoranda.Task#getProgress()
@@ -270,6 +255,7 @@ public class TaskImpl implements Task, Comparable {
     public int getProgress() {
         return Integer.parseInt(_element.getAttribute("progress").getValue());
     }
+
     /**
      * @see main.java.memoranda.Task#setProgress(int)
      */
@@ -277,6 +263,7 @@ public class TaskImpl implements Task, Comparable {
         if ((p >= 0) && (p <= 100))
             setAttr("progress", Integer.toString(p));
     }
+
     /**
      * @see main.java.memoranda.Task#getPriority()
      */
@@ -286,6 +273,7 @@ public class TaskImpl implements Task, Comparable {
             return Task.PRIORITY_NORMAL;
         return Integer.parseInt(pa.getValue());
     }
+
     /**
      * @see main.java.memoranda.Task#setPriority(int)
      */
@@ -296,17 +284,17 @@ public class TaskImpl implements Task, Comparable {
     private void setAttr(String a, String value) {
         Attribute attr = _element.getAttribute(a);
         if (attr == null)
-           _element.addAttribute(new Attribute(a, value));
+            _element.addAttribute(new Attribute(a, value));
         else
             attr.setValue(value);
     }
 
     /**
-     * A "Task rate" is an informal index of importance of the task
-     * considering priority, number of days to deadline and current
-     * progress.
-     *
+     * A "Task rate" is an informal index of importance of the task considering priority, number of
+     * days to deadline and current progress.
+     * <p>
      * rate = (100-progress) / (numOfDays+1) * (priority+1)
+     *
      * @param d CalendarDate
      * @return long
      */
@@ -314,17 +302,17 @@ public class TaskImpl implements Task, Comparable {
     private long calcTaskRate(CalendarDate d) {
         Calendar endDateCal = getEndDate().getCalendar();
         Calendar dateCal = d.getCalendar();
-        int numOfDays = (endDateCal.get(Calendar.YEAR)*365 + endDateCal.get(Calendar.DAY_OF_YEAR)) -
-                        (dateCal.get(Calendar.YEAR)*365 + dateCal.get(Calendar.DAY_OF_YEAR));
+        int numOfDays = (endDateCal.get(Calendar.YEAR) * 365 + endDateCal.get(Calendar.DAY_OF_YEAR)) -
+                (dateCal.get(Calendar.YEAR) * 365 + dateCal.get(Calendar.DAY_OF_YEAR));
         if (numOfDays < 0) return -1; //Something wrong ?
-        return (100-getProgress()) / (numOfDays+1) * (getPriority()+1);
+        return (100 - getProgress()) / (numOfDays + 1) * (getPriority() + 1);
     }
 
     /**
      * @see main.java.memoranda.Task#getRate()
      */
 
-     public long getRate() {
+    public long getRate() {
 /*	   Task t = (Task)task;
        switch (mode) {
            case BY_IMP_RATE: return -1*calcTaskRate(t, date);
@@ -334,33 +322,33 @@ public class TaskImpl implements Task, Comparable {
        }
        return -1;
 */
-        return -1*calcTaskRate(CurrentDate.get());
-     }
+        return -1 * calcTaskRate(CurrentDate.get());
+    }
 
-     /*
-      * Comparable interface
-      */
+    /*
+     * Comparable interface
+     */
 
-     public int compareTo(Object o) {
-         Task task = (Task) o;
-            if(getRate() > task.getRate())
-                return 1;
-            else if(getRate() < task.getRate())
-                return -1;
-            else
-                return 0;
-     }
+    public int compareTo(Object o) {
+        Task task = (Task) o;
+        if (getRate() > task.getRate())
+            return 1;
+        else if (getRate() < task.getRate())
+            return -1;
+        else
+            return 0;
+    }
 
-     public boolean equals(Object o) {
-         return ((o instanceof Task) && (((Task)o).getID().equals(this.getID())));
-     }
+    public boolean equals(Object o) {
+        return ((o instanceof Task) && (((Task) o).getId().equals(this.getId())));
+    }
 
     /*
      * @see net.sf.memoranda.Task#getSubTasks()
      */
     public Collection getSubTasks() {
         Elements subTasks = _element.getChildElements("task");
-            return convertToTaskObjects(subTasks);
+        return convertToTaskObjects(subTasks);
     }
 
     private Collection convertToTaskObjects(Elements tasks) {
