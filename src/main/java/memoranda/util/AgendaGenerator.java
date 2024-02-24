@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.CalendarDate;
+import main.java.memoranda.ui.App;
 
 
 /**
@@ -23,10 +24,11 @@ public class AgendaGenerator {
             "<html><head><title></title>\n"
                     + "<style>\n"
                     + "    body, td {font: 12pt sans-serif}\n"
-                    + "    h1 {font:20pt sans-serif; background-color:#E0E0E0; margin-top:0}\n"
+                    + "    h1 {font:20pt sans-serif; background-color:#6bb1d1; margin-top:0}\n"
                     + "    h2 {font:16pt sans-serif; margin-bottom:0}\n"
                     + "    li {margin-bottom:5px}\n"
                     + " a {color:black; text-decoration:none}\n"
+                    + "<body style=background-color:#b9e0f3>"
                     + "</style></head>\n"
                     + "<body><table width=\"100%\" height=\"100%\" border=\"0\" cellpadding=\"4\" cellspacing=\"4\">\n"
                     + "<tr>\n";
@@ -84,6 +86,11 @@ public class AgendaGenerator {
         {
             s += "<br><a href=\"memoranda:changeTraining\"><b><u>[Change Training Rank]</b></u></a>";
         }
+        // Add Gymoranda image
+        for (int i = 0; i < 13; i++) {
+            s += "<br>";
+        }
+        s += "<img src=" + App.class.getResource("/ui/Gymoranda.png") + ">";
         return s;
     }
 
