@@ -60,29 +60,29 @@ public class NewClassPopup extends JFrame {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
-        // Add labels
+
+        // Add labels and text fields
         formPanel.add(new JLabel("Class Name:"));
-        formPanel.add(new JLabel("Class Length (hours):"));
-        formPanel.add(new JLabel("Max Class Size:"));
-        formPanel.add(new JLabel("Class ID:"));
-        formPanel.add(new JLabel("Class Year: "));
-        formPanel.add(new JLabel("Class Month: "));
-        formPanel.add(new JLabel("Class Day: "));
-        formPanel.add(new JLabel("Class Hour: "));
-        formPanel.add(new JLabel("Public Class:"));
-        formPanel.add(new JLabel(""));
-        formPanel.add(new JLabel("Teacher:"));
-        // Add text fields
         formPanel.add(classNameField = new JTextField());
+        formPanel.add(new JLabel("Class Length (hours):"));
         formPanel.add(classLengthField = new JTextField());
+        formPanel.add(new JLabel("Max Class Size:"));
         formPanel.add(maxClassSizeField = new JTextField());
+        formPanel.add(new JLabel("Class ID:"));
         formPanel.add(classIdField = new JTextField());
+        formPanel.add(new JLabel("Class Year: "));
         formPanel.add(classDateYearField = new JTextField());
+        formPanel.add(new JLabel("Class Month: "));
         formPanel.add(classDateMonthField = new JTextField());
+        formPanel.add(new JLabel("Class Day: "));
         formPanel.add(classDateDayField = new JTextField());
+        formPanel.add(new JLabel("Class Hour: "));
         formPanel.add(classDateHourField = new JTextField());
+        formPanel.add(new JLabel("Public Class:"));
         formPanel.add(classIsPublicCheckBox = new JCheckBox("Yes, make public"));
+        formPanel.add(new JLabel(""));
         formPanel.add(classIsAdvancedCheckBox = new JCheckBox("Make advanced class"));
+        formPanel.add(new JLabel("Teacher:"));
         formPanel.add(teacherList = new JComboBox<>(getTeacherList()));
 
         // Submit button at the bottom
