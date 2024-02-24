@@ -1,14 +1,8 @@
 package test.java;
 
 import main.java.memoranda.BeltValue;
-import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import org.junit.Test;
 
 import static main.java.memoranda.util.AgendaGenerator.beltColor;
 
