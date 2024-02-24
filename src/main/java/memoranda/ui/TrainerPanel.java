@@ -63,17 +63,25 @@ public class TrainerPanel extends JPanel {
         // only show if user is an Owner
         newTrainerButton.setVisible(User.getUserType() == UserType.OWNER);
 
+        // Open new trainer popup if button is pressed
+        newTrainerButton.addActionListener(e -> {
+            NewTrainerPopup trainerPopup = new NewTrainerPopup();
+            trainerPopup.setVisible(true);
+        });
+
+        // format the button appearance
         newTrainerButtonHelper(newTrainerButton);
+
         newTrainerButton.setToolTipText("Add a new trainer");
 
 
         this.setLayout(borderLayout1);
+
         scrollPane.getViewport().setBackground(Color.white);
 
         this.add(scrollPane, BorderLayout.CENTER);
 
         eventsToolBar.addSeparator(new Dimension(8, 24));
-
 
         eventsToolBar.addSeparator(new Dimension(8, 24));
 

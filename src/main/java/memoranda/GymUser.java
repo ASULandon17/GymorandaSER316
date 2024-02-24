@@ -13,6 +13,10 @@ public class GymUser {
     private int endAvailability;
 
 
+    /**
+     * Creates a Gym User object from a user entry in the json file.
+     * @param jsonObject user data from json file
+     */
     public GymUser(JSONObject jsonObject) {
 
         username = jsonObject.getString("username");

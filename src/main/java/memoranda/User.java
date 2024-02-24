@@ -34,6 +34,24 @@ public class User {
     }
 
     /**
+     * Gets a user from the list by username.
+     *
+     * @param targetUsername username of user to modify.
+     * @return target user object
+     */
+    public static GymUser getUser(String targetUsername) {
+        GymUser targetUser;
+        for (GymUser users : users) {
+            if (users.getUsername().equals(targetUsername)) {
+                targetUser = users;
+                return targetUser;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Executes new user sign up.
      */
     public static boolean signUp(String newUser, String newPassword, UserType userType) {
