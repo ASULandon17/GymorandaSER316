@@ -21,7 +21,6 @@
 package main.java.memoranda.ui;
 
 import javax.swing.event.*;
-import javax.swing.tree.TreePath;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.CurrentDate;
@@ -29,8 +28,6 @@ import main.java.memoranda.ui.treetable.AbstractTreeTableModel;
 import main.java.memoranda.ui.treetable.TreeTableModel;
 import main.java.memoranda.util.Context;
 import main.java.memoranda.util.Local;
-
-import java.util.Hashtable;
 
 /**
  * JAVADOC:
@@ -101,7 +98,7 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
             //return new Integer(t.getProgress());
             return t;
         case TaskTable.TASK_ID:
-            return t.getID();
+            return t.getId();
         case TaskTable.TASK:
             return t;
         }
@@ -155,7 +152,7 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
         else return CurrentProject.getTaskList().getTopLevelTasks().size();
         }
         Task t = (Task) parent;
-        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).size();
+        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getId(), CurrentDate.get()).size();
     else return t.getSubTasks().size();
     }
 
@@ -167,7 +164,7 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
             if( activeOnly() ) return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).toArray()[index];
         else return CurrentProject.getTaskList().getTopLevelTasks().toArray()[index];
         Task t = (Task) parent;
-        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).toArray()[index];
+        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getId(), CurrentDate.get()).toArray()[index];
     else return t.getSubTasks().toArray()[index];
     }
 

@@ -1,20 +1,23 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.util.Local;
-
-import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import main.java.memoranda.util.Local;
 
-/**
- * 
- * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
- */
 
-/*$Id: WorkPanel.java,v 1.9 2004/04/05 10:05:44 alexeya Exp $*/
 public class WorkPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
     JToolBar toolBar = new JToolBar();
@@ -31,6 +34,9 @@ public class WorkPanel extends JPanel {
     JButton currentB = null;
     Border border1;
 
+    /**
+     * Work panel constructor.
+     */
     public WorkPanel() {
         try {
             jbInit();
@@ -41,14 +47,14 @@ public class WorkPanel extends JPanel {
 
     void jbInit() throws Exception {
         border1 =
-            BorderFactory.createCompoundBorder(
-                BorderFactory.createBevelBorder(
-                    BevelBorder.LOWERED,
-                    Color.white,
-                    Color.white,
-                    new Color(124, 124, 124),
-                    new Color(178, 178, 178)),
-                BorderFactory.createEmptyBorder(0, 2, 0, 0));
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createBevelBorder(
+                                BevelBorder.LOWERED,
+                                Color.white,
+                                Color.white,
+                                new Color(124, 124, 124),
+                                new Color(178, 178, 178)),
+                        BorderFactory.createEmptyBorder(0, 2, 0, 0));
 
         this.setLayout(borderLayout1);
         toolBar.setOrientation(JToolBar.VERTICAL);
@@ -77,9 +83,9 @@ public class WorkPanel extends JPanel {
             }
         });
         agendaB.setIcon(
-            new ImageIcon(
-                main.java.memoranda.ui.AppFrame.class.getResource(
-                    "/ui/icons/home.png")));
+                new ImageIcon(
+                        Objects.requireNonNull(AppFrame.class.getResource(
+                                "/ui/icons/home.png"))));
         agendaB.setOpaque(false);
         agendaB.setMargin(new Insets(0, 0, 0, 0));
         agendaB.setSelected(true);
@@ -103,9 +109,9 @@ public class WorkPanel extends JPanel {
             }
         });
         eventsB.setIcon(
-            new ImageIcon(
-                    Objects.requireNonNull(AppFrame.class.getResource(
-                            "/ui/icons/classes.png"))));
+                new ImageIcon(
+                        Objects.requireNonNull(AppFrame.class.getResource(
+                                "/ui/icons/classes.png"))));
         eventsB.setOpaque(false);
         eventsB.setMargin(new Insets(0, 0, 0, 0));
         //eventsB.setSelected(true);
@@ -114,9 +120,9 @@ public class WorkPanel extends JPanel {
         tasksB.setFont(new java.awt.Font("Dialog", 1, 10));
         tasksB.setMargin(new Insets(0, 0, 0, 0));
         tasksB.setIcon(
-            new ImageIcon(
-                    Objects.requireNonNull(AppFrame.class.getResource(
-                            "/ui/icons/trainers.png"))));
+                new ImageIcon(
+                        Objects.requireNonNull(AppFrame.class.getResource(
+                                "/ui/icons/trainers.png"))));
         tasksB.setVerticalTextPosition(SwingConstants.BOTTOM);
         tasksB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -155,9 +161,9 @@ public class WorkPanel extends JPanel {
             }
         });
         notesB.setIcon(
-            new ImageIcon(
-                    Objects.requireNonNull(AppFrame.class.getResource(
-                            "/ui/icons/rooms.png"))));
+                new ImageIcon(
+                        Objects.requireNonNull(AppFrame.class.getResource(
+                                "/ui/icons/rooms.png"))));
         notesB.setMargin(new Insets(0, 0, 0, 0));
         notesB.setSelected(true);
         this.setPreferredSize(new Dimension(1073, 300));
@@ -165,9 +171,9 @@ public class WorkPanel extends JPanel {
         filesB.setSelected(true);
         filesB.setMargin(new Insets(0, 0, 0, 0));
         filesB.setIcon(
-            new ImageIcon(
-                    Objects.requireNonNull(AppFrame.class.getResource(
-                            "/ui/icons/personal.png"))));
+                new ImageIcon(
+                        Objects.requireNonNull(AppFrame.class.getResource(
+                                "/ui/icons/personal.png"))));
         filesB.setVerticalTextPosition(SwingConstants.BOTTOM);
         filesB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {

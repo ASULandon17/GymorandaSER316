@@ -1,8 +1,8 @@
 package main.java.memoranda.ui.gymoranda;
 
-import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
 
 /**
  * This class contains UI helper methods for consistent design across Gymoranda.
@@ -11,6 +11,7 @@ public class LookAndFeel {
 
     /**
      * Look and feel for Gymoranda buttons.
+     *
      * @param button - button to configure
      */
     public static void gymButtonHelper(JButton button) {

@@ -1,23 +1,29 @@
 package main.java.memoranda.ui;
-import main.java.memoranda.PersistentClass;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import javax.swing.*;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import main.java.memoranda.PersistentClass;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class NewclassPopup extends JFrame {
+public class NewClassPopup extends JFrame {
     private JTextField classNameField;
     private JTextField classLengthField;
     private JTextField maxClassSizeField;
@@ -28,74 +34,60 @@ public class NewclassPopup extends JFrame {
     private JTextField classDateHourField;
     private JCheckBox classIsPublicCheckBox;
     private JCheckBox classIsAdvancedCheckBox;
-    private JButton submitButton;
 
-    private JComboBox teacherList;
+    private JComboBox<String> teacherList;
 
-    private ClassPanel classPanelRef;
-    public NewclassPopup(ClassPanel classPanelRef){
+    private final ClassPanel classPanelRef;
+
+    /**
+     * Constructor for new class popup window.
+     */
+    public NewClassPopup(ClassPanel classPanelRef) {
         super("Add New Class");
         this.classPanelRef = classPanelRef;
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        initUI();
+        initUserInterface();
 
         setLocationRelativeTo(null);
     }
 
-    private void initUI() {
+
+    private void initUserInterface() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
-
-        classNameField = new JTextField();
-        classLengthField = new JTextField();
-        maxClassSizeField = new JTextField();
-        classIdField = new JTextField();
-        classDateYearField = new JTextField();
-        classDateMonthField = new JTextField();
-        classDateDayField = new JTextField();
-        classDateHourField = new JTextField();
-        
-        classIsPublicCheckBox = new JCheckBox("Yes, make public");
-        classIsAdvancedCheckBox = new JCheckBox("Make advanced class");
-
-        teacherList = new JComboBox<String>(getTeacherList());
-
+        // Add labels
         formPanel.add(new JLabel("Class Name:"));
-        formPanel.add(classNameField);
         formPanel.add(new JLabel("Class Length (hours):"));
-        formPanel.add(classLengthField);
         formPanel.add(new JLabel("Max Class Size:"));
-        formPanel.add(maxClassSizeField);
         formPanel.add(new JLabel("Class ID:"));
-        formPanel.add(classIdField);
         formPanel.add(new JLabel("Class Year: "));
-        formPanel.add(classDateYearField);
         formPanel.add(new JLabel("Class Month: "));
-        formPanel.add(classDateMonthField);
         formPanel.add(new JLabel("Class Day: "));
-        formPanel.add(classDateDayField);
         formPanel.add(new JLabel("Class Hour: "));
-        formPanel.add(classDateHourField);
         formPanel.add(new JLabel("Public Class:"));
-        formPanel.add(classIsPublicCheckBox);
-        formPanel.add(classIsAdvancedCheckBox);
         formPanel.add(new JLabel(""));
         formPanel.add(new JLabel("Teacher:"));
-        formPanel.add(teacherList);
+        // Add text fields
+        formPanel.add(classNameField = new JTextField());
+        formPanel.add(classLengthField = new JTextField());
+        formPanel.add(maxClassSizeField = new JTextField());
+        formPanel.add(classIdField = new JTextField());
+        formPanel.add(classDateYearField = new JTextField());
+        formPanel.add(classDateMonthField = new JTextField());
+        formPanel.add(classDateDayField = new JTextField());
+        formPanel.add(classDateHourField = new JTextField());
+        formPanel.add(classIsPublicCheckBox = new JCheckBox("Yes, make public"));
+        formPanel.add(classIsAdvancedCheckBox = new JCheckBox("Make advanced class"));
+        formPanel.add(teacherList = new JComboBox<>(getTeacherList()));
 
         // Submit button at the bottom
-        submitButton = new JButton("Submit");
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                submitClass();
-            }
-        });
+        JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(e -> submitClass());
 
         // Add the form panel to the main panel
         mainPanel.add(formPanel, BorderLayout.CENTER);
@@ -108,7 +100,8 @@ public class NewclassPopup extends JFrame {
         add(mainPanel);
     }
 
-    private void submitClass(){
+    private void submitClass() {
+
         try {
             String className = classNameField.getText();
             int classLength = Integer.parseInt(classLengthField.getText());
@@ -123,19 +116,33 @@ public class NewclassPopup extends JFrame {
             String teacherName = String.valueOf(teacherList.getSelectedItem());
 
 
-            PersistentClass.addNewClass(className, classLength, maxClassSize, classId, classIsPublic, teacherName, classYear, classMonth, classDay, classHour, classIsAdvanced);
-            JOptionPane.showMessageDialog(this, "Class added successfully");
+            PersistentClass.addNewClass(className, classLength, maxClassSize,
+                    classId, classIsPublic, teacherName, classYear, classMonth, classDay,
+                    classHour, classIsAdvanced);
+            JOptionPane.showMessageDialog(this,
+                    "Class added successfully");
+
             clearForm();
-            if(classPanelRef != null){
+
+            if (classPanelRef != null) {
                 classPanelRef.refreshCards();
             }
             this.dispose();
-        } catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Please check your inputs. Make sure numerical fields are correct.", "Input Error", JOptionPane.ERROR_MESSAGE);
-        } catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Error adding class: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Please check your inputs. Make sure numerical fields are correct.",
+                    "Input Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error adding class: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
-    };
+    }
+
+    ;
+
     private void clearForm() {
         classNameField.setText("");
         classLengthField.setText("");
@@ -148,6 +155,7 @@ public class NewclassPopup extends JFrame {
         classIsPublicCheckBox.setSelected(false);
         classIsAdvancedCheckBox.setSelected(false);
     }
+
     private String[] getTeacherList() {
         List<String> list = new ArrayList<>();
 
