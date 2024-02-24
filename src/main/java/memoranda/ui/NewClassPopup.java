@@ -170,7 +170,7 @@ public class NewClassPopup extends JFrame {
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
-                if (user.getString("userType").equals("TRAINER")) {
+                if (user.getString("userType").equals("TRAINER") && (user.getString("trainingRank").equals("BLACK2") || user.getString("trainingRank").equals("BLACK3"))) {
                     list.add(user.getString("username"));
                 }
             }
