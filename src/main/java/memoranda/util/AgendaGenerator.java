@@ -7,6 +7,7 @@ package main.java.memoranda.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 
 import main.java.memoranda.BeltValue;
 import main.java.memoranda.Course;
@@ -54,7 +55,7 @@ public class AgendaGenerator {
 
     static String generateUpcomingClasses() {
         String s =
-                "<td width=\"66%\" valign=\"top\">"
+                "<td width=\"34%\" valign=\"top\">"
                         + "<h1>"
                         + Local.getString("Upcoming Classes")
                         + "</h1>\n";
@@ -72,9 +73,28 @@ public class AgendaGenerator {
         return s + "</td>";
     }
 
+    static String generateRandomGymFact() {
+        ArrayList<String> gymFacts = new ArrayList<>();
+        gymFacts = loadGymFacts(gymFacts);
+
+        Random rand = new Random();
+
+        String s =
+                "<td width=\"33%\" valign=\"top\">"
+                        + "<h1>"
+                        + Local.getString("Random Gym Fun Fact")
+                        + "</h1>\n"
+                        + "<h2>"
+                        + "<i>"
+                        + gymFacts.get(rand.nextInt(gymFacts.size()))
+                        + "</i>";
+
+        return s + "</td>";
+    }
+
     static String generatePersonalInfo() {
         String s =
-                "<td width=\"34%\" valign=\"top\">"
+                "<td width=\"33%\" valign=\"top\">"
                         + "<h1>"
                         + Local.getString("Personal Info")
                         + "</h1>\n"
@@ -116,6 +136,7 @@ public class AgendaGenerator {
     public static String getAgenda(CalendarDate date, Collection expandedTasks) {
         String s = HEADER;
         s += generateUpcomingClasses();
+        s += generateRandomGymFact();
         s += generatePersonalInfo();
         return s + FOOTER;
     }
@@ -148,5 +169,27 @@ public class AgendaGenerator {
         }
 
         return hexCode;
+    }
+
+    /**
+     * Method to initialize a list of gym fun facts.
+     * @param gymFacts List to add to
+     * @return List full of facts
+     */
+    private static ArrayList<String> loadGymFacts(ArrayList<String> gymFacts) {
+        gymFacts.add("The first style of karate was started on Okinawa. This rough fighting style was then polished"
+                + " and changed as it spread throughout Japan.");
+        gymFacts.add("It takes about 3 to 7 years to become a black belt, though everyone goes at their own pace!");
+        gymFacts.add("Though karate has roots in self-defense and discipline, it’s also used by many as a fitness"
+                + " workout that adds to their own exercise regimen.");
+        gymFacts.add("Karate is known to help children with ADHD and other hyperactivity disorders.");
+        gymFacts.add("The color of the belts obtained by the students depends on the style of karate being studied."
+                + " Not all styles of karate have all of the colors.");
+        gymFacts.add("Since karate is a martial art built on self-discipline and respect it’s important to bow to "
+                + "your teacher when entering the dojo.");
+        gymFacts.add("While karate takes a lot of focus and determination to improve and earn new belts, the most "
+                + "important thing is too have fun!");
+
+        return gymFacts;
     }
 }
