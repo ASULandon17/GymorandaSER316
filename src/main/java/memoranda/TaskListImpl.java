@@ -10,7 +10,6 @@ package main.java.memoranda;
 
 import java.util.Collection;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Vector;
 
 import main.java.memoranda.date.CalendarDate;
@@ -20,7 +19,6 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
-import nu.xom.Nodes;
 //import nu.xom.converters.*;
 //import org.apache.xerces.dom.*;
 //import nux.xom.xquery.XQueryUtil;
@@ -149,7 +147,7 @@ public class TaskListImpl implements TaskList {
             Element parentNode = getTaskElement(parentTaskId);
             parentNode.removeChild(task.getContent());
         }
-        elements.remove(task.getID());
+        elements.remove(task.getId());
     }
 
     public boolean hasSubTasks(String id) {
@@ -192,8 +190,8 @@ public class TaskListImpl implements TaskList {
      */
     public long calculateTotalEffortFromSubTasks(Task t) {
         long totalEffort = 0;
-        if (hasSubTasks(t.getID())) {
-            Collection subTasks = getAllSubTasks(t.getID());
+        if (hasSubTasks(t.getId())) {
+            Collection subTasks = getAllSubTasks(t.getId());
             // Changed to enhanced for from for loop for readability
             for (Object subTask : subTasks) {
                 Task e = (Task) subTask;
@@ -215,8 +213,8 @@ public class TaskListImpl implements TaskList {
      */
     public CalendarDate getEarliestStartDateFromSubTasks(Task t) {
         CalendarDate d = t.getStartDate();
-        if (hasSubTasks(t.getID())) {
-            Collection subTasks = getAllSubTasks(t.getID());
+        if (hasSubTasks(t.getId())) {
+            Collection subTasks = getAllSubTasks(t.getId());
             // Changed to enhanced for from for loop for readability
             for (Object subTask : subTasks) {
                 Task e = (Task) subTask;
@@ -241,8 +239,8 @@ public class TaskListImpl implements TaskList {
      */
     public CalendarDate getLatestEndDateFromSubTasks(Task t) {
         CalendarDate d = t.getEndDate();
-        if (hasSubTasks(t.getID())) {
-            Collection subTasks = getAllSubTasks(t.getID());
+        if (hasSubTasks(t.getId())) {
+            Collection subTasks = getAllSubTasks(t.getId());
             // Changed to enhanced for from for loop for readability
             for (Object subTask : subTasks) {
                 Task e = (Task) subTask;
@@ -271,8 +269,8 @@ public class TaskListImpl implements TaskList {
         long[] res = new long[2];
         long expendedEffort = 0; // milliseconds
         long totalEffort = 0; // milliseconds
-        if (hasSubTasks(t.getID())) {
-            Collection subTasks = getAllSubTasks(t.getID());
+        if (hasSubTasks(t.getId())) {
+            Collection subTasks = getAllSubTasks(t.getId());
             // Changed to enhanced for from for loop for readability
             for (Object subTask : subTasks) {
                 Task e = (Task) subTask;
