@@ -58,18 +58,14 @@ apply plugin: 'checkstyle'
    showViolations = false
 }
 
-tasks.withType(Checkstyle) {
- 
-  reports {
-<<<<<<< HEAD
+tasks.withType(Checkstyle).configureEach {
 
-=======
-    html.required = true
-    xml.required = false
->>>>>>> dev
-  }
+    reports {
+        html.required = true
+        xml.required = false
+    }
     include '**/*.java'
- }
+}
 
 
 checkstyle {
