@@ -7,7 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -144,7 +144,7 @@ public class ClassPanel extends JPanel {
         beginnerCardsPanel.removeAll();
         advancedCardsPanel.removeAll();
 
-        ArrayList<Course> courses = PersistentClass.getListOfCourses();
+        List<Course> courses = PersistentClass.getListOfCourses();
 
         beginnerCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         advancedCardsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));

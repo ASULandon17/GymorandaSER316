@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,16 @@ public class User {
     private static int _startAvailability = 0;
     // The latest a Trainer can work, set to 0 for non-trainers
     private static int _endAvailability = 0;
+
+    private static final List<GymUser> users = new ArrayList<>();
+
+    static {
+        loadUsersFromFile();
+
+        for (GymUser users : users) {
+            System.out.println(users.getUsername());
+        }
+    }
 
     /**
      * Executes new user sign up.
@@ -113,6 +124,62 @@ public class User {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * Reads each user in users.json and creates a Gym User object.
+     */
+    public static void loadUsersFromFile() {
+        try {
+
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray jsonArray = new JSONArray(content);
+            users.clear(); // Clear existing rooms before loading
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                users.add(new GymUser(jsonObject));
+            }
+
+        } catch (IOException e) {
+
+            System.out.println("No existing classes.json found. A new one will be created.");
+        }
+    }
+
+    /**
+     * Writes the gym user objects to the users.json file.
+     */
+    public static void saveUsersToFile() {
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (GymUser gymUser : users) {
+
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("username", gymUser.getUsername());
+            jsonObject.put("password", gymUser.getPassword());
+            jsonObject.put("beltRank", gymUser.getBeltRank());
+            jsonObject.put("userType", gymUser.getUserType());
+            jsonObject.put("trainingRank", gymUser.getTrainingRank());
+            jsonObject.put("startAvailability", gymUser.getStartAvailability());
+            jsonObject.put("endAvailability", gymUser.getEndAvailability());
+
+            jsonArray.put(jsonObject);
+
+            try (FileWriter file = new FileWriter("users.json")) {
+
+                // Pretty print
+                file.write(jsonArray.toString(4));
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -257,9 +324,9 @@ public class User {
 
 
     /**
-     * Upgrade a member to trainer Returns 0 if the User changed from a member to a trainer.
-     * Returns -1 if the User is already a trainer Returns 1 if the User is an owner. (They
-     * should not change) Returns 2 if the User's userType is none of the 3 options (error).
+     * Upgrade a member to trainer Returns 0 if the User changed from a member to a trainer. Returns
+     * -1 if the User is already a trainer Returns 1 if the User is an owner. (They should not
+     * change) Returns 2 if the User's userType is none of the 3 options (error).
      *
      * @return int
      */
