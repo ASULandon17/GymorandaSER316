@@ -57,7 +57,7 @@ public class AgendaGenerator {
             s += "No upcoming classes";
         } else {
             for (Course course : next5Classes) {
-                s += generateCourseInfo(course);
+                s += generateCourseInfo(course) + "<br>";
             }
         }
 
@@ -73,21 +73,28 @@ public class AgendaGenerator {
                         +"<h2>"
                         + "<b>User: </b>"
                         + User.getUsername() + "<br>"
-                        + "<b>Belt Rank: </b>"
+                        + "<b>Belt Rank: </b><span style=\"color: "
+                        + beltColor(User.getBeltRank()) + "\">"
                         + User.getBeltRank();
         // Displays Training Rank after Belt Rank and before Change Belt buttons
         if(User.getUserType() == UserType.TRAINER)
         {
-            s += "<br><b>Training Rank: </b>" + User.getTrainingRank();
+            s += "</span><br><b>Training Rank: </b><span style=\"color: "
+                    + beltColor(User.getTrainingRank()) + "\">" + User.getTrainingRank();
         }
-        s += "<br><br><br>"
+        s += "</span><br><br><br>"
                         + "<a href=\"memoranda:changeBelt\"><b><u>[Change Belt]</b></u></a>";
         if(User.getUserType() == UserType.TRAINER)
         {
             s += "<br><a href=\"memoranda:changeTraining\"><b><u>[Change Training Rank]</b></u></a>";
         }
         // Add Gymoranda image
-        for (int i = 0; i < 13; i++) {
+        // Set the spacing to put the logo at the bottom right
+        int spacing = 15;
+        if (User.getUserType() == UserType.TRAINER) {
+            spacing = 13;
+        }
+        for (int i = 0; i < spacing; i++) {
             s += "<br>";
         }
         s += "<img src=" + App.class.getResource("/ui/Gymoranda.png") + ">";
@@ -99,5 +106,35 @@ public class AgendaGenerator {
         s += generateUpcomingClasses();
         s += generatePersonalInfo();
         return s + FOOTER;
+    }
+
+    /**
+     * Method to return the Hex color of the belt for display.
+     * @return The hex code for the color of the belt
+     */
+    public static String beltColor(BeltValue belt) {
+        // No belt is red
+        String hexCode = "#ca0000";
+        if (belt == BeltValue.WHITE) {
+            hexCode = "#FFFFFF";
+        } else if (belt == BeltValue.YELLOW) {
+            hexCode = "#f8fe5a";
+        } else if (belt == BeltValue.ORANGE) {
+            hexCode = "#FFA500";
+        }  else if (belt == BeltValue.PURPLE) {
+            hexCode = "#800080";
+        }  else if (belt == BeltValue.BLUE || belt == BeltValue.BLUE_STRIPE) {
+            hexCode = "#0000FF";
+        }  else if (belt == BeltValue.GREEN || belt == BeltValue.GREEN_STRIPE) {
+            hexCode = "#007e00";
+        }  else if (belt == BeltValue.BROWN1 || belt == BeltValue.BROWN2
+                || belt == BeltValue.BROWN3) {
+            hexCode = "#964B00";
+        }  else if (belt == BeltValue.BLACK1 || belt == BeltValue.BLACK2
+                || belt == BeltValue.BLACK3) {
+            hexCode = "#000000";
+        }
+
+        return hexCode;
     }
 }
