@@ -16,7 +16,7 @@ public class NewTrainerPopup extends JFrame {
 
     private final JTextField usernameTextField;
 
-    public NewTrainerPopup() {
+    public NewTrainerPopup(TrainerPanel trainerPanel) {
 
         setTitle("Upgrade User to Trainer");
 
@@ -39,6 +39,8 @@ public class NewTrainerPopup extends JFrame {
 
         upgradeButton.addActionListener(e -> {
             performTrainerUpgrade();
+            trainerPanel.initCardsPanel();
+            clearForm();
             dispose(); // Close the popup window after upgrade
         });
 
@@ -67,28 +69,41 @@ public class NewTrainerPopup extends JFrame {
         GymUser user = User.getUser(username);
 
         if (user != null) {
-            user.becomeTrainer();
 
-            if(user.getUserType() == UserType.TRAINER) {
+            UserType type = user.getUserType();
+
+            if (user.getUserType() == UserType.TRAINER) {
+                JOptionPane.showMessageDialog(this,
+                        "User is already a trainer");
+            } else if (type == UserType.OWNER) {
+                JOptionPane.showMessageDialog(this,
+                        "User is already an owner");
+            } else {
+
+                // if they're not an owner or trainer already, upgrade to trainer.
+                user.becomeTrainer();
+
+            }
+
+            // check upgrade status
+            type = user.getUserType();
+
+            if (type == UserType.TRAINER) {
                 // display message to user
                 JOptionPane.showMessageDialog(this, "User: " + username
                         + " has been upgraded to a trainer!");
 
                 // update json file
                 User.saveUsersToFile();
+
+            } else if (type == UserType.MEMBER) {
+                JOptionPane.showMessageDialog(this, "User: " + username
+                        + "'s upgrade to trainer failed.");
             }
-
-
 
         } else {
             System.out.println("User does not exist");
         }
-
-
-
-
-
-
 
 
     }

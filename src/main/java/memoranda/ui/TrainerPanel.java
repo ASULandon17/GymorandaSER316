@@ -65,7 +65,8 @@ public class TrainerPanel extends JPanel {
 
         // Open new trainer popup if button is pressed
         newTrainerButton.addActionListener(e -> {
-            NewTrainerPopup trainerPopup = new NewTrainerPopup();
+            // pass a ref to the trainer panel iot update trainer cards
+            NewTrainerPopup trainerPopup = new NewTrainerPopup(TrainerPanel.this);
             trainerPopup.setVisible(true);
         });
 
@@ -91,6 +92,12 @@ public class TrainerPanel extends JPanel {
 
     }
 
+    /**
+     * Refreshes trainer cards after a new trainer is added.
+     */
+    public void refreshTrainerCards() {
+        this.initCardsPanel();
+    }
     /**
      * Creates a card for all the trainers that are found available.
      */
