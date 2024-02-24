@@ -1,23 +1,33 @@
 package main.java.memoranda.ui;
 
+import java.awt.AWTEvent;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.util.Objects;
+import java.util.Vector;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.KeyStroke;
 import main.java.memoranda.User;
 import main.java.memoranda.util.Configuration;
 import main.java.memoranda.util.Context;
 import main.java.memoranda.util.Local;
 import main.java.memoranda.util.Util;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Objects;
-import java.util.Vector;
-
-
-/**
- * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
- */
-
-/*$Id: AppFrame.java,v 1.33 2005/07/05 08:17:24 alexeya Exp $*/
 
 public class AppFrame extends JFrame {
 
@@ -193,8 +203,10 @@ public class AppFrame extends JFrame {
             Dimension frmSize = this.getSize();
             Point loc = this.getLocation();
 
-            ExitConfirmationDialog dlg = new ExitConfirmationDialog(this, Local.getString("Exit"));
-            dlg.setLocation((frmSize.width - dlg.getSize().width) / 2 + loc.x, (frmSize.height - dlg.getSize().height) / 2 + loc.y);
+            ExitConfirmationDialog dlg = new ExitConfirmationDialog(this,
+                    Local.getString("Exit"));
+            dlg.setLocation((frmSize.width - dlg.getSize().width) / 2 + loc.x,
+                    (frmSize.height - dlg.getSize().height) / 2 + loc.y);
             dlg.setVisible(true);
             if (dlg.CANCELLED) return;
         }
@@ -225,7 +237,8 @@ public class AppFrame extends JFrame {
         Dimension dlgSize = dlg.getSize();
         Dimension frmSize = getSize();
         Point loc = getLocation();
-        dlg.setLocation((frmSize.width - dlgSize.width) / 2 + loc.x, (frmSize.height - dlgSize.height) / 2 + loc.y);
+        dlg.setLocation((frmSize.width - dlgSize.width) / 2 + loc.x,
+                (frmSize.height - dlgSize.height) / 2 + loc.y);
         dlg.setModal(true);
         dlg.setVisible(true);
     }
@@ -256,14 +269,12 @@ public class AppFrame extends JFrame {
     }
 
 
-
     public void showPreferences() {
         PreferencesDialog dlg = new PreferencesDialog(this);
         dlg.pack();
         dlg.setLocationRelativeTo(this);
         dlg.setVisible(true);
     }
-
 
 
 }

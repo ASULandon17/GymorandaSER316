@@ -1,34 +1,44 @@
 package main.java.memoranda.ui;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.Calendar;
-import java.awt.*;
-import java.awt.event.*;
-
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 import javax.swing.border.Border;
-import javax.swing.*;
-
 import main.java.memoranda.EventsScheduler;
+import main.java.memoranda.User;
 import main.java.memoranda.UserType;
 import main.java.memoranda.util.Configuration;
-import main.java.memoranda.User;
 
-/**
- * 
- * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
- */
 
-/*$Id: App.java,v 1.28 2007/03/20 06:21:46 alexeya Exp $*/
 public class App {
-    // boolean packFrame = false;
 
     static AppFrame frame = null;
 
-    public static final String GUIDE_URL = "http://memoranda.sourceforge.net/guide.html";
-    public static final String BUGS_TRACKER_URL = "http://sourceforge.net/tracker/?group_id=90997&atid=595566";
-    public static final String WEBSITE_URL = "http://memoranda.sourceforge.net";
+    public static final String GUIDE_URL =
+            "http://memoranda.sourceforge.net/guide.html";
+    public static final String BUGS_TRACKER_URL =
+            "http://sourceforge.net/tracker/?group_id=90997&atid=595566";
+    public static final String WEBSITE_URL =
+            "http://memoranda.sourceforge.net";
 
     private JFrame splash = null;
     private JFrame login = null;
@@ -69,17 +79,21 @@ public class App {
         try {
             if (Configuration.get("LOOK_AND_FEEL").equals("system"))
                 UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
+                        UIManager.getSystemLookAndFeelClassName());
             else if (Configuration.get("LOOK_AND_FEEL").equals("default"))
                 UIManager.setLookAndFeel(
-                    UIManager.getCrossPlatformLookAndFeelClassName());
+                        UIManager.getCrossPlatformLookAndFeelClassName());
             else if (
-                Configuration.get("LOOK_AND_FEEL").toString().length() > 0)
+                    !Configuration.get("LOOK_AND_FEEL").toString().isEmpty())
                 UIManager.setLookAndFeel(
-                    Configuration.get("LOOK_AND_FEEL").toString());
+                        Configuration.get("LOOK_AND_FEEL").toString());
 
         } catch (Exception e) {
-            new ExceptionDialog(e, "Error when initializing a pluggable look-and-feel. Default LF will be used.", "Make sure that specified look-and-feel library classes are on the CLASSPATH.");
+            new ExceptionDialog(e, "Error when initializing a pluggable look-and-feel. "
+                    +
+                    "Default LF will be used.", "Make sure that specified look-and-feel "
+                    +
+                    "library classes are on the CLASSPATH.");
         }
         if (Configuration.get("FIRST_DAY_OF_WEEK").equals("")) {
             String fdow;
@@ -95,10 +109,6 @@ public class App {
 
         EventsScheduler.init();
 
-
-        //if (fullmode) {
-        //	init();
-        //}
         if (!Configuration.get("SHOW_SPLASH").equals("no"))
             splash.dispose();
 
@@ -127,9 +137,9 @@ public class App {
         /* --------------------------------------------------------------- */
         frame = new AppFrame();
         double JVMVer =
-            Double
-                .valueOf(System.getProperty("java.version").substring(0, 3))
-                .doubleValue();
+                Double
+                        .valueOf(System.getProperty("java.version").substring(0, 3))
+                        .doubleValue();
 
         frame.pack();
         if (JVMVer >= 1.4) {
@@ -167,7 +177,7 @@ public class App {
     private void showSplash() {
         splash = new JFrame();
         ImageIcon spl =
-            new ImageIcon(App.class.getResource("/ui/Gymoranda.png"));
+                new ImageIcon(App.class.getResource("/ui/Gymoranda.png"));
         JLabel l = new JLabel();
         l.setSize(400, 300);
         l.setIcon(spl);
@@ -175,22 +185,21 @@ public class App {
         splash.setSize(400, 300);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         splash.setLocation(
-            (screenSize.width - 400) / 2,
-            (screenSize.height - 300) / 2);
+                (screenSize.width - 400) / 2,
+                (screenSize.height - 300) / 2);
         splash.setUndecorated(true);
         splash.setVisible(true);
 
         // Wait 2 seconds for splash screen to show
         try {
             Thread.sleep(2000);
-        }
-        catch(InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Error waiting for splash screen display");
             e.printStackTrace();
         }
     }
 
-    private void showLogin(){
+    private void showLogin() {
         login = new JFrame("Login");
         login.setLayout(new FlowLayout()); // Simple layout, adjust as needed
         login.setSize(400, 300);
@@ -230,7 +239,9 @@ public class App {
         signupPanel.setBorder(padding);
         JTextField signupUsername = new JTextField();
         JPasswordField signupPassword = new JPasswordField();
-        JComboBox<String> userType = new JComboBox<>(new String[]{String.valueOf(UserType.MEMBER), String.valueOf(UserType.TRAINER), String.valueOf(UserType.OWNER)});
+        JComboBox<String> userType = new JComboBox<>(
+                new String[]{String.valueOf(UserType.MEMBER),
+                        String.valueOf(UserType.TRAINER), String.valueOf(UserType.OWNER)});
         JButton signupButton = new JButton("Signup");
         signupPanel.add(new JLabel("Username:"));
         signupPanel.add(signupUsername);
@@ -254,8 +265,9 @@ public class App {
             String password = new String(loginPassword.getPassword());
 
             boolean didLogin = User.login(username, password);
-            if(didLogin){
-                init(); // For simplicity, directly calling init(); Implement actual login logic here
+            if (didLogin) {
+                // For simplicity, directly calling init(); Implement actual login logic here
+                init();
                 login.dispose();
             } else {
                 JOptionPane.showMessageDialog(login, "Error logging in");
@@ -271,11 +283,12 @@ public class App {
             UserType userTypeSelected = UserType.valueOf((String) userType.getSelectedItem());
 
             boolean didSignUp = User.signUp(username, password, userTypeSelected);
-            if(didSignUp){
+            if (didSignUp) {
                 init();
                 login.dispose();
             } else {
-                JOptionPane.showMessageDialog(login, "Signup failed. User may already exist.");
+                JOptionPane.showMessageDialog(login,
+                        "Signup failed. User may already exist.");
             }
 
         });
