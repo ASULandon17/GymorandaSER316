@@ -2,18 +2,23 @@
  * AgendaGenerator.java Package: net.sf.memoranda.util Created on 13.01.2004
  * 5:52:54 @author Alex
  */
+
 package main.java.memoranda.util;
 
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Collection;
 
-import main.java.memoranda.*;
+import main.java.memoranda.BeltValue;
+import main.java.memoranda.Course;
+import main.java.memoranda.PersistentClass;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.ui.App;
 
 
 /**
- *  
+ *  Creates the HTML format for the Home page of Gymoranda.
  */
 
 /*$Id: AgendaGenerator.java,v 1.12 2005/06/13 21:25:27 velhonoja Exp $*/
@@ -30,18 +35,21 @@ public class AgendaGenerator {
                     + " a {color:black; text-decoration:none}\n"
                     + "<body style=background-color:#b9e0f3>"
                     + "</style></head>\n"
-                    + "<body><table width=\"100%\" height=\"100%\" border=\"0\" cellpadding=\"4\" cellspacing=\"4\">\n"
+                    + "<body><table width=\"100%\" height=\"100%\" border=\"0\" cellpadding=\"4\""
+                    + " cellspacing=\"4\">\n"
                     + "<tr>\n";
     static String FOOTER = "</td></tr></table></body></html>";
 
     private static String generateCourseInfo(Course course) {
-        String formattedDateTime = String.format("%d/%d/%d at %02d:00", course.getClassMonth(), course.getClassDay(), course.getClassYear(), course.getClassHour());
-        String instructorName = course.getInstructorName().isEmpty() ? "Not assigned" : course.getInstructorName();
+        String formattedDateTime = String.format("%d/%d/%d at %02d:00", course.getClassMonth(),
+                course.getClassDay(), course.getClassYear(), course.getClassHour());
+        String instructorName = course.getInstructorName().isEmpty() ? "Not assigned" :
+                course.getInstructorName();
 
-        return "<p><b>Class Name:</b> " + course.getClassName() +
-                "<br><b>Instructor:</b> " + instructorName +
-                "<br><b>Time:</b> " + formattedDateTime +
-                "</p>\n";
+        return "<p><b>Class Name:</b> " + course.getClassName()
+                + "<br><b>Instructor:</b> " + instructorName
+                + "<br><b>Time:</b> " + formattedDateTime
+                + "</p>\n";
     }
 
     static String generateUpcomingClasses() {
@@ -70,22 +78,20 @@ public class AgendaGenerator {
                         + "<h1>"
                         + Local.getString("Personal Info")
                         + "</h1>\n"
-                        +"<h2>"
+                        + "<h2>"
                         + "<b>User: </b>"
                         + User.getUsername() + "<br>"
                         + "<b>Belt Rank: </b><span style=\"color: "
                         + beltColor(User.getBeltRank()) + "\">"
                         + User.getBeltRank();
         // Displays Training Rank after Belt Rank and before Change Belt buttons
-        if(User.getUserType() == UserType.TRAINER)
-        {
+        if (User.getUserType() == UserType.TRAINER) {
             s += "</span><br><b>Training Rank: </b><span style=\"color: "
                     + beltColor(User.getTrainingRank()) + "\">" + User.getTrainingRank();
         }
         s += "</span><br><br><br>"
                         + "<a href=\"memoranda:changeBelt\"><b><u>[Change Belt]</b></u></a>";
-        if(User.getUserType() == UserType.TRAINER)
-        {
+        if (User.getUserType() == UserType.TRAINER) {
             s += "<br><a href=\"memoranda:changeTraining\"><b><u>[Change Training Rank]</b></u></a>";
         }
         // Add Gymoranda image
@@ -101,6 +107,12 @@ public class AgendaGenerator {
         return s;
     }
 
+    /**
+     * Creates the Home page with all updated values.
+     * @param date Date
+     * @param expandedTasks Tasks
+     * @return HTML format
+     */
     public static String getAgenda(CalendarDate date, Collection expandedTasks) {
         String s = HEADER;
         s += generateUpcomingClasses();
