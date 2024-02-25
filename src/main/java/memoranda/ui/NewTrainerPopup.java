@@ -16,6 +16,10 @@ public class NewTrainerPopup extends JFrame {
 
     private final JTextField usernameTextField;
 
+    /**
+     * Constructor for popup window.
+     * @param trainerPanel ref to parent
+     */
     public NewTrainerPopup(TrainerPanel trainerPanel) {
 
         setTitle("Upgrade User to Trainer");

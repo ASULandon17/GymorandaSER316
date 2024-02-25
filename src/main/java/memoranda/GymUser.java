@@ -15,13 +15,14 @@ public class GymUser {
 
     /**
      * Creates a Gym User object from a user entry in the json file.
+     *
      * @param jsonObject user data from json file
      */
     public GymUser(JSONObject jsonObject) {
 
         username = jsonObject.getString("username");
         password = jsonObject.getString("password");
-        beltRank =  BeltValue.valueOf(jsonObject.getString("beltRank"));
+        beltRank = BeltValue.valueOf(jsonObject.getString("beltRank"));
         userType = UserType.valueOf(jsonObject.getString("userType"));
         trainingRank = BeltValue.valueOf(jsonObject.getString("trainingRank"));
         startAvailability = jsonObject.getInt("startAvailability");
@@ -66,6 +67,7 @@ public class GymUser {
 
     /**
      * Updates a trainer's start and end availability.
+     *
      * @param startHour beginning of availability
      * @param endHour   hour that availability ends
      */
@@ -80,7 +82,6 @@ public class GymUser {
 
 
     }
-
 
 
     // Getters
@@ -111,11 +112,6 @@ public class GymUser {
     public int getEndAvailability() {
         return endAvailability;
     }
-
-
-
-
-
 
 
 }
