@@ -213,4 +213,27 @@ public class GymUserTest {
         assertEquals("training belt rank not increased",
                 BeltValue.YELLOW, gymUser.getBeltRank());
     }
+
+
+    @Test
+    public void testUpdateUserName() {
+        User.signUp("change my name", "password", UserType.MEMBER);
+        GymUser gymUser = User.getUser("change my name");
+        assert gymUser != null;
+        gymUser.updateUserName("new username");
+
+        assertEquals("username did not update",
+                "new username", gymUser.getUsername());
+    }
+
+    @Test
+    public void testUpdatePassword() {
+        User.signUp("needs new password", "old password", UserType.MEMBER);
+        GymUser gymUser = User.getUser("needs new password");
+        assert gymUser != null;
+        gymUser.updatePassword("new password");
+
+        assertEquals("password did not update",
+                "new password", gymUser.getPassword());
+    }
 }

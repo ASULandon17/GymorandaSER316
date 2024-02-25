@@ -98,10 +98,11 @@ public class TrainerPanel extends JPanel {
     public void refreshTrainerCards() {
         this.initCardsPanel();
     }
+
     /**
      * Creates a card for all the trainers that are found available.
      */
-    void initCardsPanel() {
+    private void initCardsPanel() {
         cardsPanel.removeAll();
         TrainerList trainerList = new TrainerList();
         Vector<Trainer> trainers = trainerList.getTrainers();

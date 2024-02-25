@@ -43,7 +43,7 @@ public class NewTrainerPopup extends JFrame {
 
         upgradeButton.addActionListener(e -> {
             performTrainerUpgrade();
-            trainerPanel.initCardsPanel();
+            trainerPanel.refreshTrainerCards();
             clearForm();
             dispose(); // Close the popup window after upgrade
         });

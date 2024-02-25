@@ -41,11 +41,11 @@ public class GymUser {
 
     }
 
-    private void updateUserName(String newUsername) {
+    public void updateUserName(String newUsername) {
         this.username = newUsername;
     }
 
-    private void updatePassword(String newPassword) {
+    public void updatePassword(String newPassword) {
         this.password = newPassword;
     }
 
