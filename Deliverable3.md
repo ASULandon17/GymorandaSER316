@@ -332,35 +332,84 @@ Copy the section for each team member and then everyone adds their individual co
 
 #### Team Member -- Jacob Smith
 
-**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+**Do you think you individually worked consistently and put in enough work into the project 
+(give a short answer).  
 
+Yes, I think I contributed a fair amount of effort to this sprint. Like my teammates, I 
+front-loaded a lot of effort knowing this final week would be a bit crazy, made some commits in 
+the middle, and then had another big push at the end of the sprint to wrap things up.
 
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69/commits/8b872b714a9e4c3ca990dbc870185b6e03e50c73)
+- Created the GymUser class to make interacting and modifying users in the program easier as 
+  well as make it possible to modify users other than the one currently logged in.
+- Updated TrainerPanel UI and created a NewTrainer popup window to handle upgrading members to 
+  trainers.
+
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69/commits/608fcbbfad0a07954b80bca02d25b23307f82cd9)
+- Updated User.java to be compatible with the new GymUser features and implement useful methods.
+- Write action listener logic for new UI buttons.
+
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55/commits/fa95e4b268920075c4517c1d7dedc265695301ae)
+- Update ClassPanel structure to have basic and advanced course tabs.
+- Ensures new course cards are placed into the correct tab.
+
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55/commits/3d0fe74e847fc42c1b8124f038210e9b318d7078)
+- Refine new class panel UI for displaying advanced courses
+- Update save and load functionality for new variable to track if a course is advanced.
+
+[Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70/files)
+- Update BeltValue enum to utilize the ordinal values in order to simplify the class. 
+- Removed redundant parameters and simplified related methods (isAdvanced and increaseBelt).
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55) 
+- Added a feature to 
+categorize courses as beginner or advanced and updated UI to display the course cards for each 
+type separately, only showing advanced courses to users that meet the minimum belt req.
+
+[PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69) 
+- Implemented "Add 
+Trainer" functionality. Owners can upgrade an existing user to become a trainer.
+
+[PR 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70) 
+- Implemented "Manage 
+Instructor" functionality. 
+- Owners can assign instructors to courses that don't currently have 
+one or change the instructor of a course. 
+- Instructor options presented to the owner are filtered 
+to only show trainers that are available and meet the minimum belt rank req.
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70/commits/b67ba4ca5d0f9bdddba0b94c05bab59b85db1fe8)
+- Add tests to ensure both belt rank-related attributes are updated properly with the new features.
+
+[Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70/commits/9afd59452fb849ccfb02971355de3a73a931dbaf)
+- Add tests to ensure the feature to upgrade existing users to trainers works properly.
+
+[Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55/commits/3d0fe74e847fc42c1b8124f038210e9b318d7078)
+- Update course-related unit tests for new functionality.
 
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+[Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/53)
+
+[Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61)
+
+[Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67)
+
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+[Static Analysis](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65/files)
+- This was my biggest PR related to static analysis. I went through and corrected checkstyle 
+  warnings for all classes that have been added by our team and made a small dent on bulk 
+  checkstyle warnings for other classes such as indentation issues.
  
   
 
