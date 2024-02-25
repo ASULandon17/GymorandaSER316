@@ -18,6 +18,7 @@ public class NewTrainerPopup extends JFrame {
 
     /**
      * Constructor for popup window.
+     *
      * @param trainerPanel ref to parent
      */
     public NewTrainerPopup(TrainerPanel trainerPanel) {

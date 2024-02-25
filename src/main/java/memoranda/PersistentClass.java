@@ -30,7 +30,6 @@ public class PersistentClass {
      * @return updated course list
      */
     public static List<Course> getListOfCourses() {
-        loadClassesFromFile();
         return courses;
     }
 
@@ -82,6 +81,7 @@ public class PersistentClass {
      * Saves the Room list to the json file.
      */
     public static void saveClassesToFile() {
+
 
         JSONArray jsonArray = new JSONArray();
 

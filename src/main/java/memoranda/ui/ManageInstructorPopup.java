@@ -65,7 +65,7 @@ public class ManageInstructorPopup extends JFrame {
                     new AssignInstructorPopup(classPanelRef, course, getAvailableTrainers(course));
             dispose();
         });
-       // add everything to the frame
+        // add everything to the frame
         instructorPanel.add(currentInstructorLabel);
         instructorPanel.add(instructorButton);
         mainPanel.add(instructorPanel);

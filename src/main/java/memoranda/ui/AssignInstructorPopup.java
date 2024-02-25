@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import main.java.memoranda.Course;
-import main.java.memoranda.PersistentClass;
 
 public class AssignInstructorPopup extends JFrame {
 
@@ -53,9 +52,8 @@ public class AssignInstructorPopup extends JFrame {
         // add new instructor to the course, save courses, then refresh course cards
 
         String newTrainer = Objects.requireNonNull(trainerOptions.getSelectedItem()).toString();
+
         course.setInstructorName(newTrainer);
-        // save the classes so refresh pulls the new data
-        PersistentClass.saveClassesToFile();
 
         String message = newTrainer + " assigned to " + course.getClassName();
         classPanelRef.refreshCards();
