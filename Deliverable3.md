@@ -117,7 +117,15 @@ Answer as a team!
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
 
-> Your Answer
+![Sprint 3 Burndown](images/sprint3Burndown.png)
+> Our trend line isn't as spot on as it was in our previous sprint. We used the relative mass 
+> approach for US scoring again but this time we had the extra variable of multiple big 
+> end-of-semester requirements from all of our courses competing for our attention in addition 
+> to final exams. We intentionally pushed ahead at the start of the sprint to ensure we finished 
+> the minimum amount of features we wanted to see implemented, and then consistently worked over 
+> the remainder of the sprint. Overall we did end up completing all of our US on time and given 
+> the nature of everyone's schedule and conflicting requirements, our team is extremely happy 
+> with our performance.
 
 ### Contributions:
 
