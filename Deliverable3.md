@@ -24,11 +24,14 @@ Document your Sprint Planning here. Also check the kickoff document for more det
 **Why did you add these US, why do you think you can get them done in the next Sprint?**
 
 > We chose these User Stories because they add functionality that we deemed most important and beneficial to our project. We selected these 9 because
-> we now have a better grasp of what our team can accomplish in a Sprint and we believe that they collectively require the exact amount of effort we're able to deliver.
+> we now have a better grasp of what our team can accomplish in a Sprint and we believe that 
+> they collectively require the exact amount of effort we're able to deliver with other course 
+> requirements as the semester wraps up.
 
 **Why do you think these fit well with your Sprint goal? (details)**
 
-> These fit well with our Sprint goal because they put the finishing touches on features we committed to delivering by tieing together the last of our classes that need to share data,
+> These fit well with our Sprint goal because they put the finishing touches on features we 
+> committed to delivering by tying together the last of our classes that need to share data,
 > structuring our data in a more efficient manner, and making our user interface look professional and ready to hit the market.
 
 **Do you have a rough idea what you need to do? (if the answer is no then please let me know on Slack)**
@@ -44,13 +47,13 @@ I would also advise you to already fill out the Contributions section (End of sp
 ### Meeting minutes of your Daily Scrums (3 per week, should not take longer than 10 minutes):
 > Add as many rows as needed and fill out the table. (Burndown starts with Sprint 2, and Continuous Integration starts with Sprint 3, not needed before that). 
 
-| Date  | Who did NOT attend  |Meeting notes (very brief)   | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info  |
-|---|---|---|---|--|--|
-|14 FEB 2024|All members attended|Everyone seemed excited to start sprint 3! Eager to get tasks done.|N/A Start of sprint|Master and Dev pass|  |
-|16 FEB 2024|All members attended|Individual updates as well as noting being ahead.|Ahead|Master and Dev pass|  |
-|19 FEB 2024|All members attended|Individual updates.  Most tasks have been picked up|Ahead|Master and dev pass|  |
-|21 FEB 2024|All members attended|Individual updates.  Minor progress as most are focusing on individual assignment/other classes.|Ahead|Master and Dev pass|  |
-|23 FEB 2024|All members attended|Individual updates.  Acknowledging end of sprint|Ahead|Master and dev pass|  |
+| Date        | Who did NOT attend   | Meeting notes (very brief)                                                                       | Burndown Info (on track, ahead behind is enough, Sprint 2,3) | GitHub Actions info (does the master pass, Sprint 3) | Additional Info |
+|-------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------|-----------------|
+| 14 FEB 2024 | All members attended | Everyone seemed excited to start sprint 3! Eager to get tasks done.                              | N/A Start of sprint                                          | Master and Dev pass                                  |                 |
+| 16 FEB 2024 | All members attended | Individual updates as well as noting being ahead.                                                | Ahead                                                        | Master and Dev pass                                  |                 |
+| 19 FEB 2024 | All members attended | Individual updates.  Most tasks have been picked up                                              | Ahead                                                        | Master and dev pass                                  |                 |
+| 21 FEB 2024 | All members attended | Individual updates.  Minor progress as most are focusing on individual assignment/other classes. | Ahead                                                        | Master and Dev pass                                  |                 |
+| 23 FEB 2024 | All members attended | Individual updates.  Acknowledging end of sprint                                                 | Ahead                                                        | Master and dev pass                                  |                 |
 
 
 ## 3: After the Sprint

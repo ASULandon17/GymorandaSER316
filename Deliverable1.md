@@ -111,7 +111,7 @@ I would also advise you to already fill out the Contributions section (End of sp
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
 
-> ![image info](sprint1burndown.png)
+> ![image info](images/sprint1burndown.png)
 >Test to practice embedding images with markdown!
 
 ### Contributions:

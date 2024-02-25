@@ -112,7 +112,7 @@ Answer as a team!
 **Starting in Sprint 2**
 Include a screenshot of your Burndown chart here and analyse in detail for me why it looks the way it does and how you could improve it if it needs improving. 
 
-![image info](sprint2Burndown.png)
+![image info](images/sprint2Burndown.png)
 > Our burn down chart shows that our expectations for what we can get done and the consistency of our work improved greatly from the previous sprint. 
 > Due to the nature of our team's schedule dynamic and needed to meet entirely asynchronously, we went with the relative mass approach to assigning scores to user stories. 
 > We could see this method not always being the most effective, especially if we didn't have a good idea of what our other team members can get done, but it turned out to provide a good estimate for this sprint.
