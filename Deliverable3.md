@@ -235,34 +235,50 @@ Copy the section for each team member and then everyone adds their individual co
 #### Team Member -- Jack Quinn
 
 **Do you think you individually worked consistently and put in enough work into the project (give a short answer).
-
+I think I put in enough work this sprint as I was able to complete a few US's that added value to the project.  I wasn't able to work all that consistently, and I knew that I wouldn't be able to allocate too much time later in the sprint to the project, therefore I did most of my work in the first few days.
 
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
 
-    - link1
-    - link2
+   [Commit1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9f74dc98778ceb3f27b4e4078bf27661fc668f55) - Added function to get trainers available at a certain time based on their availability.
+   
+   [Commit2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/2f33680082b159d5857d3f64d032a560a33ab210) - Began adding the UI for the trainers to be able to set their availability.
+   
+   [Commit3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/55d9ce95201f6c18fb3fb4410a886466e8199c6f) - Added UI for allowing the user to change their password.
+   
+   [Commit4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/0daf6f048e8ce62d95fdcfe478cfc5fa30327cf5) - Integrated the UI to allow trainers to set their start and end times.
+   
+   [Commit5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/78da7c482a6246067d2f478912df79c12d360022) - Added the funcitonality for the user to change their password.
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+   [PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/58) - PR for allowing the trainers to set their schedules within the UI.
+   
+   [PR2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/53) - PR for setting the rooms.json file properly if no rooms are found.
+   
+   [PR3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/52) - PR for Personal Section and allow the user to see their upcoming classes as well as change their password.
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
-
+   [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9fa8e6f67b487b75fb63c05802a1ea2589a772fb) - Unit test for changing password.
+   
+   [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/c877ed189b0383b5cfbba6b0c49bb91ad02e67ff) - Unit test for trainer updating their availability.
+   
+   [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/9f74dc98778ceb3f27b4e4078bf27661fc668f55) - Unit test for getting trainers at a certain time.
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+   [Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69) - Review for a PR made by Jacob.
+   
+   [Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67) - Review for a PR made by Cameron.
+   
+   [Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/68) - Review for a PR made by Jacob.
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+   [Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/5a74b8b28b7d890c4f9053a8ea2a783f0014306c) - Added spotbugs to build.gradle as well as fixed spotbugs errors in User.java.
+   
+   [Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/commit/68ff10b12c3a2e17484d1b81f23468812423afd7) - Removed some spotbugs errors within the TrainerList.java file.
 
 #### Team Member -- Dylan White
 
