@@ -160,7 +160,7 @@ public class NewClassPopup extends JFrame {
      *
      * @return array of trainer usernames.
      */
-    private String[] getTeacherList() {
+    protected String[] getTeacherList() {
 
         List<GymUser> trainerList = User.getTrainers();
 
