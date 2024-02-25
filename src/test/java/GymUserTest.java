@@ -1,21 +1,21 @@
 package test.java;
 
-import main.java.memoranda.GymUser;
-import org.json.*;
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import main.java.memoranda.User;
-import main.java.memoranda.UserType;
+import static org.junit.Assert.assertEquals;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import main.java.memoranda.GymUser;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.Test;
 
 public class GymUserTest {
+
     /**
-     * Test to check the functionality of the setAvailability method.
-     * Checks to see if the method functions correctly for MEMBER.
+     * Test to check the functionality of the setAvailability method. Checks to see if the method
+     * functions correctly for MEMBER.
      */
     @Test
     public void setAvailabilityMemberTest() {
@@ -50,8 +50,8 @@ public class GymUserTest {
     }
 
     /**
-     * Test to check the functionality of the setAvailability method.
-     * Checks to see if the method functions correctly for TRAINER.
+     * Test to check the functionality of the setAvailability method. Checks to see if the method
+     * functions correctly for TRAINER.
      */
     @Test
     public void setAvailabilityTrainerTest() {
@@ -83,8 +83,8 @@ public class GymUserTest {
     }
 
     /**
-     * Test to check the functionality of the setAvailability method.
-     * Checks to see if the method functions correctly for OWNER.
+     * Test to check the functionality of the setAvailability method. Checks to see if the method
+     * functions correctly for OWNER.
      */
     @Test
     public void setAvailabilityOwnerTest() {
@@ -116,5 +116,68 @@ public class GymUserTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Ensure a member is upgraded to a trainer properly.
+     */
+    @Test
+    public void testBecomeTrainerOnMember() {
+        User.signUp("test member", "password", UserType.MEMBER);
+
+        GymUser gymUser = User.getUser("test member");
+
+        assert gymUser != null;
+        assertEquals("User did not start as a member",
+                UserType.MEMBER, gymUser.getUserType());
+
+        // apply trainer upgrade but don't save to file
+        gymUser.becomeTrainer();
+
+        assertEquals("Member did not upgrade to trainer",
+                UserType.TRAINER, gymUser.getUserType());
+    }
+
+    /**
+     * Ensure a trainer remains a trainer.
+     */
+    @Test
+    public void testBecomeTrainerOnTrainer() {
+        User.signUp("test trainer", "password", UserType.TRAINER);
+
+        GymUser gymUser = User.getUser("test trainer");
+
+        assert gymUser != null;
+        assertEquals("User did not start as a trainer",
+                UserType.TRAINER, gymUser.getUserType());
+
+        // apply trainer upgrade but don't save to file
+        gymUser.becomeTrainer();
+
+        assertEquals("Member is no longer a trainer",
+                UserType.TRAINER, gymUser.getUserType());
+
+    }
+
+    /**
+     * Ensure an owner is not downgraded to a trainer.
+     */
+    @Test
+    public void testBecomeTrainerOnOwner() {
+        User.signUp("test owner", "password", UserType.OWNER);
+
+        GymUser gymUser = User.getUser("test owner");
+
+        assert gymUser != null;
+        assertEquals("User did not start as an owner",
+                UserType.OWNER, gymUser.getUserType());
+
+        // apply trainer upgrade but don't save to file
+        gymUser.becomeTrainer();
+
+        assertEquals("Member is no longer an owner",
+                UserType.OWNER, gymUser.getUserType());
+
+
     }
 }

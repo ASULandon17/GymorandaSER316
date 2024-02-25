@@ -102,12 +102,17 @@ public class User {
                     StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
+
+            // refresh list of gym users
+            loadUsersFromFile();
+
             return true;
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             return false;
         }
     }
+
 
     /**
      * Handles login process.
