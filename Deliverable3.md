@@ -169,6 +169,198 @@ Copy the section for each team member and then everyone adds their individual co
 
     - link1
     - link2
+#### Team Member -- Cameron Thieme
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+#### Team Member -- Landon Messmore
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+#### Team Member -- Jack Quinn
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+#### Team Member -- Dylan White
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+#### Team Member -- Natel Whitaker
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+
+
+#### Team Member -- Jacob Smith
+
+**Do you think you individually worked consistently and put in enough work into the project (give a short answer).
+
+
+
+**Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
+
+    - link1
+    - link2
+
+**GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (everyone should write 4 good Unit Tests each Sprint):
+
+    - link1
+    - link2
+
+
+**GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
+
+**How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
+
+    - link1
+    - link2
  
   
 
