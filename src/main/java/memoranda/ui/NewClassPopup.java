@@ -158,15 +158,18 @@ public class NewClassPopup extends JFrame {
      * Filters the trainer list down to just usernames to display on the new course window. Combo
      * boxes can only take arrays.
      *
-     * @return list of trainer usernames.
+     * @return array of trainer usernames.
      */
     private String[] getTeacherList() {
 
         List<GymUser> trainerList = User.getTrainers();
 
-        String[] teachers = new String[trainerList.size()];
+        String[] teachers = new String[trainerList.size() + 1];
+        // enter the first option to be empty if owner doesn't know trainer yet.
+        teachers[0] = "";
 
-        int index = 0;
+        // offset index
+        int index = 1;
         for (GymUser users : trainerList) {
             teachers[index] = users.getUsername();
             index++;
