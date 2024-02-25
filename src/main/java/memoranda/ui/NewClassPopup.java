@@ -3,11 +3,6 @@ package main.java.memoranda.ui;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,10 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import main.java.memoranda.GymUser;
 import main.java.memoranda.PersistentClass;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import main.java.memoranda.User;
 
 public class NewClassPopup extends JFrame {
     private JTextField classNameField;
@@ -114,6 +108,10 @@ public class NewClassPopup extends JFrame {
             boolean classIsPublic = classIsPublicCheckBox.isSelected();
             boolean classIsAdvanced = classIsAdvancedCheckBox.isSelected();
             String teacherName = String.valueOf(teacherList.getSelectedItem());
+            // avoid null teacher
+            if (teacherName == null) {
+                teacherName = "Not Assigned";
+            }
 
 
             PersistentClass.addNewClass(className, classLength, maxClassSize,
@@ -156,29 +154,26 @@ public class NewClassPopup extends JFrame {
         classIsAdvancedCheckBox.setSelected(false);
     }
 
+    /**
+     * Filters the trainer list down to just usernames to display on the new course window. Combo
+     * boxes can only take arrays.
+     *
+     * @return list of trainer usernames.
+     */
     private String[] getTeacherList() {
-        List<String> list = new ArrayList<>();
 
-        try {
-            File file = new File("users.json");
-            if (!file.exists()) {
-                return new String[0];
-            }
+        List<GymUser> trainerList = User.getTrainers();
 
-            String content = Files.readString(Paths.get("users.json"));
+        String[] teachers = new String[trainerList.size()];
 
-            JSONArray usersArray = new JSONArray(content);
-            for (int i = 0; i < usersArray.length(); i++) {
-                JSONObject user = usersArray.getJSONObject(i);
-                if (user.getString("userType").equals("TRAINER") && (user.getString("trainingRank").equals("BLACK2") || user.getString("trainingRank").equals("BLACK3"))) {
-                    list.add(user.getString("username"));
-                }
-            }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-            return new String[0];
+        int index = 0;
+        for (GymUser users : trainerList) {
+            teachers[index] = users.getUsername();
+            index++;
         }
 
-        return list.toArray(new String[0]);
+        return teachers;
     }
+
+
 }
