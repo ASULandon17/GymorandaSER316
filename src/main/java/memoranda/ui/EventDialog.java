@@ -66,7 +66,7 @@ public class EventDialog extends JDialog implements WindowListener {
     public JRadioButton weeklyRepeatRB = new JRadioButton();
     public JComboBox weekdaysCB = new JComboBox(Local.getWeekdayNames());
     public JCheckBox enableEndDateCB = new JCheckBox();
-	public JCheckBox workingDaysOnlyCB = new JCheckBox();
+    public JCheckBox workingDaysOnlyCB = new JCheckBox();
     public JSpinner endDate = new JSpinner(new SpinnerDateModel());
     JButton setEndDateB = new JButton();
     public JRadioButton monthlyRepeatRB = new JRadioButton();
@@ -94,7 +94,7 @@ public class EventDialog extends JDialog implements WindowListener {
     }
 
     void jbInit() throws Exception {
-    	this.setResizable(false);
+        this.setResizable(false);
         // Build headerPanel
         headerPanel.setBackground(Color.WHITE);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -207,11 +207,11 @@ public class EventDialog extends JDialog implements WindowListener {
         startDate.setPreferredSize(new Dimension(80, 24));
         
         //Added by (jcscoobyrs) on 12-Nov-2003 at 15:34:27 PM
-		//---------------------------------------------------
-		SimpleDateFormat sdf = new SimpleDateFormat();
-		sdf = (SimpleDateFormat)DateFormat.getDateInstance(DateFormat.SHORT);
+        //---------------------------------------------------
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf = (SimpleDateFormat)DateFormat.getDateInstance(DateFormat.SHORT);
         startDate.setEditor(new JSpinner.DateEditor(startDate, 
-        	sdf.toPattern()));
+            sdf.toPattern()));
         //---------------------------------------------------
         gbc = new GridBagConstraints();
         gbc.gridx = 5; gbc.gridy = 1;
@@ -265,10 +265,10 @@ public class EventDialog extends JDialog implements WindowListener {
         gbc.anchor = GridBagConstraints.EAST;
         repeatPanel.add(enableEndDateCB, gbc);
         endDate.setPreferredSize(new Dimension(80, 24));
-		//Added by (jcscoobyrs) on 12-Nov-2003 at 15:34:27 PM
-		//---------------------------------------------------
-		endDate.setEditor(new JSpinner.DateEditor(endDate, sdf.toPattern()));
-		//---------------------------------------------------
+        //Added by (jcscoobyrs) on 12-Nov-2003 at 15:34:27 PM
+        //---------------------------------------------------
+        endDate.setEditor(new JSpinner.DateEditor(endDate, sdf.toPattern()));
+        //---------------------------------------------------
         endDate.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 if (ignoreEndChanged)
@@ -284,16 +284,16 @@ public class EventDialog extends JDialog implements WindowListener {
                 ignoreEndChanged = false;
             }
         });
-		// working days
-		workingDaysOnlyCB.setText(Local.getString("Working days only"));
-		workingDaysOnlyCB.setHorizontalAlignment(SwingConstants.RIGHT);
-		gbc = new GridBagConstraints();
+        // working days
+        workingDaysOnlyCB.setText(Local.getString("Working days only"));
+        workingDaysOnlyCB.setHorizontalAlignment(SwingConstants.RIGHT);
+        gbc = new GridBagConstraints();
         gbc.gridx = 4; gbc.gridy = 3;
-		gbc.gridwidth = 2;
+        gbc.gridwidth = 2;
         gbc.insets = new Insets(5, 0, 5, 5);
         gbc.anchor = GridBagConstraints.EAST;
-		repeatPanel.add(workingDaysOnlyCB, gbc);
-		// -------------------------------------
+        repeatPanel.add(workingDaysOnlyCB, gbc);
+        // -------------------------------------
         gbc = new GridBagConstraints();
         gbc.gridx = 5; gbc.gridy = 2;
         gbc.insets = new Insets(5, 0, 5, 5);
@@ -338,19 +338,19 @@ public class EventDialog extends JDialog implements WindowListener {
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.WEST;
         repeatPanel.add(lblDoM, gbc);
-		yearlyRepeatRB.setActionCommand("yearly");
-		yearlyRepeatRB.setText(Local.getString("Yearly"));
-		yearlyRepeatRB.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				yearlyRepeatRB_actionPerformed(e);
-			}
-		});
-		gbc = new GridBagConstraints();
-		gbc.gridx = 0; gbc.gridy = 4;
-		gbc.gridwidth = 5;
-		gbc.insets = new Insets(5, 5, 5, 10);
-		gbc.anchor = GridBagConstraints.WEST;
-		repeatPanel.add(yearlyRepeatRB, gbc);
+        yearlyRepeatRB.setActionCommand("yearly");
+        yearlyRepeatRB.setText(Local.getString("Yearly"));
+        yearlyRepeatRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                yearlyRepeatRB_actionPerformed(e);
+            }
+        });
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0; gbc.gridy = 4;
+        gbc.gridwidth = 5;
+        gbc.insets = new Insets(5, 5, 5, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+        repeatPanel.add(yearlyRepeatRB, gbc);
         
         repeatRBGroup.add(noRepeatRB);
         repeatRBGroup.add(dailyRepeatRB);
@@ -419,20 +419,20 @@ public class EventDialog extends JDialog implements WindowListener {
         endDate.setEnabled(false);
         setEndDateB.setEnabled(false);
         enableEndDateCB.setEnabled(false);
-		enableEndDateCB.setSelected(false);
-		workingDaysOnlyCB.setEnabled(false);
-		workingDaysOnlyCB.setSelected(false);		
+        enableEndDateCB.setSelected(false);
+        workingDaysOnlyCB.setEnabled(false);
+        workingDaysOnlyCB.setSelected(false);
     }
     
     public void yearlyRepeatRB_actionPerformed(ActionEvent e) {
-		disableElements();
-		startDate.setEnabled(true);
-		setStartDateB.setEnabled(true);
-		lblSince.setEnabled(true);
-		enableEndDateCB.setEnabled(true);
-		workingDaysOnlyCB.setEnabled(true);
-		startDate.getModel().setValue(
-			startCalFrame.cal.get().getCalendar().getTime());
+        disableElements();
+        startDate.setEnabled(true);
+        setStartDateB.setEnabled(true);
+        lblSince.setEnabled(true);
+        enableEndDateCB.setEnabled(true);
+        workingDaysOnlyCB.setEnabled(true);
+        startDate.getModel().setValue(
+            startCalFrame.cal.get().getCalendar().getTime());
     }
 
     public void monthlyRepeatRB_actionPerformed(ActionEvent e) {
@@ -442,9 +442,9 @@ public class EventDialog extends JDialog implements WindowListener {
         setStartDateB.setEnabled(true);
         lblSince.setEnabled(true);
         enableEndDateCB.setEnabled(true);
-		workingDaysOnlyCB.setEnabled(true);
-		startDate.getModel().setValue(
-			startCalFrame.cal.get().getCalendar().getTime());        
+        workingDaysOnlyCB.setEnabled(true);
+        startDate.getModel().setValue(
+            startCalFrame.cal.get().getCalendar().getTime());
     }
 
     public void dailyRepeatRB_actionPerformed(ActionEvent e) {
@@ -454,9 +454,9 @@ public class EventDialog extends JDialog implements WindowListener {
         setStartDateB.setEnabled(true);
         lblSince.setEnabled(true);
         enableEndDateCB.setEnabled(true);
-		workingDaysOnlyCB.setEnabled(true);
-		startDate.getModel().setValue(
-			startCalFrame.cal.get().getCalendar().getTime());        
+        workingDaysOnlyCB.setEnabled(true);
+        startDate.getModel().setValue(
+            startCalFrame.cal.get().getCalendar().getTime());
     }
 
     public void weeklyRepeatRB_actionPerformed(ActionEvent e) {
@@ -466,8 +466,8 @@ public class EventDialog extends JDialog implements WindowListener {
         setStartDateB.setEnabled(true);
         lblSince.setEnabled(true);
         enableEndDateCB.setEnabled(true);
-		startDate.getModel().setValue(
-			startCalFrame.cal.get().getCalendar().getTime());        
+        startDate.getModel().setValue(
+            startCalFrame.cal.get().getCalendar().getTime());
     }
 
     public void noRepeatRB_actionPerformed(ActionEvent e) {
@@ -512,21 +512,21 @@ public class EventDialog extends JDialog implements WindowListener {
     }
     
     public void setEventDate(Date d) {
-	    eventDate = d;
-	}
-	
-	public Date getEventDate() {
-		return eventDate;
-	}
-	
+        eventDate = d;
+    }
+
+    public Date getEventDate() {
+        return eventDate;
+    }
+
     public void windowClosed( WindowEvent e ) {}
 
-	public void windowIconified( WindowEvent e ) {}
+    public void windowIconified( WindowEvent e ) {}
 
-	public void windowDeiconified( WindowEvent e ) {}
+    public void windowDeiconified( WindowEvent e ) {}
 
-	public void windowActivated( WindowEvent e ) {}
+    public void windowActivated( WindowEvent e ) {}
 
-	public void windowDeactivated( WindowEvent e ) {}
+    public void windowDeactivated( WindowEvent e ) {}
 
 }

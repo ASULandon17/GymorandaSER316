@@ -42,7 +42,7 @@ public class Resource {
     }
     
     public boolean isProjectFile() {
-    	return _isProjectFile;
+        return _isProjectFile;
     }
 
 }

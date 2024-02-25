@@ -18,35 +18,35 @@ import javax.swing.JTextArea;
  */
 
 public class SrcDialog extends JDialog {
-	JPanel panel1 = new JPanel();
-	BorderLayout borderLayout1 = new BorderLayout();
-	JScrollPane jScrollPane1 = new JScrollPane();
-	JTextArea jTextArea1 = new JTextArea();
+    JPanel panel1 = new JPanel();
+    BorderLayout borderLayout1 = new BorderLayout();
+    JScrollPane jScrollPane1 = new JScrollPane();
+    JTextArea jTextArea1 = new JTextArea();
 
-	public SrcDialog(Frame frame, String text) {
-		super(frame, "Source text", true);
-		try {
-			setText(text);
-			jbInit();
-			pack();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+    public SrcDialog(Frame frame, String text) {
+        super(frame, "Source text", true);
+        try {
+            setText(text);
+            jbInit();
+            pack();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-	public SrcDialog() {
-		this(null, "");
-	}
-	
-	void jbInit() throws Exception {
-		panel1.setLayout(borderLayout1);
-		jTextArea1.setEditable(false);
-		getContentPane().add(panel1);
-		panel1.add(jScrollPane1, BorderLayout.CENTER);
-		jScrollPane1.getViewport().add(jTextArea1, null);
-	}
+    public SrcDialog() {
+        this(null, "");
+    }
 
-	public void setText(String txt) {
-		jTextArea1.setText(txt);
-	}
+    void jbInit() throws Exception {
+        panel1.setLayout(borderLayout1);
+        jTextArea1.setEditable(false);
+        getContentPane().add(panel1);
+        panel1.add(jScrollPane1, BorderLayout.CENTER);
+        jScrollPane1.getViewport().add(jTextArea1, null);
+    }
+
+    public void setText(String txt) {
+        jTextArea1.setText(txt);
+    }
 }

@@ -105,39 +105,39 @@ public class EventNotificationDialog extends JFrame {
   }
   
   private void playSoundNotification() {
-		if (Configuration.get("NOTIFY_SOUND").equals("DISABLED"))
-			return;
-		if (Configuration.get("NOTIFY_SOUND").equals("BEEP")) {
-			java.awt.Toolkit.getDefaultToolkit().beep();
-			return;
-		}
-		if (Configuration.get("NOTIFY_SOUND").equals("")) {
-			Configuration.put("NOTIFY_SOUND", "DEFAULT");
-			Configuration.saveConfig();
-		}
-		URL url;
-		if (Configuration.get("NOTIFY_SOUND").equals("DEFAULT"))
-			url =
-				EventNotificationDialog.class.getResource(
-					"/ui/beep.wav");
-		else
-			try {
-				url =
-					new File(Configuration.get("NOTIFY_SOUND").toString())
-						.toURL();
-			} catch (Exception ex) {
-				url =
-					EventNotificationDialog.class.getResource(
-						"/ui/beep.wav");
-			}
-		try {
+        if (Configuration.get("NOTIFY_SOUND").equals("DISABLED"))
+            return;
+        if (Configuration.get("NOTIFY_SOUND").equals("BEEP")) {
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            return;
+        }
+        if (Configuration.get("NOTIFY_SOUND").equals("")) {
+            Configuration.put("NOTIFY_SOUND", "DEFAULT");
+            Configuration.saveConfig();
+        }
+        URL url;
+        if (Configuration.get("NOTIFY_SOUND").equals("DEFAULT"))
+            url =
+                EventNotificationDialog.class.getResource(
+                    "/ui/beep.wav");
+        else
+            try {
+                url =
+                    new File(Configuration.get("NOTIFY_SOUND").toString())
+                        .toURL();
+            } catch (Exception ex) {
+                url =
+                    EventNotificationDialog.class.getResource(
+                        "/ui/beep.wav");
+            }
+        try {
             // Research how to fix and remove this line
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(String.valueOf(url)).getAbsoluteFile());
-			Clip clip = AudioSystem.getClip();
+            Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-		} catch (Exception ex) {
-			new ExceptionDialog(ex, "Error loading audioclip from "+url, "Check the location and type of audioclip file.");
-		}
-	}
+        } catch (Exception ex) {
+            new ExceptionDialog(ex, "Error loading audioclip from "+url, "Check the location and type of audioclip file.");
+        }
+    }
 }

@@ -21,7 +21,6 @@
 package main.java.memoranda.ui;
 
 import javax.swing.event.*;
-import javax.swing.tree.TreePath;
 
 import main.java.memoranda.*;
 import main.java.memoranda.date.CurrentDate;
@@ -29,8 +28,6 @@ import main.java.memoranda.ui.treetable.AbstractTreeTableModel;
 import main.java.memoranda.ui.treetable.TreeTableModel;
 import main.java.memoranda.util.Context;
 import main.java.memoranda.util.Local;
-
-import java.util.Hashtable;
 
 /**
  * JAVADOC:
@@ -99,9 +96,9 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
             return getStatusString(t.getStatus(CurrentDate.get()));
         case 6:            
             //return new Integer(t.getProgress());
-			return t;
+            return t;
         case TaskTable.TASK_ID:
-            return t.getID();
+            return t.getId();
         case TaskTable.TASK:
             return t;
         }
@@ -149,14 +146,14 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
      */
     public int getChildCount(Object parent) {
         if (parent instanceof Project) {
-		if( activeOnly() ){
-			return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).size();
-		}
-		else return CurrentProject.getTaskList().getTopLevelTasks().size();
+        if( activeOnly() ){
+            return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).size();
+        }
+        else return CurrentProject.getTaskList().getTopLevelTasks().size();
         }
         Task t = (Task) parent;
-        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).size();
-	else return t.getSubTasks().size();
+        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getId(), CurrentDate.get()).size();
+    else return t.getSubTasks().size();
     }
 
     /**
@@ -165,10 +162,10 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
     public Object getChild(Object parent, int index) {
         if (parent instanceof Project)
             if( activeOnly() ) return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).toArray()[index];
-	    else return CurrentProject.getTaskList().getTopLevelTasks().toArray()[index];
+        else return CurrentProject.getTaskList().getTopLevelTasks().toArray()[index];
         Task t = (Task) parent;
-        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).toArray()[index];
-	else return t.getSubTasks().toArray()[index];
+        if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getId(), CurrentDate.get()).toArray()[index];
+    else return t.getSubTasks().toArray()[index];
     }
 
     /**
@@ -197,11 +194,11 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
     }
     
     public void fireTreeStructureChanged(){	    
-	    fireTreeStructureChanged( this,
-	    			new Object[]{getRoot()},
-				new int[0],
-				new Object[0]
-				);
+        fireTreeStructureChanged( this,
+                    new Object[]{getRoot()},
+                new int[0],
+                new Object[0]
+                );
     }
     
     
@@ -209,21 +206,21 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
      * Update cached data
      */
     public void fireUpdateCache(){
-		activeOnly = check_activeOnly();
+        activeOnly = check_activeOnly();
     }
 
     public static boolean check_activeOnly(){
-		Object o = Context.get("SHOW_ACTIVE_TASKS_ONLY");
-		if(o == null) return false;
-		return o.toString().equals("true");
-	}
+        Object o = Context.get("SHOW_ACTIVE_TASKS_ONLY");
+        if(o == null) return false;
+        return o.toString().equals("true");
+    }
 
     public boolean activeOnly(){
-		return activeOnly;
+        return activeOnly;
     }
     
     public boolean isCellEditable(Object node, int column) {
-		if(column == 6) return true; 
+        if(column == 6) return true;
         return super.isCellEditable(node, column); 
     }
 

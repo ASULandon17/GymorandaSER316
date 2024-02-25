@@ -46,7 +46,7 @@ public class ResourceTypeDialog extends JDialog {
     }
 
     void jbInit() throws Exception {
-	this.setResizable(false);
+    this.setResizable(false);
         dialogTitlePanel.setBackground(Color.WHITE);
         dialogTitlePanel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         header.setFont(new java.awt.Font("Dialog", 0, 20));

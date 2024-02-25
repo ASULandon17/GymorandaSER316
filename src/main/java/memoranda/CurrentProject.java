@@ -39,17 +39,17 @@ public class CurrentProject {
         }
         //ProjectManager.init();
         _project = ProjectManager.getProject(prjId);
-		
-		if (_project == null) {
-			// alexeya: Fixed bug with NullPointer when LAST_OPENED_PROJECT_ID
-			// references to missing project
-			_project = ProjectManager.getProject("__default");
-			if (_project == null) 
-				_project = (Project)ProjectManager.getActiveProjects().get(0);						
+
+        if (_project == null) {
+            // alexeya: Fixed bug with NullPointer when LAST_OPENED_PROJECT_ID
+            // references to missing project
+            _project = ProjectManager.getProject("__default");
+            if (_project == null)
+                _project = (Project)ProjectManager.getActiveProjects().get(0);
             Context.put("LAST_OPENED_PROJECT_ID", _project.getID());
-			
-		}		
-		
+
+        }
+
         _tasklist = CurrentStorage.get().openTaskList(_project);
         _notelist = CurrentStorage.get().openNoteList(_project);
         _resources = CurrentStorage.get().openResourcesList(_project);

@@ -1,30 +1,39 @@
 package main.java.memoranda.ui;
 
-import main.java.memoranda.*;
-
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.util.Vector;
+import main.java.memoranda.Trainer;
+import main.java.memoranda.TrainerList;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+import main.java.memoranda.ui.gymoranda.LookAndFeel;
 
 /**
- * TrainerPanel
- * creates a panel displaying the current trainers' data
+ * TrainerPanel creates a panel displaying the current trainers' data.
  */
 public class TrainerPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
     JToolBar eventsToolBar = new JToolBar();
     JScrollPane scrollPane = new JScrollPane();
-    private JPanel cardsPanel = new JPanel();
+    private final JPanel cardsPanel = new JPanel();
 
-    JButton newTrainer = new JButton();
+    JButton newTrainerButton = new JButton();
 
     /**
-     * TrainerPanel
-     * constructor for creating a new trainer panel
+     * TrainerPanel constructor for creating a new trainer panel.
      */
     public TrainerPanel() {
         try {
@@ -34,60 +43,63 @@ public class TrainerPanel extends JPanel {
             new ExceptionDialog(ex);
         }
     }
-    //This is used in NewclassPopup so that on adding a new class, the UI refreshes.
 
     /**
-     * newTrainerButtonHelper
-     * takes a button and sets the necessary areas the values they need
+     * Takes a button and sets the necessary areas the values they need.
      *
      * @param button the button to be given values
      */
     private void newTrainerButtonHelper(JButton button) {
-        button.setFocusable(false);
-        button.setBorderPainted(false);
-        button.setContentAreaFilled(false);
-        button.setOpaque(true);
-        button.setBackground(new Color(0, 100, 0));
-        button.setForeground(Color.WHITE);
-        button.setPreferredSize(new Dimension(100, 30));
+        LookAndFeel.gymButtonHelper(button);
     }
 
     /**
-     * jbInit
-     * initializes button to add a trainer
+     * Builds the trainer panel.
      */
     void jbInit() throws Exception {
         eventsToolBar.setFloatable(false);
 
-        newTrainer.setText("Add a trainer");
-        if (User.getUserType() == UserType.OWNER) {
-            newTrainer.setVisible(true);
-        } else {
-            newTrainer.setVisible(false);
-        }
-        newTrainerButtonHelper(newTrainer);
-        newTrainer.setToolTipText("Add a new trainer");
+        newTrainerButton.setText("Add a trainer");
+        // only show if user is an Owner
+        newTrainerButton.setVisible(User.getUserType() == UserType.OWNER);
+
+        // Open new trainer popup if button is pressed
+        newTrainerButton.addActionListener(e -> {
+            // pass a ref to the trainer panel iot update trainer cards
+            NewTrainerPopup trainerPopup = new NewTrainerPopup(TrainerPanel.this);
+            trainerPopup.setVisible(true);
+        });
+
+        // format the button appearance
+        newTrainerButtonHelper(newTrainerButton);
+
+        newTrainerButton.setToolTipText("Add a new trainer");
 
 
         this.setLayout(borderLayout1);
+
         scrollPane.getViewport().setBackground(Color.white);
 
         this.add(scrollPane, BorderLayout.CENTER);
 
         eventsToolBar.addSeparator(new Dimension(8, 24));
 
-
         eventsToolBar.addSeparator(new Dimension(8, 24));
 
-        eventsToolBar.add(newTrainer, null);
+        eventsToolBar.add(newTrainerButton, null);
         this.add(eventsToolBar, BorderLayout.NORTH);
 
 
     }
 
     /**
-     * initCardsPanel
-     * creates a card for all the trainers that are found available
+     * Refreshes trainer cards after a new trainer is added.
+     */
+    public void refreshTrainerCards() {
+        this.initCardsPanel();
+    }
+    /**
+     * Creates a card for all the trainers that are found available.
      */
     void initCardsPanel() {
         cardsPanel.removeAll();
@@ -107,8 +119,7 @@ public class TrainerPanel extends JPanel {
     }
 
     /**
-     * createTrainerCard
-     * creates a card given a trainer
+     * Creates a card given a trainer.
      *
      * @param trainer the trainer to be used for the card
      * @return a card that displays the trainer's details
@@ -129,29 +140,7 @@ public class TrainerPanel extends JPanel {
         JLabel trainerBeltLabel = new JLabel("Belt Rank: " + trainer.getBeltRank());
 
         // Create a string based on the availability of the Trainer
-        int start = trainer.getStartAvailability();
-        int end = trainer.getEndAvailability();
-        String availability = "";
-        if(start < 12) {
-            availability = start + ":00 a.m. to ";
-        }
-        else {
-            if(start != 12) {
-                start = start % 12;  //Change from 24hr to 12hr clock
-            }
-            availability = start + ":00 p.m. to ";
-        }
-        if(end < 12) {
-            availability += end + ":00 a.m.";
-        }
-        else {
-            if(end != 12) {
-                end = end % 12;  //Change from 24hr to 12hr clock
-            }
-            availability += end + ":00 p.m.";
-        }
-
-        JLabel trainerAvailabilityLabel = new JLabel("Availability: " + availability);
+        JLabel trainerAvailabilityLabel = buildAvailabilityLabel(trainer);
 
 
         JPanel infoPanel = new JPanel(new GridLayout(5, 1));
@@ -166,5 +155,29 @@ public class TrainerPanel extends JPanel {
 
 
         return card;
+    }
+
+    private static JLabel buildAvailabilityLabel(Trainer trainer) {
+        int start = trainer.getStartAvailability();
+        int end = trainer.getEndAvailability();
+        String availability = "";
+        if (start < 12) {
+            availability = start + ":00 a.m. to ";
+        } else {
+            if (start != 12) {
+                start = start % 12;  //Change from 24hr to 12hr clock
+            }
+            availability = start + ":00 p.m. to ";
+        }
+        if (end < 12) {
+            availability += end + ":00 a.m.";
+        } else {
+            if (end != 12) {
+                end = end % 12;  //Change from 24hr to 12hr clock
+            }
+            availability += end + ":00 p.m.";
+        }
+
+        return new JLabel("Availability: " + availability);
     }
 }
