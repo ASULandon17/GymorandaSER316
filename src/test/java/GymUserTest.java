@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import main.java.memoranda.BeltValue;
 import main.java.memoranda.GymUser;
 import main.java.memoranda.User;
 import main.java.memoranda.UserType;
@@ -179,5 +180,37 @@ public class GymUserTest {
                 UserType.OWNER, gymUser.getUserType());
 
 
+    }
+
+    /**
+     * Ensure training rank is increased properly.
+     */
+    @Test
+    public void testIncreaseTrainingRank() {
+        User.signUp("new trainer", "password", UserType.TRAINER);
+
+        GymUser gymUser = User.getUser("new trainer");
+        assert gymUser != null;
+
+        gymUser.increaseTrainingRank();
+
+        assertEquals("training belt rank not increased",
+                BeltValue.WHITE, gymUser.getTrainingRank());
+    }
+
+    /**
+     * Ensure belt rank is increased properly.
+     */
+    @Test
+    public void testIncreaseBeltRank() {
+        User.signUp("new member", "password", UserType.MEMBER);
+
+        GymUser gymUser = User.getUser("new member");
+        assert gymUser != null;
+
+        gymUser.increaseBeltRank();
+
+        assertEquals("training belt rank not increased",
+                BeltValue.YELLOW, gymUser.getBeltRank());
     }
 }
