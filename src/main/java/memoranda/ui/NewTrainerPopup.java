@@ -75,9 +75,11 @@ public class NewTrainerPopup extends JFrame {
             if (user.getUserType() == UserType.TRAINER) {
                 JOptionPane.showMessageDialog(this,
                         "User is already a trainer");
+                return;
             } else if (type == UserType.OWNER) {
                 JOptionPane.showMessageDialog(this,
                         "User is already an owner");
+                return;
             } else {
 
                 // if they're not an owner or trainer already, upgrade to trainer.
