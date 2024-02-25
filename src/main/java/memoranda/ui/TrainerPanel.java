@@ -30,7 +30,7 @@ public class TrainerPanel extends JPanel {
     JScrollPane scrollPane = new JScrollPane();
     private final JPanel cardsPanel = new JPanel();
 
-    JButton newTrainer = new JButton();
+    JButton newTrainerButton = new JButton();
 
     /**
      * TrainerPanel constructor for creating a new trainer panel.
@@ -59,32 +59,45 @@ public class TrainerPanel extends JPanel {
     void jbInit() throws Exception {
         eventsToolBar.setFloatable(false);
 
-        newTrainer.setText("Add a trainer");
-        if (User.getUserType() == UserType.OWNER) {
-            newTrainer.setVisible(true);
-        } else {
-            newTrainer.setVisible(false);
-        }
-        newTrainerButtonHelper(newTrainer);
-        newTrainer.setToolTipText("Add a new trainer");
+        newTrainerButton.setText("Add a trainer");
+        // only show if user is an Owner
+        newTrainerButton.setVisible(User.getUserType() == UserType.OWNER);
+
+        // Open new trainer popup if button is pressed
+        newTrainerButton.addActionListener(e -> {
+            // pass a ref to the trainer panel iot update trainer cards
+            NewTrainerPopup trainerPopup = new NewTrainerPopup(TrainerPanel.this);
+            trainerPopup.setVisible(true);
+        });
+
+        // format the button appearance
+        newTrainerButtonHelper(newTrainerButton);
+
+        newTrainerButton.setToolTipText("Add a new trainer");
 
 
         this.setLayout(borderLayout1);
+
         scrollPane.getViewport().setBackground(Color.white);
 
         this.add(scrollPane, BorderLayout.CENTER);
 
         eventsToolBar.addSeparator(new Dimension(8, 24));
 
-
         eventsToolBar.addSeparator(new Dimension(8, 24));
 
-        eventsToolBar.add(newTrainer, null);
+        eventsToolBar.add(newTrainerButton, null);
         this.add(eventsToolBar, BorderLayout.NORTH);
 
 
     }
 
+    /**
+     * Refreshes trainer cards after a new trainer is added.
+     */
+    public void refreshTrainerCards() {
+        this.initCardsPanel();
+    }
     /**
      * Creates a card for all the trainers that are found available.
      */

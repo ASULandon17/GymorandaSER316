@@ -16,6 +16,7 @@ import org.json.JSONObject;
  * system.
  */
 public class TrainerList {
+
     /**
      * Constructor for creating a new TrainerList.
      */
@@ -40,9 +41,12 @@ public class TrainerList {
                     StandardCharsets.UTF_8);
 
             JSONArray usersArray = new JSONArray(content);
+
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
+
                 if (user.getString("userType").equals("TRAINER")) {
+
                     trainers.add(new Trainer(user.getString("username"),
                             BeltValue.valueOf(user.getString("beltRank")),
                             BeltValue.valueOf(user.getString("trainingRank")),
@@ -76,8 +80,10 @@ public class TrainerList {
             JSONArray usersArray = new JSONArray(content);
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject user = usersArray.getJSONObject(i);
+
                 if (user.getString("username").equals(name)
                         && user.getString("userType").equals("TRAINER")) {
+
                     trainer = new Trainer(user.getString("username"),
                             BeltValue.valueOf(user.getString("beltRank")),
                             BeltValue.valueOf(user.getString("trainingRank")),
@@ -92,6 +98,7 @@ public class TrainerList {
         }
         return trainer;
     }
+
 
     /**
      * Method to update the trainers start availability.
@@ -121,7 +128,7 @@ public class TrainerList {
      * @param name         trainer name
      * @param availability hours available
      * @param isStart      decides whether to update start or end availability
-     * @return success of update
+     * @return             success of update
      */
     private boolean updateTrainerAvailability(String name, int availability, boolean isStart) {
         try {
@@ -161,7 +168,7 @@ public class TrainerList {
     /**
      * Gets all trainers that are available to work at a given time.
      *
-     * @param time for the class.
+     * @param  time for the class.
      * @return vector of trainers that are available during that time.
      */
     public Vector<Trainer> getTrainersAvailableAtTime(int time) {

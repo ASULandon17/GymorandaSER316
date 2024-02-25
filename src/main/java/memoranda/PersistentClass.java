@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,14 +17,14 @@ import org.json.JSONObject;
  */
 public class PersistentClass {
 
-    private static final ArrayList<Course> courses = new ArrayList<>();
+    private static final List<Course> courses = new ArrayList<>();
 
 
     static {
         loadClassesFromFile();
     }
 
-    public static ArrayList<Course> getListOfCourses() {
+    public static List<Course> getListOfCourses() {
         return courses;
     }
 
