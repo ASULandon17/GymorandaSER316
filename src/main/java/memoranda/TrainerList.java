@@ -171,7 +171,7 @@ public class TrainerList {
      * @param  time for the class.
      * @return vector of trainers that are available during that time.
      */
-    public Vector<Trainer> getTrainersAvailableAtTime(int time) {
+    public static Vector<Trainer> getTrainersAvailableAtTime(int time) {
         Vector<Trainer> availableTrainers = new Vector<>();
         try {
             File file = new File("users.json");

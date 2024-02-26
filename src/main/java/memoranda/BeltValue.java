@@ -4,35 +4,39 @@ package main.java.memoranda;
  * Enum class for the belt ranks.
  */
 public enum BeltValue {
-    NO_BELT(false),
 
-    WHITE(false),
-    YELLOW(false),
-    ORANGE(false),
-    PURPLE(false),
+    // Beginner belts
+    NO_BELT,
 
-    BLUE(true),
-    BLUE_STRIPE(true),
+    WHITE,
+    YELLOW,
+    ORANGE,
+    PURPLE,
 
-    GREEN(true),
-    GREEN_STRIPE(true),
-    BROWN1(true),
-    BROWN2(true),
-    BROWN3(true),
-    BLACK1(true),
-    BLACK2(true),
-    BLACK3(true);
-
-    private final boolean isAdvanced;
-
-
-    BeltValue(boolean isAdvanced) {
-        this.isAdvanced = isAdvanced;
-    }
+    // Advanced belts
+    BLUE,
+    BLUE_STRIPE,
+    GREEN,
+    GREEN_STRIPE,
+    BROWN1,
+    BROWN2,
+    BROWN3,
+    BLACK1,
+    BLACK2,
+    BLACK3;
 
 
     public boolean isAdvanced() {
-        return isAdvanced;
+        return this.ordinal() >= BLUE.ordinal();
+    }
+
+    /**
+     * Used to compare a user's training rank to see if they're eligible to teach a course.
+     *
+     * @return true or false
+     */
+    public boolean canTrainCourses() {
+        return this.ordinal() >= BLACK2.ordinal();
     }
 
     /**

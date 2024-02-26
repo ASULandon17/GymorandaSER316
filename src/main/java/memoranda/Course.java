@@ -72,7 +72,7 @@ public class Course {
         this.currentClassSize = 0;
         this.classId = classId;
         this.isPublic = classIsPublic;
-        this.instructorName = ""; // leave as empty string until updated by owner
+        this.instructorName = "";
         this.year = year;
         this.month = month;
         this.day = day;

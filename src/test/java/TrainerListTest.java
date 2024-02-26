@@ -1,16 +1,19 @@
 package test.java;
 
-import main.java.memoranda.*;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Vector;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import main.java.memoranda.BeltValue;
+import main.java.memoranda.Trainer;
+import main.java.memoranda.TrainerList;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * tests for the trainer list class
@@ -94,4 +97,6 @@ public class TrainerListTest {
         Vector<Trainer> availableTrainers = t.getTrainersAvailableAtTime(12);
         assertTrue("Trainer should be available", availableTrainers.size() > 1);
     }
+
+
 }
