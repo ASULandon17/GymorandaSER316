@@ -403,32 +403,31 @@ everyone should write 4 good Unit Tests each Sprint):
 **Do you think you individually worked consistently and put in enough work into the project (give a
 short answer).
 
+I think I did work consistently here and put in work where I could.
+
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
-    - link1
-    - link2
+    [commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66/commits/ba745951e78e4b15635f4eaf87a39c2bd95ac4e6)
+    
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+    [PR1] (https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66)
+
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+    There were not eligible things left to check.
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+    I didn't get a chance to do a code review as my team was very proactive on them.
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+    Static analysis was adequately handled by my team and I was contributed when I could.
 
 #### Team Member -- Jacob Smith
 
