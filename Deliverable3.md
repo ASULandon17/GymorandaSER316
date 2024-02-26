@@ -256,42 +256,42 @@ everyone should write 4 good Unit Tests each Sprint):
 
 #### Team Member -- Landon Messmore
 
-**Do you think you individually worked consistently and put in enough work into the project (give a
-short answer).
+Yes, I worked consistently throughout this sprint. Our team agreed on a plan of getting most of the work done at the beginning of the sprint because we had other responsibilities that also needed to be taken care of.
+As a result I finished my biggest task early and then when the other responsibilities were taken care of, finished the other US's & tasks that I took on. Our team works very efficiently so we were able to take care of everything quickly and I feel like I was a contributing factor in that.
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
-    [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/7a8a1e73290a7203a4089fa83af4e478a573af5e) - Create DropClassPopup.java and add functionality to drop class from rooms page
-    [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/ea9d6aa92f70c26b07cfaa687142a5f5b53c87b7) - Add a method in PersistentClass to remove student from a course and add popup to room
-    [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class and make checkstyle changes
-    [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/c463bc030a1ed38c97f00ac68c7da910f72cce25) - Edit rooms popup to work with new advanced classes
-    [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/252f423311200e748d74e6a70d36e4d167421937) - Implement functionality for logged in trainers to have courses they're teaching appear in red.
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/7a8a1e73290a7203a4089fa83af4e478a573af5e) - Create DropClassPopup.java and add functionality to drop class from rooms page
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/ea9d6aa92f70c26b07cfaa687142a5f5b53c87b7) - Add a method in PersistentClass to remove student from a course and add popup to room
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class and make checkstyle changes
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/c463bc030a1ed38c97f00ac68c7da910f72cce25) - Edit rooms popup to work with new advanced classes
+[Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/252f423311200e748d74e6a70d36e4d167421937) - Implement functionality for logged in trainers to have courses they're teaching appear in red.
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    [PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57) - Adds popup menu in Rooms page so Users can add and drop classes
-    [PR2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64) - Add functionality so when trainers are logged in the courses they're teaching will appear outlined in red
+[PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57) - Adds popup menu in Rooms page so Users can add and drop classes
+[PR2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64) - Add functionality so when trainers are logged in the courses they're teaching will appear outlined in red
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
-    [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class
+[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class
     
-    Most of my work was on front end UI additions and did not require Unit Tests.
+Most of my work was on front end UI additions and did not require Unit Tests.
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    [Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65#issuecomment-1962209104)
-    [Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55#pullrequestreview-1884124970)
-    [Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/53#pullrequestreview-1883618947)
-    [Review 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/52#pullrequestreview-1881227128)
-    [Review 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70#pullrequestreview-1899771193)
+[Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65#issuecomment-1962209104)
+[Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/55#pullrequestreview-1884124970)
+[Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/53#pullrequestreview-1883618947)
+[Review 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/52#pullrequestreview-1881227128)
+[Review 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70#pullrequestreview-1899771193)
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    [Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/4f00fa329fa04094e8cd3e0ee474557b6c465723) - Clean up checkstyle issues ClassPanel.java
-    [Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Clean up checkstyle issues in ManageClassPopup.java and RoomPanel.java
+[Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/4f00fa329fa04094e8cd3e0ee474557b6c465723) - Clean up checkstyle issues ClassPanel.java
+[Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Clean up checkstyle issues in ManageClassPopup.java and RoomPanel.java
 
 #### Team Member -- Jack Quinn
 
