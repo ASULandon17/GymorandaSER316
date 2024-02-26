@@ -359,33 +359,44 @@ Removed some spotbugs errors within the TrainerList.java file.
 
 **Do you think you individually worked consistently and put in enough work into the project (give a
 short answer).
+I think I put in enough work this sprint, although most of it was at the start due to life circumstances forcing me to schedule my work early in the week.
+Most of the work that was needed done was finished by my amazing team at an extremely fast pace by the time I was able to work once more, so there wasn't
+much work left for me to take on towards the end of the sprint.
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
-    - link1
-    - link2
+    [Commit1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/2b18026bf9612d976ffed95bde4862bfb9d61e7b) - Created a general use method
+    to get the current list of teachers.
+    
+    [Commit2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/68a900dabc2b5eabf17eedca7afcfb2cad93d05b) - Made it so the class creator
+    displayed the available teachers to assign to the created class.
+    
+    [Commit3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/638e7af53a46e33e338dd5f46e0bd34efee9e59f) - Added the ability to assign 
+    teachers the the created class.
+    
+    [Commit4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/005c4e3d99e82619433f5eea6d6a5bf9df62788f) - Created error handling for
+    the method used to get current list of teachers, accounting for null values (no teachers yet).
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+    [Pull Request](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61) - PR allowed the class creator to
+    also be able to add teachers to a class, along with displaying results on the UI.
+
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+    There was no more viable classes to be unit tested.
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+    [Code Review](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/59#pullrequestreview-1884196040)
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+    Static Analysis was properly covered by other team members, there was nothing I thought I could 
+    contribute.
 
 #### Team Member -- Natel Whitaker
 
