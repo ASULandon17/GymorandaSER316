@@ -51,6 +51,20 @@ public class User {
         return null;
     }
 
+    public static List<GymUser> getTrainers() {
+        List<GymUser> trainerList = new ArrayList<>();
+
+        for (GymUser user : users) {
+            // if user is a trainer and meets requirements to train course:
+            if (user.getUserType() == UserType.TRAINER && user.getBeltRank().canTrainCourses()) {
+
+                trainerList.add(user);
+            }
+        }
+
+        return trainerList;
+    }
+
     /**
      * Executes new user sign up.
      */
@@ -102,12 +116,17 @@ public class User {
                     StandardCharsets.UTF_8)) {
                 fileWriter.write(usersArray.toString());
             }
+
+            // refresh list of gym users
+            loadUsersFromFile();
+
             return true;
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             return false;
         }
     }
+
 
     /**
      * Handles login process.

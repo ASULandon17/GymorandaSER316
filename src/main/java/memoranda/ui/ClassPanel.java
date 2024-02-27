@@ -266,7 +266,7 @@ public class ClassPanel extends JPanel {
         JLabel instructorNameLabel;
 
         JLabel classNameLabel = new JLabel("Class: " + course.getClassName());
-        if (course.getInstructorName().equals("")) {
+        if (course.getInstructorName() == null) {
             instructorNameLabel = new JLabel("Instructor: Not Assigned");
         } else {
             instructorNameLabel = new JLabel("Instructor: " + course.getInstructorName());

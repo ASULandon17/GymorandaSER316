@@ -18,6 +18,7 @@ public class NewTrainerPopup extends JFrame {
 
     /**
      * Constructor for popup window.
+     *
      * @param trainerPanel ref to parent
      */
     public NewTrainerPopup(TrainerPanel trainerPanel) {
@@ -43,7 +44,7 @@ public class NewTrainerPopup extends JFrame {
 
         upgradeButton.addActionListener(e -> {
             performTrainerUpgrade();
-            trainerPanel.initCardsPanel();
+            trainerPanel.refreshTrainerCards();
             clearForm();
             dispose(); // Close the popup window after upgrade
         });

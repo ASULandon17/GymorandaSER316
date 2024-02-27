@@ -60,25 +60,5 @@ public class Trainer {
         return this.endAvailability;
     }
 
-    public void setStartAvailability(int start) {
-        this.startAvailability = start;
-    }
 
-    public void setEndAvailability(int end) {
-        this.endAvailability = end;
-    }
-
-    /**
-     * Increases the Trainer's belt rank.
-     */
-    public void increaseBeltRank() {
-        this.beltRank = beltRank.increaseBelt();
-    }
-
-    /**
-     * Increases the Trainer's training level.
-     */
-    public void increaseTrainingRank() {
-        this.trainingRank = trainingRank.increaseBelt();
-    }
 }
