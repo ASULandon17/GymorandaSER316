@@ -8,8 +8,6 @@
  */
 package main.java.memoranda;
 
-import java.util.Vector;
-
 import main.java.memoranda.date.CalendarDate;
 import main.java.memoranda.util.CurrentStorage;
 import main.java.memoranda.util.Local;
@@ -18,6 +16,8 @@ import nu.xom.Attribute;
 import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
+
+import java.util.Vector;
 
 /**
  *
@@ -30,15 +30,13 @@ public class ProjectManager {
     static Element _root = null;
     
     static {
-    	init();
+        init();
     }
 
     public static void init() {
         CurrentStorage.get().openProjectManager();
         if (_doc == null) {
             _root = new Element("projects-list");
-//            _root.addNamespaceDeclaration("jnotes", NS_JNPROJECT);
-//            _root.appendChild(new Comment("This is JNotes 2 data file. Do not modify."));
             _doc = new Document(_root);
             createProject("__default", Local.getString("Default project"), CalendarDate.today(), null);
         }
@@ -66,14 +64,14 @@ public class ProjectManager {
     }
 
     public static int getAllProjectsNumber() {
-		int i;
+        int i;
         try {
-			i = ((Elements)_root.getChildElements("project")).size();
-		}
-		catch (NullPointerException e) {
-			i = 1;
-		}
-		return i;
+            i = ((Elements)_root.getChildElements("project")).size();
+        }
+        catch (NullPointerException e) {
+            i = 1;
+        }
+        return i;
     }
 
     public static Vector getActiveProjects() {
@@ -86,7 +84,7 @@ public class ProjectManager {
         }
         return v;
     }
-		
+
     public static int getActiveProjectsNumber() {
         Elements prjs = _root.getChildElements("project");
         int count = 0;

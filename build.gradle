@@ -1,12 +1,17 @@
+import com.github.spotbugs.snom.SpotBugsReport
+
 plugins {
-    // id "com.github.spotbugs" version "4.5.1"
+    id "com.github.spotbugs" version "5.0.12"
     id "checkstyle"
+    id 'application'
+    id 'jacoco'
 }
 
-apply plugin: 'application'
-apply plugin: 'jacoco'
+application {
+    mainClassName = 'main/java/memoranda/Start'
+}
 
-mainClassName = 'main/java/memoranda/Start'
+
 
 compileJava.options.encoding = 'UTF-8'
 
@@ -32,9 +37,9 @@ jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
 jacoco {
-    //toolVersion = "0.8.8"
     reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
 }
+
 jacocoTestReport {
     reports {
         xml.required = false
@@ -47,21 +52,20 @@ jacocoTestReport {
 // Configure Checkstyle
 /////////////////////////////////////////////////////////////////////
 apply plugin: 'checkstyle'
-// checkstyle {
-//   // Keep checkstyle a little quieter
-//   ignoreFailures = true
-//   showViolations = false
-// }
+ checkstyle {
+   // Keep checkstyle a little quieter
+   ignoreFailures = true
+   showViolations = false
+}
 
-tasks.withType(Checkstyle) {
- 
-  reports {
-    //html.enabled = true
-    //xml.enabled = false
-  }
-    //include '**/*.java'
-    include '**/Course.java', '**/PersistentClass.java'
- }
+tasks.withType(Checkstyle).configureEach {
+
+    reports {
+        html.required = true
+        xml.required = false
+    }
+    include '**/*.java'
+}
 
 
 checkstyle {
@@ -73,15 +77,14 @@ checkstyle {
 // Configure SpotBugs
 ///////////////////////////////////////////////////////////////////////
 // To generate an HTML report instead of XML
-// spotbugsMain {
-//     reports {
-//         xml.enabled = false
-//         html.enabled = true
-//     }
-// }
-// spotbugs {
-//     toolVersion = '4.2.2'
-//     ignoreFailures = true
-//     showProgress = true
-//     effort = 'max'
-// }
+spotbugsMain {
+     reports(({
+         xml.enabled = false
+         html.enabled = true
+     } as Closure<NamedDomainObjectContainer<? extends SpotBugsReport>>))
+}
+ spotbugs {
+     ignoreFailures = true
+     showProgress = true
+     effort = 'max'
+ }

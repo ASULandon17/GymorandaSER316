@@ -41,9 +41,9 @@ public class NotesList extends JList {
 
     public NotesList(int type) {
         super();
-		if(Configuration.get("NOTES_SORT_ORDER").toString().equalsIgnoreCase("true")) {
-			sortOrderDesc = true;
-		}
+        if(Configuration.get("NOTES_SORT_ORDER").toString().equalsIgnoreCase("true")) {
+            sortOrderDesc = true;
+        }
         _type = type;
         this.setFont(new java.awt.Font("Dialog", 0, 11));
         this.setModel(new NotesListModel());
@@ -52,7 +52,7 @@ public class NotesList extends JList {
                 updateUI();
             }
         });
-		
+
         CurrentNote.addNoteListener(new NoteListener() {
             public void noteChange(Note n, boolean toSaveCurrentNote) {
                 updateUI();
@@ -76,10 +76,10 @@ public class NotesList extends JList {
     public void update() {
         if (_type != EMPTY) {
             update(CurrentProject.getNoteList());
-		}
+        }
         else {
-			update(new Vector());
-		}
+            update(new Vector());
+        }
     }
 
     public void update(NoteList nl) {
@@ -90,20 +90,20 @@ public class NotesList extends JList {
         
 //        Util.debug("No. of notes in noteList " + notes.size());
         //NotesVectorSorter.sort(notes);
-		Collections.sort(notes);
-		if (sortOrderDesc) {
-			Collections.reverse(notes);		    
-		}
+        Collections.sort(notes);
+        if (sortOrderDesc) {
+            Collections.reverse(notes);
+        }
         updateUI();
     }
 
     public void update(Vector ns) {
         notes = ns;
         // NotesVectorSorter.sort(notes);
-		Collections.sort(notes);
-		if (sortOrderDesc) {
-			Collections.reverse(notes);		    
-		}		
+        Collections.sort(notes);
+        if (sortOrderDesc) {
+            Collections.reverse(notes);
+        }
         updateUI();
     }
 
@@ -150,7 +150,7 @@ public class NotesListModel extends AbstractListModel {
          String s = value.toString();
          label.setText(s);
          //Note currentNote = CurrentProject.getNoteList().getActiveNote();
-		 Note currentNote = CurrentNote.get();
+         Note currentNote = CurrentNote.get();
          if (currentNote != null) {
             if (getNote(index).getId().equals(currentNote.getId()))
                 label.setFont(label.getFont().deriveFont(Font.BOLD));

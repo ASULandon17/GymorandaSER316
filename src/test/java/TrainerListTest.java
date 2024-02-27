@@ -1,17 +1,19 @@
 package test.java;
 
-import main.java.memoranda.BeltValue;
-import main.java.memoranda.Trainer;
-import main.java.memoranda.TrainerList;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Vector;
-
-import static org.junit.Assert.assertEquals;
+import main.java.memoranda.BeltValue;
+import main.java.memoranda.Trainer;
+import main.java.memoranda.TrainerList;
+import main.java.memoranda.User;
+import main.java.memoranda.UserType;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * tests for the trainer list class
@@ -62,4 +64,39 @@ public class TrainerListTest {
         assertEquals(trainerList.getTrainers().get(1).getBeltRank(), tvector.get(1).getBeltRank());
         assertEquals(trainerList.getTrainers().get(1).getTrainingRank(), tvector.get(1).getTrainingRank());
     }
+
+    @Test
+    public void setTrainerStartAvailabilityTest() throws IOException {
+        TrainerList trainerList = new TrainerList();
+        boolean result = trainerList.setTrainerStartAvailability("Trainer1", 10);
+        assertTrue(result);
+
+
+        Trainer updatedTrainer = trainerList.getTrainer("Trainer1");
+        assertEquals(10, updatedTrainer.getStartAvailability());
+    }
+
+    @Test
+    public void setTrainerEndAvailabilityTest() throws IOException {
+        TrainerList trainerList = new TrainerList();
+        boolean result = trainerList.setTrainerEndAvailability("Trainer2", 20);
+        assertTrue(result);
+
+        Trainer updatedTrainer = trainerList.getTrainer("Trainer2");
+        assertEquals(20, updatedTrainer.getEndAvailability());
+    }
+
+    @Test
+    public void testGetTrainersAtAvailableTime(){
+        User.signUp("testTrainer", "testPassword", UserType.TRAINER);
+        TrainerList t = new TrainerList();
+
+        t.setTrainerStartAvailability("testTrainer", 10);
+        t.setTrainerEndAvailability("testTrainer", 14);
+
+        Vector<Trainer> availableTrainers = t.getTrainersAvailableAtTime(12);
+        assertTrue("Trainer should be available", availableTrainers.size() > 1);
+    }
+
+
 }

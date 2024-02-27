@@ -85,7 +85,7 @@ public class EditTypeDialog extends JDialog {
     }
 
     void jbInit() throws Exception {
-	this.setResizable(false);
+    this.setResizable(false);
         border1 = BorderFactory.createLineBorder(Color.gray, 1);
         titledBorder1 = new TitledBorder(BorderFactory.createEmptyBorder(), Local.getString("File type extensions"));
         border2 = BorderFactory.createLineBorder(Color.gray, 1);
@@ -251,8 +251,8 @@ public class EditTypeDialog extends JDialog {
                 iconLabel.setIcon(new ImageIcon(chooser.getSelectedFile().getPath()));
            }
             catch (Exception ex) {
-		    //ex.printStackTrace();
-	    }
+            //ex.printStackTrace();
+        }
             finally {
                 iconPath = chooser.getSelectedFile().getPath();
             }

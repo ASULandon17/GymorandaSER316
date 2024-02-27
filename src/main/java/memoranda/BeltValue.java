@@ -1,53 +1,64 @@
 package main.java.memoranda;
 
 /**
- * Enum class for the belt ranks
+ * Enum class for the belt ranks.
  */
 public enum BeltValue {
-    NO_BELT, WHITE, YELLOW, ORANGE, PURPLE, BLUE, BLUE_STRIPE, GREEN, GREEN_STRIPE,
-    BROWN1, BROWN2, BROWN3, BLACK1, BLACK2, BLACK3;
+
+    // Beginner belts
+    NO_BELT,
+
+    WHITE,
+    YELLOW,
+    ORANGE,
+    PURPLE,
+
+    // Advanced belts
+    BLUE,
+    BLUE_STRIPE,
+    GREEN,
+    GREEN_STRIPE,
+    BROWN1,
+    BROWN2,
+    BROWN3,
+    BLACK1,
+    BLACK2,
+    BLACK3;
+
+
+    public boolean isAdvanced() {
+        return this.ordinal() >= BLUE.ordinal();
+    }
 
     /**
-     * Increases the belt rank by one stage
-     * Does not do anything if there are no more stages
+     * Used to compare a user's training rank to see if they're eligible to teach a course.
+     *
+     * @return true or false
+     */
+    public boolean canTrainCourses() {
+        return this.ordinal() >= BLACK2.ordinal();
+    }
+
+    /**
+     * Increases the belt rank by one stage Does not do anything if there are no more stages.
+     *
      * @return new belt rank
      */
     public BeltValue increaseBelt() {
-        switch(this) {
-            case NO_BELT:
-                return WHITE;
-            case WHITE:
-                return YELLOW;
-            case YELLOW:
-                return ORANGE;
-            case ORANGE:
-                return PURPLE;
-            case PURPLE:
-                return BLUE;
-            case BLUE:
-                return BLUE_STRIPE;
-            case BLUE_STRIPE:
-                return GREEN;
-            case GREEN:
-                return GREEN_STRIPE;
-            case GREEN_STRIPE:
-                return BROWN1;
-            case BROWN1:
-                return BROWN2;
-            case BROWN2:
-                return BROWN3;
-            case BROWN3:
-                return BLACK1;
-            case BLACK1:
-                return BLACK2;
-            case BLACK2:
-                return BLACK3;
-            case BLACK3:
-                System.out.println("Cannot increase rank any further.");
-                return this;
-            default:
-                System.out.println("Error increasing belt rank.");
-                return this;
+
+        // get next rank
+        int nextRank = this.ordinal() + 1;
+
+        // as long as the next rank is within bounds of the enum array, return increased rank.
+        if (nextRank < BeltValue.values().length) {
+            return BeltValue.values()[nextRank];
+
+            // otherwise, return current rank and display error message
+        } else {
+            System.out.println("User is already at the max rank.");
+            return this;
+
+
         }
     }
 }

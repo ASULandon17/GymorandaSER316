@@ -13,7 +13,7 @@ public class ImageFilter extends FileFilter {
         }
 
         String extension = Utils.getExtension(f);
-	if (extension != null) {
+    if (extension != null) {
             if (extension.equals(Utils.png) ||
                 extension.equals(Utils.gif) ||
                 extension.equals(Utils.jpeg) ||
@@ -22,7 +22,7 @@ public class ImageFilter extends FileFilter {
             } else {
                 return false;
             }
-    	}
+        }
 
         return false;
     }
