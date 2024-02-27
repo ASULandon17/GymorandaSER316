@@ -74,7 +74,7 @@ Slack)**
 
 Answer as a team!
 
-**Screen Cast link**: Your link
+**Screen Cast link**: https://youtu.be/V5ohwFvcp-M
 
 > Answer the following questions as a team.
 
@@ -196,84 +196,105 @@ short answer).
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
- [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/eadbecfb2d98bf392052638b1d9d9cb407120342) - Remove unnecessary code within AgendaGenerator.java to delete unused content from the Home Page
- 
- [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/509efcf1db0b0c6bd7c30947f136f87c1e8feb38) - Add a button for Trainers to change their Training rank on the Home Page
- 
- [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/954b6d25169fdbc3f1a3f54031b561e4ff44e5ec) - Change the Home page background color and add the Splash screen icon to the page
- 
- [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/80e1239524482c6979f39f5ba0bbd3e73e36d446) - Display the User's belt rank and training rank in the corresponding color
- 
- [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/1f2ee5e32554b8ed2d4abae66b2bc8f2e05e1203) - Add Gym fun facts to the Home page to add personality to the Home page
- 
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/eadbecfb2d98bf392052638b1d9d9cb407120342) -
+Remove unnecessary code within AgendaGenerator.java to delete unused content from the Home Page
+
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/509efcf1db0b0c6bd7c30947f136f87c1e8feb38) -
+Add a button for Trainers to change their Training rank on the Home Page
+
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/954b6d25169fdbc3f1a3f54031b561e4ff44e5ec) -
+Change the Home page background color and add the Splash screen icon to the page
+
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/80e1239524482c6979f39f5ba0bbd3e73e36d446) -
+Display the User's belt rank and training rank in the corresponding color
+
+[Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/1f2ee5e32554b8ed2d4abae66b2bc8f2e05e1203) -
+Add Gym fun facts to the Home page to add personality to the Home page
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
- [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63) - Remove unused features on the Home Page, add a 'Change TrainingRank' button to Home, clean up code with CheckStyle and SpotBugs
- 
- [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67) - PR for completed US-#101. Aesthetic changes to make the Home Page more appealing for the user
- 
+[PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63) - Remove unused features on
+the Home Page, add a 'Change TrainingRank' button to Home, clean up code with CheckStyle and
+SpotBugs
+
+[PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67) - PR for completed US-#101.
+Aesthetic changes to make the Home Page more appealing for the user
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
- [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/a2264589cb78be45f13f3ce8ae016d79042e28a7) - Test for the setTrainingRank functionality of the User class
- 
- [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/07f67ac138cadbd73206d6e40d71a00ae6d98fe6) - Test for the beltColor method of AgendaGenerator.java
- 
- [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69/commits/163bddb41c244f0b6a43754a4a61208201b74d47) - Unit tests for the setAvailability method in GymUser.java, specifically testing UserTypes
- 
+[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/a2264589cb78be45f13f3ce8ae016d79042e28a7) -
+Test for the setTrainingRank functionality of the User class
+
+[Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/07f67ac138cadbd73206d6e40d71a00ae6d98fe6) -
+Test for the beltColor method of AgendaGenerator.java
+
+[Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69/commits/163bddb41c244f0b6a43754a4a61208201b74d47) -
+Unit tests for the setAvailability method in GymUser.java, specifically testing UserTypes
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
- [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64#pullrequestreview-1897337228) - Code review on Landon's PR
- 
- [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65#pullrequestreview-1899167303) - Code review on Jake's PR
- 
- [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69#pullrequestreview-1899607670) - Code review on Jake's PR
- 
+[Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64#pullrequestreview-1897337228) -
+Code review on Landon's PR
+
+[Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65#pullrequestreview-1899167303) -
+Code review on Jake's PR
+
+[Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69#pullrequestreview-1899607670) -
+Code review on Jake's PR
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
- [Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/af9f0751a01a6c71700b27e10a5028259e0016af) - Remove unused files from repo to fix SpotBugs errors
- 
- [Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/a9f705558d3f1e988f7b15d6c86691b0406a8669) - Remove CheckStyle errors in AgendaGenerator.java
- 
- [Static Analysis 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/5d2d205834d9e50e0963e1b5d6ce2dafa007eaa3) - Replace all tabs in every file with spaces to remove thousands of CheckStyle errors
- 
+[Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/af9f0751a01a6c71700b27e10a5028259e0016af) -
+Remove unused files from repo to fix SpotBugs errors
+
+[Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/a9f705558d3f1e988f7b15d6c86691b0406a8669) -
+Remove CheckStyle errors in AgendaGenerator.java
+
+[Static Analysis 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/5d2d205834d9e50e0963e1b5d6ce2dafa007eaa3) -
+Replace all tabs in every file with spaces to remove thousands of CheckStyle errors
 
 #### Team Member -- Landon Messmore
 
-Yes, I worked consistently throughout this sprint. Our team agreed on a plan of getting most of the work done at the beginning of the sprint because we had other responsibilities that also needed to be taken care of.
-As a result I finished my biggest task early and then when the other responsibilities were taken care of, finished the other US's & tasks that I took on. Our team works very efficiently so we were able to take care of everything quickly and I feel like I was a contributing factor in that.
+Yes, I worked consistently throughout this sprint. Our team agreed on a plan of getting most of the
+work done at the beginning of the sprint because we had other responsibilities that also needed to
+be taken care of.
+As a result I finished my biggest task early and then when the other responsibilities were taken
+care of, finished the other US's & tasks that I took on. Our team works very efficiently so we were
+able to take care of everything quickly and I feel like I was a contributing factor in that.
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
-[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/7a8a1e73290a7203a4089fa83af4e478a573af5e) - Create DropClassPopup.java and add functionality to drop class from rooms page
+[Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/7a8a1e73290a7203a4089fa83af4e478a573af5e) -
+Create DropClassPopup.java and add functionality to drop class from rooms page
 
-[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/ea9d6aa92f70c26b07cfaa687142a5f5b53c87b7) - Add a method in PersistentClass to remove student from a course and add popup to room
+[Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/ea9d6aa92f70c26b07cfaa687142a5f5b53c87b7) -
+Add a method in PersistentClass to remove student from a course and add popup to room
 
-[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class and make checkstyle changes
+[Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) -
+Add unit test for removing student from class and make checkstyle changes
 
-[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/c463bc030a1ed38c97f00ac68c7da910f72cce25) - Edit rooms popup to work with new advanced classes
+[Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/c463bc030a1ed38c97f00ac68c7da910f72cce25) -
+Edit rooms popup to work with new advanced classes
 
-[Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/252f423311200e748d74e6a70d36e4d167421937) - Implement functionality for logged in trainers to have courses they're teaching appear in red.
-
+[Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/252f423311200e748d74e6a70d36e4d167421937) -
+Implement functionality for logged in trainers to have courses they're teaching appear in red.
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-[PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57) - Adds popup menu in Rooms page so Users can add and drop classes
+[PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57) - Adds popup menu in Rooms
+page so Users can add and drop classes
 
-[PR2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64) - Add functionality so when trainers are logged in the courses they're teaching will appear outlined in red
-
+[PR2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64) - Add functionality so when
+trainers are logged in the courses they're teaching will appear outlined in red
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
-[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Add unit test for removing student from class
+[Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) -
+Add unit test for removing student from class
 
-    
 Most of my work was on front end UI additions and did not require Unit Tests.
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
@@ -288,13 +309,13 @@ Most of my work was on front end UI additions and did not require Unit Tests.
 
 [Review 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/70#pullrequestreview-1899771193)
 
-
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-[Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/4f00fa329fa04094e8cd3e0ee474557b6c465723) - Clean up checkstyle issues ClassPanel.java
+[Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64/commits/4f00fa329fa04094e8cd3e0ee474557b6c465723) -
+Clean up checkstyle issues ClassPanel.java
 
-[Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) - Clean up checkstyle issues in ManageClassPopup.java and RoomPanel.java
-
+[Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/57/commits/da3132f0be49d524319ca8c9a83cba5da81d3357) -
+Clean up checkstyle issues in ManageClassPopup.java and RoomPanel.java
 
 #### Team Member -- Jack Quinn
 
@@ -369,30 +390,36 @@ Removed some spotbugs errors within the TrainerList.java file.
 
 **Do you think you individually worked consistently and put in enough work into the project (give a
 short answer).
-I think I put in enough work this sprint, although most of it was at the start due to life circumstances forcing me to schedule my work early in the week.
-Most of the work that was needed done was finished by my amazing team at an extremely fast pace by the time I was able to work once more, so there wasn't
+I think I put in enough work this sprint, although most of it was at the start due to life
+circumstances forcing me to schedule my work early in the week.
+Most of the work that was needed done was finished by my amazing team at an extremely fast pace by
+the time I was able to work once more, so there wasn't
 much work left for me to take on towards the end of the sprint.
 
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
- [Commit1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/2b18026bf9612d976ffed95bde4862bfb9d61e7b) - Created a general use method
-    to get the current list of teachers.
-    
- [Commit2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/68a900dabc2b5eabf17eedca7afcfb2cad93d05b) - Made it so the class creator
-    displayed the available teachers to assign to the created class.
-    
- [Commit3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/638e7af53a46e33e338dd5f46e0bd34efee9e59f) - Added the ability to assign 
-    teachers the the created class.
-    
- [Commit4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/005c4e3d99e82619433f5eea6d6a5bf9df62788f) - Created error handling for
-    the method used to get current list of teachers, accounting for null values (no teachers yet).
+[Commit1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/2b18026bf9612d976ffed95bde4862bfb9d61e7b) -
+Created a general use method
+to get the current list of teachers.
+
+[Commit2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/68a900dabc2b5eabf17eedca7afcfb2cad93d05b) -
+Made it so the class creator
+displayed the available teachers to assign to the created class.
+
+[Commit3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/638e7af53a46e33e338dd5f46e0bd34efee9e59f) -
+Added the ability to assign
+teachers the the created class.
+
+[Commit4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61/commits/005c4e3d99e82619433f5eea6d6a5bf9df62788f) -
+Created error handling for
+the method used to get current list of teachers, accounting for null values (no teachers yet).
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
- [Pull Request](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61) - PR allowed the class creator to
-    also be able to add teachers to a class, along with displaying results on the UI.
-
+[Pull Request](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/61) - PR allowed the
+class creator to
+also be able to add teachers to a class, along with displaying results on the UI.
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
@@ -401,7 +428,7 @@ everyone should write 4 good Unit Tests each Sprint):
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
- [Code Review](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/59#pullrequestreview-1884196040)
+[Code Review](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/59#pullrequestreview-1884196040)
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
@@ -418,13 +445,11 @@ I think I did work consistently here and put in work where I could.
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
- [commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66/commits/ba745951e78e4b15635f4eaf87a39c2bd95ac4e6)
-    
+[commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66/commits/ba745951e78e4b15635f4eaf87a39c2bd95ac4e6)
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
- [PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66)
-
+[PR1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/66)
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
