@@ -227,32 +227,44 @@ everyone should write 4 good Unit Tests each Sprint):
 **Do you think you individually worked consistently and put in enough work into the project (give a
 short answer).
 
+    I believe given the circumstances, I was able to work consistently. I wasn't able to contribute the first two days of the sprint.
+    This resulted in a lot of the tasks already being completed prior to me being able to begin my portion. With the tasks left though, 
+    I was able to complete a large User Story by myself. I reworked the entirety of the Home page, which took a large portion of my time.
+    I worked on this User Story consistently throughout the Sprint and spent time learning new areas in code I didn't know before. I 
+    feel like was able to put enough work into the project and I am proud of what I was able to accomplish.
+
 **Links to GitHub commits (not PR) with main code contribution (up to 5 links) during the current
 Sprint:
 
-    - link1
-    - link2
+ [Commit 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/eadbecfb2d98bf392052638b1d9d9cb407120342) - Remove unnecessary code within AgendaGenerator.java to delete unused content from the Home Page
+ [Commit 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/509efcf1db0b0c6bd7c30947f136f87c1e8feb38) - Add a button for Trainers to change their Training rank on the Home Page
+ [Commit 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/954b6d25169fdbc3f1a3f54031b561e4ff44e5ec) - Change the Home page background color and add the Splash screen icon to the page
+ [Commit 4](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/80e1239524482c6979f39f5ba0bbd3e73e36d446) - Display the User's belt rank and training rank in the corresponding color
+ [Commit 5](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/1f2ee5e32554b8ed2d4abae66b2bc8f2e05e1203) - Add Gym fun facts to the Home page to add personality to the Home page
 
 **GitHub links to your Pull Requests (up to 3 links) during the current Sprint:
 
-    - link1
-    - link2
+ [PR 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63) - Remove unused features on the Home Page, add a 'Change TrainingRank' button to Home, clean up code with CheckStyle and SpotBugs
+ [PR 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67) - PR for completed US-#101. Aesthetic changes to make the Home Page more appealing for the user
 
 **GitHub links to your Unit Tests (up to 3 links) -- during current Sprint, start in Sprint 2 (
 everyone should write 4 good Unit Tests each Sprint):
 
-    - link1
-    - link2
+ [Unit Test 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/a2264589cb78be45f13f3ce8ae016d79042e28a7) - Test for the setTrainingRank functionality of the User class
+ [Unit Test 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/07f67ac138cadbd73206d6e40d71a00ae6d98fe6) - Test for the beltColor method of AgendaGenerator.java
+ [Unit Test 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69/commits/163bddb41c244f0b6a43754a4a61208201b74d47) - Unit tests for the setAvailability method in GymUser.java, specifically testing UserTypes
 
 **GitHub links to your Code Reviews (up to 3 links) -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+ [Code Review 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/64#pullrequestreview-1897337228) - Code review on Landon's PR
+ [Code Review 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/65#pullrequestreview-1899167303) - Code review on Jake's PR
+ [Code Review 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/69#pullrequestreview-1899607670) - Code review on Jake's PR
 
 **How did you contribute to Static Analysis -- during current Sprint, start in Sprint 2:
 
-    - link1
-    - link2
+ [Static Analysis 1](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/af9f0751a01a6c71700b27e10a5028259e0016af) - Remove unused files from repo to fix SpotBugs errors
+ [Static Analysis 2](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/67/commits/a9f705558d3f1e988f7b15d6c86691b0406a8669) - Remove CheckStyle errors in AgendaGenerator.java
+ [Static Analysis 3](https://github.com/amehlhase316/Kaffeeklatsch_Spring24A/pull/63/commits/5d2d205834d9e50e0963e1b5d6ce2dafa007eaa3) - Replace all tabs in every file with spaces to remove thousands of CheckStyle errors
 
 #### Team Member -- Landon Messmore
 
