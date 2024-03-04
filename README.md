@@ -1,3 +1,5 @@
+This was an ASU SER316 project where we took a questionable codebase for a task manager application (with some stylistic and functional issues) and modified it to create an application for a karate gym.
+
 # GYMORANDA
 >*A Team Kaffeeklatsch Production*<br>
 *Release 3*
