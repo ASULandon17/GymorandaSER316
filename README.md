@@ -1,4 +1,5 @@
 This was an ASU SER316 project where we took a questionable codebase for a task manager application (with some stylistic and functional issues) and modified it to create an application for a karate gym.
+"Gymoranda" can be built and ran using Gradle.
 
 # GYMORANDA
 >*A Team Kaffeeklatsch Production*<br>
